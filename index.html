@@ -28,7 +28,15 @@
 <span class="material-symbols-outlined text-slate-400 text-[18px]">search</span>
 <input id="navSearchInput" class="bg-transparent border-none focus:ring-0 text-[13px] w-40 placeholder:text-slate-400 dark:text-white" placeholder="Search devices..." type="text">
 </div>
-<a class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70" href="shop-fully-connected.html">shopping_cart</a>
+<div class="relative group">
+<a class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">shopping_cart</a>
+<div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+<div class="cupertino-glass bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[280px] p-6 border border-slate-200/50 text-center">
+<p class="text-[13px] text-slate-600 dark:text-slate-400 font-medium mb-4">Please log in to add items to your cart.</p>
+<a href="login-final-nav.html" class="block w-full py-3 px-4 rounded-full bg-blue-600 text-white text-[11px] font-bold hover:bg-blue-700 transition-all uppercase tracking-widest text-center shadow-lg shadow-blue-500/20">Sign In</a>
+</div>
+</div>
+</div>
 <div class="relative group">
 <button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">person</button>
 <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
@@ -54,7 +62,7 @@
             </p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
 <!-- Linked to Service page as requested -->
-<a class="bg-primary text-on-primary px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 inline-block" href="{{DATA:SCREEN:SCREEN_140}}">
+<a class="bg-primary text-on-primary px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 inline-block" href="services-unified-nav.html">
                     Book a Repair
                 </a>
 <button class="text-primary font-medium flex items-center gap-2 hover:underline">
@@ -83,7 +91,7 @@
 <h2 class="text-3xl md:text-4xl font-bold text-on-surface mb-4">iPhone Repair</h2>
 <p class="text-on-surface-variant max-w-sm mb-6">From screen replacements to logic board diagnostics, we restore your iPhone to factory standards.</p>
 <!-- Link to iPhone Repair sub-page -->
-<a class="text-primary font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="{{DATA:SCREEN:SCREEN_140}}">
+<a class="text-primary font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="services-unified-nav.html">
                         Start my repair <span class="material-symbols-outlined">chevron_right</span>
 </a>
 </div>
@@ -203,7 +211,7 @@
 </div>
 </footer>
 <!-- FAB for quick action -->
-<a class="fixed bottom-8 right-8 bg-primary text-on-primary p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all z-40 flex items-center gap-2 group" href="{{DATA:SCREEN:SCREEN_140}}">
+<a class="fixed bottom-8 right-8 bg-primary text-on-primary p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all z-40 flex items-center gap-2 group" href="services-unified-nav.html">
 <span class="material-symbols-outlined">build</span>
 <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-medium whitespace-nowrap">Book a Walk-in</span>
 </a>
