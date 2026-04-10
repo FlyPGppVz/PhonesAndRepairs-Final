@@ -23,32 +23,37 @@
 <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="about-us-unified-nav.html">About Us</a>
 </div>
 </div>
+
 <div class="flex items-center gap-5">
-<div class="hidden lg:flex items-center bg-slate-100/80 dark:bg-slate-800/80 px-4 py-2 rounded-full border border-slate-200/50 dark:border-slate-700/50">
-<span class="material-symbols-outlined text-slate-400 text-[18px]">search</span>
-<input id="navSearchInput" class="bg-transparent border-none focus:ring-0 text-[13px] w-40 placeholder:text-slate-400 dark:text-white" placeholder="Search devices..." type="text">
+<button class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity" id="mobileMenuBtn">menu</button>
+    <div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
+        <div class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
+            <span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[18px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
+            <input id="navSearchInput" class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none" placeholder="Search devices..." type="text">
+        </div>
+    </div>
+    <div class="relative group">
+        <a class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="shop-fully-connected.html">shopping_cart</a>
+        <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+            <div class="cupertino-glass bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[280px] p-6 border border-slate-200/50 text-center">
+                <p class="text-[13px] text-slate-600 dark:text-slate-400 font-medium mb-4">Please log in to add items to your cart.</p>
+                <a href="login-final-nav.html" class="block w-full py-3 px-4 rounded-full bg-blue-600 text-white text-[11px] font-bold hover:bg-blue-700 transition-all uppercase tracking-widest text-center shadow-lg shadow-blue-500/20">Sign In</a>
+            </div>
+        </div>
+    </div>
+    <div class="relative group">
+        <button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">person</button>
+        <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+            <div class="cupertino-glass bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
+                <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="login-final-nav.html">Sign In</a>
+                <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="create-account-final-nav.html">Create Account</a>
+                <a id="navMyAccountLink" class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" href="my-profile-final-nav.html">My Account</a>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="relative group">
-<a class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">shopping_cart</a>
-<div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-<div class="cupertino-glass bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[280px] p-6 border border-slate-200/50 text-center">
-<p class="text-[13px] text-slate-600 dark:text-slate-400 font-medium mb-4">Please log in to add items to your cart.</p>
-<a href="login-final-nav.html" class="block w-full py-3 px-4 rounded-full bg-blue-600 text-white text-[11px] font-bold hover:bg-blue-700 transition-all uppercase tracking-widest text-center shadow-lg shadow-blue-500/20">Sign In</a>
-</div>
-</div>
-</div>
-<div class="relative group">
-<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">person</button>
-<div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
-<div class="cupertino-glass bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
-<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="login-final-nav.html">Sign In</a>
-<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="create-account-final-nav.html">Create Account</a>
-<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" href="my-profile-final-nav.html">My Account</a>
-</div>
-</div>
-</div>
-</div>
-</nav>
+
+    </nav>
 </header>
 <main class="pt-24 pb-20">
 <!-- Hero Section -->
@@ -82,7 +87,7 @@
                         Complex Liquid Damage Recovery
                     </li>
 </ul>
-<button class="mt-4 px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
+<button class="mt-4 px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20" onclick="window.location.href='iphone-repairs.html'">Get Quote</button>
 </div>
 <div class="flex-1 relative">
 <img class="w-full h-auto rounded-xl object-cover" data-alt="Clean overhead shot of a disassembled high-end smartphone with precision tools on a light gray technical workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHEC9ztnqm0E3gsn2LpC5ov8waCFZjtbIwunl7271KPgximKvsMbQCtJ2mlCR5BWtBH02n5dppjAfa5iff8H_U6Xw4FUgubduzEQZenhS3ZOTGIm645WuIbbx08su72hOuxdWXsT-vhlvcY7ri_OE1Osoyayoi-f1IjTeL_lrsZ5xdj2fJwaGRDvm9B4qfcWIro8WyBCSOt7EMjxEUW85mqsdch5f5ju_HRRutIJQvkJjFJJG06NROYyycl01Sk1nMedGg0BFz0EY">
@@ -105,7 +110,7 @@
 </div>
 </div>
 </div>
-<button class="mt-8 px-6 py-3 bg-surface-container-lowest text-primary border border-primary/20 rounded-full font-semibold text-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95">Get Quote</button>
+<button class="mt-8 px-6 py-3 bg-surface-container-lowest text-primary border border-primary/20 rounded-full font-semibold text-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95" onclick="window.location.href='android-repairs.html'">Get Quote</button>
 </div>
 <!-- Ipad and Tablets Repairs -->
 <div class="md:col-span-6 bg-inverse-surface text-white rounded-lg p-10 overflow-hidden relative">
@@ -121,7 +126,7 @@
 <div class="text-sm flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed-dim" data-icon="photo_camera">photo_camera</span> Camera Repair</div>
 </div>
 </div>
-<button class="mt-10 self-start px-8 py-3 bg-white text-inverse-surface rounded-full font-semibold text-sm hover:bg-primary-fixed-dim transition-all active:scale-95">Get Quote</button>
+<button class="mt-10 self-start px-8 py-3 bg-white text-inverse-surface rounded-full font-semibold text-sm hover:bg-primary-fixed-dim transition-all active:scale-95" onclick="window.location.href='ipad-and-tablet-repairs.html'">Get Quote</button>
 </div>
 <!-- Decorative background image with low opacity -->
 <div class="absolute right-[-10%] bottom-[-10%] w-2/3 h-2/3 opacity-20 pointer-events-none">
@@ -150,7 +155,7 @@
 </div>
 </li>
 </ul>
-<button class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95">Get Quote</button>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95" onclick="window.location.href='consoles-repairs.html'">Get Quote</button>
 </div>
 <div class="flex-1 w-full h-full min-h-[250px] rounded-xl overflow-hidden shadow-sm">
 <img class="w-full h-full object-cover" data-alt="Close up of a professional technician hands working on a gaming console circuit board with a soldering iron and magnifying lamp" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhhh6qjD4Drndo_Ub3iamf9sT3m9FjpXYOcT78gqb9I2m1vfiit8zxHNlunsEk8Qhh4UCDu6xHJDuxLLf2CYutVSCXOMXR6jHqXqFJkv4Np5WHWdASA2Spaai1-E_Qqy_5S9bBTD9sNSPJqczTLQAMgnU_t74iLuixKsHcftueTMs_VG9C6O8s1aUmtKnzyCCTdak5IBtg6KqOZjJULQmKJgKsfdwml8bw_zdqtb8b1AxfDOLty-dD6oJQxrtChq3ak_zLYDecsUE">
