@@ -1,0 +1,202 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar Updated as per COMPONENTS_95 -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
+<nav class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-10">
+<!-- Logo on far left -->
+<a class="active:opacity-70 transition-all cursor-pointer" href="{{DATA:SCREEN:SCREEN_136}}">
+<img alt="Cellphones and Repairs Logo" class="h-10 w-auto object-contain scale-95" data-alt="Professional Cellphones and Repairs brand logo in red and blue" src="https://lh3.googleusercontent.com/aida/ADBb0ugoPYVqY6imupbG-s4AkZ2GwxaHNLoflGuNsXHymH3BB8mMZJQU_OraF8FMYuMg1N41NW2KltmC6WcnnMN903EK4LP3u0Stoz3YxCei7gHyCWUlcxR_52YdWa9yTD5p5Uk_Xc_QnwC6Mohce4D4nQ3_k996Bn3vttsyqc_6G_w1W-b5lDDKVN5Rg9C0au11pxVNAP0ROTLFeNgGNwzJ_sPbJA0pUG5cN64JSKKdeG_C4cVhxOHidPO2fSDTWK5zcGqJ48-FR5gnsQ">
+</a>
+<!-- Menu aligned to the left next to it -->
+<div class="hidden md:flex items-center gap-6 font-sans text-[13px] font-medium tracking-tight">
+<a class="text-blue-600 dark:text-blue-400 font-semibold scale-95 active:opacity-70 transition-all cursor-pointer" href="index.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 transition-all cursor-pointer" href="shop-fully-connected.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 transition-all cursor-pointer" href="services-unified-nav.html">Service</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 transition-all cursor-pointer" href="contact-unified-nav.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 transition-all cursor-pointer" href="about-us-unified-nav.html">About Us</a>
+</div>
+</div>
+<!-- Search/Cart/Profile icons on the right -->
+<div class="flex items-center gap-5">
+<a class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70" href="{{DATA:SCREEN:SCREEN_73}}">search</a>
+<a class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70" href="shop-fully-connected.html">shopping_cart</a>
+<div class="relative group">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">person</button>
+<!-- Profile Dropdown -->
+<div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100">
+<div class="cupertino-glass rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2">
+<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="{{DATA:SCREEN:SCREEN_26}}">Sign In</a>
+<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="{{DATA:SCREEN:SCREEN_135}}">Create Account</a>
+<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" href="{{DATA:SCREEN:SCREEN_116}}">My Account</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bg-slate-200/50 dark:bg-slate-800/50 h-[1px]"></div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[870px] flex items-center justify-center overflow-hidden bg-white">
+<div class="z-10 text-center px-6 max-w-4xl">
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-on-surface mb-6 leading-tight">
+                Expertly Restored.<br>Seamlessly Repaired.
+            </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant mb-10 font-light max-w-2xl mx-auto">
+                Professional repair services for the devices you can't live without. Certified technicians, premium parts.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<!-- Linked to Service page as requested -->
+<a class="bg-primary text-on-primary px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/20 inline-block" href="{{DATA:SCREEN:SCREEN_140}}">
+                    Book a Repair
+                </a>
+<button class="text-primary font-medium flex items-center gap-2 hover:underline">
+                    Learn about our warranty <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-10" data-alt="Detailed close-up of high-precision electronic repair tools and a disassembled modern smartphone on a white tech workbench" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAexPkkQ4kZoA4k8YfeyXLX_2ZlBtnlLdWAFdexA_XC-Z7mjGYID_OIOroCbpcV353oeLeoJjdPqIqe5f_U3y_pjH67cSTKWtWblw_suTppBBxUF--80WdoRqh6fUAksLkGTNHjGvMbBjUVvYPCFjKcayZ8IZcPGAps61tPRLSXkD-0XaHPudBigXCWZOx8Eu5z7xFKrBE8FYzv9_cES0frMbf5EXxKbEtJs_EdUqVatVKf-WuNcVrEeJuxeDUGftkXwmGhuzqlZc">
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
+</section>
+<!-- Bento Grid Section -->
+<section class="px-8 py-24 max-w-[1440px] mx-auto" id="service">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main Feature Bento (iPhone) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group">
+<div class="z-10">
+<span class="text-primary font-semibold tracking-widest text-xs uppercase mb-2 block">Premium Care</span>
+<h2 class="text-3xl md:text-4xl font-bold text-on-surface mb-4">iPhone Repair</h2>
+<p class="text-on-surface-variant max-w-sm mb-6">From screen replacements to logic board diagnostics, we restore your iPhone to factory standards.</p>
+<!-- Link to iPhone Repair sub-page -->
+<a class="text-primary font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="{{DATA:SCREEN:SCREEN_140}}">
+                        Start my repair <span class="material-symbols-outlined">chevron_right</span>
+</a>
+</div>
+<div class="mt-12 flex justify-end">
+<img class="w-4/5 h-auto object-contain transform group-hover:scale-105 transition-transform duration-700" data-alt="Stunning architectural shot of a sleek modern iPhone reflecting soft light on its glass surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY7IyqbfqNDtnYtJtAi86M6MMmtJREVVtDfvHqU9pAIBz6Wt-WGfz2NMielzmGxzXzsbI6ORI8XC46yVJBrsJ3K2r5FpQ15Opm4FSicyn0Sw0SnC07ttJ2in0pqrDSrydNyrKayB8oS_iJFncbhlgnp-_mPzUBXuevHY84AXDhDszi9-Fpr0FYyuErw8TPMfrAd3ZdIJ9Q0NNKFWI4LOVTq91CuQ6iT5BjaveQFkPnHdAvFzF5G2yaAiFZwOqeR6w8pzxMoKOuUiM">
+</div>
+</div>
+<!-- Secondary Bento (Samsung/Android) -->
+<div class="md:col-span-4 bg-inverse-surface rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group text-white">
+<div class="z-10">
+<h2 class="text-3xl font-bold mb-4">Samsung Repair</h2>
+<p class="text-inverse-on-surface text-sm mb-6">Certified parts for Galaxy S and Note series. Original quality, zero compromise.</p>
+<!-- Link to Android Repair sub-page -->
+<a class="text-white font-medium text-sm flex items-center gap-1" href="services-unified-nav.html">
+                        Explore services <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="mt-8">
+<img class="w-full h-auto object-contain transform group-hover:translate-y-[-10px] transition-transform duration-700" data-alt="Modern Samsung Galaxy device showing vibrant display colors against a dark, moody background with sharp highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtRmoYDHjTac6uP3NOFiPyxkM03VIQmVhawZlATcBPKeUiDC5hgaWpjsOo9CiwKXvOO2E1uxI0aJml-dQHuKgM7plfsjSVMf1tc_JHPpR1ASQ5G1MrSS8dIKgfNUxlvjZTUvdbT611AG2bxv6B-JSpvIHlCGnzx0TCH6WRwMJ41tAU_33KKwduY3Uyc2eb80-dsNLF8ShPsduMrqGab5DKU8zDNlp3MSPbuJ_SUe_bSkKiZCp86SFrD4yqu0c-BXYPq83LhF0y0mk">
+</div>
+</div>
+<!-- Third Bento (Refurbished/Shop) -->
+<div class="md:col-span-4 bg-surface-container-low rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group" id="shop">
+<div>
+<h2 class="text-2xl font-bold text-on-surface mb-2">Refurbished</h2>
+<p class="text-on-surface-variant text-sm">Quality checked, planet friendly.</p>
+</div>
+<div class="py-8">
+<img class="w-full h-48 object-contain" data-alt="Grid of multiple neatly arranged refurbished smartphones showing high-quality condition and clean surfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX5S2IRCkeE5Yr3yOLrKC7MGKTj3lMpDviUVDbutnhxhdrK4_dLAWp62H83zw3SwVQIxSp80D5WXSW5Af9iRIkdCoN8u3xidTDoG3FcxUFC_HsWCUKB2HOPS3t0Qtpl7Ebk2WpXQksnShbXwhCGky4XFFSTSej7MASlvQ2pFoTbUuEvprjbGwjHP2M0RndBTnWP_cmYDvQqGl7h8zog7LqhKvOMBpBkQtacMnPJNW9D5Mk4hVWNRl0h9C9oqJp3pKupKaP-Vt7maY">
+</div>
+<!-- Link to Shop sub-page -->
+<a class="bg-on-surface text-surface rounded-full py-3 px-6 text-sm font-medium w-fit inline-block" href="shop-fully-connected.html">
+                    Shop Devices
+                </a>
+</div>
+<!-- Fourth Bento -->
+<div class="md:col-span-8 bg-surface-container rounded-lg p-10 flex flex-col md:flex-row items-center gap-10">
+<div class="flex-1">
+<h2 class="text-3xl font-bold text-on-surface mb-4">The Repair Standard</h2>
+<div class="space-y-4">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<h4 class="font-semibold">90-Day Warranty</h4>
+<p class="text-sm text-on-surface-variant">Every repair is backed by our comprehensive service guarantee.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">timer</span>
+<div>
+<h4 class="font-semibold">Express Service</h4>
+<p class="text-sm text-on-surface-variant">Most screen repairs completed in under 60 minutes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1">
+<div class="aspect-video rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Professional technician wearing blue gloves carefully assembling a device with precision tools in a clean bright laboratory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKno1LEssCI2xPYqzxYXofCpzvQz9l_HCT_IAF-hdke8Ip5LcVbiDsVMD1PT6Jyz1VA49Who4oMC55m3j5Kd5pMaDAVcP5k_z_Pc1PNOAMDn1huh0j8djlXBshqV4tUDc2xFcy1nnL9O2LzgkETR8y37drKiSdynLn1vEbjWeLt8xql2p8AHZHP1wGlHDn9EAm-z5QX1p0ijei-Y3z9t_LS9XW7wj6E8H1UqgvA42mk8FKNtUGGZPusHQkns07p8rfnceHKKpQUks">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search / Service Locator -->
+<section class="bg-surface-container-low py-24">
+<div class="max-w-4xl mx-auto text-center px-8">
+<h2 class="text-4xl font-bold mb-12">Find a repair center near you.</h2>
+<div class="glass p-2 rounded-full flex items-center shadow-lg max-w-2xl mx-auto">
+<div class="flex-1 flex items-center px-6">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-medium" placeholder="Enter zip code or city" type="text">
+</div>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-medium hover:opacity-90">Search</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Updated to match navigation links -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto font-sans text-sm text-slate-500 dark:text-slate-400">
+<div class="col-span-2 lg:col-span-1">
+<div class="font-semibold text-slate-900 dark:text-white mb-2 text-lg">CellphonesAndRepair</div>
+<p class="mb-4">Premium technical care for your digital life.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-widest mb-2">Navigation</h5>
+<a class="hover:underline transition-all underline-offset-4" href="index.html">Home</a>
+<a class="hover:underline transition-all underline-offset-4" href="shop-fully-connected.html">Shop</a>
+<a class="hover:underline transition-all underline-offset-4" href="services-unified-nav.html">Services</a>
+<a class="hover:underline transition-all underline-offset-4" href="contact-unified-nav.html">Contact</a>
+<a class="hover:underline transition-all underline-offset-4" href="about-us-unified-nav.html">About Us</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-widest mb-2">Support</h5>
+<a class="hover:underline transition-all underline-offset-4" href="#">Warranty</a>
+<a class="hover:underline transition-all underline-offset-4" href="#">Privacy Policy</a>
+<a class="hover:underline transition-all underline-offset-4" href="services-unified-nav.html">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-bold text-slate-900 dark:text-white uppercase text-xs tracking-widest mb-2">Company</h5>
+<a class="hover:underline transition-all underline-offset-4" href="#">Sustainability</a>
+<a class="hover:underline transition-all underline-offset-4" href="#">Careers</a>
+<a class="hover:underline transition-all underline-offset-4" href="#">Locations</a>
+</div>
+<div class="col-span-2 md:col-span-4 lg:col-span-5 pt-8 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<div>© 2024 CellphonesAndRepair. All rights reserved.</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-slate-400 hover:text-blue-500">public</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-blue-500">mail</button>
+</div>
+</div>
+</div>
+</footer>
+<!-- FAB for quick action -->
+<a class="fixed bottom-8 right-8 bg-primary text-on-primary p-4 rounded-full shadow-xl hover:scale-110 active:scale-95 transition-all z-40 flex items-center gap-2 group" href="{{DATA:SCREEN:SCREEN_140}}">
+<span class="material-symbols-outlined">build</span>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 font-medium whitespace-nowrap">Book a Walk-in</span>
+</a>
+<script src="js/main.js"></script></body></html>

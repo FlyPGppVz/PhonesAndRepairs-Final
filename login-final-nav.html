@@ -1,0 +1,119 @@
+<html class="light" lang="en"><head><link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head><body class="bg-background text-on-background font-body min-h-screen flex flex-col">```html
+
+
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+<!-- TopNavBar (Updated to match SCREEN_109) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center max-w-[1440px] mx-auto px-8 h-16">
+<div class="flex items-center gap-12">
+<div class="flex items-center">
+<a class="active:scale-95 transition-transform duration-200" href="#">
+<img alt="CellphonesAndRepair" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uj7gkUuRy-WWkDNFpexszLaAKHHi9t560ZeQe8hbd_MqmWFqBl5CgWxIypVMSwnWMBHsiGBZHTfYDrBZLRawy4eb6521Hivy12w2ds9iStJpXSOqnl5AV9xtzswLSk-SH0qow-xQFnTiJMq1BE7z9S4iVYfLJiJzUqEWHo4okvtuArCg7OdqXnHMbThBL6KudES_lwHOX6GkJkwUL4qFxJtGTySrroF_yoSx8VXzIfejvuFR_JRJYceLIywwD99slWuhOs-lX5cmg">
+</a>
+</div>
+<div class="hidden md:flex items-center gap-8 font-['Inter'] font-medium text-sm tracking-tight">
+<a class="text-[#005cbb] dark:text-[#d7e2ff] font-semibold border-b-2 border-[#005cbb] pb-1 cursor-pointer active:scale-95 transition-all" href="index.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="shop-fully-connected.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="services-unified-nav.html">Service</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="contact-unified-nav.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="about-us-unified-nav.html">About us</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="relative group">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</nav>
+<div class="bg-[#f2f4f6] dark:bg-slate-800 h-[1px] opacity-20"></div>
+</header>
+<!-- Main Content: Login Canvas -->
+<main class="flex-grow flex items-center justify-center px-6 pt-24 pb-12">
+<div class="w-full max-w-md">
+<!-- Glassmorphism Container with Bento Logic -->
+<div class="bg-surface-container-lowest rounded-lg p-10 shadow-[0_20px_40px_rgba(45,51,56,0.06)] border border-outline-variant/10">
+<!-- Branding Header -->
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-container mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="smartphone">smartphone</span>
+</div>
+<h1 class="text-[1.75rem] font-semibold tracking-tight text-on-surface mb-2">CellphonesAndRepair</h1>
+<p class="text-on-surface-variant text-sm font-medium">Precision repair for your digital life.</p>
+</div>
+<!-- Login Form -->
+<form class="space-y-6">
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-2 px-1" for="identity">Email / Username</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline" id="identity" placeholder="name@example.com" type="text">
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2 px-1">
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest" for="password">Password</label>
+<a class="text-xs font-semibold text-primary hover:text-primary-dim transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3.5 text-on-surface focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline" id="password" placeholder="••••••••" type="password">
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full bg-primary text-on-primary font-semibold py-4 rounded-full shadow-lg shadow-primary/20 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 text-center">
+<p class="text-on-surface-variant text-sm">
+                        Don't have an account? 
+                        <a class="text-primary font-semibold hover:underline underline-offset-4 ml-1" href="#">Create Account</a>
+</p>
+</div>
+</div>
+<!-- Technical Detail (Asymmetric Element) -->
+<div class="mt-8 flex items-center justify-center gap-8 opacity-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Secure Auth</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Encrypted</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Updated with Brand Name) -->
+<footer class="w-full py-12 mt-auto bg-slate-50 dark:bg-slate-950 border-t border-slate-200/50 dark:border-slate-800/50">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<div class="text-lg font-bold text-slate-900 dark:text-slate-50">
+                CellphonesAndRepair
+            </div>
+<div class="flex flex-wrap justify-center gap-6 font-sans text-xs text-slate-500 uppercase tracking-widest">
+<a class="hover:text-blue-600 dark:hover:text-blue-400 underline-offset-4 hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="hover:text-blue-600 dark:hover:text-blue-400 underline-offset-4 hover:underline opacity-80 hover:opacity-100 transition-opacity" href="services-unified-nav.html">Terms of Service</a>
+<a class="hover:text-blue-600 dark:hover:text-blue-400 underline-offset-4 hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Returns</a>
+<a class="hover:text-blue-600 dark:hover:text-blue-400 underline-offset-4 hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Support</a>
+</div>
+<div class="font-sans text-xs text-slate-500 uppercase tracking-widest text-center md:text-right">
+                © 2024 CellphonesAndRepair. Precision in every pixel.
+            </div>
+</div>
+</footer>
+```<script src="js/main.js"></script></body></html>

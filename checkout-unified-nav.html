@@ -1,0 +1,193 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
+<div class="flex items-center max-w-7xl mx-auto px-6 h-12">
+<div class="flex items-center flex-1">
+<div class="flex items-center gap-8">
+<img alt="CellphonesAndRepair" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uj7gkUuRy-WWkDNFpexszLaAKHHi9t560ZeQe8hbd_MqmWFqBl5CgWxIypVMSwnWMBHsiGBZHTfYDrBZLRawy4eb6521Hivy12w2ds9iStJpXSOqnl5AV9xtzswLSk-SH0qow-xQFnTiJMq1BE7z9S4iVYfLJiJzUqEWHo4okvtuArCg7OdqXnHMbThBL6KudES_lwHOX6GkJkwUL4qFxJtGTySrroF_yoSx8VXzIfejvuFR_JRJYceLIywwD99slWuhOs-lX5cmg">
+<div class="hidden md:flex gap-6">
+<a class="text-zinc-500 dark:text-zinc-400 font-medium font-sans text-sm tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="index.html">Home</a>
+<a class="text-zinc-900 dark:text-zinc-50 font-semibold font-sans text-sm tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="shop-fully-connected.html">Shop</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium font-sans text-sm tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="services-unified-nav.html">Service</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium font-sans text-sm tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="contact-unified-nav.html">Contact</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium font-sans text-sm tracking-tight hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200" href="about-us-unified-nav.html">About Us</a>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 text-zinc-500 dark:text-zinc-400">
+<button class="hover:text-blue-600 transition-all active:opacity-70"><span class="material-symbols-outlined" data-icon="search">search</span></button>
+<button class="hover:text-blue-600 transition-all active:opacity-70"><span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span></button>
+<button class="hover:text-blue-600 transition-all active:opacity-70"><span class="material-symbols-outlined" data-icon="person">person</span></button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+<header class="mb-12">
+<h1 class="text-[3.5rem] font-bold tracking-tight text-on-background leading-tight">Checkout</h1>
+<p class="text-body-lg text-on-surface-variant mt-2">Finalize your order for high-performance mobile hardware.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Shipping & Payment -->
+<div class="lg:col-span-7 space-y-12">
+<!-- Shipping Section -->
+<section>
+<h2 class="text-headline-md font-semibold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+                        Shipping Information
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">Full Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="John Appleseed" type="text">
+</div>
+<div class="md:col-span-2">
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">Street Address</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="One Apple Park Way" type="text">
+</div>
+<div>
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">City</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Cupertino" type="text">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">State</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="CA" type="text">
+</div>
+<div>
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">Zip</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="95014" type="text">
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Section -->
+<section>
+<h2 class="text-headline-md font-semibold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+                        Payment Method
+                    </h2>
+<div class="space-y-4">
+<div class="flex gap-4 mb-6">
+<button class="flex-1 bg-primary-container text-on-primary-container p-4 rounded-lg flex flex-col items-center gap-2 transition-all">
+<span class="material-symbols-outlined" data-icon="contactless">contactless</span>
+<span class="text-label-md">Apple Pay</span>
+</button>
+<button class="flex-1 bg-surface-container-high text-on-surface p-4 rounded-lg flex flex-col items-center gap-2 border border-outline-variant/15 hover:bg-surface-container-lowest transition-all">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+<span class="text-label-md">Credit Card</span>
+</button>
+<button class="flex-1 bg-surface-container-high text-on-surface p-4 rounded-lg flex flex-col items-center gap-2 border border-outline-variant/15 hover:bg-surface-container-lowest transition-all">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+<span class="text-label-md">Bank Transfer</span>
+</button>
+</div>
+<div class="space-y-4 pt-4">
+<div>
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">Card Number</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="0000 0000 0000 0000" type="text">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="lock">lock</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">Expiry Date</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="MM/YY" type="text">
+</div>
+<div>
+<label class="block text-label-md font-medium text-on-surface-variant mb-1.5 px-1">CVV</label>
+<input class="w-full bg-surface-container-high border-none rounded-sm px-4 py-3 text-body-lg focus:ring-1 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="123" type="text">
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (Glassmorphism Bento Tile) -->
+<aside class="lg:col-span-5 sticky top-24">
+<div class="glass-panel p-10 rounded-lg border border-white/40 shadow-xl shadow-on-surface/5">
+<h3 class="text-headline-md font-semibold mb-8">Order Summary</h3>
+<div class="space-y-6 mb-8">
+<!-- Item 1 -->
+<div class="flex items-center gap-4">
+<div class="w-20 h-20 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Smartphone" class="w-full h-full object-cover" data-alt="Modern sleek smartphone with a glossy screen reflecting soft studio lights on a minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDTB8O3zeLB2pz85yEk6Mj6RP10lqCXYDv3brdN_9Do7TfAbR0Mfa1Srkg-RiMR4JL_5cgSQx85v5uB2Xwxnzzb4EQI2FAccTwjHfMjJafLqAWSASooat9iuRNAUHUse5PyyhP8GDWCMY-4lk9X7RrU9iS0bJNYCP0L-Yh2uNZh-SpSWoLEIY2ct2IiijYFJVN8EA_v-HsW2PrF50XYX87WqjWATIOnzoJkgzgw_VKlQNKysRUUXPQJoOzt7kVp9yUvI3Fc3OY4cU">
+</div>
+<div class="flex-grow">
+<h4 class="font-semibold text-body-lg">iPhone 15 Pro</h4>
+<p class="text-label-md text-on-surface-variant">Titanium Blue, 256GB</p>
+</div>
+<div class="text-right">
+<p class="font-semibold">$999.00</p>
+<p class="text-xs text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4">
+<div class="w-20 h-20 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Smartwatch" class="w-full h-full object-cover" data-alt="Premium silver smartwatch with a black sports band displayed in sharp focus with soft ambient shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKlcD5j-Ec7qEIkbB-h_hBa5jqLmtC2mdEhrbfypFs2TWCF08yz0MSc3yvw4jglMuLRWUE4md9bpN8ZZWC6-XLAPKubQK_whHVpyK951nxJjydYN1otjhCTnTPEjT7uGJ8cCvMjix1c_22KZ9tDUpXGNUKsmssfr_eNx4hYG3IrCJRXuxFOuQ0t_O_Z63xtpnlQVIJPZ8xj_ljpFFbDUKk5zp4Kpci_EXd7GkSWSbBUvAWPzqYjYDhaGaF0heu2D2OvkO6Qu9oenM">
+</div>
+<div class="flex-grow">
+<h4 class="font-semibold text-body-lg">Apple Watch S9</h4>
+<p class="text-label-md text-on-surface-variant">Silver Aluminum, 45mm</p>
+</div>
+<div class="text-right">
+<p class="font-semibold">$399.00</p>
+<p class="text-xs text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+</div>
+<!-- Financials -->
+<div class="space-y-3 pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between text-body-lg">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>$1,398.00</span>
+</div>
+<div class="flex justify-between text-body-lg">
+<span class="text-on-surface-variant">Shipping</span>
+<span class="text-primary font-medium">Free</span>
+</div>
+<div class="flex justify-between text-body-lg">
+<span class="text-on-surface-variant">Estimated Tax</span>
+<span>$115.34</span>
+</div>
+<div class="flex justify-between text-[1.25rem] font-bold pt-4">
+<span>Total</span>
+<span>$1,513.34</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full mt-8 bg-primary text-on-primary py-4 rounded-full font-semibold text-body-lg hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20 bg-gradient-to-b from-primary to-primary-dim">
+                        Place Order
+                    </button>
+<p class="text-center text-label-md text-on-surface-variant mt-4 px-4">
+                        Securely processed with end-to-end encryption.
+                    </p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-50 dark:bg-zinc-900 w-full py-12">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:flex md:justify-between border-t border-zinc-200/50 dark:border-zinc-800/50 pt-8">
+<div class="mb-6 md:mb-0">
+<p class="font-sans text-xs text-zinc-500 dark:text-zinc-400">© 2024 CellphonesAndRepair. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4">
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="services-unified-nav.html">Terms of Service</a>
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="#">Cookie Settings</a>
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="#">Warranty Info</a>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Shop - Updated Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="flex items-center" href="#">
+<img alt="CellphonesAndRepair Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uj7gkUuRy-WWkDNFpexszLaAKHHi9t560ZeQe8hbd_MqmWFqBl5CgWxIypVMSwnWMBHsiGBZHTfYDrBZLRawy4eb6521Hivy12w2ds9iStJpXSOqnl5AV9xtzswLSk-SH0qow-xQFnTiJMq1BE7z9S4iVYfLJiJzUqEWHo4okvtuArCg7OdqXnHMbThBL6KudES_lwHOX6GkJkwUL4qFxJtGTySrroF_yoSx8VXzIfejvuFR_JRJYceLIywwD99slWuhOs-lX5cmg">
+</a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="index.html">Home</a>
+<a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="shop-fully-connected.html">Shop</a>
+<a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="services-unified-nav.html">Service</a>
+<a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="contact-unified-nav.html">Contact</a>
+<a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="about-us-unified-nav.html">About Us</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity scale-95 duration-200 active:scale-90">search</button>
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity scale-95 duration-200 active:scale-90">shopping_cart</button>
+<div class="relative group">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity scale-95 duration-200 active:scale-90">person</button>
+<div class="absolute right-0 top-full mt-2 w-48 bg-surface-container-lowest rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden ring-1 ring-black/5">
+<a class="block px-4 py-3 text-sm hover:bg-surface-container-low transition-colors" href="#">Account Settings</a>
+<a class="block px-4 py-3 text-sm hover:bg-surface-container-low transition-colors text-error" href="#">Logout</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-20 px-6 max-w-[1440px] mx-auto">
+<!-- Hero Section: Editorial Asymmetry -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
+<div class="lg:col-span-7">
+<div class="rounded-lg overflow-hidden bg-surface-container aspect-square md:aspect-video lg:aspect-[4/5] flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Premium high-definition tempered glass screen protector reflecting a clean minimalist studio environment with soft natural light highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-vwKy9T3SSeYRpO-AkM-MCTZAKAnk8nIWk34ABhlM6UVibYEZbIHmNCqqEmS5DHn-oiU4s_FT4FWrecxo2M866R2244q7KPujMt8WTZHeEJp0YKni0XnKEYL9T1SglfiHLMVy_9r2ffYIhtv1-Ka4dlAPH1NK2yLO_zkOadKOtesKePDpzaA1d0gsZ7RAUBPqyrKyOy3dxwB4yO0ioNTKFaH8HTWF-mLH6NkAeehEyKFTRIRm0UkAAgHBMwDvH2kOQWghnjdlDn4">
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col gap-8 sticky top-28">
+<div class="space-y-4">
+<span class="text-primary font-semibold tracking-widest text-[11px] uppercase">Premium Accessories</span>
+<h1 class="text-[3.5rem] font-bold leading-[1.1] tracking-tight text-on-surface">Screen Protectors</h1>
+<p class="text-body-lg text-on-surface-variant leading-relaxed max-w-md">
+                        Engineered with 9H tempered glass, our protectors offer crystalline clarity and industrial-grade impact resistance for your most essential device.
+                    </p>
+</div>
+<div class="flex items-center justify-between py-6 border-y border-outline-variant/10">
+<div class="flex flex-col">
+<span class="text-label-md text-on-surface-variant">Single Unit</span>
+<span class="text-2xl font-bold">$15.00</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-primary-container text-on-primary-container rounded-full text-[10px] font-bold uppercase tracking-wider">In Stock</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary text-on-primary py-4 rounded-full font-semibold text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+                        Add to Cart
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full bg-surface-container-low text-on-surface py-4 rounded-full font-semibold text-label-md border border-outline-variant/15 hover:bg-surface-container transition-all">
+                        Find a Repair Center
+                    </button>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="p-4 bg-surface-container-low rounded-lg flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-label-md font-semibold">Lifetime Warranty</span>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary">eco</span>
+<span class="text-label-md font-semibold">Eco-Packaging</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tech Specifications Bento Grid -->
+<section class="mb-24">
+<h2 class="text-headline-md font-bold mb-10">Technical Mastery</h2>
+<div class="bento-grid">
+<!-- Large Feature -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest rounded-lg p-10 min-h-[400px] flex flex-col justify-between group">
+<div>
+<h3 class="text-2xl font-bold mb-4">99.9% Optical Clarity</h3>
+<p class="text-on-surface-variant max-w-sm">Experience your display as it was intended. Our ultra-thin glass maintains original color accuracy and touch sensitivity.</p>
+</div>
+<div class="relative h-48 overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up detail of a high end smartphone screen showing vibrant colors and sharp text through a crystal clear protector" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-V5oXdChKUaFWONW_9XPMRLV85X4aZYE1l_qKoASN9Mz6WPlxG04NofZDRIB_OUBpVvlr3OBAxu3sv3kPhRBrylI1Agkz3ZypoYT78Xtc0SHy7dE6Vlq7fmuKnMudYgwAg3ZEZqO5tuAW-G3fH6s0VYtguTel_wTW5lr85UY3TlxWuMCmiHOQzbQ-msXspbZ5aETMKTWHFZ80qtRc18b1SnTqXjfW-kO7LbvxdjfXRqytmEWQSPXK5ggUvo1hTXh9OGbTPznoifk">
+</div>
+</div>
+<!-- Small Feature 1 -->
+<div class="col-span-12 md:col-span-4 bg-inverse-surface text-white rounded-lg p-10 flex flex-col justify-center gap-6">
+<span class="material-symbols-outlined text-primary-fixed text-4xl">shutter_speed</span>
+<div>
+<h3 class="text-xl font-bold mb-2">Impact Shield</h3>
+<p class="text-slate-400 text-sm">Reinforced edges and multi-layered composition absorb shock from drops up to 6 feet.</p>
+</div>
+</div>
+<!-- Small Feature 2 -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest rounded-lg p-10 flex flex-col gap-4 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-3xl">fingerprint</span>
+<h3 class="text-xl font-bold">Oleophobic Layer</h3>
+<p class="text-on-surface-variant text-sm">A specialized coating that repels natural skin oils and prevents smudges.</p>
+</div>
+<!-- Medium Feature -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-low rounded-lg p-10 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1">
+<h3 class="text-xl font-bold mb-3">Bulk Purchase Solutions</h3>
+<p class="text-on-surface-variant text-sm mb-6">Equip your entire fleet or store inventory. We offer tiered pricing for corporate and retail partners.</p>
+<ul class="space-y-2 text-[12px] font-semibold text-on-surface">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">check_circle</span> 10-24 units: 15% Off</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">check_circle</span> 25-99 units: 25% Off</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">check_circle</span> 100+ units: Contact Sales</li>
+</ul>
+</div>
+<div class="w-full md:w-1/3 aspect-square bg-white rounded-lg p-6 shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[80px] text-primary-container">inventory_2</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Installation Guide: Step-by-Step Editorial -->
+<section class="bg-surface-container-low rounded-xl p-12 lg:p-20">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold mb-4">Precision Installation</h2>
+<p class="text-on-surface-variant">Three simple steps to a bubble-free finish.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-full bg-white mb-6 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="text-2xl font-bold">01</span>
+</div>
+<h4 class="font-bold mb-2">Sanitize</h4>
+<p class="text-sm text-on-surface-variant">Use the included microfiber cloth and alcohol swab to remove every trace of dust.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-full bg-white mb-6 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="text-2xl font-bold">02</span>
+</div>
+<h4 class="font-bold mb-2">Align</h4>
+<p class="text-sm text-on-surface-variant">Peel the adhesive backing and align with the speaker and sensors using the guide frame.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-full bg-white mb-6 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="text-2xl font-bold">03</span>
+</div>
+<h4 class="font-bold mb-2">Seal</h4>
+<p class="text-sm text-on-surface-variant">Press firmly in the center. The silicon adhesive will automatically sweep bubbles to the edge.</p>
+</div>
+</div>
+<div class="mt-16 text-center">
+<button class="inline-flex items-center gap-3 text-primary font-bold text-sm hover:underline underline-offset-8 transition-all">
+                    WATCH VIDEO TUTORIAL
+                    <span class="material-symbols-outlined">play_circle</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full border-t border-slate-200 dark:border-slate-800">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
+<div class="col-span-2 lg:col-span-1">
+<span class="font-semibold text-slate-900 dark:text-white block mb-4">CellphonesAndRepair</span>
+<p class="font-sans text-sm text-slate-500 dark:text-slate-400 leading-relaxed">The ultimate destination for premium device protection and expert repair services.</p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-bold text-xs uppercase tracking-widest text-on-surface">Products</span>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">iPhone Repair</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Android Repair</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Accessories</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-bold text-xs uppercase tracking-widest text-on-surface">Support</span>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="services-unified-nav.html">Terms of Service</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Warranty</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-bold text-xs uppercase tracking-widest text-on-surface">Company</span>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Sustainability</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-all underline-offset-4 hover:underline" href="#">Careers</a>
+</div>
+</div>
+<div class="px-8 py-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 border-t border-slate-100 dark:border-slate-900">
+<span class="font-sans text-sm text-slate-500 dark:text-slate-400">© 2024 CellphonesAndRepair. All rights reserved.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">language</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">share</span>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>

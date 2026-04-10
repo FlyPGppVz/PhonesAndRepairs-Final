@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center max-w-[1440px] mx-auto px-8 h-16">
+<div class="flex items-center gap-12">
+<a class="flex items-center" href="#">
+<img alt="CellphonesAndRepair Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uj7gkUuRy-WWkDNFpexszLaAKHHi9t560ZeQe8hbd_MqmWFqBl5CgWxIypVMSwnWMBHsiGBZHTfYDrBZLRawy4eb6521Hivy12w2ds9iStJpXSOqnl5AV9xtzswLSk-SH0qow-xQFnTiJMq1BE7z9S4iVYfLJiJzUqEWHo4okvtuArCg7OdqXnHMbThBL6KudES_lwHOX6GkJkwUL4qFxJtGTySrroF_yoSx8VXzIfejvuFR_JRJYceLIywwD99slWuhOs-lX5cmg">
+</a>
+<div class="hidden md:flex items-center gap-8 font-['Inter'] font-medium text-sm tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="index.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="shop-fully-connected.html">Shop</a>
+<a class="text-[#005cbb] dark:text-[#d7e2ff] font-semibold border-b-2 border-[#005cbb] pb-1 cursor-pointer active:scale-95 transition-all" href="services-unified-nav.html">Service</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="contact-unified-nav.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer active:scale-95 transition-all" href="about-us-unified-nav.html">About us</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<div class="relative group">
+<button class="p-2 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-all duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<div class="absolute right-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[60]">
+<div class="bg-[#2a7a8a]/90 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden py-4">
+<div class="px-6 py-2">
+<a class="block text-white text-xs font-semibold tracking-widest uppercase hover:text-white/80 transition-colors" href="#">Sign In</a>
+</div>
+<div class="px-6 py-2 mb-2">
+<a class="block text-white text-xs font-semibold tracking-widest uppercase hover:text-white/80 transition-colors" href="#">Create Account</a>
+</div>
+<div class="border-t border-white/10 mx-6 my-2"></div>
+<div class="px-6 py-2">
+<a class="block text-white text-xs font-semibold tracking-widest uppercase hover:text-white/80 transition-colors" href="#">Bookings</a>
+</div>
+<div class="px-6 py-2">
+<a class="block text-white text-xs font-semibold tracking-widest uppercase hover:text-white/80 transition-colors" href="#">My Account</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="bg-[#f2f4f6] dark:bg-slate-800 height-[1px] opacity-20"></div>
+</header>
+<main class="pt-24 pb-20">
+<!-- Hero Section -->
+<section class="max-w-[1440px] mx-auto px-8 mb-16">
+<div class="text-center md:text-left md:max-w-3xl">
+<h1 class="text-[3.5rem] font-bold tracking-tight text-on-surface mb-6 leading-[1.1]">Precision Repair for the <span class="text-primary">Devices You Love.</span></h1>
+<p class="text-[1.125rem] text-on-surface-variant leading-relaxed mb-8">Specialized technical solutions for mobile hardware, tablets, and gaming consoles. We restore your technology to original factory standards using premium components and certified expertise.</p>
+</div>
+</section>
+<!-- Main Services Bento Grid -->
+<section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Iphone Repairs (Large Featured) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-lg p-10 flex flex-col md:flex-row gap-8 items-center overflow-hidden border border-outline-variant/10 shadow-sm">
+<div class="flex-1 space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="smartphone">smartphone</span>
+<h2 class="text-[1.75rem] font-semibold text-on-surface">Iphone Repairs</h2>
+</div>
+<p class="text-on-surface-variant">Complete restoration for all iPhone generations. From the latest Pro models to classic favorites.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Super Retina XDR Screen Replacement
+                    </li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Battery Health Restoration
+                    </li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Complex Liquid Damage Recovery
+                    </li>
+</ul>
+<button class="mt-4 px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
+</div>
+<div class="flex-1 relative">
+<img class="w-full h-auto rounded-xl object-cover" data-alt="Clean overhead shot of a disassembled high-end smartphone with precision tools on a light gray technical workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHEC9ztnqm0E3gsn2LpC5ov8waCFZjtbIwunl7271KPgximKvsMbQCtJ2mlCR5BWtBH02n5dppjAfa5iff8H_U6Xw4FUgubduzEQZenhS3ZOTGIm645WuIbbx08su72hOuxdWXsT-vhlvcY7ri_OE1Osoyayoi-f1IjTeL_lrsZ5xdj2fJwaGRDvm9B4qfcWIro8WyBCSOt7EMjxEUW85mqsdch5f5ju_HRRutIJQvkJjFJJG06NROYyycl01Sk1nMedGg0BFz0EY">
+</div>
+</div>
+<!-- Android Repairs -->
+<div class="md:col-span-4 bg-surface-container rounded-lg p-10 flex flex-col justify-between border border-outline-variant/10">
+<div>
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="ad_units">ad_units</span>
+<h2 class="text-[1.75rem] font-semibold text-on-surface mb-4">Android Repairs</h2>
+<p class="text-on-surface-variant mb-6">Expert servicing for Samsung Galaxy, Pixel, and OnePlus devices.</p>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-lowest rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="monitor">monitor</span>
+<span class="text-sm font-medium">OLED/AMOLED Repair</span>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="usb">usb</span>
+<span class="text-sm font-medium">Charging Port Fix</span>
+</div>
+</div>
+</div>
+<button class="mt-8 px-6 py-3 bg-surface-container-lowest text-primary border border-primary/20 rounded-full font-semibold text-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95">Get Quote</button>
+</div>
+<!-- Ipad and Tablets Repairs -->
+<div class="md:col-span-6 bg-inverse-surface text-white rounded-lg p-10 overflow-hidden relative">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl mb-6" data-icon="tablet_mac">tablet_mac</span>
+<h2 class="text-[1.75rem] font-semibold mb-4">Ipad and Tablets Repairs</h2>
+<p class="text-white/70 mb-8 max-w-sm">Professional-grade tablet restoration. We handle screen digitizers, logical boards, and more.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="text-sm flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed-dim" data-icon="bolt">bolt</span> Logic Board Repair</div>
+<div class="text-sm flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed-dim" data-icon="touch_app">touch_app</span> Glass/Digitizer</div>
+<div class="text-sm flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed-dim" data-icon="storage">storage</span> Memory Upgrades</div>
+<div class="text-sm flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed-dim" data-icon="photo_camera">photo_camera</span> Camera Repair</div>
+</div>
+</div>
+<button class="mt-10 self-start px-8 py-3 bg-white text-inverse-surface rounded-full font-semibold text-sm hover:bg-primary-fixed-dim transition-all active:scale-95">Get Quote</button>
+</div>
+<!-- Decorative background image with low opacity -->
+<div class="absolute right-[-10%] bottom-[-10%] w-2/3 h-2/3 opacity-20 pointer-events-none">
+<img alt="iPad Repair" class="object-contain" data-alt="Sleek modern tablet lying flat on a minimalist dark surface with soft ambient blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNgEcm2pmR49glEOEmuUHigsAMiiLdXnEFgInEfPmDMdhFz_rPO7G8K-oAWfXYaditaP8uYKQ8RznQp5g72Jy24G7KH5UMaaEs5hqMKpapPrCyLOPPGGR_LucfkgKs1uNZthoD-HiWqUHSj_ZUnIinowveZcd5GY2_52cuFlGggAIMXeOJsnMTDrGivQJ7wYHHRy5eLXq2Z8OaYQ2TLZmo0EiHq5fi3ekIyqXgo38d4-hzM4ptrKvbk6b5uRyJLpsf6mQswYSgi9Q">
+</div>
+</div>
+<!-- Consoles Repairs -->
+<div class="md:col-span-6 bg-surface-container-low rounded-lg p-10 border border-outline-variant/10 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1">
+<span class="material-symbols-outlined text-primary text-3xl mb-6" data-icon="videogame_asset">videogame_asset</span>
+<h2 class="text-[1.75rem] font-semibold text-on-surface mb-4">Consoles Repairs</h2>
+<p class="text-on-surface-variant mb-6">PlayStation, Xbox, and Nintendo specialized tech service.</p>
+<ul class="space-y-4 mb-6">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant mt-1" data-icon="ac_unit">ac_unit</span>
+<div>
+<p class="text-sm font-bold">Overheating &amp; Fans</p>
+<p class="text-xs text-on-surface-variant">Thermal paste replacement and deep cleaning</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-on-surface-variant mt-1" data-icon="settings_input_hdmi">settings_input_hdmi</span>
+<div>
+<p class="text-sm font-bold">HDMI Port Replacement</p>
+<p class="text-xs text-on-surface-variant">Precision microsoldering for all ports</p>
+</div>
+</li>
+</ul>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95">Get Quote</button>
+</div>
+<div class="flex-1 w-full h-full min-h-[250px] rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close up of a professional technician hands working on a gaming console circuit board with a soldering iron and magnifying lamp" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhhh6qjD4Drndo_Ub3iamf9sT3m9FjpXYOcT78gqb9I2m1vfiit8zxHNlunsEk8Qhh4UCDu6xHJDuxLLf2CYutVSCXOMXR6jHqXqFJkv4Np5WHWdASA2Spaai1-E_Qqy_5S9bBTD9sNSPJqczTLQAMgnU_t74iLuixKsHcftueTMs_VG9C6O8s1aUmtKnzyCCTdak5IBtg6KqOZjJULQmKJgKsfdwml8bw_zdqtb8b1AxfDOLty-dD6oJQxrtChq3ak_zLYDecsUE">
+</div>
+</div>
+</section>
+<!-- Trust Indicators Section -->
+<section class="max-w-[1440px] mx-auto px-8 mt-24 py-16 bg-surface-container-low rounded-xl">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div>
+<p class="text-[2.5rem] font-bold text-primary mb-1">15k+</p>
+<p class="text-sm text-on-surface-variant font-medium">Repairs Completed</p>
+</div>
+<div>
+<p class="text-[2.5rem] font-bold text-primary mb-1">90d</p>
+<p class="text-sm text-on-surface-variant font-medium">Service Warranty</p>
+</div>
+<div>
+<p class="text-[2.5rem] font-bold text-primary mb-1">4.9</p>
+<p class="text-sm text-on-surface-variant font-medium">Customer Rating</p>
+</div>
+<div>
+<p class="text-[2.5rem] font-bold text-primary mb-1">1hr</p>
+<p class="text-sm text-on-surface-variant font-medium">Avg. Screen Repair</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-12 border-t border-[#ebeef2] dark:border-slate-800 bg-[#f9f9fb] dark:bg-slate-950">
+<div class="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-bold text-slate-900 dark:text-white text-xl">CellphonesAndRepair</span>
+<p class="font-['Inter'] text-[12px] text-slate-500 max-w-xs text-center md:text-left">Your trusted destination for high-quality device repair services. Restoring technology with precision and care since 2014.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-['Inter'] text-[12px] text-slate-500 hover:text-slate-900 dark:hover:text-white hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[12px] text-slate-500 hover:text-slate-900 dark:hover:text-white hover:underline transition-all" href="services-unified-nav.html">Terms of Service</a>
+<a class="font-['Inter'] text-[12px] text-slate-500 hover:text-slate-900 dark:hover:text-white hover:underline transition-all" href="#">Warranty Info</a>
+<a class="font-['Inter'] text-[12px] text-slate-500 hover:text-slate-900 dark:hover:text-white hover:underline transition-all" href="#">Locations</a>
+</div>
+<div class="text-[#005cbb] dark:text-[#d7e2ff]">
+<p class="font-['Inter'] text-[12px] text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>

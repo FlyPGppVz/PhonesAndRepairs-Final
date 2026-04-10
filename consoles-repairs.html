@@ -1,0 +1,148 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto"><div class="flex items-center gap-8">
+<a class="block" href="#">
+<img alt="CellphonesAndRepair Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ugoPYVqY6imupbG-s4AkZ2GwxaHNLoflGuNsXHymH3BB8mMZJQU_OraF8FMYuMg1N41NW2KltmC6WcnnMN903EK4LP3u0Stoz3YxCei7gHyCWUlcxR_52YdWa9yTD5p5Uk_Xc_QnwC6Mohce4D4nQ3_k996Bn3vttsyqc_6G_w1W-b5lDDKVN5Rg9C0au11pxVNAP0ROTLFeNgGNwzJ_sPbJA0pUG5cN64JSKKdeG_C4cVhxOHidPO2fSDTWK5zcGqJ48-FR5gnsQ">
+</a>
+<div class="hidden md:flex gap-6 items-center font-sans">
+<a class="text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="index.html">Home</a>
+<a class="text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="shop-fully-connected.html">Shop</a>
+<a class="text-sm tracking-tight text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 dark:border-blue-400 pb-1 font-semibold" href="services-unified-nav.html">Service</a>
+<a class="text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="contact-unified-nav.html">Contact</a>
+<a class="text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="about-us-unified-nav.html">About Us</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity" data-icon="search">search</button>
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity" data-icon="shopping_cart">shopping_cart</button>
+<div class="relative group">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:opacity-70 transition-opacity" data-icon="person">person</button>
+<div class="absolute right-0 top-full mt-2 w-48 bg-surface-container-lowest rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden ring-1 ring-black/5">
+<a class="block px-4 py-3 text-sm hover:bg-surface-container-low transition-colors text-on-surface" href="#">Account Settings</a>
+<a class="block px-4 py-3 text-sm hover:bg-surface-container-low transition-colors text-error" href="#">Logout</a>
+</div>
+</div>
+</div></div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section with Intentional Asymmetry -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden px-8 py-20">
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-6 z-10">
+<span class="text-primary font-semibold tracking-widest text-sm uppercase mb-4 block">Precision Engineering</span>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tighter text-on-background leading-[1.1] mb-8">
+                        Resurrect Your <span class="text-primary">Play.</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-lg mb-10 leading-relaxed">
+                        Expert diagnostics and component-level repairs for PlayStation, Xbox, and Nintendo systems. We restore performance to factory standards.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                            Book Service
+                        </button>
+<button class="glass-green text-green-700 px-8 py-4 rounded-full font-medium flex items-center gap-2 hover:bg-green-500/30 transition-all active:scale-95">
+<span class="material-symbols-outlined">chat</span>
+                            Schedule via WhatsApp
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative h-[500px] lg:h-[700px]">
+<div class="absolute inset-0 bg-surface-container rounded-lg transform rotate-2"></div>
+<img class="absolute inset-0 w-full h-full object-cover rounded-lg shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-700" data-alt="Close-up of a technician repairing a modern gaming console circuit board with precision tools under professional lab lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBI2q7v1J_fNyxcGjs74fW4qRoXLfUOVSKwazHfVd_-u7xXNOJhZUJg72mZWQfgdqYOYFw8b_nUPVRLPa-LECepHnCVsJE8HQN2xknjUWKk8m1wWIEI35Hnh7OzBrjDVVzP4jB1woFUMQXVGMn3EQcwVhsR7Nt4khMYPzNpumnMqxNzjEzmte3nFwuTuZpWWUFQDIgsV3cJXMZEnvVvvxFxu_Ungwb0Fz-BRqryiyvu-ZHHVBVYMdAhBbSLFUoftFyUzy7oGW_T7p0">
+</div>
+</div>
+</section>
+<!-- Bento Grid Specs & Services -->
+<section class="bg-surface-container-low py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tile 1: HDMI Repair -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-lg shadow-sm flex flex-col justify-between group">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-6">settings_input_hdmi</span>
+<h3 class="text-2xl font-semibold mb-4">HDMI Port Replacement</h3>
+<p class="text-on-surface-variant max-w-md">No signal? We perform microscopic soldering to replace damaged ports with original OEM specifications.</p>
+</div>
+<div class="mt-12 flex items-center text-primary font-medium group-hover:gap-2 transition-all">
+                            Learn more <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+<!-- Tile 2: Thermal Management -->
+<div class="bg-inverse-surface text-white p-10 rounded-lg shadow-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary-dim text-4xl mb-6">thermostat</span>
+<h3 class="text-2xl font-semibold mb-4">Pro-Grade Repasting</h3>
+<p class="text-slate-400">Combat overheating with high-conductivity thermal paste and deep system cleaning.</p>
+<div class="mt-8 text-xs font-mono text-slate-500 uppercase tracking-widest">Performance Plus</div>
+</div>
+<!-- Tile 3: Drift Repair -->
+<div class="bg-surface-container-lowest p-10 rounded-lg shadow-sm flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">joystick</span>
+<h3 class="text-2xl font-semibold mb-4">Joy-Con Drift</h3>
+<p class="text-on-surface-variant">Permanent fixes for analog stick drift. Same-day service available for most handhelds.</p>
+</div>
+<!-- Tile 4: Disc Drive -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-lg shadow-sm flex items-center gap-10">
+<div class="flex-1">
+<h3 class="text-2xl font-semibold mb-4">Disc Drive Recovery</h3>
+<p class="text-on-surface-variant">Mechanical repairs for jammed drives and laser lens replacements.</p>
+</div>
+<div class="w-40 h-40 bg-surface rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-5xl text-outline">album</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Appointment Form Section -->
+<section class="py-24 px-8 bg-surface">
+<div class="max-w-3xl mx-auto text-center mb-16">
+<h2 class="text-4xl font-bold tracking-tight mb-4">Secure Your Slot</h2>
+<p class="text-on-surface-variant">Fill in the details below and our lead technician will contact you within 2 hours.</p>
+</div>
+<div class="max-w-2xl mx-auto bg-surface-container-lowest p-12 rounded-lg shadow-sm">
+<form class="space-y-12">
+<div class="relative group">
+<input class="peer w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b-2 border-surface-variant focus:border-primary focus:ring-0 transition-all py-4 px-0 text-lg outline-none" id="name" placeholder=" " required="" type="text">
+<label class="absolute left-0 top-4 text-outline-variant pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs" for="name">Full Name</label>
+</div>
+<div class="relative group">
+<input class="peer w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b-2 border-surface-variant focus:border-primary focus:ring-0 transition-all py-4 px-0 text-lg outline-none" id="model" placeholder=" " required="" type="text">
+<label class="absolute left-0 top-4 text-outline-variant pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs" for="model">Device Model (e.g. PS5, Xbox Series X)</label>
+</div>
+<div class="relative group">
+<input class="peer w-full bg-transparent border-t-0 border-l-0 border-r-0 border-b-2 border-surface-variant focus:border-primary focus:ring-0 transition-all py-4 px-0 text-lg outline-none" id="email" placeholder=" " required="" type="email">
+<label class="absolute left-0 top-4 text-outline-variant pointer-events-none transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-xs" for="email">Email Address</label>
+</div>
+<div class="pt-8">
+<button class="w-full bg-primary text-on-primary py-5 rounded-full font-semibold text-lg shadow-xl hover:bg-primary-dim transition-all active:scale-[0.98]" type="submit">
+                            Confirm Appointment
+                        </button>
+</div>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col items-center py-12 space-y-4">
+<div class="text-lg font-bold text-slate-900 dark:text-white">CellphonesAndRepair</div>
+<div class="flex space-x-6">
+<a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors" href="services-unified-nav.html">Terms of Service</a>
+<a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors" href="#">FAQ</a>
+</div>
+<p class="text-xs font-normal text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</p>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>

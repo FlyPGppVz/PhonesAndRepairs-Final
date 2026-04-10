@@ -1,0 +1,98 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Booking Confirmed - CellphonesAndRepair</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col">
+<!-- TopNavBar is suppressed as this is a transactional success page -->
+<main class="flex-grow flex items-center justify-center px-6 py-20">
+<!-- Background decorative elements for glassmorphism pop -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-primary/5 blur-[100px] rounded-full"></div>
+<div class="relative w-full max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+<!-- Left Side: Visual/Success Hero -->
+<div class="md:col-span-5 relative group overflow-hidden rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent z-10"></div>
+<img class="w-full h-full object-cover rounded-lg" data-alt="high-end minimalist close up of a sleek modern smartphone with a pristine glass screen reflecting soft blue studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSXgD2ln-dClRSpFADQyyQwI05JBaVIe3YvUqP-YXpJqmlpeLaIZgz-byuMiegGBSWRm7k4aQmUSATg3BOcurU3wl_ft8dOHHMgVpk0xrqBlUB33Oznf7L0qDgH_w0UwJNcEOT3gIqILURhI3f23o1e1S9zfuxQuZ0wDgBsv5Q4i-laVHBncdg4hNwA5Tooej_LuNvtV7Udo6zyy-6fBuG39lbybqK3JDWyHYkw4carSNABcg4TV8X-tcvW4jWUQNCtL_6g-SayEs">
+<div class="absolute bottom-10 left-10 z-20">
+<div class="glass-panel p-6 rounded-lg border border-white/20 shadow-2xl">
+<span class="material-symbols-outlined text-primary text-5xl mb-4" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface">Confirmed.</h2>
+<p class="text-on-surface-variant mt-2 max-w-[200px]">Your device is in expert hands.</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Details Bento Grid -->
+<div class="md:col-span-7 flex flex-col gap-6">
+<!-- Main Confirmation Tile -->
+<div class="bg-surface-container-lowest p-10 rounded-lg shadow-sm border-white/40 border">
+<div class="flex justify-between items-start mb-10">
+<div>
+<p class="text-xs font-semibold tracking-widest uppercase text-primary mb-2">Order Success</p>
+<h1 class="text-4xl font-bold tracking-tight text-on-surface mb-4">Thank you for your trust.</h1>
+<p class="text-on-surface-variant leading-relaxed">Your repair request has been successfully logged. We've sent a detailed confirmation to your email address.</p>
+</div>
+</div>
+<!-- Details Row -->
+<div class="grid grid-cols-2 gap-8 pt-8 border-t border-surface-container">
+<div>
+<p class="text-xs font-medium text-on-surface-variant mb-1">Confirmation No.</p>
+<p class="text-xl font-bold text-on-surface tracking-tight">CR-99284-X</p>
+</div>
+<div>
+<p class="text-xs font-medium text-on-surface-variant mb-1">Selected Service</p>
+<p class="text-xl font-bold text-on-surface tracking-tight">iPhone Screen Repair</p>
+</div>
+</div>
+</div>
+<!-- Next Steps Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="contact_support">contact_support</span>
+<h3 class="text-lg font-semibold mb-2">Contact Phase</h3>
+<p class="text-sm text-on-surface-variant">A specialist will contact you shortly to confirm pickup or drop-off timing.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h3 class="text-lg font-semibold mb-2">Repair Status</h3>
+<p class="text-sm text-on-surface-variant">Track your device's journey through our lab using your confirmation number.</p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
+<a class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary rounded-full font-semibold text-center hover:opacity-90 transition-all flex items-center justify-center gap-2" href="index.html">
+<span class="material-symbols-outlined text-sm" data-icon="home">home</span>
+                        Return Home
+                    </a>
+<button class="w-full sm:w-auto px-10 py-4 bg-surface-container-highest text-on-surface rounded-full font-semibold text-center hover:bg-surface-variant transition-all">
+                        View Full Details
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component from Shared JSON -->
+<footer class="w-full py-12 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200/50 dark:border-zinc-800/50">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:flex md:justify-between items-center">
+<div class="mb-6 md:mb-0">
+<p class="font-sans text-xs text-zinc-500 dark:text-zinc-400">© 2024 CellphonesAndRepair. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap gap-8">
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-opacity opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-opacity opacity-80 hover:opacity-100" href="services-unified-nav.html">Terms of Service</a>
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-opacity opacity-80 hover:opacity-100" href="#">Cookie Settings</a>
+<a class="font-sans text-xs text-zinc-500 dark:text-zinc-400 hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-opacity opacity-80 hover:opacity-100" href="#">Warranty Info</a>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>

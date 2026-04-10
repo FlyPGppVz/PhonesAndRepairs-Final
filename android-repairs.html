@@ -1,0 +1,149 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8"><a class="block" href="#"><img alt="CellphonesAndRepair Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0ugoPYVqY6imupbG-s4AkZ2GwxaHNLoflGuNsXHymH3BB8mMZJQU_OraF8FMYuMg1N41NW2KltmC6WcnnMN903EK4LP3u0Stoz3YxCei7gHyCWUlcxR_52YdWa9yTD5p5Uk_Xc_QnwC6Mohce4D4nQ3_k996Bn3vttsyqc_6G_w1W-b5lDDKVN5Rg9C0au11pxVNAP0ROTLFeNgGNwzJ_sPbJA0pUG5cN64JSKKdeG_C4cVhxOHidPO2fSDTWK5zcGqJ48-FR5gnsQ"></a><div class="hidden md:flex gap-6 items-center"><a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="index.html">Home</a><a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="shop-fully-connected.html">Shop</a><a class="font-sans text-sm tracking-tight text-blue-600 dark:text-blue-400 font-semibold border-b-2 border-blue-600 pb-1" href="services-unified-nav.html">Service</a><a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="contact-unified-nav.html">Contact</a><a class="font-sans text-sm tracking-tight text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="about-us-unified-nav.html">About Us</a></div></div>
+<div class="flex items-center space-x-5">
+<button class="hover:opacity-70 transition-opacity duration-200 scale-95 active:scale-90 transition-transform text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hover:opacity-70 transition-opacity duration-200 scale-95 active:scale-90 transition-transform text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="hover:opacity-70 transition-opacity duration-200 scale-95 active:scale-90 transition-transform text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section & Appointment Form -->
+<section class="relative min-h-[921px] flex items-center px-6 md:px-12 py-12 overflow-hidden bg-surface-container">
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Content Column -->
+<div class="relative z-10 space-y-8">
+<div class="space-y-4">
+<span class="inline-block px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container text-xs font-semibold tracking-wider uppercase">Android Expert Care</span>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-on-background leading-tight">
+                            Precision Repair. <br> <span class="text-primary">Android Reimagined.</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                            From cracked screens to complex internal logic board repairs, our certified technicians restore your device using genuine components and clinical precision.
+                        </p>
+</div>
+<!-- Appointment Form Bento Tile -->
+<div class="bg-surface-container-lowest p-10 rounded-lg shadow-sm max-w-md">
+<h3 class="text-xl font-semibold mb-8 text-on-surface">Book Your Service</h3>
+<form class="space-y-8">
+<div class="relative group">
+<input class="block w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-surface-variant focus:ring-0 focus:border-primary transition-all peer text-on-surface" id="name" placeholder=" " type="text">
+<label class="absolute text-sm text-outline duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="name">Full Name</label>
+</div>
+<div class="relative group">
+<input class="block w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-surface-variant focus:ring-0 focus:border-primary transition-all peer text-on-surface" id="model" placeholder=" " type="text">
+<label class="absolute text-sm text-outline duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="model">Device Model (e.g., Pixel 8 Pro)</label>
+</div>
+<div class="relative group">
+<input class="block w-full px-0 py-2.5 bg-transparent border-0 border-b-2 border-surface-variant focus:ring-0 focus:border-primary transition-all peer text-on-surface" id="email" placeholder=" " type="email">
+<label class="absolute text-sm text-outline duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" for="email">Email Address</label>
+</div>
+<div class="pt-4 flex flex-col gap-4">
+<button class="w-full py-4 bg-primary text-on-primary rounded-full font-semibold shadow-md hover:opacity-90 transition-all flex items-center justify-center gap-2" type="submit">
+                                    Confirm Appointment
+                                    <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+<button class="w-full py-4 glass-green text-green-700 rounded-full font-semibold border border-green-500/20 flex items-center justify-center gap-3 transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined">chat</span>
+                                    Schedule via WhatsApp
+                                </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Visual Column -->
+<div class="relative lg:block h-[600px] w-full">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-lg"></div>
+<img alt="Android Repair Detail" class="w-full h-full object-cover rounded-lg shadow-xl" data-alt="Close-up of a high-end Android smartphone being repaired by a technician using precision tools in a clean, bright laboratory setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmmqtrq2P4a_CIsU5tZGYZf9Cw_Hw6vlMdlBcHkOXFjpahmCFt3AzwZlsZ65LLnPEa1RMOX0KjGnh0WqMdqTMyqScPZMe20kqlHYhZJawESSq3gX_rgMBlO75C0krj_0rBuP39mv6HHtkWlG_uBqLn2oEXXnMcdA6M1dxs1bcTNEs5HauVNNrXg9SSRWugdtUNugBt91kiyhdqI38Qc3d33aLzXhCOL5pXpyeOyKD6mjpdtjrtxWokGgEc-c-fjZml6rNvlGA9t5Q">
+<!-- Floating Bento Stats -->
+<div class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur p-6 rounded-lg shadow-lg max-w-[200px]">
+<p class="text-3xl font-bold text-primary">2hr</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Avg. Turnaround</p>
+</div>
+<div class="absolute top-12 -right-6 bg-inverse-surface text-white p-6 rounded-lg shadow-lg">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9/5</span>
+</div>
+<p class="text-xs opacity-70">Technician Rating</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Service Highlights (Editorial Grid) -->
+<section class="py-24 bg-surface px-6 md:px-12">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl font-bold text-on-surface tracking-tight mb-4">Why Trust Our Lab?</h2>
+<div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-10 bg-surface-container-lowest rounded-lg group hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 group-hover:text-white">memory</span>
+<h4 class="text-xl font-semibold mb-4 text-on-surface group-hover:text-white">Genuine Components</h4>
+<p class="text-on-surface-variant group-hover:text-white/80 leading-relaxed">We source parts directly from certified distributors to ensure system integrity and longevity.</p>
+</div>
+<div class="p-10 bg-surface-container-lowest rounded-lg group hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 group-hover:text-white">verified_user</span>
+<h4 class="text-xl font-semibold mb-4 text-on-surface group-hover:text-white">90-Day Warranty</h4>
+<p class="text-on-surface-variant group-hover:text-white/80 leading-relaxed">Peace of mind guaranteed. All Android repairs come with an extensive warranty on labor and parts.</p>
+</div>
+<div class="p-10 bg-surface-container-lowest rounded-lg group hover:bg-primary transition-colors duration-500">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 group-hover:text-white">speed</span>
+<h4 class="text-xl font-semibold mb-4 text-on-surface group-hover:text-white">Express Diagnostics</h4>
+<p class="text-on-surface-variant group-hover:text-white/80 leading-relaxed">Receive a comprehensive report on your device health within 15 minutes of arrival.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Brand Showcase - Bento Style -->
+<section class="py-24 bg-surface-container-low px-6 md:px-12">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="col-span-2 bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-between">
+<h3 class="text-2xl font-bold text-on-surface">Supported Manufacturers</h3>
+<p class="text-on-surface-variant mt-4">Full specialized support for the entire Android ecosystem, from flagship Foldables to budget-friendly models.</p>
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+<img class="h-8 object-contain" data-alt="Stylized Samsung logo on a sleek tech background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBefaJYQSa5-i13qITW8egnmMHRQ7u84kPxpyyzIwElSuyETEi3wyKxMQMt260vOCvAiGTeO7gJgX_kl6Fdw8RH44RDR908IK48loRbnLeiVH4f2-ZVYDFVJvzVmJ-CZ2WdcvNG4mtXUG5fNx4dizVU8Jp1d_kdmq7w3dyN96djRm4Y6hYnkQ2Dl9H06_WALHK-HZDF1-OCsVc6BKyjEraezHcDNBTMaLjP4ovfIVOSI3PaRique_raPZIdHo1goWiW3yZ7nOA2w04">
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-lg flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+<img class="h-8 object-contain" data-alt="Minimalist Map Pixel branding with clean typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYeiR1A-cM4y-1IuzP6cUKh590fBqEQfYYTQcTNlMIQGDpAciss3uIATrJK1dLWoxJuY6oq13e9s7hS4PnscLw-GRIymS9cjS_Vr8O76INFRdHgIjjCrLV8lxgJsWNOVFKz9LJArcl-OIwhLWyWd--XUJgEgPHoqewfvlgo6iuBob4qJ61YRScMx6dp8P_DWtDAI3hpZEOOimuypRFLZBZOSSNT-AIQD6b5s8oUpk_DYYAQ4hKFr20FMNvrCSzWwTaBEC06EB_2kU">
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 tonal-shift surface-container-low">
+<div class="flex flex-col items-center py-12 space-y-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<img alt="CellphonesAndRepair Logo" class="h-6 w-auto opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dh_AaFhFiV5IFEQIb-f427CYNIx0qUFmN4VNucD4UbRrsRC7kH0FHw3He8ylialcYBTAD7yr7XWdYlLXwGWU0EHmQ6i7jFYYJN-w31dksjobANiYJ9jvaAJwf0R-e7Zc9GbFl1d3hE6JasCzVQjKoCR_fmRj0RgFl4sIOcqrkt2UPQ5K9frrWDYxzND0fmrhT9Uqdb-TcNw1VMe5hEOWKVqGh_uABnCDZ_I8WEIIRXCfzSfxWLwaAEUhil6EV_0Q627ASYkzCls">
+<span class="text-lg font-bold text-slate-900 dark:text-white">CellphonesAndRepair</span>
+</div>
+<div class="flex space-x-6">
+<a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors opacity-100 hover:opacity-80" href="services-unified-nav.html">Terms of Service</a>
+<a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors opacity-100 hover:opacity-80" href="#">FAQ</a>
+</div>
+<p class="text-xs font-normal text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</p>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>

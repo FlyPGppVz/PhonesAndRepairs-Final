@@ -1,0 +1,209 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Search Results - CellphonesAndRepair</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="css/style.css"><script src="js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<header class="fixed top-0 w-full z-50 cupertino-glass">
+<nav class="flex items-center justify-between px-6 h-14 max-w-[1440px] mx-auto">
+<div class="flex-1 flex justify-start">
+<img alt="Cellphones and Repairs Logo" class="h-10 w-auto object-contain scale-95 active:opacity-70 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida/ADBb0uj7gkUuRy-WWkDNFpexszLaAKHHi9t560ZeQe8hbd_MqmWFqBl5CgWxIypVMSwnWMBHsiGBZHTfYDrBZLRawy4eb6521Hivy12w2ds9iStJpXSOqnl5AV9xtzswLSk-SH0qow-xQFnTiJMq1BE7z9S4iVYfLJiJzUqEWHo4okvtuArCg7OdqXnHMbThBL6KudES_lwHOX6GkJkwUL4qFxJtGTySrroF_yoSx8VXzIfejvuFR_JRJYceLIywwD99slWuhOs-lX5cmg">
+</div>
+<div class="hidden md:flex items-center justify-center gap-8 font-sans text-[13px] font-medium tracking-tight flex-1">
+<a class="text-zinc-500 hover:text-blue-600 transition-colors duration-200" href="index.html">Home</a>
+<a class="text-zinc-900 font-semibold hover:text-blue-600 transition-colors duration-200" href="shop-fully-connected.html">Shop</a>
+<a class="text-zinc-500 hover:text-blue-600 transition-colors duration-200" href="services-unified-nav.html">Service</a>
+<a class="text-zinc-500 hover:text-blue-600 transition-colors duration-200" href="contact-unified-nav.html">Contact</a>
+<a class="text-zinc-500 hover:text-blue-600 transition-colors duration-200" href="about-us-unified-nav.html">About Us</a>
+</div>
+<div class="flex-1 flex justify-end items-center gap-6">
+<button class="material-symbols-outlined text-zinc-500 hover:text-blue-600 transition-all scale-95 active:opacity-70">search</button>
+<button class="material-symbols-outlined text-zinc-500 hover:text-blue-600 transition-all scale-95 active:opacity-70">shopping_cart</button>
+<button class="material-symbols-outlined text-zinc-500 hover:text-blue-600 transition-all scale-95 active:opacity-70">person</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 pb-20 max-w-7xl mx-auto px-6">
+<!-- Search Header -->
+<div class="mb-12">
+<p class="text-label-md font-medium text-primary mb-2">Search Results</p>
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-background">Results for "iPhone"</h1>
+<p class="mt-4 text-on-surface-variant max-w-2xl">Discover the latest in mobility and innovation. Explore our curated selection of high-performance devices and precision repair services.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-12">
+<!-- Filter Sidebar -->
+<aside class="w-full md:w-64 space-y-10 shrink-0">
+<section>
+<h3 class="text-title-sm font-semibold mb-4">Availability</h3>
+<div class="space-y-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-5 h-5 rounded-sm border-outline-variant text-primary focus:ring-primary transition-all" type="checkbox">
+<span class="text-body-lg text-on-surface-variant group-hover:text-on-surface transition-colors">In Stock</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-5 h-5 rounded-sm border-outline-variant text-primary focus:ring-primary transition-all" type="checkbox">
+<span class="text-body-lg text-on-surface-variant group-hover:text-on-surface transition-colors">Refurbished</span>
+</label>
+</div>
+</section>
+<section>
+<h3 class="text-title-sm font-semibold mb-4">Model Series</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container text-label-md font-medium cursor-pointer">iPhone 15</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-medium cursor-pointer hover:bg-surface-container-high transition-colors">iPhone 14</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-medium cursor-pointer hover:bg-surface-container-high transition-colors">iPhone 13</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-medium cursor-pointer hover:bg-surface-container-high transition-colors">Pro Models</span>
+</div>
+</section>
+<section>
+<h3 class="text-title-sm font-semibold mb-4">Price Range</h3>
+<div class="space-y-6">
+<input class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer" type="range">
+<div class="flex justify-between text-label-md text-on-surface-variant">
+<span>$299</span>
+<span>$1,499</span>
+</div>
+</div>
+</section>
+</aside>
+<!-- Results Grid -->
+<div class="flex-1">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Product Card 1 -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-on-surface/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low p-8 flex items-center justify-center relative">
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdna81zfwNE_zj4EatPJOpb4j34ytyqgDUPKmiDhNzWOodkszEnmCDVtpZu3cKcd3QXc5XkHjVL-OH-XL2vChpKmOkmr-5eJzBHkwh90XjmTVybHCt_LuGxJc0mdp-lw9B3RTUmnCs6sxI_qsWrZV4PYF75KyxDSxQIBHidyJOwTGQjUbkCXEkiNk55vhVUziIe5HXWquq1_thB9difxm-JnXXJ3Eizn6U6A0JgQbAE9g2Q1aeTJLDv_yBKFWs37N0XLTGjhhQ6AU">
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface font-semibold text-label-md shadow-lg backdrop-blur-md">Quick View</button>
+</div>
+</div>
+<div class="p-8 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="text-headline-md font-semibold text-on-surface">iPhone 15 Pro</h2>
+<p class="text-headline-md font-bold text-primary">$999</p>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Natural Titanium. 128GB. The ultimate performance powerhouse.</p>
+<div class="pt-4">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-bold transition-all hover:bg-primary-dim active:scale-95">Add to Bag</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-on-surface/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low p-8 flex items-center justify-center relative">
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUYWOYlR70gPUQegMC1vRxU9rEAPhr6dbUef_BGg7HcCOXVk2pzVk918FeH4v0Iu1dUjlzejrTPjV3p_ggzvzEoq1lio6Bs3_x_Eby7S-4A42cPDNLSEm6-8UtTr3QYK5DmjvWKjvzeWKVRMJOf9B52UpiX4hGdVekq8m88EjinjxlAM7oHo-Sh1tjX4NxILJx_P0gQcqcC1dMytZbDEYpW8u0ipdCfrfys8nO2K5l6um_fFl3c-5nmkbYlaotA710TJ0f28Ikcro">
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface font-semibold text-label-md shadow-lg backdrop-blur-md">Quick View</button>
+</div>
+</div>
+<div class="p-8 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="text-headline-md font-semibold text-on-surface">iPhone 15</h2>
+<p class="text-headline-md font-bold text-primary">$799</p>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Pink Finish. 128GB. Experience the new dynamic island.</p>
+<div class="pt-4">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-bold transition-all hover:bg-primary-dim active:scale-95">Add to Bag</button>
+</div>
+</div>
+</div>
+<!-- Repair Promo Card -->
+<div class="group relative flex flex-col bg-inverse-surface rounded-lg overflow-hidden transition-all duration-500 col-span-1 md:col-span-1">
+<div class="p-10 space-y-6 flex flex-col h-full justify-between">
+<div>
+<span class="px-3 py-1 bg-primary text-on-primary rounded-full text-[10px] font-bold uppercase tracking-widest">Repair Pro</span>
+<h2 class="text-3xl font-bold text-white mt-4 leading-tight">Cracked Screen?</h2>
+<p class="text-surface-container-highest mt-2">Expert iPhone screen replacement in under 60 minutes.</p>
+</div>
+<div class="relative py-8">
+<div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+<img class="relative z-10 w-full h-auto object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2k-LSydgi6xEAr3kgRNjiQbwDXKa_Hx12LzfWKYBbuWwHC43EXThdpsS7MJO5yi2gGlkG6amBHBtW66xRQgznZmRW5df0sh-XGujoi9C7SRM96rK9Ms4_We9yLgzUhmVGPyhCnxvqi-rhE2cH0T-da-kvQr8KFtf-eidjF14poGt_4yuHfeM9t5XvicnNhMl7dV0MnlqckEi_jg5g-Qqla4fi95XuxtxXcegZnr3T3kRYzIZ5AeKOVT19vQIAS6DPkSp3BcxFY2w">
+</div>
+<button class="w-full py-4 rounded-full bg-white text-inverse-surface font-bold transition-all hover:bg-surface-bright active:scale-95">Book Repair</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-on-surface/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low p-8 flex items-center justify-center relative">
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3mGLlhsKbuSQq2Lg2rth40l-ZE3_jNYOA7JYCTD0yDWeuWBM-jBIHTk12tp6sz5PbseID_dMFGBY9q_Hj3tAo15z__N3otGJ8hgEoB0vzgpNTuBjAJOTlVseQorgEKYgoGpt-2BU4kPDdkYtQ49M7C5XYXRXUQ0qcYh4fhdWOV69_g9olBOoyqOby2EWAo8rsCv8rai9YLdYLjh6x-wQGvoWySGYcvMmcwHXJg1LJHiPrBzj1jCKfLlChu4yZXFjEUqEp3Tg7TSE">
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface font-semibold text-label-md shadow-lg backdrop-blur-md">Quick View</button>
+</div>
+</div>
+<div class="p-8 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="text-headline-md font-semibold text-on-surface">iPhone 14</h2>
+<p class="text-headline-md font-bold text-primary">$699</p>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Starlight. 128GB. Reliable performance for everyday life.</p>
+<div class="pt-4">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-bold transition-all hover:bg-primary-dim active:scale-95">Add to Bag</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-on-surface/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low p-8 flex items-center justify-center relative">
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbzQFdQ8yXrD0tRxw0Am6hBFhhcHMDHH4ZecCWi4Fu2xHhrdUti5V6c0iF8uUdAhNCt3tbFLJ_fgjKabWpfRwcYw8TuyYNPmg3QRndzCdKL5oYt25L96NGxsj93vqPoHluaXwhrQxgVWoITkJ3hC5B0TMCHpWOylCQ-mJKM3XUDqVzHYBOkSH5DQGgqyALNq3c5dm9crVwAai7t_Bd3MpoXEDltnHJt0ju8UVviWO39VncruvI1WIDhT-N-JodLrEZMq0mKg5UWIA">
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface font-semibold text-label-md shadow-lg backdrop-blur-md">Quick View</button>
+</div>
+</div>
+<div class="p-8 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="text-headline-md font-semibold text-on-surface">iPhone 13 Mini</h2>
+<p class="text-headline-md font-bold text-primary">$599</p>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Midnight. 128GB. Small size, huge possibilities.</p>
+<div class="pt-4">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-bold transition-all hover:bg-primary-dim active:scale-95">Add to Bag</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group relative flex flex-col bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-on-surface/5">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container-low p-8 flex items-center justify-center relative">
+<img class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_HSbRsfopuLmvqg25AcUGa1CpVzZgxBjAJT_XX77bKaddSH4mHLCj2fgPqL7ig5BmUUs30mVCVGDMZrvz5D8DTk5HG8yTZd3-OzHLwvu7Y1oS_nRIevVJGSEwjMF_uI5d2EhwrAQD8nzIS9uBK7gWhAobys9pFtt4tP4zKPjnwDJhTMkfABNL3JaCQcQTkfgZ40aajvjauERZ1LAqDKf0gHxk4R9XBBob_I5cLzvqEk2uyTZ3iTudrhAk9dj00C3c810Sclu40R0">
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+<button class="px-6 py-2.5 rounded-full bg-white text-on-surface font-semibold text-label-md shadow-lg backdrop-blur-md">Quick View</button>
+</div>
+</div>
+<div class="p-8 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="text-headline-md font-semibold text-on-surface">iPhone 12</h2>
+<p class="text-headline-md font-bold text-primary">$499</p>
+</div>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">Blue. 128GB. Pro-grade performance at an entry value.</p>
+<div class="pt-4">
+<button class="w-full py-4 rounded-full bg-primary text-on-primary font-bold transition-all hover:bg-primary-dim active:scale-95">Add to Bag</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-20 flex flex-col items-center gap-6">
+<button class="px-12 py-5 rounded-full bg-surface-container-highest text-on-surface font-bold hover:bg-surface-container-high transition-all active:scale-95">Show More Products</button>
+<p class="text-label-md text-on-surface-variant">Showing 6 of 42 results</p>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full py-12 bg-zinc-50 dark:bg-zinc-900 mt-20">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:flex md:justify-between border-t border-zinc-200/50 dark:border-zinc-800/50 pt-8">
+<div class="text-xs text-zinc-500 dark:text-zinc-400 font-sans">
+            © 2024 CellphonesAndRepair. All rights reserved.
+        </div>
+<div class="flex gap-6 mt-6 md:mt-0">
+<a class="text-xs text-zinc-500 dark:text-zinc-400 font-sans hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-xs text-zinc-500 dark:text-zinc-400 font-sans hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="services-unified-nav.html">Terms of Service</a>
+<a class="text-xs text-zinc-500 dark:text-zinc-400 font-sans hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="#">Cookie Settings</a>
+<a class="text-xs text-zinc-500 dark:text-zinc-400 font-sans hover:underline hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors opacity-80 hover:opacity-100" href="#">Warranty Info</a>
+</div>
+</div>
+</footer>
+<script src="js/main.js"></script></body></html>
