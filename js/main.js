@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * CellphonesAndRepair - Main Logic
  * Handles global interactions like dropdowns, sidebars, and basic navigation functionality.
  */
@@ -96,3 +96,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("App and Chatbot initialized.");
 });
+
+
