@@ -58,27 +58,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Color Selection Switcher
+    // 2. Color Selection Switcher (Apple-style)
     const colorButtons = document.querySelectorAll('.color-btn');
-    const mainImage = document.querySelector('.product-main-image');
+    const mainProductImage = document.querySelector('.product-main-image');
     
     colorButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Reset siblings outlines
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.color-btn').forEach(b => b.style.outline = 'none');
+            // Reset all color buttons in the same container
+            const container = btn.parentElement;
+            container.querySelectorAll('.color-btn').forEach(b => {
+                b.style.outline = 'none';
+                b.classList.remove('active-color');
+            });
             
-            // Set active outline
-            btn.style.outline = '2px solid #2563eb';
-            btn.style.outlineOffset = '2px';
+            // Apply active blue ring
+            btn.classList.add('active-color');
+            btn.style.outline = '2px solid #0071e3';
+            btn.style.outlineOffset = '3px';
 
-            // Optional: slight opacity animation
-            if (mainImage && btn.dataset.image) {
-                mainImage.style.opacity = '0';
+            // Swap main product image
+            const newImage = btn.getAttribute('data-image') || btn.dataset.image;
+            if (mainProductImage && newImage) {
+                mainProductImage.style.opacity = '0.4';
                 setTimeout(() => {
-                    mainImage.src = btn.dataset.image;
-                    mainImage.style.opacity = '1';
+                    mainProductImage.src = newImage;
+                    mainProductImage.style.opacity = '1';
                 }, 150);
+            }
+
+            // Optional: Update color title label
+            const colorLabel = document.querySelector('.color-label');
+            if (colorLabel && btn.getAttribute('aria-label')) {
+                colorLabel.textContent = btn.getAttribute('aria-label');
             }
         });
     });
