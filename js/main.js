@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Apply active blue ring
             btn.classList.add('active-color');
-            btn.style.outline = '2px solid #0071e3';
+            btn.style.outline = '2px solid #063183';
             btn.style.outlineOffset = '3px';
 
             // Swap main product image
