@@ -18,7 +18,7 @@ class ChatbotWidget {
             return JSON.parse(stored);
         }
         return [
-            { sender: 'bot', text: 'Hello! How can I help you with your device today?', time: new Date().toISOString() }
+            { sender: 'bot', text: 'Hello! How can I help you today?', time: new Date().toISOString() }
         ];
     }
 
