@@ -61,12 +61,11 @@
 <!-- Hero Section -->
 <section class="max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <!-- Product Image Canvas -->
-<div class="relative aspect-square flex items-center justify-center bg-surface-container-low rounded-xl overflow-hidden p-12">
-<img alt="Samsung S25 Ultra Phantom Silver" class="w-full h-full object-contain mix-blend-multiply" data-alt="Sleek silver high-tech smartphone floating in a minimalist studio setting with soft diffused lighting and sharp technical details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKw9X76NVn2590TWBxQpSbGD6bnazzozKhhwUEzZZjxigldC5x01OY6eHzV5lJXMiEtC6VkbSnq1HEIVRm4c9lsZMeF0xmfhp2Vem2D2BekURBP0wVgkDaAoqNTY6_DmYmj0OVajIVN45wVfiPByXtoleam2mxjDdYcRHANsOoHZ8FD35-05RvBYIWViERZzBGdkcZ9_doqqOb-MxYPLvmPLXkJ9O1fYhlOrgO_XVliucZUT3Bgx80axRGDbLEcN-HvsxSkUjdd7A">
-<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
-<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<div class="relative aspect-[4/5] md:aspect-square flex flex-col items-center justify-center bg-surface-container-low rounded-xl overflow-hidden p-8 md:p-12 h-full">
+<img class="product-main-image w-full h-[80%] object-contain mix-blend-multiply transition-opacity duration-300" alt="Samsung S25 Ultra" data-alt="Samsung S25 Ultra Smartphone" src="./assets/images/referential/IMG_3855.png">
+<div class="mt-8 flex gap-4">
+<button class="color-btn w-8 h-8 rounded-full bg-[#E3E4E5] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 2px;" data-image="./assets/images/referential/IMG_3855.png" aria-label="Phantom Silver"></button>
+<button class="color-btn w-8 h-8 rounded-full bg-[#383A3F] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/IMG_3842.jpeg" aria-label="Phantom Black"></button>
 </div>
 </div>
 <!-- Product Details -->
@@ -80,17 +79,17 @@
 </div>
 <div class="space-y-6">
 <div>
-<span class="text-title-sm block mb-3">Storage</span>
+<span class="text-title-sm block mb-3 font-semibold text-on-surface">Storage Capacity</span>
 <div class="flex gap-3">
-<button class="px-6 py-3 rounded-full border border-primary bg-primary-container text-on-primary-container font-medium text-label-md transition-all">256GB</button>
-<button class="px-6 py-3 rounded-full border border-outline-variant hover:border-primary transition-all font-medium text-label-md">512GB</button>
-<button class="px-6 py-3 rounded-full border border-outline-variant hover:border-primary transition-all font-medium text-label-md">1TB</button>
+<button class="storage-btn px-6 py-3 rounded-full border border-primary bg-primary-container text-on-primary-container font-medium text-label-md transition-all active:scale-95" data-price="$1,100.00">256GB</button>
+<button class="storage-btn px-6 py-3 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-medium text-label-md transition-all hover:border-primary active:scale-95" data-price="$1,250.00">512GB</button>
+<button class="storage-btn px-6 py-3 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-medium text-label-md transition-all hover:border-primary active:scale-95" data-price="$1,450.00">1TB</button>
 </div>
 </div>
 <div class="pt-6 border-t border-surface-container">
 <div class="flex items-baseline gap-4">
-<span class="text-[2.5rem] font-bold text-on-surface">$1,100.00</span>
-<span class="text-on-surface-variant line-through">$1,299.00</span>
+<span class="product-price text-[2.5rem] font-bold text-on-surface transition-all">$1,100.00</span>
+<span class="text-on-surface-variant line-through text-lg block min-w-[80px]"></span>
 </div>
 <p class="text-sm text-on-surface-variant mt-2">Or $45.83/mo. for 24 mo. before trade‑in*</p>
 </div>

@@ -1,0 +1,98 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Our Story | CellphonesAndRepair</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .floating-img {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>
+<script src="./js/tailwind-config.js"></script></head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50">
+<nav class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-10">
+<a class="active:opacity-70 transition-all cursor-pointer" href="./index.html">
+<img alt="Cellphones and Repairs Logo" class="h-10 w-auto object-contain scale-95" src="./assets/images/logo-transparent.png">
+</a>
+<div class="hidden md:flex items-center gap-6 font-sans text-[13px] font-medium tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./index.html">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./shop-fully-connected.html">Shop</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./services-unified-nav.html">Service</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./contact-unified-nav.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./about-us-unified-nav.html">About Us</a>
+</div>
+</div>
+</nav>
+</header>
+
+<main class="pt-32 pb-24">
+    <section class="max-w-4xl mx-auto px-8">
+        <div class="mb-12">
+            <span class="text-primary font-bold text-sm tracking-[0.2em] uppercase mb-4 block">Our Journey</span>
+            <h1 class="text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface mb-8">
+                Over <span class="text-primary">20 Years</span> of <br>
+                Dedicated Service.
+            </h1>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+            <div class="space-y-6 text-body-lg text-on-surface-variant leading-relaxed">
+                <p>
+                    At Cell Phone And Repairs, we have been providing top-quality mobile phone repair services to our customers for over 20 years. Our journey began with a simple mission: to fix what's broken and restore connection.
+                </p>
+                <p>
+                    We strive to ensure that our customers are completely satisfied with our services and leave our store with a working phone and a smile on their face. This commitment to excellence has been the cornerstone of our legacy.
+                </p>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-2xl floating-img">
+                <img src="./assets/images/referential/IMG_3844.jpeg" alt="Our History" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="bg-surface-container-low p-12 rounded-3xl mb-24">
+            <h3 class="text-2xl font-bold mb-6">Expert Repair Services</h3>
+            <p class="text-on-surface-variant leading-relaxed">
+                At Cell Phone and Repair, we specialize in high-quality repair services for all mobile devices. Our experienced technicians are trained to handle everything from screen replacements to complex motherboard repairs.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-primary/5 p-10 rounded-3xl border border-primary/10">
+                <h4 class="text-xl font-bold mb-4 text-primary">Why Choose Us</h4>
+                <p class="text-sm text-on-surface-variant leading-relaxed">
+                    At Cell Phone And Repairs, we pride ourselves on providing exceptional customer service and high-quality repairs. We use only the best quality parts in our repairs and offer a 30-day warranty on all our repairs. We also offer competitive pricing and fast turnaround times.
+                </p>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-lg h-full">
+                <img src="./assets/images/referential/IMG_3939.jpeg" alt="Our Lab" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+    <div class="px-8 py-16 max-w-7xl mx-auto text-center">
+        <div class="font-semibold text-slate-900 dark:text-white mb-4 text-lg">CellphonesAndRepair</div>
+        <p class="text-slate-500 dark:text-slate-400 mb-8">Premium technical care for your digital life.</p>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="./index.html" class="text-sm hover:text-primary transition-colors">Home</a>
+            <a href="./shop-fully-connected.html" class="text-sm hover:text-primary transition-colors">Shop</a>
+            <a href="./about-us-unified-nav.html" class="text-sm hover:text-primary transition-colors">About Us</a>
+        </div>
+        <div class="text-xs text-slate-400">© 2024 CellphonesAndRepair. All rights reserved.</div>
+    </div>
+</footer>
+
+<script src="./js/main.js"></script>
+</body></html>

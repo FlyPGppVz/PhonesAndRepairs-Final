@@ -62,9 +62,9 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <!-- Product Visuals (Asymmetric Bento) -->
 <div class="grid grid-cols-2 gap-4 h-full">
-<div class="col-span-2 bg-surface-container-lowest rounded-lg p-12 flex items-center justify-center overflow-hidden aspect-[4/3] relative">
-<img class="w-full h-full object-contain mix-blend-multiply transition-transform hover:scale-105 duration-700" data-alt="Close up professional studio shot of iPhone 16 Pro Max in Desert Titanium with metallic finish and soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYnbFXMyeKGXcU9pWHV2N3j8iEIktTw1LCGcW9C27OeZGyZF5Pu0atxCs5I-kQyyhHE584NciOzG3eSyvvLxiM_YIexcrNiors39zN0nwCYyzbqcSqfRJEI9X8E1e8K-R6pIJjRTzWo0rFAMPCl1pQ1qeemtgEgCyR_5QV1aVEOVo2-8SaDRDn36ZtODcMHWwWmPoDHurhXck3zdXXkGUKraH0EHaOyhy43I2sir_7KNAzrZCN1fsHe7pTV2-EzRATzEynQvvdQTM">
-<div class="absolute top-8 left-8">
+<div class="col-span-2 bg-surface-container-lowest rounded-lg p-8 md:p-12 flex flex-col items-center justify-center overflow-hidden aspect-[4/3] md:aspect-[4/3] relative">
+<img class="product-main-image w-full h-[70%] md:h-[80%] object-contain mix-blend-multiply transition-opacity duration-300" data-alt="Close up professional studio shot of iPhone 16 Pro Max in Desert Titanium with metallic finish and soft cinematic lighting" src="./assets/images/referential/iphone-16-pro-max-desert.jpeg">
+<div class="absolute top-8 left-8 hidden md:block">
 <span class="text-[0.75rem] font-semibold tracking-[0.2em] uppercase text-on-surface-variant">New Arrival</span>
 </div>
 </div>
@@ -91,24 +91,23 @@
 <div class="space-y-3">
 <label class="text-sm font-semibold">Finish</label>
 <div class="flex gap-4">
-<div class="w-10 h-10 rounded-full border-2 border-primary ring-2 ring-offset-2 ring-primary bg-[#C8B8A0] cursor-pointer"></div>
-<div class="w-10 h-10 rounded-full bg-slate-200 hover:ring-2 hover:ring-slate-300 transition-all cursor-pointer"></div>
-<div class="w-10 h-10 rounded-full bg-slate-800 hover:ring-2 hover:ring-slate-700 transition-all cursor-pointer"></div>
-<div class="w-10 h-10 rounded-full bg-white border border-slate-200 hover:ring-2 hover:ring-slate-100 transition-all cursor-pointer"></div>
+<button class="color-btn w-10 h-10 rounded-full bg-[#C8B8A0] ring-2 ring-[#C8B8A0] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 3px;" data-image="./assets/images/referential/iphone-16-pro-max-desert.jpeg" aria-label="Desert Titanium"></button>
+<button class="color-btn w-10 h-10 rounded-full bg-[#1C1C1E] ring-2 ring-[#1C1C1E] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-16-pro-max-tiniumblack.jpeg" aria-label="Black Titanium"></button>
+<button class="color-btn w-10 h-10 rounded-full bg-[#FAFAFA] ring-2 ring-slate-200 border border-slate-200 shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-16-pro-max-titaniumwhite.jpeg" aria-label="White Titanium"></button>
 </div>
 </div>
 <!-- Capacity Selection -->
 <div class="space-y-3">
 <label class="text-sm font-semibold">Capacity</label>
 <div class="grid grid-cols-2 gap-4">
-<div class="p-4 rounded-lg bg-surface-container-lowest border-2 border-primary flex justify-between items-center cursor-pointer">
+<button class="storage-btn p-4 rounded-lg bg-primary-container text-on-primary-container ring-1 ring-primary border-primary flex justify-between items-center transition-all active:scale-95 text-left" data-price="$1,100.00">
 <span class="font-medium">256GB</span>
-<span class="text-xs text-on-surface-variant">From $1,100</span>
-</div>
-<div class="p-4 rounded-lg bg-surface-container-low hover:bg-surface-container-highest transition-colors flex justify-between items-center cursor-pointer">
+<span class="text-xs opacity-70">From $1,100</span>
+</button>
+<button class="storage-btn p-4 rounded-lg bg-surface-container-lowest border-outline-variant text-on-surface flex justify-between items-center transition-all hover:border-primary active:scale-95 text-left" data-price="$1,300.00">
 <span class="font-medium">512GB</span>
-<span class="text-xs text-on-surface-variant">+$200</span>
-</div>
+<span class="text-xs opacity-70">+$200</span>
+</button>
 </div>
 </div>
 </div>
@@ -119,7 +118,7 @@
                                 <span class="material-symbols-outlined text-lg">arrow_forward</span>
 </button>
 </div>
-<div class="text-2xl font-bold">$1,100.00</div>
+<div class="product-price text-2xl font-bold transition-all">$1,100.00</div>
 </div>
 <div class="p-4 rounded-lg bg-surface-container-low flex items-center gap-3">
 <span class="material-symbols-outlined text-primary">local_shipping</span>

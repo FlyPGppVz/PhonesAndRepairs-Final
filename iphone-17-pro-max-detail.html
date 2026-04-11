@@ -61,8 +61,13 @@
 <!-- Hero Section: Editorial Layout -->
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-24">
 <!-- Asymmetric Image Column -->
-<div class="lg:col-span-7 relative h-[600px] md:h-[800px] bg-surface-container rounded-lg overflow-hidden flex items-center justify-center p-12">
-<img class="max-w-full h-auto object-contain drop-shadow-2xl" data-alt="Modern smartphone floating against a minimal studio background with dramatic rim lighting highlighting titanium black finish and camera lenses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChM_g1NA0vMaOWu7711TgKrtNizMkhiyIYv0j4nQJesea4CVM2MYm66wce2_s3bbeL1gAj5Om_G2kBnTMQPLQjp6Yl5IG3aIQvfuP7Y0eLaraD7Ta44bPjMhjRcTinpZMiqt7Tvgh11KtfKhrimDziAl1Pap3Dl70TJcehc2Y4OJHMg_DRWXGyPqb2aD7ZgnOxdNCury9Yrtl5JL07x4nP-xLibDUXDOxN8AX4wUNEDzn7S8PMoRlnpb1tAx8z9c9GeS9-l-lzPx4">
+<div class="lg:col-span-7 relative h-[600px] md:h-[800px] bg-surface-container rounded-lg overflow-hidden flex flex-col items-center justify-center p-8 md:p-12">
+<img class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-opacity duration-300" data-alt="Modern smartphone floating against a minimal studio background with dramatic rim lighting highlighting titanium black finish and camera lenses" src="./assets/images/referential/iphone-17-pro-max-black.jpeg">
+<div class="mt-8 flex gap-4 z-10">
+<button class="color-btn w-10 h-10 rounded-full bg-[#1C1C1E] ring-2 ring-[#1C1C1E] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 3px;" data-image="./assets/images/referential/iphone-17-pro-max-black.jpeg" aria-label="Titanium Black"></button>
+<button class="color-btn w-10 h-10 rounded-full bg-[#E5E5EA] ring-2 ring-[#E5E5EA] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-17-pro-max-white.jpeg" aria-label="Titanium White"></button>
+<button class="color-btn w-10 h-10 rounded-full bg-[#D1713F] ring-2 ring-[#D1713F] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-17-pro-max-orange.jpeg" aria-label="Cosmic Orange"></button>
+</div>
 <!-- Floating Detail Badge -->
 <div class="absolute bottom-10 left-10 p-6 bg-surface-container-lowest/80 backdrop-blur-md rounded-lg max-w-[240px]">
 <p class="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">Build Integrity</p>
@@ -75,15 +80,15 @@
 <span class="text-primary font-semibold tracking-wide text-xs uppercase mb-3 block">New Arrival</span>
 <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-4">iPhone 17 Pro Max</h1>
 <p class="text-on-surface-variant text-lg max-w-md mb-6">Titanium Black. The strongest, lightest, and most advanced iPhone ever created.</p>
-<div class="text-3xl font-semibold text-on-surface">$1,299.00</div>
+<div class="product-price text-3xl font-semibold text-on-surface transition-all">$1,299.00</div>
 </div>
 <!-- Storage Selector -->
 <div class="mb-10">
 <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block">Select Capacity</label>
 <div class="grid grid-cols-3 gap-3">
-<button class="px-6 py-4 rounded-lg bg-primary-container text-on-primary-container ring-1 ring-primary font-semibold transition-all">256GB</button>
-<button class="px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all">512GB</button>
-<button class="px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all">1TB</button>
+<button class="storage-btn px-6 py-4 rounded-lg bg-primary-container text-on-primary-container ring-1 ring-primary font-semibold transition-all active:scale-95" data-price="$1,299.00">256GB</button>
+<button class="storage-btn px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all active:scale-95" data-price="$1,499.00">512GB</button>
+<button class="storage-btn px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all active:scale-95" data-price="$1,699.00">1TB</button>
 </div>
 </div>
 <!-- Action Group -->

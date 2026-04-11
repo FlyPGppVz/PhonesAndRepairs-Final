@@ -63,8 +63,8 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 <!-- Product Image Gallery (Asymmetric) -->
 <div class="relative group">
-<div class="aspect-[4/5] rounded-lg bg-surface-container-low overflow-hidden flex items-center justify-center">
-<img alt="iPhone 15 Pro Blue Titanium" class="w-full h-full object-contain p-12 transition-transform duration-700 group-hover:scale-105" data-alt="Side profile of iPhone 15 Pro in Blue Titanium showing the brushed texture of the metal and the triple lens camera module on a white minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtsb2xmsPQTVRtcwPD0F8hJXvzzzCD2HsyEir0zl7DvVQGb4Et0GzC3CpvYzISKARSnyMxVZ-BU4reJgCkv71rJ5ju8N2ZDUK3-EIF4NC62jz-IDKZgl0lZRNNPvj7Arod9ix0G16z-sr-p4Mdnv2bRPyqkbiBJc2YcJanFcCq-jCoMMVmXaMBoc7Yrf3wl9e81fCqjlsyyPE8lsN2LT8LPQ3dFSAML-Knc5qqZ5l5gY32P-CoOaCHVO0WHuhPW65zBZPdhJD1dPE">
+<div class="aspect-[4/5] rounded-lg bg-surface-container-lowest overflow-hidden flex items-center justify-center p-12 relative">
+<img class="product-main-image w-full h-[80%] object-contain drop-shadow-2xl transition-opacity duration-300 mix-blend-multiply" data-alt="Side profile of iPhone 15 Pro in Blue Titanium showing the brushed texture of the metal and the triple lens camera module on a white minimalist background" src="./assets/images/referential/iphone-15-pro-max-titanio.jpeg">
 </div>
 </div>
 <!-- Product Info Content -->
@@ -78,18 +78,37 @@
                         </h1>
 <p class="text-xl text-on-surface-variant font-medium">Blue Titanium</p>
 </div>
-<div class="flex flex-col gap-4 py-6 border-y border-surface-container">
-<p class="text-[1.75rem] font-semibold text-primary">$800.00</p>
+<div class="flex flex-col gap-4 py-6 border-y border-surface-container-low">
+<p class="product-price text-[1.75rem] font-semibold text-primary transition-all">$800.00</p>
 <p class="text-on-surface-variant max-w-md">
                             Forged in titanium. Featuring the groundbreaking A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.
                         </p>
 </div>
+
+<!-- Finish Selection -->
+<div class="space-y-3">
+<label class="text-sm font-semibold">Finish</label>
+<div class="flex gap-4">
+<button class="color-btn w-10 h-10 rounded-full bg-[#B6B0A9] ring-2 ring-[#B6B0A9] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 3px;" data-image="./assets/images/referential/iphone-15-pro-max-titanio.jpeg" aria-label="Natural Titanium"></button>
+<button class="color-btn w-10 h-10 rounded-full bg-[#FAFAFA] ring-2 ring-slate-200 border border-slate-200 shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-15-pro-max-titanioW.jpeg" aria-label="White Titanium"></button>
+<button class="color-btn w-10 h-10 rounded-full bg-[#202022] ring-2 ring-[#202022] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-15-pro-max-titaniob.jpeg" aria-label="Black Titanium"></button>
+</div>
+</div>
 <div class="flex flex-col gap-4">
 <p class="text-sm font-semibold uppercase tracking-widest text-outline">Configuration</p>
-<div class="flex gap-3">
-<button class="px-6 py-3 rounded-full border-2 border-primary bg-surface-container-lowest text-primary font-semibold">128GB</button>
-<button class="px-6 py-3 rounded-full border-2 border-surface-variant bg-surface-container-lowest text-on-surface-variant">256GB</button>
-<button class="px-6 py-3 rounded-full border-2 border-surface-variant bg-surface-container-lowest text-on-surface-variant">512GB</button>
+<div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+<button class="storage-btn flex flex-col items-center justify-center py-4 rounded-lg border-2 border-primary bg-primary-container text-on-primary-container font-semibold transition-all active:scale-95" data-price="$800.00">
+<span class="block text-lg">128GB</span>
+<span class="text-xs font-normal opacity-70">Base</span>
+</button>
+<button class="storage-btn flex flex-col items-center justify-center py-4 rounded-lg border border-outline-variant hover:border-primary bg-surface-container-lowest text-on-surface font-semibold transition-all active:scale-95" data-price="$900.00">
+<span class="block text-lg">256GB</span>
+<span class="text-xs font-normal opacity-70">+$100</span>
+</button>
+<button class="storage-btn flex flex-col items-center justify-center py-4 rounded-lg border border-outline-variant hover:border-primary bg-surface-container-lowest text-on-surface font-semibold transition-all active:scale-95" data-price="$1,100.00">
+<span class="block text-lg">512GB</span>
+<span class="text-xs font-normal opacity-70">+$300</span>
+</button>
 </div>
 </div>
 <div class="mt-4 flex gap-4">

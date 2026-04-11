@@ -61,8 +61,8 @@
 <section class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[819px]">
 <!-- Image Gallery Bento -->
 <div class="space-y-6">
-<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex items-center justify-center p-12 aspect-square">
-<img alt="iPhone 16 Ultramarine" class="h-full object-contain" data-alt="High-resolution floating product shot of iPhone 16 in vibrant Ultramarine blue, sleek glass finish, professional studio lighting with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrwFbV-hPQhhPZt41D2tMP_uo9hOr0CZyEaI5_ByHKdoKQ3heg0X-3__GGyP0E1fXWoeIYcJklXIpaU0oUI_4cZBeDqU5KunRyQzjriMlshvBYV6IXCql9xxWonUf_Ozkb1FMQBUpYtEmDM2eGznNW66hREjn65NhWZURbfpovVC3E_xjyeVuryaZCzGSaSoJKuK56UceV5y7ZYTVIpLaN-5byWTies7MoRf6rqydA5tdRM39XJMX0uvgerX0qw7EtVaHKGEhXqe0">
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col items-center justify-center p-12 aspect-square relative">
+<img class="product-main-image w-full h-[80%] object-contain drop-shadow-2xl transition-opacity duration-300 mix-blend-multiply" data-alt="High-resolution floating product shot of iPhone 16 in vibrant Ultramarine blue, sleek glass finish, professional studio lighting with soft shadows" src="./assets/images/referential/iphone-16-ultramarino.jpeg">
 </div>
 <div class="grid grid-cols-3 gap-4">
 <div class="aspect-square bg-surface-container-low rounded-lg p-4 cursor-pointer hover:bg-surface-container transition-colors">
@@ -84,17 +84,35 @@
 <h1 class="text-[3.5rem] font-bold leading-[1.1] tracking-tighter text-on-surface mb-4">iPhone 16</h1>
 <p class="text-lg text-on-surface-variant mb-8 max-w-lg">The first iPhone built for Intelligence. Featuring an all-new Camera Control and the ultra-powerful A18 chip.</p>
 <div class="mb-10">
-<label class="block text-sm font-semibold mb-4 text-on-surface">Finish: <span class="text-on-surface-variant font-normal">Ultramarine</span></label>
+<label class="block text-sm font-semibold mb-4 text-on-surface">Finish</label>
 <div class="flex gap-4">
-<button class="w-12 h-12 rounded-full bg-[#3d5ba9] ring-2 ring-primary ring-offset-2 transition-all"></button>
-<button class="w-12 h-12 rounded-full bg-[#f4f3f8] ring-1 ring-outline-variant/30 hover:ring-primary/50 transition-all"></button>
-<button class="w-12 h-12 rounded-full bg-[#fce4ec] ring-1 ring-outline-variant/30 hover:ring-primary/50 transition-all"></button>
-<button class="w-12 h-12 rounded-full bg-[#0c0e10] ring-1 ring-outline-variant/30 hover:ring-primary/50 transition-all"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#3d5ba9] ring-2 ring-[#3d5ba9] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 3px;" data-image="./assets/images/referential/iphone-16-ultramarino.jpeg" aria-label="Ultramarine"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#f4f3f8] ring-2 ring-slate-200 border border-slate-200 shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-16-white.jpeg" aria-label="White"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#fce4ec] ring-2 ring-[#fce4ec] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-16-pink.jpeg" aria-label="Pink"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#0c0e10] ring-2 ring-[#0c0e10] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iphone-16-black.jpeg" aria-label="Black"></button>
+</div>
+</div>
+<!-- Storage -->
+<div class="mb-10">
+<h3 class="text-sm font-bold text-on-surface mb-4">Capacity</h3>
+<div class="grid grid-cols-2 gap-4">
+<button class="storage-btn p-6 bg-primary-container border-2 border-primary ring-1 ring-primary text-on-primary-container rounded-lg text-center transition-all active:scale-95" data-price="$600.00">
+<span class="font-bold block">128GB</span>
+<span class="text-xs opacity-70">Standard</span>
+</button>
+<button class="storage-btn p-6 bg-surface-container-lowest border border-outline-variant rounded-lg text-center hover:border-primary transition-all active:scale-95 text-on-surface" data-price="$700.00">
+<span class="font-bold block">256GB</span>
+<span class="text-xs opacity-70">+$100</span>
+</button>
+<button class="storage-btn p-6 bg-surface-container-lowest border border-outline-variant rounded-lg text-center hover:border-primary transition-all active:scale-95 text-on-surface" data-price="$900.00">
+<span class="font-bold block">512GB</span>
+<span class="text-xs opacity-70">+$300</span>
+</button>
 </div>
 </div>
 <div class="mb-10">
 <div class="flex items-baseline gap-2 mb-6">
-<span class="text-3xl font-bold text-on-surface">$600.00</span>
+<span class="product-price text-3xl font-bold text-on-surface transition-all">$600.00</span>
 <span class="text-sm text-on-surface-variant">or $25.00/mo. for 24 mo.</span>
 </div>
 <div class="flex flex-col sm:flex-row gap-4">

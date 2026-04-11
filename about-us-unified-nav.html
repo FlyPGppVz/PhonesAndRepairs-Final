@@ -7,7 +7,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script></head>
+<link rel="stylesheet" href="./css/style.css">
+<style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    .floating-img {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>
+<script src="./js/tailwind-config.js"></script></head>
 <body class="bg-background text-on-surface antialiased">
 <!-- TopNavBar -->
 <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50">
@@ -62,19 +73,19 @@
 <div class="space-y-8">
 <span class="text-primary font-semibold tracking-widest uppercase text-xs">Our Legacy</span>
 <h1 class="text-[3.5rem] leading-[1.1] font-bold tracking-tight text-on-surface">
-                    Repairing <br>
-<span class="text-primary italic">the future.</span>
+                    Expert Repair <br>
+<span class="text-primary italic">Services.</span>
 </h1>
 <p class="text-body-lg text-on-surface-variant max-w-lg leading-relaxed">
-                    At CellphonesAndRepair, we don't just fix devices; we extend the lifecycle of technology. Through precision engineering and a commitment to sustainability, we’re redefining what it means to be a modern repair clinic.
+                    At Cell Phone and Repair, we specialize in high-quality repair services for all mobile devices. Our experienced technicians are trained to handle everything from screen replacements to complex motherboard repairs.
                 </p>
 <div class="flex gap-4 pt-4">
-<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-semibold hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<a href="./services-unified-nav.html" class="bg-primary text-on-primary px-8 py-4 rounded-full font-semibold hover:opacity-90 transition-all shadow-lg shadow-primary/20 inline-block">
                         View Our Services
-                    </button>
-<button class="bg-surface-container-lowest text-on-surface-variant px-8 py-4 rounded-full font-semibold border border-outline-variant/20 hover:bg-surface-container-low transition-all">
+                    </a>
+<a href="./our-story.html" class="bg-surface-container-lowest text-on-surface-variant px-8 py-4 rounded-full font-semibold border border-outline-variant/20 hover:bg-surface-container-low transition-all inline-block">
                         Our Story
-                    </button>
+                    </a>
 </div>
 </div>
 <div class="relative group">
@@ -151,7 +162,7 @@
 <div class="max-w-4xl mx-auto text-center relative z-10">
 <span class="text-primary font-bold text-sm tracking-widest uppercase mb-6 block">Our Mission</span>
 <h2 class="text-[2.5rem] md:text-[3rem] font-bold text-on-surface leading-tight mb-10">
-                    "To empower technology owners through expert craftsmanship, reducing environmental impact one device at a time."
+                    "We strive to ensure that our customers are completely satisfied and leave with a working device and a smile on their face."
                 </h2>
 <div class="flex flex-wrap justify-center gap-12 border-t border-surface-container-highest pt-12">
 <div>
@@ -172,11 +183,11 @@
 <!-- Workspace Gallery -->
 <section class="py-24 px-8 max-w-[1440px] mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="rounded-lg overflow-hidden h-[500px]">
+<div class="rounded-lg overflow-hidden h-[500px] floating-img">
 <img class="w-full h-full object-cover" data-alt="Clean minimal lab setting with professional store layout" src="./assets/images/IMG_3939.jpeg">
 </div>
 <div class="flex flex-col gap-8">
-<div class="rounded-lg overflow-hidden h-[234px]">
+<div class="rounded-lg overflow-hidden h-[234px] floating-img" style="animation-delay: 2s;">
 <img class="w-full h-full object-cover" data-alt="A wide view of a modern bright front desk" src="./assets/images/IMG_3941.jpeg">
 </div>
 <div class="bg-surface-container p-12 rounded-lg h-[234px] flex flex-col justify-center">
