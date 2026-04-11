@@ -123,6 +123,59 @@ Shop
             Better yet, see us in person! We love our customers, so feel free to visit during normal business hours.
         </p>
 </section>
+<!-- Newsletter / Subscribe Banner -->
+<section class="max-w-[1440px] mx-auto px-8 mb-16">
+  <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#063183] via-[#0a44a8] to-[#0d55d0] px-12 py-12 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl shadow-[#063183]/30">
+
+    <!-- Glowing orb behind products -->
+    <div class="absolute right-[30%] top-1/2 -translate-y-1/2 w-[340px] h-[340px] bg-[#4a9eff]/20 rounded-full blur-[80px] pointer-events-none"></div>
+
+    <!-- Left: Copy + Form -->
+    <div class="relative z-10 max-w-lg flex-1">
+      <p class="text-[11px] font-extrabold uppercase tracking-[0.3em] text-blue-200 mb-4">Stay in the loop</p>
+      <h2 class="text-[2rem] lg:text-[2.4rem] font-extrabold text-white leading-tight tracking-tight mb-4">
+        Subscribe to keep up with<br>our great deals.
+      </h2>
+      <p class="text-blue-100/80 text-[0.95rem] leading-relaxed mb-8 max-w-md">
+        Stay ahead of the curve with exclusive offers, the latest product updates, and special discounts delivered straight to your inbox.
+      </p>
+      <!-- Email + CTA row -->
+      <div class="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          class="flex-1 bg-white/15 border border-white/20 text-white placeholder:text-white/50 rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/20 transition-all backdrop-blur-sm"
+          id="newsletter-email"
+        >
+        <button
+          onclick="document.getElementById('newsletter-email').value && alert('Thank you for subscribing! ðŸŽ‰')"
+          class="bg-white text-[#063183] font-bold text-sm px-7 py-3 rounded-full hover:bg-blue-50 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-black/20">
+          Subscribe Now
+        </button>
+      </div>
+      <p class="text-[11px] text-white/40 mt-4">No spam, ever. Unsubscribe at any time.</p>
+    </div>
+
+    <!-- Right: Floating product images -->
+    <div class="relative z-10 flex-shrink-0 w-full lg:w-[380px] h-[200px] lg:h-[240px] pointer-events-none select-none">
+      <!-- iPhone -->
+      <img src="./assets/images/Tienda/iphone-16-pro-max-tiniumblack.jpeg"
+           alt="iPhone"
+           class="absolute right-16 top-0 h-[220px] w-auto object-contain drop-shadow-2xl rotate-[-6deg] scale-95 hover:scale-100 transition-transform duration-700"
+           style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));">
+      <!-- AirPods -->
+      <img src="./assets/images/Tienda/airpods_pro.png"
+           alt="AirPods"
+           class="absolute right-0 bottom-0 h-[120px] w-auto object-contain drop-shadow-xl rotate-[8deg]"
+           style="filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));">
+      <!-- Apple Watch -->
+      <img src="./assets/images/Tienda/S25-png.webp"
+           alt="Apple Watch"
+           class="absolute left-4 top-6 h-[130px] w-auto object-contain drop-shadow-xl rotate-[-12deg]"
+           style="filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));">
+    </div>
+  </div>
+</section>
 <!-- Bento Grid Content -->
 <section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
 <!-- Contact Form Card -->
@@ -200,12 +253,12 @@ Shop
 </div>
 <ul class="space-y-6">
 <li class="flex justify-between items-center border-b border-outline-variant/10 pb-4">
-<span class="text-on-surface-variant font-medium">Monday â€” Saturday</span>
-<span class="font-bold">10:00 am â€” 08:00 pm</span>
+<span class="text-on-surface-variant font-medium">Monday Ã¢â‚¬â€ Saturday</span>
+<span class="font-bold">10:00 am Ã¢â‚¬â€ 08:00 pm</span>
 </li>
 <li class="flex justify-between items-center">
 <span class="text-on-surface-variant font-medium">Sunday</span>
-<span class="font-bold">10:00 am â€” 06:00 pm</span>
+<span class="font-bold">10:00 am Ã¢â‚¬â€ 06:00 pm</span>
 </li>
 </ul>
 <div class="mt-10">
@@ -266,7 +319,7 @@ Shop
 <a class="hover:underline transition-all underline-offset-4" href="./locations.html">Locations</a>
 </div>
 <div class="col-span-2 md:col-span-4 lg:col-span-5 pt-8 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
-<div>Â© 2024 CellphonesAndRepair. All rights reserved.</div>
+<div>Ã‚Â© 2024 CellphonesAndRepair. All rights reserved.</div>
 <div class="flex gap-4">
 <button class="material-symbols-outlined text-slate-400 hover:text-blue-500">public</button>
 <button class="material-symbols-outlined text-slate-400 hover:text-blue-500">mail</button>
@@ -291,5 +344,6 @@ Shop
   </div>
 </a>
 <script src="./js/cart.js"></script><script src="./js/main.js"></script></body></html>
+
 
 
