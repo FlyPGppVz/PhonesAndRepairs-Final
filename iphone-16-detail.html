@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script></head>
 <body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopNavBar -->
+<!-- TopNavBar Updated as per COMPONENTS_95 - Sync 2026-04-11 -->
 <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200/50">
 <nav class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto">
 <div class="flex items-center gap-10">
@@ -62,7 +62,7 @@
 <!-- Image Gallery Bento -->
 <div class="space-y-6">
 <div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col items-center justify-center p-12 aspect-square relative">
-<img class="product-main-image w-full h-[80%] object-contain drop-shadow-2xl transition-opacity duration-300 mix-blend-multiply" data-alt="High-resolution floating product shot of iPhone 16 in vibrant Ultramarine blue, sleek glass finish, professional studio lighting with soft shadows" src="./assets/images/referential/iPhone-16-ultramarino.jpeg">
+<img class="product-main-image w-full h-[80%] object-contain drop-shadow-2xl transition-opacity duration-300 mix-blend-multiply" data-alt="High-resolution floating product shot of iPhone 16 in vibrant Ultramarine blue, sleek glass finish, professional studio lighting with soft shadows" src="./assets/images/Tienda/iphone-16-ultramarino.jpeg">
 </div>
 <div class="grid grid-cols-3 gap-4">
 <div class="aspect-square bg-surface-container-low rounded-lg p-4 cursor-pointer hover:bg-surface-container transition-colors">
@@ -86,10 +86,10 @@
 <div class="mb-10">
 <label class="block text-sm font-semibold mb-4 text-on-surface">Finish</label>
 <div class="flex gap-4">
-<button class="color-btn w-12 h-12 rounded-full bg-[#3d5ba9] ring-2 ring-[#3d5ba9] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 3px;" data-image="./assets/images/referential/iPhone-16-ultramarino.jpeg" aria-label="Ultramarine"></button>
-<button class="color-btn w-12 h-12 rounded-full bg-[#f4f3f8] ring-2 ring-slate-200 border border-slate-200 shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iPhone-16-white.jpeg" aria-label="White"></button>
-<button class="color-btn w-12 h-12 rounded-full bg-[#fce4ec] ring-2 ring-[#fce4ec] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iPhone-16-pink.jpeg" aria-label="Pink"></button>
-<button class="color-btn w-12 h-12 rounded-full bg-[#0c0e10] ring-2 ring-[#0c0e10] shadow-inner transition-all hover:scale-110" data-image="./assets/images/referential/iPhone-16-black.jpeg" aria-label="Black"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#3d5ba9] ring-2 ring-[#3d5ba9] shadow-inner transition-all hover:scale-110" style="outline: 2px solid #2563eb; outline-offset: 3px;" data-image="./assets/images/Tienda/iphone-16-ultramarino.jpeg" aria-label="Ultramarine"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#f4f3f8] ring-2 ring-slate-200 border border-slate-200 shadow-inner transition-all hover:scale-110" data-image="./assets/images/Tienda/iphone-16-white.jpeg" aria-label="White"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#fce4ec] ring-2 ring-[#fce4ec] shadow-inner transition-all hover:scale-110" data-image="./assets/images/Tienda/iphone-16-pink.jpeg" aria-label="Pink"></button>
+<button class="color-btn w-12 h-12 rounded-full bg-[#0c0e10] ring-2 ring-[#0c0e10] shadow-inner transition-all hover:scale-110" data-image="./assets/images/Tienda/iphone-16-black.jpeg" aria-label="Black"></button>
 </div>
 </div>
 <!-- Storage -->
@@ -218,21 +218,28 @@
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 px-8 border-t border-slate-100 dark:border-slate-900">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex flex-col items-center md:items-start gap-2">
-<span class="text-sm font-semibold text-slate-400">CellphonesAndRepair</span>
-<span class="text-xs font-normal text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</span>
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
+<div class="col-span-2">
+<div class="font-semibold text-slate-900 dark:text-white text-xl mb-4">CellphonesAndRepair</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs">Restoring tech history with editorial precision. Quality curated refurbished classics for the modern era.</p>
 </div>
-<div class="flex gap-8">
-<a class="text-xs font-normal text-slate-500 hover:underline hover:text-slate-700 dark:hover:text-slate-200 transition-all" href="./privacy-policy-unified-nav.html">Privacy Policy</a>
-<a class="text-xs font-normal text-slate-500 hover:underline hover:text-slate-700 dark:hover:text-slate-200 transition-all" href="./services-unified-nav.html">Terms of Service</a>
-<a class="text-xs font-normal text-slate-500 hover:underline hover:text-slate-700 dark:hover:text-slate-200 transition-all" href="#">Cookies</a>
+<div class="flex flex-col gap-3">
+<h4 class="text-slate-900 dark:text-white font-semibold text-sm">Services</h4>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">iPhone Repair</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Android Repair</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Accessories</a>
 </div>
-<div class="flex gap-4">
-<button class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
-<span class="material-symbols-outlined text-sm">language</span>
-</button>
+<div class="flex flex-col gap-3">
+<h4 class="text-slate-900 dark:text-white font-semibold text-sm">Support</h4>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Warranty</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./sustainability.html">Sustainability</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./careers.html">Careers</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-slate-900 dark:text-white font-semibold text-sm">Legal</h4>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./privacy-policy-unified-nav.html">Privacy Policy</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./services-unified-nav.html">Terms of Service</a>
 </div>
 </div>
 </footer>
