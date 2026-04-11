@@ -4,8 +4,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-
 <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script></head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
 <!-- Top Navigation Bar -->
@@ -114,16 +112,34 @@ Shop
 </div>
 </nav>
 </header>
+
 <main class="pt-24 pb-20">
 <!-- Hero Section -->
-<section class="max-w-[1440px] mx-auto px-8 mb-16">
-<div class="text-center md:text-left md:max-w-3xl">
-<h1 class="text-[3.5rem] font-bold tracking-tight text-on-surface mb-6 leading-[1.1]">Precision Repair for the <span class="text-primary">Devices You Love.</span></h1>
-<p class="text-[1.125rem] text-on-surface-variant leading-relaxed mb-8">Specialized technical solutions for mobile hardware, tablets, and gaming consoles. We restore your technology to original factory standards using premium components and certified expertise.</p>
+<section class="max-w-[1440px] mx-auto px-8 mb-24 pt-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="text-center lg:text-left">
+<h1 class="text-[3.5rem] md:text-[4.5rem] font-bold tracking-tight text-on-surface mb-8 leading-[1.05]">Precision Repair for the <br><span class="text-primary">Devices You Love.</span></h1>
+<p class="text-[1.25rem] text-on-surface-variant leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">Specialized technical solutions for mobile hardware, tablets, and gaming consoles. We restore your technology to original factory standards using premium components and certified expertise.</p>
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+<a href="#services" class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-xl shadow-primary/20 active:scale-95">Find Your Repair</a>
+<a href="./contact-unified-nav.html" class="px-8 py-4 bg-surface-container text-on-surface rounded-full font-bold text-sm hover:bg-surface-container-high transition-all border border-outline-variant/30 active:scale-95">Talk to a Technician</a>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/10 rounded-[2.5rem] blur-3xl group-hover:bg-primary/20 transition-all duration-700 opacity-0 group-hover:opacity-100"></div>
+<div class="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-white/20 dark:border-white/10">
+<video class="w-full h-full object-cover" autoplay muted loop playsinline>
+<source src="./assets/videos/Video_service.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+</div>
+</div>
 </div>
 </section>
+
 <!-- Main Services Bento Grid -->
-<section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+<section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8" id="services">
 <!-- iPhone Repairs (Large Featured) -->
 <div class="md:col-span-8 bg-surface-container-lowest rounded-lg p-10 flex flex-col md:flex-row gap-8 items-center overflow-hidden border border-outline-variant/10 shadow-sm">
 <div class="flex-1 space-y-6">
@@ -135,16 +151,16 @@ Shop
 <ul class="space-y-3">
 <li class="flex items-center gap-3 text-on-surface">
 <span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                        Super Retina XDR Screen Replacement
-                    </li>
+            Super Retina XDR Screen Replacement
+        </li>
 <li class="flex items-center gap-3 text-on-surface">
 <span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                        Battery Health Restoration
-                    </li>
+            Battery Health Restoration
+        </li>
 <li class="flex items-center gap-3 text-on-surface">
 <span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                        Complex Liquid Damage Recovery
-                    </li>
+            Complex Liquid Damage Recovery
+        </li>
 </ul>
 <a href="iphone-repairs.html" class="mt-4 px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20 inline-block text-center w-fit">Get Quote</a>
 </div>
@@ -152,6 +168,7 @@ Shop
 <img class="w-full h-auto rounded-xl object-cover" data-alt="Clean overhead shot of a disassembled high-end smartphone with precision tools on a light gray technical workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHEC9ztnqm0E3gsn2LpC5ov8waCFZjtbIwunl7271KPgximKvsMbQCtJ2mlCR5BWtBH02n5dppjAfa5iff8H_U6Xw4FUgubduzEQZenhS3ZOTGIm645WuIbbx08su72hOuxdWXsT-vhlvcY7ri_OE1Osoyayoi-f1IjTeL_lrsZ5xdj2fJwaGRDvm9B4qfcWIro8WyBCSOt7EMjxEUW85mqsdch5f5ju_HRRutIJQvkJjFJJG06NROYyycl01Sk1nMedGg0BFz0EY">
 </div>
 </div>
+
 <!-- Android Repairs -->
 <div class="md:col-span-4 bg-surface-container rounded-lg p-10 flex flex-col justify-between border border-outline-variant/10">
 <div>
@@ -171,6 +188,7 @@ Shop
 </div>
 <a href="android-repairs.html" class="mt-8 px-6 py-3 bg-surface-container-lowest text-primary border border-primary/20 rounded-full font-semibold text-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95 inline-block text-center w-fit">Get Quote</a>
 </div>
+
 <!-- iPad and Tablets Repairs -->
 <div class="md:col-span-6 bg-inverse-surface text-white rounded-lg p-10 overflow-hidden relative">
 <div class="relative z-10 h-full flex flex-col justify-between">
@@ -187,11 +205,11 @@ Shop
 </div>
 <a href="ipad-and-tablet-repairs.html" class="mt-10 self-start px-8 py-3 bg-white text-inverse-surface rounded-full font-semibold text-sm hover:bg-primary-fixed-dim transition-all active:scale-95 inline-block text-center w-fit">Get Quote</a>
 </div>
-<!-- Decorative background image with low opacity -->
 <div class="absolute right-[-10%] bottom-[-10%] w-2/3 h-2/3 opacity-20 pointer-events-none">
-<img alt="iPad Repair" class="object-contain" data-alt="Sleek modern tablet lying flat on a minimalist dark surface with soft ambient blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNgEcm2pmR49glEOEmuUHigsAMiiLdXnEFgInEfPmDMdhFz_rPO7G8K-oAWfXYaditaP8uYKQ8RznQp5g72Jy24G7KH5UMaaEs5hqMKpapPrCyLOPPGGR_LucfkgKs1uNZthoD-HiWqUHSj_ZUnIinowveZcd5GY2_52cuFlGggAIMXeOJsnMTDrGivQJ7wYHHRy5eLXq2Z8OaYQ2TLZmo0EiHq5fi3ekIyqXgo38d4-hzM4ptrKvbk6b5uRyJLpsf6mQswYSgi9Q">
+<img alt="iPad Repair" class="object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNgEcm2pmR49glEOEmuUHigsAMiiLdXnEFgInEfPmDMdhFz_rPO7G8K-oAWfXYaditaP8uYKQ8RznQp5g72Jy24G7KH5UMaaEs5hqMKpapPrCyLOPPGGR_LucfkgKs1uNZthoD-HiWqUHSj_ZUnIinowveZcd5GY2_52cuFlGggAIMXeOJsnMTDrGivQJ7wYHHRy5eLXq2Z8OaYQ2TLZmo0EiHq5fi3ekIyqXgo38d4-hzM4ptrKvbk6b5uRyJLpsf6mQswYSgi9Q">
 </div>
 </div>
+
 <!-- Consoles Repairs -->
 <div class="md:col-span-6 bg-surface-container-low rounded-lg p-10 border border-outline-variant/10 flex flex-col md:flex-row items-center gap-8">
 <div class="flex-1">
@@ -221,6 +239,7 @@ Shop
 </div>
 </div>
 </section>
+
 <!-- Trust Indicators Section -->
 <section class="max-w-[1440px] mx-auto px-8 mt-24 py-16 bg-surface-container-low rounded-xl">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -243,7 +262,7 @@ Shop
 </div>
 </section>
 </main>
-<!-- Footer Component -->
+
 <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto font-sans text-sm text-slate-500 dark:text-slate-400">
 <div class="col-span-2 lg:col-span-1">
