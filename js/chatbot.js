@@ -89,11 +89,11 @@ class ChatbotWidget {
         // Floating Toggle Button
         this.toggleBtn = document.createElement('button');
         this.toggleBtn.classList.add(
-            'w-14', 'h-14', 'rounded-full', 'bg-primary', 'text-on-primary', 'shadow-xl', 'shadow-primary/30',
+            'w-11', 'h-11', 'rounded-full', 'bg-primary', 'text-on-primary', 'shadow-xl', 'shadow-primary/30',
             'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', 'z-[9999]'
         );
         this.toggleBtn.innerHTML = `
-            <span class="material-symbols-outlined text-[28px] transition-transform duration-300" id="chatbot-toggle-icon">chat</span>
+            <span class="material-symbols-outlined text-[22px] transition-transform duration-300" id="chatbot-toggle-icon">chat</span>
         `;
 
         // Append to container
