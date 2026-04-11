@@ -270,38 +270,23 @@ Shop
 </section>
 
 <!-- Newsletter Subscribe Banner -->
-<section class="max-w-[1440px] mx-auto px-8 mb-0">
-  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#063183] via-[#0a4dc7] to-[#1a6fff] p-12 md:p-16 shadow-2xl">
-    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <!-- Text Content -->
-      <div>
-        <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-200 mb-4">Stay in the loop</p>
-        <h2 class="text-3xl md:text-[2.5rem] font-extrabold text-white leading-[1.15] tracking-tight mb-5">Subscribe to keep up with our great deals.</h2>
-        <p class="text-blue-100/80 text-[15px] leading-relaxed mb-8 max-w-md">Stay ahead of the curve with exclusive offers, the latest product updates, and special discounts delivered straight to your inbox.</p>
-        <div class="flex flex-col sm:flex-row gap-3 mb-4">
-          <input type="email" placeholder="Enter your email"
-                 class="flex-1 px-6 py-4 rounded-full bg-white/15 border border-white/20 text-white placeholder:text-blue-200/60 focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/20 transition-all text-sm backdrop-blur-sm">
-          <button class="px-8 py-4 bg-white text-[#063183] rounded-full font-bold text-sm hover:bg-blue-50 active:scale-95 transition-all shadow-lg shadow-black/10 whitespace-nowrap">
-            Subscribe Now
-          </button>
-        </div>
-        <p class="text-[11px] text-blue-200/50 tracking-wide">No spam, ever. Unsubscribe at any time.</p>
+<section class="max-w-[1200px] mx-auto px-8 mb-4 group/banner">
+  <div class="relative overflow-hidden rounded-3xl bg-[#063183] p-12 md:p-16 shadow-2xl transition-all duration-500">
+    <!-- Hover glow effect behind header -->
+    <div class="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#063183]/0 group-hover/banner:bg-[#1a6fff]/30 rounded-full blur-[100px] transition-all duration-700 pointer-events-none"></div>
+    <div class="relative z-10 max-w-xl">
+      <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-blue-200/70 mb-4">Stay in the loop</p>
+      <h2 class="text-3xl md:text-[2.5rem] font-extrabold text-white leading-[1.15] tracking-tight mb-5">Subscribe to keep up with our great deals.</h2>
+      <p class="text-blue-100/60 text-[15px] leading-relaxed mb-8 max-w-md">Stay ahead of the curve with exclusive offers, the latest product updates, and special discounts delivered straight to your inbox.</p>
+      <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <input type="email" placeholder="Enter your email"
+               class="flex-1 px-6 py-4 rounded-full bg-white/10 border border-white/15 text-white placeholder:text-blue-200/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/15 transition-all text-sm backdrop-blur-sm">
+        <button class="px-8 py-4 bg-white text-[#063183] rounded-full font-bold text-sm hover:bg-blue-50 active:scale-95 transition-all shadow-lg shadow-black/10 whitespace-nowrap">
+          Subscribe Now
+        </button>
       </div>
-      <!-- Device Image Collage -->
-      <div class="hidden md:flex items-center justify-center relative">
-        <div class="relative w-[320px] h-[280px]">
-          <img src="./assets/images/Tienda/iphone-16-pro-max-tiniumblack.jpeg" alt="iPhone"
-               class="absolute top-0 left-0 w-40 h-56 object-contain drop-shadow-2xl z-20 rotate-[-4deg] hover:rotate-0 transition-transform duration-500">
-          <img src="./assets/images/Tienda/airpodspro2.jpeg" alt="AirPods"
-               class="absolute bottom-0 right-0 w-32 h-32 object-contain drop-shadow-2xl z-10 rotate-[6deg] hover:rotate-0 transition-transform duration-500">
-          <img src="./assets/images/Tienda/applewatchultra2.jpeg" alt="Apple Watch"
-               class="absolute top-4 right-8 w-28 h-28 object-contain drop-shadow-2xl z-30 rotate-[3deg] hover:rotate-0 transition-transform duration-500">
-        </div>
-      </div>
+      <p class="text-[11px] text-blue-200/35 tracking-wide">No spam, ever. Unsubscribe at any time.</p>
     </div>
-    <!-- Decorative blurred circles -->
-    <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-400/10 rounded-full blur-3xl"></div>
   </div>
 </section>
 <!-- Social Media Section - Apple Style -->
@@ -393,6 +378,7 @@ Shop
   </div>
 </a>
 <script src="./js/cart.js"></script><script src="./js/main.js"></script></body></html>
+
 
 
 
