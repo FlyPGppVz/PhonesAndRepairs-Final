@@ -35,7 +35,8 @@ class ChatbotWidget {
     renderWidget() {
         // Container
         this.container = document.createElement('div');
-        this.container.classList.add('fixed', 'bottom-6', 'right-6', 'z-[9999]', 'font-sans', 'flex', 'flex-col', 'items-end');
+        this.container.id = 'cr-chatbot-container';
+        this.container.classList.add('fixed', 'bottom-6', 'right-6', 'z-[2147483647]', 'font-sans', 'flex', 'flex-col', 'items-end');
         
         // Chat Window (hidden by default)
         this.chatWindow = document.createElement('div');
@@ -90,7 +91,7 @@ class ChatbotWidget {
         this.toggleBtn = document.createElement('button');
         this.toggleBtn.classList.add(
             'w-11', 'h-11', 'rounded-full', 'bg-primary', 'text-on-primary', 'shadow-xl', 'shadow-primary/30',
-            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', 'z-[9999]'
+            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', 'z-[2147483647]'
         );
         this.toggleBtn.innerHTML = `
             <span class="material-symbols-outlined text-[22px] transition-transform duration-300" id="chatbot-toggle-icon">chat</span>
