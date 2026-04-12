@@ -1,19 +1,46 @@
-/* 
- * CellphonesAndRepair - Persistent Chatbot Widget
- * Implements a floating chat interface with LocalStorage persistence.
- * #bot #assistant #floating-widget
+/**
+ * # ARCHIVO: js/chatbot.js
+ * # PROPÓSITO: Define y ejecuta el widget de chatbot integrado en PhonesAndRepairs.
+ * # ANÁLISIS DE CAPAS (Z-INDEX): Se utiliza el z-index máximo "z-[2147483647]" en el 
+ *   contenedor y en el botón flotante. Esto fuerza que la jerarquía visual del chatbot 
+ *   sea superior a la de los botones nativos o inyectados como los de WhatsApp.
  */
 
+// # CONSTANTES GLOBALES
+// ¿Qué hace?: Define constantes utilizadas en todo el script en lugar de textos mágicos ("magic strings").
+// ¿Para qué sirve?: Facilita el mantenimiento (Clean code) y asegura que los valores sean siempre consistentes.
+const STORAGE_KEY = 'cr_chat_history';
+const MAX_Z_INDEX = 'z-[2147483647]'; 
+
+// # CLASE PRINCIPAL
+// ¿Qué hace?: Modela los datos, el estado visual y la lógica del widget.
+// ¿Para qué sirve?: Encapsula toda la lógica de chat sin contaminar el entorno global de JavaScript.
 class ChatbotWidget {
+    
+    // # CONSTRUCTOR
+    // ¿Qué hace?: Función que se llama al instanciar la clase mediante `new`. 
+    // ¿Para qué sirve?: Declara los valores por defecto del chatbot y desencadena la inicialización.
     constructor() {
-        this.STORAGE_KEY = 'cr_chat_history';
-        this.isOpen = false;
-        this.messages = this.loadHistory();
-        this.init();
+        this.isOpen = false;        // Booleano para el estado de visibilidad del modal de chat
+        this.container = null;      // Referencia en el DOM al wrapper contenedor (#cr-chatbot-container)
+        this.chatWindow = null;     // Referencia en el DOM a la ventana gráfica del chat 
+        this.toggleBtn = null;      // Referencia en el DOM al botón circular C&R 
+        this.messageContainer = null; // Referencia en el DOM donde van los globos de charla
+        this.inputField = null;     // Referencia al textarea donde se escribe
+        this.toggleIcon = null;     // Referencia al icono del botón toggle
+        this.sendBtn = null;        // Referencia al botón de enviar msj
+        this.closeBtn = null;       // Referencia al botón cerrar de la cabecera
+        this.messages = this.loadHistory(); // Cache local en RAM de los mensajes mostrados
+        
+        this.init(); // Arranca el ciclo de vida del componente
     }
 
+    // # MÉTODOS DE DATOS (DATA LAYER)
+    
+    // ¿Qué hace?: Carga la secuencia de mensajes recuperando la cadena del localStorage.
+    // ¿Para qué sirve?: Para que el usuario no pierda el contexto del chat si cambia de página o refresca.
     loadHistory() {
-        const stored = localStorage.getItem(this.STORAGE_KEY);
+        const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
             return JSON.parse(stored);
         }
@@ -22,35 +49,46 @@ class ChatbotWidget {
         ];
     }
 
+    // ¿Qué hace?: Convierte el arreglo local `this.messages` en String para guardarlo.
+    // ¿Para qué sirve?: Persistir la conversación después de un nuevo chat insertado en pantalla.
     saveHistory() {
-        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.messages));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(this.messages));
     }
 
+    // # MÉTODOS DE INICIALIZACIÓN
+    
+    // ¿Qué hace?: Orquesta la construcción procedural del chatbot.
+    // ¿Para qué sirve?: Para separar el dibujado, los eventos de usuario y el procesado de datos lógicamente.
     init() {
         this.renderWidget();
         this.attachEventListeners();
         this.renderMessages();
     }
 
+    // # MÉTODOS DE INTERFAZ GRÁFICA (UI)
+    
+    // ¿Qué hace?: Inyecta código HTML seguro para armar la ventana interactiva del bot.
+    // ¿Para qué sirve?: Evita modificar el HTML directamente en cada página, siendo un componente modular al 100%.
     renderWidget() {
-        // Container
+        // Contenedor principal: z-index maximizado sobre WhatsApp
         this.container = document.createElement('div');
         this.container.id = 'cr-chatbot-container';
-        this.container.classList.add('fixed', 'bottom-6', 'right-6', 'z-[2147483647]', 'font-sans', 'flex', 'flex-col', 'items-end');
+        this.container.classList.add('fixed', 'bottom-6', 'right-6', MAX_Z_INDEX, 'font-sans', 'flex', 'flex-col', 'items-end');
         
-        // Chat Window (hidden by default)
+        // Ventana del Chat
         this.chatWindow = document.createElement('div');
         this.chatWindow.classList.add(
+             // Clean Code: se estructura el Tailwind por categoría en la misma línea visual a modo de componentes.
             'bg-surface-container-lowest', 'rounded-2xl', 'shadow-2xl', 'w-[350px]', 'h-[500px]', 'mb-4',
             'flex', 'flex-col', 'overflow-hidden', 'transition-all', 'duration-300', 'origin-bottom-right', 'border', 'border-slate-200', 'dark:border-slate-800'
         );
         
-        // Initial state logic
+        // Estado por defecto invisible y encogido
         this.chatWindow.style.opacity = '0';
         this.chatWindow.style.transform = 'scale(0.8)';
         this.chatWindow.style.pointerEvents = 'none';
 
-        // Header
+        // Estructura header
         const header = document.createElement('div');
         header.classList.add('bg-primary', 'text-on-primary', 'p-4', 'flex', 'justify-between', 'items-center', 'shadow-sm');
         header.innerHTML = `
@@ -68,12 +106,12 @@ class ChatbotWidget {
             </button>
         `;
 
-        // Message Area
+        // Área scroll container para leer historial
         this.messageContainer = document.createElement('div');
         this.messageContainer.classList.add('flex-1', 'p-4', 'overflow-y-auto', 'bg-surface-container-low', 'flex', 'flex-col', 'gap-3');
         this.messageContainer.id = 'chatbot-messages';
 
-        // Input Area
+        // Pie o zona de tipeo
         const inputArea = document.createElement('div');
         inputArea.classList.add('p-3', 'bg-surface-container-lowest', 'border-t', 'border-outline-variant/30', 'flex', 'items-end', 'gap-2');
         inputArea.innerHTML = `
@@ -83,76 +121,85 @@ class ChatbotWidget {
             </button>
         `;
 
+        // Ensamblado
         this.chatWindow.appendChild(header);
         this.chatWindow.appendChild(this.messageContainer);
         this.chatWindow.appendChild(inputArea);
 
-        // Floating Toggle Button
+        // Botón toggle de apertura con Z-Index maximizado sobre elementos como el botón WhatsApp.
         this.toggleBtn = document.createElement('button');
         this.toggleBtn.classList.add(
             'w-11', 'h-11', 'rounded-full', 'bg-primary', 'text-on-primary', 'shadow-xl', 'shadow-primary/30',
-            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', 'z-[2147483647]'
+            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', MAX_Z_INDEX
         );
         this.toggleBtn.innerHTML = `
             <span class="material-symbols-outlined text-[22px] transition-transform duration-300" id="chatbot-toggle-icon">chat</span>
         `;
 
-        // Append to container
+        // Inserción en el árbol maestro DOM
         this.container.appendChild(this.chatWindow);
         this.container.appendChild(this.toggleBtn);
-        
-        // Append to body
         document.body.appendChild(this.container);
+        
+        // Caching optimizado (Clean Code) 
+        // Previamente extraías con getElementById desde múltiples métodos de eventos, lo cual resultaba ineficiente en rendimiento.
+        // Ahora todo vive cacheado a nivel de clase una vez se renderiza el widget:
+        this.inputField = document.getElementById('chatbot-input');
+        this.toggleIcon = document.getElementById('chatbot-toggle-icon');
+        this.sendBtn = document.getElementById('chatbot-send-btn');
+        this.closeBtn = document.getElementById('chatbot-close-btn');
     }
 
+    // # MÉTODOS DE EVENTOS
+    
+    // ¿Qué hace?: Escucha interacciones en los elementos pre-cacheados (botones y teclado).
+    // ¿Para qué sirve?: Dar vida al HTML, de forma que los clics desencadenen comportamientos.
     attachEventListeners() {
-        // Toggle Open/Close
         this.toggleBtn.addEventListener('click', () => this.toggleChat());
-        const closeBtn = document.getElementById('chatbot-close-btn');
-        closeBtn.addEventListener('click', () => this.toggleChat());
-
-        // Send Message Handlers
-        const sendBtn = document.getElementById('chatbot-send-btn');
-        this.inputField = document.getElementById('chatbot-input');
-
-        sendBtn.addEventListener('click', () => this.handleSend());
+        this.closeBtn.addEventListener('click', () => this.toggleChat());
+        this.sendBtn.addEventListener('click', () => this.handleSend());
+        
         this.inputField.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
+                e.preventDefault(); 
                 this.handleSend();
             }
         });
 
-        // Auto-resize textarea
-        this.inputField.addEventListener('input', function() {
-            this.style.height = '40px';
-            this.style.height = (this.scrollHeight) + 'px';
+        // Clean Code: Retenemos el target limpio mediante el evento "e" en vez de depender de la mutabilidad de "this" no vinculada fuertemente.
+        this.inputField.addEventListener('input', (e) => {
+            e.target.style.height = '40px';
+            e.target.style.height = (e.target.scrollHeight) + 'px';
         });
     }
 
+    // # MÉTODOS DE LÓGICA DE INTERFAZ (TOGGLES Y RENDERIZADOS SECUNDARIOS)
+    
+    // ¿Qué hace?: Alterna el switch `isOpen` y lanza animaciones para abrir o cerrar.
+    // ¿Para qué sirve?: Es la puerta de entrada para mostrar (activar Pointer Events) u ocultar la ventana y el historial.
     toggleChat() {
         this.isOpen = !this.isOpen;
-        const icon = document.getElementById('chatbot-toggle-icon');
 
         if (this.isOpen) {
             this.chatWindow.style.opacity = '1';
             this.chatWindow.style.transform = 'scale(1)';
-            this.chatWindow.style.pointerEvents = 'auto';
-            icon.style.transform = 'rotate(90deg)';
-            setTimeout(() => { icon.textContent = 'close'; }, 150);
+            this.chatWindow.style.pointerEvents = 'auto'; // Permitir clicks internos al abrir
+            this.toggleIcon.style.transform = 'rotate(90deg)';
+            setTimeout(() => { this.toggleIcon.textContent = 'close'; }, 150);
             
-            // Scroll to bottom when opened
             this.scrollToBottom();
             setTimeout(() => this.inputField.focus(), 300);
         } else {
             this.chatWindow.style.opacity = '0';
             this.chatWindow.style.transform = 'scale(0.8)';
-            this.chatWindow.style.pointerEvents = 'none';
-            icon.style.transform = 'rotate(0deg)';
-            setTimeout(() => { icon.textContent = 'chat'; }, 150);
+            this.chatWindow.style.pointerEvents = 'none'; // Desactivar clicks preventivos sobre elementos traslúcidos
+            this.toggleIcon.style.transform = 'rotate(0deg)';
+            setTimeout(() => { this.toggleIcon.textContent = 'chat'; }, 150);
         }
     }
 
+    // ¿Qué hace?: Limpia el area de chat y repopula todo el historial.
+    // ¿Para qué sirve?: Renderizar lo que exista en LocalStorage la primera vez que se carga el JS de esta página.
     renderMessages() {
         this.messageContainer.innerHTML = '';
         this.messages.forEach(msg => {
@@ -161,6 +208,8 @@ class ChatbotWidget {
         this.scrollToBottom();
     }
 
+    // ¿Qué hace?: Ensambla un div de Tailwind individual para los globos de conversación del usuario/bot en su zona izquierda/derecha.
+    // ¿Para qué sirve?: Acomodar dinámicamente un nuevo mensaje de ida o de vuelta en pantalla al emitirse.
     appendMessageElement(msg) {
         const wrapper = document.createElement('div');
         wrapper.classList.add('flex', 'w-full');
@@ -181,27 +230,30 @@ class ChatbotWidget {
         this.messageContainer.appendChild(wrapper);
     }
 
+    // # MÉTODOS DE LÓGICA DE NEGOCIO Y BOT
+    
+    // ¿Qué hace?: Lee lo ingresado, valida que no esté vacío, lo envía al array y simula al bot.
+    // ¿Para qué sirve?: Encapsular el ciclo principal humano -> máquina para no ensuciar el evento origen en teclado.
     handleSend() {
         const text = this.inputField.value.trim();
-        if (!text) return;
+        if (!text) return; // Validación anti vacío
 
-        // User Message
         const userMsg = { sender: 'user', text: text, time: new Date().toISOString() };
         this.messages.push(userMsg);
         this.appendMessageElement(userMsg);
         this.saveHistory();
         
-        // Reset Input
+        // Limpiamos los rastros y el alto forzado al enviar (Clean code preventivo visual)
         this.inputField.value = '';
         this.inputField.style.height = '40px';
         this.scrollToBottom();
 
-        // Simulate Bot Typing
         this.simulateBotResponse(text);
     }
 
+    // ¿Qué hace?: Carga un indicador temporal estético, lee contexto mediante ifs con includes(), y devuelve la respuesta emulando latencia.
+    // ¿Para qué sirve?: Para sostener el engaño inteligente de soporte virtual sin un backend externo conectado.
     simulateBotResponse(userText) {
-        // Show typing indicator
         const typingId = 'typing-' + Date.now();
         const wrapper = document.createElement('div');
         wrapper.id = typingId;
@@ -216,15 +268,16 @@ class ChatbotWidget {
         this.messageContainer.appendChild(wrapper);
         this.scrollToBottom();
 
+        // Emulamos el "Typing" del bot humano 
         setTimeout(() => {
-            // Remove typing indicator
             const typingIndicator = document.getElementById(typingId);
             if(typingIndicator) typingIndicator.remove();
 
-            // Simple logic for response
             let responseText = "Thanks for your message! Our team will get back to you shortly.";
             const lower = userText.toLowerCase();
             
+            // Clean Code Option (Optimización Posible Futura): Este mapeo de IFs puede cambiarse a un Mapa u Objeto literal externo
+            // para escalar de manera natural agregando respuestas nuevas sin ensuciar la longitud del archivo local.
             if (lower.includes('repair') || lower.includes('broken')) {
                 responseText = "We specialize in all types of repairs! Could you tell me more about your device and what's wrong with it?";
             } else if (lower.includes('price') || lower.includes('cost')) {
@@ -239,18 +292,23 @@ class ChatbotWidget {
             this.saveHistory();
             this.scrollToBottom();
 
-        }, 1200); // 1.2s delay for realism
+        }, 1200); 
     }
 
+    // # UTILIDADES AUXILIARES
+    
+    // ¿Qué hace?: Ajusta asincrónicamente el scrollTop hasta la altura máxima scrollable total del ChatBox.
+    // ¿Para qué sirve?: Auto-baja la pantalla garantizando que se aprecie el último input o respuesta del bot inmediatamente.
     scrollToBottom() {
-        // Use a slight timeout to ensure DOM paints first
         setTimeout(() => {
             this.messageContainer.scrollTop = this.messageContainer.scrollHeight;
         }, 50);
     }
 }
 
-// Initialize when DOM is fully loaded or immediately if already loaded
+// # EJECUCIÓN PRINCIPAL (ENTRY POINT)
+// ¿Qué hace?: Invoca la instanciación de la Clase una sola vez según el ciclo de vida de la etiqueta <script>.
+// ¿Para qué sirve?: Evita que el Chatbot se construya antes de que el árbol Document Object Model (DOM) global esté 100% montado en el layout, previniendo null references.
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => new ChatbotWidget());
 } else {
