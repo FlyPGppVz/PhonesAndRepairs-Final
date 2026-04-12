@@ -1,44 +1,65 @@
-/* 
- * CellphonesAndRepair - Core Styles
- * This file contains all extracted styles, providing the Apple-like unified aesthetic.
+/**
+ * # ARCHIVO: css/style.css
+ * # ESTILO DE ARQUITECTURA: CSS Puro (Vanilla) enfocado en Efectos Visuales Premium.
+ * # PROPÓSITO: Centralizar los estilos nativos corporativos para la apariencia Apple-Like (Glassmorphism, Filtros y UI limpia) que Tailwind no cubre por defecto de manera semántica.
  */
 
+/* =======================================================================================================
+ * # RESET GLOBAL Y TIPOGRAFÍA BASE
+ * ======================================================================================================= */
 
-        .glass {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        .cupertino-glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9fb;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    
+/* ¿Qué hace?: Normaliza todos los cuerpos HTML y ajusta el renderizado de la tipografía. */
+/* Clean Code: Antes este bloque estaba repetido 4 veces en el archivo. Se consolidó globalmente para evitar CSS Bloating. */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9fb;
+    color: #2d3338;
+    -webkit-font-smoothing: antialiased; /* Suavidad Premium Apple Font */
+}
 
-        .glass-nav {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9f9fb;
-            color: #2d3338;
-        }
-    
+/* ¿Qué hace?: Configuración de Material Symbols Outlined (Íconos de Google). */
+/* ¿Para qué sirve?: Carga la variante de línea delgada en los íconos globales eliminando artefactos negros gruesos. */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
 
-/* Removed cupertinoglass to fix ghost box issue */
+/* =======================================================================================================
+ * # EFECTOS VISUALES AVANZADOS (COMPUESTOS DE BLUR)
+ * ======================================================================================================= */
+
+/* ¿Qué hace?: Añade un desenfoque (blur) a una capa base sin alterar la saturación de color subyacente. */
+.glass, 
+.glass-effect, 
+.glass-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Soporte iOS Safari */
+}
+
+/* ¿Qué hace?: Filtro estilo macOS / iOS (Glassmorphism Saturado). */
+/* ¿Para qué sirve?: Crea esa sensación de cristal escarchado sobre elementos detrás de paneles o tarjetas UI. */
+.cupertino-glass,
+.glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ¿Qué hace?: Filtro esmerilado color verde. */
+/* ¿Para qué sirve?: Para denotar componentes ecológicos o llamadas a la acción en tonos "Success" o "Nature". */
+.glass-green {
+    background: rgba(34, 197, 94, 0.2);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =======================================================================================================
+ * # UTILIDADES (HELPERS Y BUGFIXES GLOBALES)
+ * ======================================================================================================= */
+
+/* ¿Qué hace?: Elimina el problema conocido del 'cajón fantasma' anulando la vista de elementos corruptos. */
 .cupertinoglass, 
 .carousel-container, 
 .hero-banner,
@@ -46,41 +67,21 @@ div[class*="absolute"][class*="z-20"] {
     display: none !important;
 }
 
+/* ¿Qué hace?: Apaga las barras de desplazamiento anti-estéticas forzadas. */
+/* ¿Para qué sirve?: Crear un scroll horizontal o vertical invisible para el usuario (usado en galerías táctiles horizontales). */
+.no-scrollbar::-webkit-scrollbar { 
+    display: none; 
+}
 
-        body { font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .tonal-transition { transition: background-color 0.3s ease; }
-    
+/* ¿Qué hace?: Anima cambios de tono en background (ej: al hacer Hover dinámico). */
+.tonal-transition { 
+    transition: background-color 0.3s ease; 
+}
 
-        body { font-family: 'Inter', sans-serif; background-color: #f9f9fb; color: #2d3338; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-
-    
-
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    
-
-        .glass-effect {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-    
-
-        .glass-green {
-            background: rgba(34, 197, 94, 0.2);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-    
+/* =======================================================================================================
+ * # ANÁLISIS DE CAPAS (Z-INDEX)
+ * ======================================================================================================= */
+/* 
+ * Ninguna de las clases registradas aquí forzan la manipulación del contexto de apilamiento global.
+ * El límite seguro base del sitio fluye por defecto, dictando que "z-[2147483647]" (inyección vía Chatbot.js) mantendrá victoria absoluta.
+ */
