@@ -11,6 +11,7 @@
 // ¿Para qué sirve?: Facilita el mantenimiento (Clean code) y asegura que los valores sean siempre consistentes.
 const STORAGE_KEY = 'cr_chat_history';
 const MAX_Z_INDEX = 'z-[9999]'; 
+const OPEN_Z_INDEX = 'z-[20000]';
 
 // # CLASE PRINCIPAL
 // ¿Qué hace?: Modela los datos, el estado visual y la lógica del widget.
@@ -130,7 +131,7 @@ class ChatbotWidget {
         this.toggleBtn = document.createElement('button');
         this.toggleBtn.classList.add(
             'w-11', 'h-11', 'rounded-full', 'bg-primary', 'text-on-primary', 'shadow-xl', 'shadow-primary/30',
-            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', MAX_Z_INDEX
+            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all'
         );
         this.toggleBtn.innerHTML = `
             <span class="material-symbols-outlined text-[22px] transition-transform duration-300" id="chatbot-toggle-icon">chat</span>
@@ -181,6 +182,8 @@ class ChatbotWidget {
         this.isOpen = !this.isOpen;
 
         if (this.isOpen) {
+            this.container.classList.remove(MAX_Z_INDEX);
+            this.container.classList.add(OPEN_Z_INDEX);
             this.chatWindow.style.opacity = '1';
             this.chatWindow.style.transform = 'scale(1)';
             this.chatWindow.style.pointerEvents = 'auto'; // Permitir clicks internos al abrir
@@ -190,6 +193,8 @@ class ChatbotWidget {
             this.scrollToBottom();
             setTimeout(() => this.inputField.focus(), 300);
         } else {
+            this.container.classList.remove(OPEN_Z_INDEX);
+            this.container.classList.add(MAX_Z_INDEX);
             this.chatWindow.style.opacity = '0';
             this.chatWindow.style.transform = 'scale(0.8)';
             this.chatWindow.style.pointerEvents = 'none'; // Desactivar clicks preventivos sobre elementos traslúcidos
