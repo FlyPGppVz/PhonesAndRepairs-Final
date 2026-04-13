@@ -19,7 +19,7 @@ body {
 
 /* Modo Oscuro Base Fallback */
 html.dark body {
-    background-color: #020617; /* Slate 950 */
+    background-color: #0a0a0a; /* Neutral 950 / Rich Black */
     color: #f8fafc; /* Slate 50 */
 }
 
@@ -64,7 +64,7 @@ html.dark body {
 html.dark .glass, 
 html.dark .glass-effect, 
 html.dark .glass-nav {
-    background: rgba(15, 23, 42, 0.7);
+    background: rgba(10, 10, 10, 0.7);
 }
 
 /* ¿Qué hace?: Filtro estilo macOS / iOS (Glassmorphism Saturado). */
@@ -80,7 +80,7 @@ html.dark .glass-nav {
 
 html.dark .cupertino-glass,
 html.dark .glass-panel {
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(10, 10, 10, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
