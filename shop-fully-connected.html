@@ -628,23 +628,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Read URL params for search queries
     const params = new URLSearchParams(window.location.search);
-    const query = params.get('search');
-    if (query) {
-        const q = query.toLowerCase();
-        let visibleCount = 0;
-        cards.forEach(card => {
-            const text = card.textContent.toLowerCase();
-            if (text.includes(q)) {
-                card.style.display = '';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
+    const categoryParam = params.get('category');
+    if (categoryParam) {
+        let found = false;
+        categoryButtons.forEach(btn => {
+            if (btn.dataset.category.toLowerCase() === categoryParam.toLowerCase()) {
+                btn.click();
+                found = true;
             }
         });
-        if (countDisplay) {
-            countDisplay.innerHTML = 'Showing ' + visibleCount + ' results for "' + query + '"';
+        if (!found) {
+             // Fallback to text search if category not found explicitly in sidebar
+             const query = categoryParam.toLowerCase();
+             let visibleCount = 0;
+             cards.forEach(card => {
+                 if (card.textContent.toLowerCase().includes(query)) {
+                     card.style.display = '';
+                     visibleCount++;
+                 } else {
+                     card.style.display = 'none';
+                 }
+             });
+        }
+    } else {
+        const query = params.get('search');
+        if (query) {
+            const q = query.toLowerCase();
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(q)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            if (countDisplay) {
+                countDisplay.innerHTML = 'Showing ' + visibleCount + ' results for "' + query + '"';
+            }
         }
     }
 });
