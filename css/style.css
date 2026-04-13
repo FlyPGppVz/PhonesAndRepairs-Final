@@ -13,8 +13,20 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f9f9fb;
-    color: #2d3338;
+    color: var(--on-background);
     -webkit-font-smoothing: antialiased; /* Suavidad Premium Apple Font */
+}
+
+:root {
+    --on-surface: #2d3338;
+    --on-surface-variant: #596065;
+    --on-background: #2d3338;
+}
+
+html.dark {
+    --on-surface: #f8fafc;
+    --on-surface-variant: #94a3b8;
+    --on-background: #f8fafc;
 }
 
 /* Modo Oscuro Base Fallback */
