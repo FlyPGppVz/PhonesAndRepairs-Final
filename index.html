@@ -231,22 +231,22 @@ Shop
 </div>
 </div>
 <!-- Third Bento (New and Used Devices/Shop) -->
-<div class="md:col-span-4 bg-surface-container-low rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group cursor-pointer" onclick="window.location.href='./shop-fully-connected.html'" id="shop">
-<div>
-<h2 class="text-2xl font-bold text-on-surface mb-2">New and Used Devices</h2>
-<p class="text-on-surface-variant text-sm">Quality checked and ready for you.</p>
-</div>
-<div class="py-4">
-    <div class="bg-[#f2f2f2] dark:bg-[#1a1c1e] rounded-2xl overflow-hidden flex items-center justify-center">
-        <video class="w-full h-auto max-h-[300px] object-contain" autoplay muted loop playsinline>
+<div class="md:col-span-4 bg-[#f2f2f2] dark:bg-[#1a1c1e] rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group cursor-pointer border border-slate-100 dark:border-slate-800" onclick="window.location.href='./shop-fully-connected.html'" id="shop">
+    <div>
+        <h2 class="text-2xl font-bold text-[#1d1d1f] dark:text-white mb-2">New and Used Devices</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm">Quality checked and ready for you.</p>
+    </div>
+    
+    <div class="flex-grow flex items-center justify-center py-6">
+        <video class="w-full h-auto rounded-[3rem] transition-transform duration-700 group-hover:scale-105 shadow-sm" autoplay muted loop playsinline style="mask-image: linear-gradient(to bottom, black, black); -webkit-mask-image: linear-gradient(to bottom, black, black); border-radius: 3rem;">
             <source src="./assets/videos/new_and_used_device.mp4" type="video/mp4">
         </video>
     </div>
-</div>
-<!-- Link to Shop sub-page -->
-<a class="bg-primary text-white rounded-full py-4 px-8 text-sm font-bold w-fit inline-block hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-primary/40" href="./shop-fully-connected.html">
-    Shop Devices
-</a>
+
+    <!-- Link to Shop sub-page -->
+    <a class="bg-[#063183] text-white rounded-full py-4 px-8 text-sm font-bold w-fit inline-block hover:bg-[#002D72] hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-900/40 transition-all duration-300 active:scale-95" href="./shop-fully-connected.html">
+        Shop Devices
+    </a>
 </div>
 <!-- Fourth Bento -->
 <div class="md:col-span-8 bg-surface-container rounded-lg p-10 flex flex-col md:flex-row items-center gap-10">
