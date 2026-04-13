@@ -632,8 +632,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryParam = params.get('category');
     if (categoryParam) {
         let found = false;
-        categoryButtons.forEach(btn => {
-            if (btn.dataset.category.toLowerCase() === categoryParam.toLowerCase()) {
+        categoryLinks.forEach(btn => {
+            if (btn.dataset.filter.toLowerCase() === categoryParam.toLowerCase()) {
                 btn.click();
                 found = true;
             }
