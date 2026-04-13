@@ -17,6 +17,22 @@ body {
     -webkit-font-smoothing: antialiased; /* Suavidad Premium Apple Font */
 }
 
+/* Animación de Entrada para Botones Flotantes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* ¿Qué hace?: Configuración de Material Symbols Outlined (Íconos de Google). */
 /* ¿Para qué sirve?: Carga la variante de línea delgada en los íconos globales eliminando artefactos negros gruesos. */
 .material-symbols-outlined {
