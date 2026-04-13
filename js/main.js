@@ -136,6 +136,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // -----------------------------------------------------------
+    //  #3. Theme Toggle Logic (Dark/Light Mode)
+    // -----------------------------------------------------------
+    const themeToggleBtn = document.getElementById('themeToggle');
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            // Alternar clase .dark en el root (html)
+            const isDark = document.documentElement.classList.toggle('dark');
+            
+            // Guardar preferencia en localStorage
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            // Log para debug (opcional)
+            console.log(`Theme switched to: ${isDark ? 'dark' : 'light'}`);
+        });
+    }
+
     // Diagnóstico silencioso para QA (Útil a futuro)
     console.log("C&R App & Global Logic successfully initialized.");
 });
