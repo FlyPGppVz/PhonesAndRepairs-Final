@@ -2,7 +2,7 @@ import os
 import re
 
 # Snippets
-ANTI_FLICKER = """    <script id="anti-flicker">
+ANTI_FLICKER = """    <script id="anti_flicker">
         (function() {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             if (theme === 'dark') document.documentElement.classList.add('dark');
@@ -28,33 +28,41 @@ def process_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # Skip files that are not true pages or already handled
+    if 'id="themeToggle"' in content and 'id="anti_flicker"' in content and 'dark:bg-neutral-950' in content:
+        return
+
     # 1. Update Colors
-    # Replace slate-950 with neutral-950 (or equivalent) in classes
     content = content.replace('dark:bg-slate-950', 'dark:bg-neutral-950')
-    content = content.replace('dark:bg-slate-900', 'dark:bg-[#0a0a0a]') # Using the requested black
+    content = content.replace('dark:bg-slate-900', 'dark:bg-neutral-900') # Better fallback for deep dark
+    content = content.replace('dark:bg-slate-800', 'dark:bg-neutral-800')
     
     # 2. Inject Anti-Flicker in <head>
-    if 'id="anti-flicker"' not in content:
+    if 'id="anti_flicker"' not in content:
         if '</head>' in content:
             content = content.replace('</head>', ANTI_FLICKER + '\n</head>')
-        else:
-            print(f"Warning: No </head> tag found in {filepath}")
 
     # 3. Inject Theme Toggle in Navbar
     if 'id="themeToggle"' not in content:
-        # Looking for the right-aligned icon container
-        # Pattern usually ends with person icon
-        person_icon_pattern = r'(<button[^>]*>person</button>\s*(?:</div>\s*){1,2}</div>)'
-        if re.search(person_icon_pattern, content):
-            # Insert before the last </div> of that group
-            content = re.sub(person_icon_pattern, r'\1\n' + THEME_TOGGLE, content, 1)
+        # Search for the person icon button and its container
+        # We look for the button with 'person' text and go up to its parent div if it has 'group' or 'relative'
+        # Most files follow the pattern <div class="relative group"> ... person ... </div>
+        
+        # Try to find the person icon block
+        # We look for a </div> that is followed by another </div> which usually closes the icon container flex
+        person_pattern = r'(<button[^>]*>\s*person\s*</button>.*?(?:</div>\s*){1,2})'
+        match = re.search(person_pattern, content, re.DOTALL)
+        if match:
+            # Insert after the match
+            content = content[:match.end()] + "\n" + THEME_TOGGLE + content[match.end():]
         else:
-            # Fallback: search for justify-end and end of that div
-            fallback_pattern = r'(justify-end[^>]*>.*?(?:material-symbols-outlined.*?>.*?){2,3}.*?)(</div>)'
-            if re.search(fallback_pattern, content, re.DOTALL):
-                 content = re.sub(fallback_pattern, r'\1\n' + THEME_TOGGLE + r'\2', content, 1, re.DOTALL)
+            # Fallback to shopping_cart
+            cart_pattern = r'(<a[^>]*href="[^"]*shopping-cart[^"]*"[^>]*>.*?</a>.*?(?:</div>\s*){1,2})'
+            match = re.search(cart_pattern, content, re.DOTALL)
+            if match:
+                content = content[:match.end()] + "\n" + THEME_TOGGLE + content[match.end():]
             else:
-                 print(f"Warning: Could not find insertion point for theme toggle in {filepath}")
+                 print(f"Warning: Could not find insertion point in {filepath}")
 
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(content)
@@ -62,10 +70,11 @@ def process_file(filepath):
 # Main
 html_files = [f for f in os.listdir('.') if f.endswith('.html')]
 for file in html_files:
-    print(f"Processing {file}...")
-    try:
-        process_file(file)
-    except Exception as e:
-        print(f"Error processing {file}: {e}")
+    if file in ['index.html', 'shop-fully-connected.html', 'services-unified-nav.html']:
+         # Core pages already have them but might need color updates
+         pass
+    
+    # print(f"Processing {file}...") # Too much output
+    process_file(file)
 
-print("Done!")
+print("Batch update complete!")
