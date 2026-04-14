@@ -166,3 +166,54 @@ div[class*="absolute"][class*="z-20"] {
     opacity: 0.4;
     transform: scale(0.98);
 }
+
+/* =======================================================================================================
+ * # INTERSTICIAL VIDEO TRANSITION (CUPERTINO STYLE)
+ * ======================================================================================================= */
+:root {
+    --interstitial-fade-duration: 0.8s;
+    --interstitial-scale-duration: 1.4s;
+    --interstitial-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#interstitial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2147483647;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--interstitial-fade-duration) var(--interstitial-ease), 
+                visibility var(--interstitial-fade-duration) var(--interstitial-ease);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+}
+
+#interstitial-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+}
+
+#interstitial-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    transition: transform var(--interstitial-scale-duration) var(--interstitial-ease);
+}
+
+#interstitial-overlay.active #interstitial-video {
+    transform: scale(1);
+}
+
+.interstitial-fade-out {
+    opacity: 0 !important;
+    transition: opacity 0.6s ease-in-out !important;
+}
