@@ -67,27 +67,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const priceDisplay = document.querySelector('.product-price');
     
     storageButtons.forEach(btn => {
-        // ¿Qué hace?: Inyecta un listener por cada botón "128gb", "256gb", etc., en la pantalla.
         btn.addEventListener('click', () => {
-            
-            // a) Limpieza de hermanos (Reset)
-            // Lógica: Restablecer todos los botones a la vista "Apagado/Base"
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.storage-btn').forEach(b => {
-                b.classList.remove('bg-primary-container', 'text-on-primary-container', 'ring-1', 'ring-primary', 'border-primary');
+            // Update active state
+            storageButtons.forEach(b => {
+                b.classList.remove('bg-primary-container', 'text-on-primary-container', 'ring-1', 'ring-primary', 'border-primary', 'ring-2');
                 b.classList.add('bg-surface-container-lowest', 'text-on-surface', 'border-outline-variant');
             });
             
-            // b) Activación del botón clickeado
-            // Lógica: Asignarle propiedades "Activo" (Aros en css o highlights visuales)
             btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'border-outline-variant');
-            btn.classList.add('bg-primary-container', 'text-on-primary-container', 'ring-1', 'ring-primary', 'border-primary');
+            btn.classList.add('bg-primary-container', 'text-on-primary-container', 'ring-2', 'ring-primary', 'border-primary');
             
-            // c) Actualización de Precios (Data Layer binding)
-            // ¿Para qué sirve?: Reemplazar en la web dinámicamente el HTML que muestra los dólares del producto
-            // si el componente trae un atributo `data-price`.
+            // Dynamic Price Update with Fade effect
             if (btn.dataset.price && priceDisplay) {
-                priceDisplay.textContent = btn.dataset.price;
+                priceDisplay.style.opacity = '0';
+                priceDisplay.style.transform = 'translateY(5px)';
+                setTimeout(() => {
+                    priceDisplay.textContent = btn.dataset.price;
+                    priceDisplay.style.opacity = '1';
+                    priceDisplay.style.transform = 'translateY(0)';
+                }, 150);
             }
         });
     });
@@ -98,43 +96,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorButtons = document.querySelectorAll('.color-btn');
     const mainProductImage = document.querySelector('.product-main-image');
     
-    colorButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-             
-            // a) Desmarcar el color previamente elegido en la botonera 
-            // ¿Para qué sirve?: Evitar que dos colores luzcan 'seleccionados' visualmente al mismo tiempo.
-            const container = btn.parentElement;
-            container.querySelectorAll('.color-btn').forEach(b => {
-                b.style.outline = 'none';
-                b.classList.remove('active-color');
-            });
-            
-            // b) Aplicar anillo activo azul al botón nuevo seleccionado
-            btn.classList.add('active-color');
-            btn.style.outline = '2px solid #063183';
-            btn.style.outlineOffset = '3px';
-
-            // c) Intercambio dinámico de Imágen Central (Fade In / Fade Out Effect)
-            // Lógica: Recupera lo inyectado en `data-image="xxx.jpg"` dentro del div que tocamos 
-            // e intercambia la ruta de la etiqueta global <img>.
-            const newImage = btn.getAttribute('data-image') || btn.dataset.image;
-            if (mainProductImage && newImage) {
-                // Generamos una microtransición estéticamente más sofisticada con time-outs.
-                mainProductImage.style.opacity = '0.4';
-                setTimeout(() => {
-                    mainProductImage.src = newImage;
-                    mainProductImage.style.opacity = '1';
-                }, 150);
-            }
-
-            // d) Actualizar Texto Adicional
-            // Lógica: Reemplaza opcionalmente el indicador textual de "Titanium" o "Blue".
-            const colorLabel = document.querySelector('.color-label');
-            if (colorLabel && btn.getAttribute('aria-label')) {
-                colorLabel.textContent = btn.getAttribute('aria-label');
+    if (colorButtons.length > 0 && mainProductImage) {
+        // Preload color images for instant switching
+        colorButtons.forEach(btn => {
+            const imgUrl = btn.dataset.image || btn.getAttribute('data-image');
+            if (imgUrl) {
+                const img = new Image();
+                img.src = imgUrl;
             }
         });
-    });
+
+        colorButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const newImage = btn.getAttribute('data-image') || btn.dataset.image;
+                if (!newImage || mainProductImage.src.includes(newImage)) return;
+
+                // Apple-style premium transition
+                mainProductImage.style.opacity = '0.4';
+                mainProductImage.style.transform = 'scale(0.98)';
+                
+                const img = new Image();
+                img.onload = () => {
+                    mainProductImage.src = newImage;
+                    mainProductImage.style.opacity = '1';
+                    mainProductImage.style.transform = 'scale(1)';
+                };
+                img.src = newImage;
+
+                // Update UI selection
+                colorButtons.forEach(b => {
+                    b.classList.remove('active-color', 'ring-primary');
+                    b.style.outline = 'none';
+                });
+                
+                btn.classList.add('active-color');
+                btn.style.outline = '2px solid #063183';
+                btn.style.outlineOffset = '3px';
+
+                // Update text label if present
+                const colorLabel = document.querySelector('.color-label');
+                if (colorLabel && btn.getAttribute('aria-label')) {
+                    colorLabel.textContent = btn.getAttribute('aria-label');
+                }
+            });
+        });
+    }
 
     // -----------------------------------------------------------
     //  #3. Theme Toggle Logic (Dark/Light Mode)

@@ -134,3 +134,31 @@ div[class*="absolute"][class*="z-20"] {
  * Ninguna de las clases registradas aquí forzan la manipulación del contexto de apilamiento global.
  * El límite seguro base del sitio fluye por defecto, dictando que "z-[2147483647]" (inyección vía Chatbot.js) mantendrá victoria absoluta.
  */
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes floatHigh {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-high {
+    animation: floatHigh 4s ease-in-out infinite;
+}
+
+/* Premium Image Transition */
+.product-main-image {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.image-changing {
+    opacity: 0.4;
+    transform: scale(0.98);
+}
