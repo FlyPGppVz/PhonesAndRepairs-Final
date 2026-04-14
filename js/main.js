@@ -61,34 +61,50 @@ document.addEventListener('DOMContentLoaded', () => {
      * ======================================================================================================= */
 
     // -----------------------------------------------------------
-    //  #1. Selector Lógico de Capacidad de Almacenamiento (Storage)
+    //  #1. Selector Lógico de Almacenamiento y Precios (Unificado)
     // -----------------------------------------------------------
     const storageButtons = document.querySelectorAll('.storage-btn');
     const priceDisplay = document.querySelector('.product-price');
     
-    storageButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Update active state
-            storageButtons.forEach(b => {
-                b.classList.remove('bg-primary-container', 'text-on-primary-container', 'ring-1', 'ring-primary', 'border-primary', 'ring-2');
-                b.classList.add('bg-surface-container-lowest', 'text-on-surface', 'border-outline-variant');
+    if (storageButtons.length > 0 && priceDisplay) {
+        storageButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Update active state (Main logic)
+                storageButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container', 'ring-1', 'ring-primary', 'border-primary', 'ring-2', 'active-storage');
+                    b.classList.add('bg-surface-container-lowest', 'text-on-surface', 'border', 'border-outline-variant/20');
+                    
+                    // Specific logic for Ipad style buttons with inner span
+                    const span = b.querySelector('.font-bold');
+                    if (span) {
+                        span.classList.remove('text-on-primary-container');
+                        span.classList.add('text-on-surface');
+                    }
+                });
+                
+                btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'border', 'border-outline-variant/20');
+                btn.classList.add('bg-primary-container', 'text-on-primary-container', 'ring-2', 'ring-primary', 'border-primary', 'active-storage');
+                
+                const activeSpan = btn.querySelector('.font-bold');
+                if (activeSpan) {
+                    activeSpan.classList.add('text-on-primary-container');
+                    activeSpan.classList.remove('text-on-surface');
+                }
+
+                // 2. Dynamic Price Update with Fade effect
+                const newPrice = btn.getAttribute('data-price') || btn.dataset.price;
+                if (newPrice) {
+                    priceDisplay.style.opacity = '0';
+                    priceDisplay.style.transform = 'translateY(5px)';
+                    setTimeout(() => {
+                        priceDisplay.textContent = newPrice;
+                        priceDisplay.style.opacity = '1';
+                        priceDisplay.style.transform = 'translateY(0)';
+                    }, 150);
+                }
             });
-            
-            btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'border-outline-variant');
-            btn.classList.add('bg-primary-container', 'text-on-primary-container', 'ring-2', 'ring-primary', 'border-primary');
-            
-            // Dynamic Price Update with Fade effect
-            if (btn.dataset.price && priceDisplay) {
-                priceDisplay.style.opacity = '0';
-                priceDisplay.style.transform = 'translateY(5px)';
-                setTimeout(() => {
-                    priceDisplay.textContent = btn.dataset.price;
-                    priceDisplay.style.opacity = '1';
-                    priceDisplay.style.transform = 'translateY(0)';
-                }, 150);
-            }
         });
-    });
+    }
 
     // -----------------------------------------------------------
     //  #2. Selector UI de Colores (Apple-Style Switcher)
@@ -137,46 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const colorLabel = document.querySelector('.color-label');
                 if (colorLabel && btn.getAttribute('aria-label')) {
                     colorLabel.textContent = btn.getAttribute('aria-label');
-                }
-            });
-        });
-    }
-
-    // -----------------------------------------------------------
-    //  #3. Storage Selector Logic (Price Update)
-    // -----------------------------------------------------------
-    const storageButtons = document.querySelectorAll('.storage-btn');
-    const priceDisplay = document.querySelector('.product-price');
-
-    if (storageButtons.length > 0 && priceDisplay) {
-        storageButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const newPrice = btn.getAttribute('data-price');
-                if (!newPrice) return;
-
-                // Simple price switch for now (can add animation later)
-                priceDisplay.textContent = newPrice;
-
-                // Update UI state
-                storageButtons.forEach(b => {
-                    b.classList.remove('bg-primary-container', 'ring-2', 'ring-primary', 'active-storage');
-                    b.classList.add('bg-surface-container-lowest', 'border', 'border-outline-variant/20');
-                    
-                    // Specific logic for Ipad style buttons with inner span
-                    const span = b.querySelector('.font-bold.text-on-primary-container');
-                    if (span) {
-                        span.classList.remove('text-on-primary-container');
-                        span.classList.add('text-on-surface');
-                    }
-                });
-
-                btn.classList.add('bg-primary-container', 'ring-2', 'ring-primary', 'active-storage');
-                btn.classList.remove('bg-surface-container-lowest', 'border', 'border-outline-variant/20');
-                
-                const activeSpan = btn.querySelector('.font-bold');
-                if (activeSpan) {
-                    activeSpan.classList.add('text-on-primary-container');
-                    activeSpan.classList.remove('text-on-surface');
                 }
             });
         });
