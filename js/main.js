@@ -143,6 +143,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -----------------------------------------------------------
+    //  #3. Storage Selector Logic (Price Update)
+    // -----------------------------------------------------------
+    const storageButtons = document.querySelectorAll('.storage-btn');
+    const priceDisplay = document.querySelector('.product-price');
+
+    if (storageButtons.length > 0 && priceDisplay) {
+        storageButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const newPrice = btn.getAttribute('data-price');
+                if (!newPrice) return;
+
+                // Simple price switch for now (can add animation later)
+                priceDisplay.textContent = newPrice;
+
+                // Update UI state
+                storageButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'ring-2', 'ring-primary', 'active-storage');
+                    b.classList.add('bg-surface-container-lowest', 'border', 'border-outline-variant/20');
+                    
+                    // Specific logic for Ipad style buttons with inner span
+                    const span = b.querySelector('.font-bold.text-on-primary-container');
+                    if (span) {
+                        span.classList.remove('text-on-primary-container');
+                        span.classList.add('text-on-surface');
+                    }
+                });
+
+                btn.classList.add('bg-primary-container', 'ring-2', 'ring-primary', 'active-storage');
+                btn.classList.remove('bg-surface-container-lowest', 'border', 'border-outline-variant/20');
+                
+                const activeSpan = btn.querySelector('.font-bold');
+                if (activeSpan) {
+                    activeSpan.classList.add('text-on-primary-container');
+                    activeSpan.classList.remove('text-on-surface');
+                }
+            });
+        });
+    }
+
+    // -----------------------------------------------------------
     //  #3. Theme Toggle Logic (Dark/Light Mode)
     // -----------------------------------------------------------
     const themeToggleBtn = document.getElementById('themeToggle');

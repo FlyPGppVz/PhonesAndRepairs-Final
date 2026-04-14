@@ -17,7 +17,7 @@
     </script>
 </head>
 <body class="text-on-background">
-<!-- TopNavBar -->
+<!-- TopNavBar Updated as per COMPONENTS_95 - Sync 2026-04-11 -->
 <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
 <nav class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto">
 <!-- Left Column: Logo -->
@@ -87,7 +87,7 @@ Shop
 </div>
 </div>
 
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./services-unified-nav.html">Service</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer font-bold" href="./services-unified-nav.html">Service</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./contact-unified-nav.html">Contact</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./about-us-unified-nav.html">About Us</a>
 </div>
@@ -116,6 +116,20 @@ Shop
 <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="./create-account-final-nav.html">Create Account</a>
 <a class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" id="navMyAccountLink" href="./my-profile-final-nav.html">My Account</a>
 </div>
+</div>
+        <!-- Theme Toggle Toggle -->
+        <button id="themeToggle" class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-white/5" aria-label="Toggle Theme">
+            <div class="relative w-[20px] h-[20px]">
+                <!-- Sun Icon -->
+                <svg class="absolute inset-0 w-full h-full text-amber-500 transition-all duration-300 transform dark:-rotate-180 dark:opacity-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+                <!-- Moon Icon -->
+                <svg class="absolute inset-0 w-full h-full text-blue-400 transition-all duration-300 transform rotate-180 opacity-0 dark:rotate-0 dark:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </div>
+        </button>
 </div>
         <!-- Theme Toggle Toggle -->
         <button id="themeToggle" class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-white/5" aria-label="Toggle Theme">
@@ -260,7 +274,7 @@ Shop
 <!-- Tech Card 2 -->
 <div class="group bg-surface-container-lowest rounded-lg p-6 transition-all hover:translate-y-[-8px]">
 <div class="h-48 rounded-lg mb-6 overflow-hidden bg-surface-variant">
-<img class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="Professional studio shot of a Samsung Galaxy Tab with stylus on a clean neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT9IL_SaOy1NbDGAw0qA9WNVe_3BuzPTaP8Saqr7DC1E-_7JWZm7XshdNXV_QrDNRbTUH1aMyZeNZ1QO1EWf6mLMcBn6GKQygWLl4BRhe99X3_oBXZo1sFSIWx9KmAL9nGEYx8LFzZTaEzwQuYY5KYAyU0l0h4NSLy5Den_IdmtmX9R4vNMcoQ-ShkEZU1RcSRGChatuESz3hqT4_bpY4PT6azBUx9Rqx8nNpfwmiJiEtZsfYFYNW777RAasiq2biwancFO74DFOw">
+<img class="w-full h-full object-contain transition-transform group-hover:scale-105" data-alt="Professional studio shot of a Samsung Galaxy Tab with stylus on a clean neutral background" src="./assets/images/samsung-tab-complete.png">
 </div>
 <h5 class="text-lg font-bold mb-2">Samsung Galaxy Tab</h5>
 <p class="text-sm text-on-surface-variant mb-6">S-Series, A-Series, and Active models. Screen &amp; Port repairs.</p>
@@ -292,7 +306,7 @@ Shop
 <a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors" href="./services-unified-nav.html">Terms of Service</a>
 <a class="text-xs font-normal text-slate-500 hover:text-blue-600 transition-colors" href="#">FAQ</a>
 </div>
-<div class="text-xs font-normal text-slate-500">Â© 2024 CellphonesAndRepair. All rights reserved.</div>
+<div class="text-xs font-normal text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</div>
 </div>
 </footer>
 <script src="./js/cart.js"></script><script src="./js/main.js"></script><!-- WhatsApp FAB -->

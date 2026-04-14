@@ -142,9 +142,9 @@ Shop
 <div class="lg:col-span-7 relative h-[600px] md:h-[800px] bg-surface-container dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col items-center justify-center p-8 md:p-12">
 <img id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png">
 <div class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
-<button onclick="updateColor('black', this)" class="color-btn group relative w-12 h-12 rounded-full bg-[#1c1c1c] ring-2 ring-primary ring-offset-4 ring-offset-background transition-all hover:scale-110 active:scale-95" title="Titanium Black"></button>
-<button onclick="updateColor('white', this)" class="color-btn group relative w-12 h-12 rounded-full bg-[#f2f2f2] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" title="Titanium White"></button>
-<button onclick="updateColor('orange', this)" class="color-btn group relative w-12 h-12 rounded-full bg-[#d1713f] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" title="Cosmic Orange"></button>
+<button class="color-btn group relative w-12 h-12 rounded-full bg-[#1c1c1c] active-color ring-2 ring-primary ring-offset-4 ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png" aria-label="Titanium Black"></button>
+<button class="color-btn group relative w-12 h-12 rounded-full bg-[#f2f2f2] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-white.png" aria-label="Titanium White"></button>
+<button class="color-btn group relative w-12 h-12 rounded-full bg-[#d1713f] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-orange-.png" aria-label="Cosmic Orange"></button>
 </div>
 <!-- Floating Detail Badge -->
 <div class="absolute bottom-10 left-10 p-6 bg-surface-container-lowest/80 backdrop-blur-md rounded-lg max-w-[240px]">
@@ -157,8 +157,10 @@ Shop
 <div class="mb-8">
 <span class="text-primary font-semibold tracking-wide text-xs uppercase mb-3 block">New Arrival</span>
 <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-4">iPhone 17 Pro Max</h1>
-<p class="text-on-surface-variant text-lg max-w-md mb-6">Titanium Black. The strongest, lightest, and most advanced iPhone ever created.</p>
+<p class="text-on-surface-variant text-lg max-w-md mb-6"><span class="color-label">Titanium Black</span>. The strongest, lightest, and most advanced iPhone ever created.</p>
+<div class="product-price-container min-h-[60px] flex items-center">
 <div class="product-price text-3xl font-semibold text-on-surface transition-all">$1,299.00</div>
+</div>
 </div>
 <!-- Storage Selector -->
 <div class="mb-10">
@@ -327,7 +329,7 @@ Shop
 </div>
 </div>
 <div class="px-8 py-8 border-t border-slate-200/50 dark:border-slate-800/50 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-sans text-sm text-slate-500 dark:text-slate-400">Â© 2024 CellphonesAndRepair. All rights reserved.</p>
+<p class="font-sans text-sm text-slate-500 dark:text-slate-400">© 2024 CellphonesAndRepair. All rights reserved.</p>
 <div class="flex gap-6">
 <span class="material-symbols-outlined text-slate-400">public</span>
 <span class="material-symbols-outlined text-slate-400">language</span>
@@ -336,36 +338,7 @@ Shop
 </footer>
 <script src="./js/cart.js"></script><script src="./js/main.js">
 </script>
-<script>
-    const colorImages = {
-        'black': './assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png',
-        'white': './assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-white.png',
-        'orange': './assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-orange-.png'
-    };
-
-    function updateColor(color, btn) {
-        const mainImg = document.getElementById('main-product-image');
-        mainImg.style.opacity = '0';
-        setTimeout(() => {
-            mainImg.src = colorImages[color];
-            mainImg.style.opacity = '1';
-        }, 300);
-
-        document.querySelectorAll('.color-btn').forEach(b => {
-            b.classList.remove('ring-2', 'ring-primary', 'ring-offset-4', 'ring-offset-background');
-            b.classList.add('hover:ring-2', 'hover:ring-primary', 'hover:ring-offset-4', 'hover:ring-offset-background');
-        });
-        btn.classList.add('ring-2', 'ring-primary', 'ring-offset-4', 'ring-offset-background');
-        btn.classList.remove('hover:ring-2', 'hover:ring-primary', 'hover:ring-offset-4', 'hover:ring-offset-background');
-        
-        // Update selection text if needed
-        const modelText = document.querySelector('p.text-on-surface-variant.text-lg');
-        if (modelText) {
-            const colorName = color.charAt(0).toUpperCase() + color.slice(1);
-            modelText.innerText = `Titanium ${colorName}. The strongest, lightest, and most advanced iPhone ever created.`;
-        }
-    }
-</script>
+<!-- No inline scripts needed, using global js/main.js -->
 <!-- WhatsApp FAB -->
 <a href="https://api.whatsapp.com/send/?phone=13136268888&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="fixed bottom-[160px] right-6 z-[10001] group cursor-pointer animate-fade-in-up" aria-label="Chat on WhatsApp" style="animation-delay: 0.5s;">
   <div class="relative bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center pointer-events-auto">
@@ -386,6 +359,7 @@ Shop
   </div>
 </a>
 </body></html>
+
 
 
 

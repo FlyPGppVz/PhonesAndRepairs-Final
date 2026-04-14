@@ -1,0 +1,135 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>iPhone 11 Series | CellphonesAndRepair</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
+<script id="anti_flicker">
+    (function() {
+        const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+    })();
+</script>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
+    <nav class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto">
+        <div class="flex-1 flex items-center">
+            <a href="./index.html"><img alt="Logo" class="h-10 w-auto object-contain scale-95" src="./assets/images/logo-transparent.png"></a>
+        </div>
+        <div class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[13px] font-medium tracking-tight">
+            <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500" href="./index.html">Home</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 font-bold" href="./shop-fully-connected.html">Shop</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500" href="./services-unified-nav.html">Service</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500" href="./contact-unified-nav.html">Contact</a>
+            <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500" href="./about-us-unified-nav.html">About Us</a>
+        </div>
+        <div class="flex-1 flex items-center justify-end gap-5">
+            <button id="themeToggle" class="p-2 rounded-full border border-slate-200/50 dark:border-white/5">
+                <span class="material-symbols-outlined text-amber-500 dark:hidden">light_mode</span>
+                <span class="material-symbols-outlined text-blue-400 hidden dark:block">dark_mode</span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<main class="pt-24 pb-20 px-4 md:px-8 max-w-[1440px] mx-auto">
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-24">
+        <div class="lg:col-span-7 relative group">
+            <div class="aspect-square bg-white dark:bg-[#1a1c1e] rounded-2xl overflow-hidden p-12 flex items-center justify-center border border-outline-variant/10">
+                <img id="main-product-image" alt="iPhone 11 Series" class="max-w-[80%] h-auto object-contain transition-all duration-700 scale-110" src="./assets/images/Tienda/Iphone_11_pro/iphone-11-pro-midnightg-.png">
+            </div>
+        </div>
+        <div class="lg:col-span-5 flex flex-col justify-center">
+            <div class="mb-8">
+                <span class="text-primary font-semibold tracking-wide text-xs uppercase mb-3 block">Classic Choice</span>
+                <h1 class="text-5xl font-bold tracking-tight text-on-surface mb-4">iPhone 11 Series</h1>
+                <p class="text-on-surface-variant text-lg max-w-md mb-6">Explore the <span class="color-label">Midnight Green</span> model. Pro performance, classic design.</p>
+                <div class="product-price-container min-h-[60px] flex items-center">
+                    <div class="product-price text-3xl font-semibold text-on-surface transition-all">$499.00</div>
+                </div>
+            </div>
+
+            <!-- Color Selector -->
+            <div class="mb-10">
+                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block">Select Color (iPhone 11 & 11 Pro)</label>
+                <div class="flex flex-wrap gap-4">
+                    <button class="color-btn w-10 h-10 rounded-full bg-[#4e5851] ring-2 ring-[#4e5851] ring-offset-2 transition-all hover:scale-110 active:scale-90" data-image="./assets/images/Tienda/Iphone_11_pro/iphone-11-pro-midnightg-.png" data-name="Midnight Green"></button>
+                    <button class="color-btn w-10 h-10 rounded-full bg-[#5d5d5d] ring-1 ring-outline-variant/30 transition-all hover:scale-110 active:scale-90" data-image="./assets/images/Tienda/Iphone_11_pro/iphone-11-pro-spaceg-.png" data-name="Space Gray"></button>
+                    <button class="color-btn w-10 h-10 rounded-full bg-[#fae7cf] ring-1 ring-outline-variant/30 transition-all hover:scale-110 active:scale-90" data-image="./assets/images/Tienda/Iphone_11_pro/iphone-11-pro-gold-.png" data-name="Gold"></button>
+                    <button class="color-btn w-10 h-10 rounded-full bg-[#f5f5f5] ring-1 ring-outline-variant/30 transition-all hover:scale-110 active:scale-90" data-image="./assets/images/Tienda/Iphone_11_pro/iphone-11-white-.png" data-name="Silver"></button>
+                    <button class="color-btn w-10 h-10 rounded-full bg-[#d1c4e9] ring-1 ring-outline-variant/30 transition-all hover:scale-110 active:scale-90" data-image="./assets/images/Tienda/Iphone_11_pro/iPhone-11-purple-.png" data-name="Purple"></button>
+                    <button class="color-btn w-10 h-10 rounded-full bg-[#a5d6a7] ring-1 ring-outline-variant/30 transition-all hover:scale-110 active:scale-90" data-image="./assets/images/Tienda/Iphone_11_pro/iPhone-11-verde-.png" data-name="Green"></button>
+                </div>
+            </div>
+
+            <!-- Storage Selector -->
+            <div class="mb-10">
+                <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block">Select Capacity</label>
+                <div class="grid grid-cols-3 gap-3">
+                    <button class="storage-btn px-6 py-4 rounded-lg bg-primary-container text-on-primary-container ring-1 ring-primary font-semibold transition-all active:scale-95" data-price="$499.00">64GB</button>
+                    <button class="storage-btn px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all active:scale-95" data-price="$549.00">128GB</button>
+                    <button class="storage-btn px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all active:scale-95" data-price="$649.00">256GB</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <button class="w-full py-5 bg-primary text-on-primary rounded-full font-semibold text-lg hover:opacity-90 transition-opacity">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950 py-12 text-center text-sm text-slate-500">
+    <p>© 2024 CellphonesAndRepair. All rights reserved.</p>
+</footer>
+
+<script src="./js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const mainImg = document.getElementById('main-product-image');
+    const colorLabel = document.querySelector('.color-label');
+    const colorBtns = document.querySelectorAll('.color-btn');
+    const priceDisplay = document.querySelector('.product-price');
+    const storageBtns = document.querySelectorAll('.storage-btn');
+
+    colorBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const imgPath = btn.getAttribute('data-image');
+            const colorName = btn.getAttribute('data-name');
+            
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = imgPath;
+                mainImg.style.opacity = '1';
+                colorLabel.textContent = colorName;
+            }, 300);
+
+            colorBtns.forEach(b => {
+                b.classList.remove('ring-offset-2', 'ring-2');
+                b.classList.add('ring-1', 'ring-outline-variant/30');
+            });
+            btn.classList.add('ring-offset-2', 'ring-2');
+            btn.classList.remove('ring-1', 'ring-outline-variant/30');
+        });
+    });
+
+    storageBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const newPrice = btn.getAttribute('data-price');
+            priceDisplay.textContent = newPrice;
+            
+            storageBtns.forEach(b => {
+                b.classList.remove('bg-primary-container', 'text-on-primary-container', 'ring-primary', 'ring-1');
+                b.classList.add('bg-surface-container-lowest', 'ring-outline-variant/20');
+            });
+            btn.classList.add('bg-primary-container', 'text-on-primary-container', 'ring-primary', 'ring-1');
+            btn.classList.remove('bg-surface-container-lowest', 'ring-outline-variant/20');
+        });
+    });
+});
+</script>
+</body></html>

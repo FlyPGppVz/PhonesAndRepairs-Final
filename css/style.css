@@ -142,11 +142,15 @@ div[class*="absolute"][class*="z-20"] {
 
 @keyframes floatHigh {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    50% { transform: translateY(-60px); }
 }
 
 .animate-float {
     animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-high {
+    animation: floatHigh 4s ease-in-out infinite;
 }
 
 .animate-float-high {
