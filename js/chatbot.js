@@ -10,8 +10,8 @@
 // ¿Qué hace?: Define constantes utilizadas en todo el script en lugar de textos mágicos ("magic strings").
 // ¿Para qué sirve?: Facilita el mantenimiento (Clean code) y asegura que los valores sean siempre consistentes.
 const STORAGE_KEY = 'cr_chat_history';
-const MAX_Z_INDEX = 'z-[9999]'; 
-const OPEN_Z_INDEX = 'z-[20000]';
+const MAX_Z_INDEX = 'z-[10005]'; 
+const OPEN_Z_INDEX = 'z-[10010]';
 
 // # CLASE PRINCIPAL
 // ¿Qué hace?: Modela los datos, el estado visual y la lógica del widget.
