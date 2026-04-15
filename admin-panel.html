@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" class="light">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blink Service | Admin Panel</title>
+    <title>Admin Panel | Cellphones & Repairs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
@@ -13,6 +13,8 @@
         .dark .glass { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); }
         .loader { border-top-color: #3b82f6; animation: spinner 1.5s linear infinite; }
         @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .brand-blue { background-color: #063183 !important; }
+        .brand-blue:hover { background-color: #002D72 !important; }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
@@ -20,18 +22,24 @@
     <!-- Auth Overlay -->
     <div id="authOverlay" class="fixed inset-0 z-[100] bg-slate-100 dark:bg-slate-950 flex flex-col items-center justify-center p-6">
         <div class="max-w-md w-full text-center slide-up">
-            <img src="./assets/img/admin-logo.png" alt="Blink Service Logo" class="h-20 mx-auto mb-8 drop-shadow-xl">
-            <h1 class="text-3xl font-bold mb-2">Blink Service CRUD</h1>
-            <p class="text-slate-500 dark:text-slate-400 mb-8">Professional Inventory Management System</p>
+            <img src="./assets/images/logotipo_cellphones_and_repairs.png" alt="Cellphones & Repairs Logo" class="h-16 mx-auto mb-6 drop-shadow-xl">
+            <h1 class="text-3xl font-bold mb-8 tracking-tighter uppercase">ADMIN PANEL</h1>
             
-            <div class="glass p-8 rounded-3xl shadow-2xl relative">
+            <div class="glass p-8 rounded-3xl shadow-2xl relative border border-slate-200">
                 <label class="block text-left text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">GitHub Personal Token</label>
                 <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 mb-6 focus:ring-2 focus:ring-blue-500 transition-all outline-none">
-                <button onclick="saveToken()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-500/20 transition-all transform active:scale-95">
-                    Acceder al Sistema
+                <button onclick="saveToken()" class="w-full brand-blue text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20 transition-all transform active:scale-95">
+                    Access System
                 </button>
+                <p class="mt-6 text-[10px] text-slate-400">Your data is securely stored in this browser session.</p>
             </div>
-            <p class="mt-8 text-xs text-slate-400">Tus datos se guardan de forma segura en este navegador.</p>
+
+            <!-- Bottom Branding -->
+            <div class="mt-12 flex flex-col items-center gap-2 opacity-80">
+                <img src="./assets/images/Logo_flat_blink_service.png" alt="Blink Service" class="h-10 grayscale brightness-50 dark:grayscale-0 dark:brightness-100">
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 leading-tight">Professional Inventory Management System</p>
+                <p class="text-[10px] uppercase tracking-widest text-slate-400">Powered by Blink Service</p>
+            </div>
         </div>
     </div>
 
@@ -41,14 +49,14 @@
         <header class="fixed top-0 w-full glass z-50 border-b border-slate-200 dark:border-slate-800">
             <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <img src="./assets/img/admin-logo.png" alt="Logo" class="h-10">
+                    <img src="./assets/images/logotipo_cellphones_and_repairs.png" alt="Logo" class="h-8">
                     <div class="h-6 w-[1px] bg-slate-300 dark:bg-slate-700 mx-2"></div>
-                    <span class="font-bold tracking-tight">ADMIN PANEL</span>
+                    <span class="font-bold tracking-tight text-sm uppercase">ADMIN PANEL</span>
                 </div>
                 <div class="flex items-center gap-4">
                     <button onclick="logout()" class="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-red-500 transition-colors">
                         <span class="material-symbols-outlined text-xl">logout</span>
-                        Cerrar Sesión
+                        Logout
                     </button>
                 </div>
             </div>
@@ -59,11 +67,11 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                 <div>
                     <h2 class="text-4xl font-bold tracking-tight mb-2 italic">Product Factory</h2>
-                    <p class="text-slate-500 dark:text-slate-400">Gestiona, crea y despliega productos instantáneamente.</p>
+                    <p class="text-slate-500 dark:text-slate-400">Manage, create and deploy products instantly.</p>
                 </div>
-                <button onclick="openModal()" class="flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform active:scale-95">
+                <button onclick="openModal()" class="flex items-center gap-2 brand-blue text-white px-8 py-4 rounded-full font-bold shadow-xl hover:scale-105 transition-transform active:scale-95">
                     <span class="material-symbols-outlined">add_circle</span>
-                    Nuevo Producto
+                    New Product
                 </button>
             </div>
 
@@ -82,51 +90,51 @@
     <div id="productModal" class="hidden fixed inset-0 z-[200] bg-slate-950/50 backdrop-blur-sm flex items-center justify-center p-6">
         <div class="bg-white dark:bg-slate-900 max-w-2xl w-full rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div class="p-8 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <h3 class="text-2xl font-bold italic" id="modalTitle">Nuevo Producto</h3>
+                <h3 class="text-2xl font-bold italic" id="modalTitle">New Product</h3>
                 <button onclick="closeModal()" class="material-symbols-outlined text-slate-400 hover:text-slate-900 transition-colors">close</button>
             </div>
             
             <div class="p-8 overflow-y-auto">
                 <form id="productForm" class="grid grid-cols-2 gap-6">
                     <div class="col-span-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Nombre del Producto</label>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Name</label>
                         <input type="text" id="title" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Precio (USD)</label>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Price (USD)</label>
                         <input type="number" step="0.01" id="price" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div>
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Categoría</label>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Category</label>
                         <select id="category" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none appearance-none">
                             <option value="iphone">iPhone</option>
                             <option value="samsung">Samsung</option>
                             <option value="ipad">iPad</option>
                             <option value="smartwatch">Apple Watch</option>
-                            <option value="accessories">Accesorios</option>
-                            <option value="consoles">Consolas</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="consoles">Consoles</option>
                         </select>
                     </div>
                     <div class="col-span-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Descripción Corta (Hero)</label>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Short Description (Hero)</label>
                         <input type="text" id="description" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div class="col-span-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Imagen Principal</label>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Image</label>
                         <div class="flex items-center gap-4">
                             <div id="imagePreview" class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-700">
                                 <span class="material-symbols-outlined text-slate-300">image</span>
                             </div>
                             <input type="file" id="imageFile" accept="image/*" class="hidden" onchange="previewImage(this)">
-                            <button type="button" onclick="document.getElementById('imageFile').click()" class="bg-slate-100 dark:bg-slate-800 px-6 py-4 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Seleccionar Archivo</button>
+                            <button type="button" onclick="document.getElementById('imageFile').click()" class="bg-slate-100 dark:bg-slate-800 px-6 py-4 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Select Image</button>
                         </div>
                     </div>
                 </form>
             </div>
             
             <div class="p-8 bg-slate-50 dark:bg-slate-800/50 flex gap-4">
-                <button onclick="saveProduct()" id="saveBtn" class="flex-1 bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-xl hover:bg-blue-700 active:scale-95 transition-all flex items-center justify-center gap-2">
-                    <span id="saveBtnText">Generar y Desplegar</span>
+                <button onclick="saveProduct()" id="saveBtn" class="flex-1 brand-blue text-white font-bold py-4 rounded-2xl shadow-xl hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <span id="saveBtnText">Generate & Deploy Page</span>
                     <div id="btnLoader" class="hidden loader w-5 h-5 border-2 border-white/20 rounded-full"></div>
                 </button>
             </div>
@@ -142,7 +150,7 @@
     <script>
         // CONFIGURATION
         const GITHUB_REPO = 'FlyPGppVz/PhonesAndRepairs-Final';
-        const GITHUB_BRANCH = 'tienda-dinamica';
+        const GITHUB_BRANCH = 'master';
         const INVENTORY_PATH = 'data/inventory.json';
         const TEMPLATE_PATH = 'iphone-17-pro-max-detail.html';
         const PRODUCTS_DIR = 'products';
@@ -172,7 +180,7 @@
                 document.getElementById('mainApp').classList.remove('hidden');
                 loadInventory();
             } else {
-                showToast('Token inválido. Debe empezar por ghp_', 'error');
+                showToast('Invalid token. It must start with ghp_', 'error');
             }
         }
 
@@ -192,7 +200,7 @@
                 inventory = JSON.parse(atob(data.content));
                 renderInventory();
             } catch (err) {
-                showToast('Error al cargar inventario. Revisa el Token.', 'error');
+                showToast('Error loading inventory. Check your Token.', 'error');
             }
         }
 
@@ -239,7 +247,7 @@
             const category = document.getElementById('category').value;
 
             if (!title || !price || !base64Image) {
-                showToast('Por favor completa todos los campos incluyen la imagen.', 'error');
+                showToast('Please complete all fields including image.', 'error');
                 return;
             }
 
@@ -267,12 +275,12 @@
                 inventory.push(newItem);
                 await githubCommit(INVENTORY_PATH, btoa(JSON.stringify(inventory, null, 2)), `Add ${title} to inventory`, currentFileSha);
 
-                showToast('Producto creado y desplegado con éxito!');
+                showToast('Product created and deployed successfully!');
                 closeModal();
                 loadInventory();
             } catch (err) {
                 console.error(err);
-                showToast('Error en la sincronización. Revisa la consola.', 'error');
+                showToast('Synchronization error. Check console.', 'error');
             } finally {
                 setLoading(false);
             }
@@ -306,8 +314,6 @@
             // Main Image
             html = html.replace(/id="main-product-image" class=".*?" src=".*?"/, `id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="../${imgPath}"`);
             
-            // Remove color buttons or other iPhone specific things if needed (optional)
-            
             return html;
         }
 
@@ -331,17 +337,17 @@
         }
 
         async function deleteProduct(index) {
-            if(!confirm('¿Estás seguro de eliminar este producto?')) return;
+            if(!confirm('Are you sure you want to delete this product?')) return;
             
             const item = inventory[index];
             inventory.splice(index, 1);
             
             try {
                 await githubCommit(INVENTORY_PATH, btoa(JSON.stringify(inventory, null, 2)), `Delete ${item.title}`, currentFileSha);
-                showToast('Producto eliminado');
+                showToast('Product deleted');
                 loadInventory();
             } catch (err) {
-                showToast('Error al eliminar', 'error');
+                showToast('Error deleting product', 'error');
             }
         }
 
@@ -387,3 +393,4 @@
     </script>
 </body>
 </html>
+
