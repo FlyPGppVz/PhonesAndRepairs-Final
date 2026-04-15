@@ -74,7 +74,7 @@ class ChatbotWidget {
         // Contenedor principal: z-index maximizado sobre WhatsApp
         this.container = document.createElement('div');
         this.container.id = 'cr-chatbot-container';
-        this.container.classList.add('fixed', 'bottom-6', 'left-6', MAX_Z_INDEX, 'font-sans', 'flex', 'flex-col', 'items-start');
+        this.container.classList.add('fixed', 'bottom-6', 'left-6', MAX_Z_INDEX, 'font-sans', 'flex', 'flex-col', 'items-start', 'pointer-events-none');
         
         // Ventana del Chat
         this.chatWindow = document.createElement('div');
@@ -131,7 +131,7 @@ class ChatbotWidget {
         this.toggleBtn = document.createElement('button');
         this.toggleBtn.classList.add(
             'w-11', 'h-11', 'rounded-full', 'bg-primary', 'text-on-primary', 'shadow-xl', 'shadow-primary/30',
-            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all'
+            'flex', 'items-center', 'justify-center', 'hover:scale-105', 'active:scale-95', 'transition-all', 'pointer-events-auto'
         );
         this.toggleBtn.innerHTML = `
             <span class="material-symbols-outlined text-[22px] transition-transform duration-300" id="chatbot-toggle-icon">chat</span>
