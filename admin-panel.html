@@ -134,15 +134,23 @@
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Name</label>
                                 <input type="text" id="title" required class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
                             </div>
-                            <div>
+                            <!-- BRAND SEARCHABLE SELECT -->
+                            <div class="relative group/brand">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Brand</label>
-                                <select id="brand" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none appearance-none shadow-sm">
-                                    <option value="Apple">Apple</option>
-                                    <option value="Samsung">Samsung</option>
-                                    <option value="Console">Console / Gaming</option>
-                                    <option value="Audio">Audio / Headphones</option>
-                                    <option value="Other">Other</option>
-                                </select>
+                                <div class="relative">
+                                    <input type="text" id="brandSearch" placeholder="Search brand (Apple, Sony...)" 
+                                           class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm text-sm"
+                                           onfocus="showBrandList()" oninput="filterBrands()">
+                                    <input type="hidden" id="brand" value="Apple">
+                                    <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none transition-transform group-focus-within/brand:rotate-180">expand_more</span>
+                                </div>
+                                
+                                <!-- Brand Dropdown -->
+                                <div id="brandDropdown" class="hidden absolute left-0 right-0 top-[calc(100%+8px)] bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/50 dark:border-white/5 z-[100] max-h-[400px] overflow-y-auto cupertino-scroll p-2">
+                                    <div id="brandListContent">
+                                        <!-- Categories and Items will be injected here -->
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Release Year</label>
@@ -313,6 +321,78 @@
         let selectedImages = []; 
         let fillerImage = null; // {name, base64}
         let dynamicColors = ['#1c1c1c', '#f2f2f2', '#d1713f']; // Initial variants
+
+        const BRAND_DATA = {
+            "Top Brands": ["Apple", "Samsung", "PlayStation", "Xbox"],
+            "Gaming & Consoles": [
+                "Sony", "Microsoft", "Nintendo", "Valve", "NVIDIA", "Razer", 
+                "Logitech G", "SteelSeries", "Corsair", "HyperX", "Scuf Gaming", 
+                "Turtle Beach", "Astro Gaming", "ASUS ROG", "MSI", "Gigabyte", 
+                "Alienware", "Zotac", "EVGA", "Sapphire"
+            ],
+            "Smartphones & Mobile": [
+                "Google", "Xiaomi", "Huawei", "Honor", "Oppo", "Vivo", 
+                "Realme", "OnePlus", "Motorola", "Nokia", "Nothing", 
+                "Sony (Xperia)", "ZTE", "ASUS"
+            ],
+            "Audio & Sound": [
+                "Bose", "JBL", "Beats by Dre", "Sennheiser", "Jabra", 
+                "Audio-Technica", "Beyerdynamic", "Bang & Olufsen", "Bowers & Wilkins", 
+                "Marshall", "Shure", "Soundcore", "Edifier", "Skullcandy", "Haylou"
+            ],
+            "Computing & Productivity": [
+                "Lenovo", "HP", "Dell", "Acer", "Intel", "AMD", "Kingston", 
+                "Western Digital", "Seagate", "Crucial"
+            ],
+            "Wearables & Health": ["Garmin", "Fitbit", "Amazfit", "Apple Watch", "Suunto", "Polar"],
+            "Photography & Video": ["Canon", "Nikon", "Fujifilm", "Panasonic", "Leica", "GoPro", "DJI", "Insta360"],
+            "Others": ["Other"]
+        };
+
+        function renderBrandOptions(filter = '') {
+            const container = document.getElementById('brandListContent');
+            let html = '';
+            
+            for (const [category, brands] of Object.entries(BRAND_DATA)) {
+                const filteredBrands = brands.filter(b => b.toLowerCase().includes(filter.toLowerCase()));
+                if (filteredBrands.length === 0) continue;
+
+                html += `<div class="px-3 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">${category}</div>`;
+                filteredBrands.forEach(brand => {
+                    html += `
+                        <div onclick="selectBrand('${brand}')" 
+                             class="px-3 py-3 rounded-lg text-sm hover:bg-blue-50 dark:hover:bg-blue-900/30 cursor-pointer transition-colors flex items-center justify-between group">
+                            <span class="text-on-surface">${brand}</span>
+                            <span class="material-symbols-outlined text-xs text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">check_circle</span>
+                        </div>
+                    `;
+                });
+            }
+            container.innerHTML = html || '<div class="p-4 text-center text-xs text-slate-500">No brands found...</div>';
+        }
+
+        function showBrandList() {
+            document.getElementById('brandDropdown').classList.remove('hidden');
+            renderBrandOptions(document.getElementById('brandSearch').value);
+        }
+
+        function filterBrands() {
+            const val = document.getElementById('brandSearch').value;
+            renderBrandOptions(val);
+        }
+
+        function selectBrand(name) {
+            document.getElementById('brandSearch').value = name;
+            document.getElementById('brand').value = name;
+            document.getElementById('brandDropdown').classList.add('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.group\\/brand')) {
+                document.getElementById('brandDropdown')?.classList.add('hidden');
+            }
+        });
 
         // COLOR DYNAMICS
         function addColor() {
@@ -644,7 +724,9 @@
         function editProduct(item) {
             document.getElementById('modalTitle').innerText = 'Edit Full Product Data';
             document.getElementById('title').value = item.title;
-            document.getElementById('brand').value = item.brand || 'Apple';
+            const brandName = item.brand || 'Apple';
+            document.getElementById('brand').value = brandName;
+            document.getElementById('brandSearch').value = brandName;
             document.getElementById('year').value = item.year || '';
             document.getElementById('price').value = item.price;
             
