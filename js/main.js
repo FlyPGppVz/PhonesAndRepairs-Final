@@ -55,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
     chatbotScript.src = './js/chatbot.js';
     document.body.appendChild(chatbotScript);
 
+    const fabsScript = document.createElement('script');
+    fabsScript.src = './js/fabs.js';
+    document.body.appendChild(fabsScript);
+
 
     /* =======================================================================================================
      * # MANEJADORES DE VISTA DE PRODUCTOS (E-COMMERCE DETAIL PAGES)

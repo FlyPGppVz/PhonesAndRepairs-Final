@@ -74,14 +74,14 @@ class ChatbotWidget {
         // Contenedor principal: z-index maximizado sobre WhatsApp
         this.container = document.createElement('div');
         this.container.id = 'cr-chatbot-container';
-        this.container.classList.add('fixed', 'bottom-6', 'right-6', MAX_Z_INDEX, 'font-sans', 'flex', 'flex-col', 'items-end');
+        this.container.classList.add('fixed', 'bottom-6', 'left-6', MAX_Z_INDEX, 'font-sans', 'flex', 'flex-col', 'items-start');
         
         // Ventana del Chat
         this.chatWindow = document.createElement('div');
         this.chatWindow.classList.add(
              // Clean Code: se estructura el Tailwind por categoría en la misma línea visual a modo de componentes.
             'bg-surface-container-lowest', 'rounded-2xl', 'shadow-2xl', 'w-[350px]', 'h-[500px]', 'mb-4',
-            'flex', 'flex-col', 'overflow-hidden', 'transition-all', 'duration-300', 'origin-bottom-right', 'border', 'border-slate-200', 'dark:border-slate-800'
+            'flex', 'flex-col', 'overflow-hidden', 'transition-all', 'duration-300', 'origin-bottom-left', 'border', 'border-slate-200', 'dark:border-slate-800'
         );
         
         // Estado por defecto invisible y encogido
