@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: flypgppvz/PhonesAndRepairs-Final
+  name: git-gateway
   branch: tienda-dinamica
   commit_messages:
     create: 'CMS: Crear {{collection}} "{{slug}}"'
