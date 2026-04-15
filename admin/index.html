@@ -25,5 +25,19 @@
 <body>
     <!-- Netlify CMS Script -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+<style>
+  /* Fuerza la desaparición del logo y footer de Netlify */
+  .netlify-identity-menu, 
+  .netlify-identity-footer, 
+  .netlify-identity-logo,
+  [data-netlify-identity-menu],
+  .netlify-identity-widget footer {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+  }
+</style>
 </body>
 </html>

@@ -423,7 +423,22 @@ Shop
 
 
 
-<script src="./js/cart.js"></script><script src="./js/main.js"></script></body></html>
+<script src="./js/cart.js"></script><script src="./js/main.js"></script><style>
+  /* Fuerza la desaparición del logo y footer de Netlify */
+  .netlify-identity-menu, 
+  .netlify-identity-footer, 
+  .netlify-identity-logo,
+  [data-netlify-identity-menu],
+  .netlify-identity-widget footer {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+  }
+</style>
+</body>
+</html>
 
 
 
