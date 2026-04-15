@@ -1,729 +1,982 @@
-<!DOCTYPE html><html class="light" lang="en"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Shop - CellphonesAndRepair</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Shop - CellphonesAndRepair</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
 
 
-<link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/tailwind-config.js"></script>
     <script id="anti_flicker">
-        (function() {
+        (function () {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             if (theme === 'dark') document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
         })();
     </script>
 </head>
-<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 selection:bg-primary/20">
-<!-- TopNavBar - Sync 2026-04-11 -->
-<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
-<nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto">
-<!-- Left Column: Logo -->
-<div class="flex-1 flex items-center">
-<a class="active:opacity-70 transition-all cursor-pointer" href="./index.html">
-<img alt="CellphonesAndRepair Logo" class="h-12 w-auto object-contain scale-95" data-alt="Professional CellphonesAndRepair brand logo" src="./assets/images/logo-transparent.png">
-</a>
-</div>
 
-<!-- Center Column: Navigation Links -->
-<div class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[15px] font-medium tracking-tight">
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./index.html">Home</a>
+<body
+    class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 selection:bg-primary/20">
+    <!-- TopNavBar - Sync 2026-04-11 -->
+    <header
+        class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
+        <nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto">
+            <!-- Left Column: Logo -->
+            <div class="flex-1 flex items-center">
+                <a class="active:opacity-70 transition-all cursor-pointer" href="./index.html">
+                    <img alt="CellphonesAndRepair Logo" class="h-12 w-auto object-contain scale-95"
+                        data-alt="Professional CellphonesAndRepair brand logo"
+                        src="./assets/images/logo-transparent.png">
+                </a>
+            </div>
 
-<!-- Shop Item with Full-Width Dropdown -->
-<div class="group h-full flex items-center">
-<a class="text-slate-900 dark:text-white font-bold group-hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer flex items-center gap-1 py-4" href="./shop-fully-connected.html">
-Shop
-<span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
-</a>
-<!-- Full-Width Mega Menu -->
-<div class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-3xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 py-16">
-<div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12">
-<!-- iPhones Column -->
-<div>
-<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">iPhones</h4>
-<ul class="space-y-4">
-<li><a href="./shop-fully-connected.html?category=iPhones" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Shop All iPhone</a></li>
-<li><a href="./iphone-17-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 17 Pro Max</a></li>
-<li><a href="./iphone-16-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 16 Pro Max</a></li>
-<li><a href="./shop-fully-connected.html?category=iPhones" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Compare Models</a></li>
-</ul>
-</div>
+            <!-- Center Column: Navigation Links -->
+            <div
+                class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[15px] font-medium tracking-tight">
+                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
+                    href="./index.html">Home</a>
 
-<!-- Android Column -->
-<div>
-<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Android</h4>
-<ul class="space-y-4">
-<li><a href="./samsung-s25-ultra-detail.html" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Samsung Galaxy</a></li>
-<li><a href="./samsung-s25-ultra-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S25 Ultra</a></li>
-<li><a href="./shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S24 Series</a></li>
-<li><a href="./shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Certified Androids</a></li>
-</ul>
-</div>
+                <!-- Shop Item with Full-Width Dropdown -->
+                <div class="group h-full flex items-center">
+                    <a class="text-slate-900 dark:text-white font-bold group-hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer flex items-center gap-1 py-4"
+                        href="./shop-fully-connected.html">
+                        Shop
+                        <span
+                            class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+                    </a>
+                    <!-- Full-Width Mega Menu -->
+                    <div
+                        class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-3xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 py-16">
+                        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12">
+                            <!-- iPhones Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">iPhones
+                                </h4>
+                                <ul class="space-y-4">
+                                    <li><a href="./shop-fully-connected.html?category=iPhones"
+                                            class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Shop
+                                            All iPhone</a></li>
+                                    <li><a href="./iphone-17-pro-max-detail.html"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone
+                                            17 Pro Max</a></li>
+                                    <li><a href="./iphone-16-pro-max-detail.html"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone
+                                            16 Pro Max</a></li>
+                                    <li><a href="./shop-fully-connected.html?category=iPhones"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Compare
+                                            Models</a></li>
+                                </ul>
+                            </div>
 
-<!-- iPads & Watch Column -->
-<div>
-<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Ecosystem</h4>
-<ul class="space-y-4">
-<li><a href="./shop-fully-connected.html?category=iPads" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">iPad</a></li>
-<li><a href="./product-detail-apple-watch-ultra-2-final.html" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Apple Watch</a></li>
-<li><a href="./shop-fully-connected.html?category=Consoles" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Consoles & Gaming</a></li>
-</ul>
-</div>
+                            <!-- Android Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Android
+                                </h4>
+                                <ul class="space-y-4">
+                                    <li><a href="./samsung-s25-ultra-detail.html"
+                                            class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Samsung
+                                            Galaxy</a></li>
+                                    <li><a href="./samsung-s25-ultra-detail.html"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S25
+                                            Ultra</a></li>
+                                    <li><a href="./shop-fully-connected.html?category=Samsung"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S24
+                                            Series</a></li>
+                                    <li><a href="./shop-fully-connected.html?category=Samsung"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Certified
+                                            Androids</a></li>
+                                </ul>
+                            </div>
 
-<!-- Accessories Column -->
-<div>
-<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Shop Selection</h4>
-<ul class="space-y-4">
-<li><a href="./shop-fully-connected.html?category=Accessories" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Essential Accessories</a></li>
-<li><a href="./chargers-and-cables-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cables & Power</a></li>
-<li><a href="./phone-cases-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cases & Protection</a></li>
-<li><a href="./airpods-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">AirPods & Audio</a></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+                            <!-- iPads & Watch Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">
+                                    Ecosystem</h4>
+                                <ul class="space-y-4">
+                                    <li><a href="./shop-fully-connected.html?category=iPads"
+                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">iPad</a>
+                                    </li>
+                                    <li><a href="./product-detail-apple-watch-ultra-2-final.html"
+                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Apple
+                                            Watch</a></li>
+                                    <li><a href="./shop-fully-connected.html?category=Consoles"
+                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Consoles
+                                            & Gaming</a></li>
+                                </ul>
+                            </div>
 
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./services-unified-nav.html">Services</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./contact-unified-nav.html">Contact</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./about-us-unified-nav.html">About Us</a>
-</div>
+                            <!-- Accessories Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Shop
+                                    Selection</h4>
+                                <ul class="space-y-4">
+                                    <li><a href="./shop-fully-connected.html?category=Accessories"
+                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Essential
+                                            Accessories</a></li>
+                                    <li><a href="./chargers-and-cables-detail.html"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cables
+                                            & Power</a></li>
+                                    <li><a href="./phone-cases-detail.html"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cases &
+                                            Protection</a></li>
+                                    <li><a href="./airpods-detail.html"
+                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">AirPods
+                                            & Audio</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Right Column: Icons & Search -->
-<div class="flex-1 flex items-center justify-end gap-3 md:gap-5">
-<button class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity" id="mobileMenuBtn">menu</button>
-<div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
+                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
+                    href="./services-unified-nav.html">Services</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
+                    href="./contact-unified-nav.html">Contact</a>
+                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
+                    href="./about-us-unified-nav.html">About Us</a>
+            </div>
 
-<div class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
-<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[22px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
-<input class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none" id="navSearchInput" placeholder="Search devices..." type="text">
-</div>
-</div>
-<div class="relative group" id="nav-cart-wrapper">
-<a href="./shopping-cart-final-nav.html" class="relative material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer" aria-label="View cart">shopping_cart</a>
-<span id="nav-cart-badge" class="hidden absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center pointer-events-none leading-none">0</span>
-<div class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-<div class="cupertino-glass bg-white/95 dark:bg-neutral-800/95 rounded-2xl shadow-2xl overflow-hidden min-w-[300px] p-5 border border-slate-200/50" id="nav-cart-dropdown">
-<!-- Filled by cart.js -->
-</div>
-</div>
-</div>
-    <div class="relative group">
-        <button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer">person</button>
-        <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-            <div class="cupertino-glass bg-white/90 dark:bg-neutral-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
-                <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="./login-final-nav.html">Sign In</a>
-                <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="./create-account-final-nav.html">Create Account</a>
-                <a class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" id="navMyAccountLink" href="./my-profile-final-nav.html">My Account</a>
+            <!-- Right Column: Icons & Search -->
+            <div class="flex-1 flex items-center justify-end gap-3 md:gap-5">
+                <button
+                    class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity"
+                    id="mobileMenuBtn">menu</button>
+                <div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
+
+                    <div
+                        class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
+                        <span
+                            class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[22px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
+                        <input
+                            class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none"
+                            id="navSearchInput" placeholder="Search devices..." type="text">
+                    </div>
+                </div>
+                <div class="relative group" id="nav-cart-wrapper">
+                    <a href="./shopping-cart-final-nav.html"
+                        class="relative material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer"
+                        aria-label="View cart">shopping_cart</a>
+                    <span id="nav-cart-badge"
+                        class="hidden absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center pointer-events-none leading-none">0</span>
+                    <div
+                        class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+                        <div class="cupertino-glass bg-white/95 dark:bg-neutral-800/95 rounded-2xl shadow-2xl overflow-hidden min-w-[300px] p-5 border border-slate-200/50"
+                            id="nav-cart-dropdown">
+                            <!-- Filled by cart.js -->
+                        </div>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button
+                        class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer">person</button>
+                    <div
+                        class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+                        <div
+                            class="cupertino-glass bg-white/90 dark:bg-neutral-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
+                            <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase"
+                                href="./login-final-nav.html">Sign In</a>
+                            <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10"
+                                href="./create-account-final-nav.html">Create Account</a>
+                            <a class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1"
+                                id="navMyAccountLink" href="./my-profile-final-nav.html">My Account</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Theme Toggle Toggle -->
+                <button id="themeToggle"
+                    class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-slate-700/50"
+                    aria-label="Toggle Theme">
+                    <div class="relative w-[20px] h-[20px]">
+                        <!-- Sun Icon -->
+                        <svg class="absolute inset-0 w-full h-full text-amber-500 transition-all duration-300 transform dark:-rotate-180 dark:opacity-0 pointer-events-none"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                        </svg>
+                        <!-- Moon Icon -->
+                        <svg class="absolute inset-0 w-full h-full text-blue-400 transition-all duration-300 transform rotate-180 opacity-0 dark:rotate-0 dark:opacity-100 pointer-events-none"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main class="pt-16">
+        <!-- Page Title Area -->
+        <section
+            class="bg-slate-50 dark:bg-[#0f0f0f] py-16 border-b border-slate-200 dark:border-slate-800 transition-colors duration-500">
+            <div class="max-w-[1440px] mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">Our Premium Shop</h1>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our curated collection of
+                    top-tier devices, certified and ready for their next journey.</p>
+            </div>
+        </section>
+        <!-- Shop Layout -->
+        <div
+            class="max-w-[1440px] mx-auto px-6 md:px-12 mt-16 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
+            <!-- Sidebar Filters -->
+            <aside class="sticky top-28 space-y-10 lg:block hidden">
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Categories</h3>
+                    <ul class="space-y-4">
+                        <li><a class="text-sm font-medium text-primary flex items-center justify-between filter-category"
+                                href="#" data-filter="all">All</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="iPhones">iPhones</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="Samsung">Samsung</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="iPads">iPads</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="Smartwatch">Smartwatch</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="Accessories">Accessories</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="Consoles">Consoles</a></li>
+                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
+                                href="#" data-filter="Services">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Condition</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input checked=""
+                                class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition"
+                                type="checkbox" data-filter="pristine">
+                            <span
+                                class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Brand
+                                new</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input
+                                class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition"
+                                type="checkbox" data-filter="very-good">
+                            <span
+                                class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Very
+                                Good</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer group">
+                            <input
+                                class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition"
+                                type="checkbox" data-filter="good">
+                            <span
+                                class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Good</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Price Range</h3>
+                    <div class="px-2">
+                        <input
+                            class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer"
+                            type="range" id="price-range" min="0" max="1500" value="1500">
+                        <div
+                            class="flex justify-between mt-4 text-[10px] font-bold text-outline uppercase tracking-wider">
+                            <span>$299</span>
+                            <span>$1299+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-6">
+                    <!-- Warranty Highlight -->
+                    <div
+                        class="p-6 bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm transition-colors duration-500">
+                        <span class="material-symbols-outlined text-primary dark:text-blue-400 mb-3 text-3xl"
+                            data-icon="verified">verified</span>
+                        <h4 class="text-sm font-bold mb-2 text-primary dark:text-blue-400">30-Day Warranty</h4>
+                        <p class="text-xs text-on-surface-variant dark:text-slate-400 leading-relaxed">Every device
+                            undergoes a 90-point inspection and comes with a full month of protection.</p>
+                    </div>
+                </div>
+            </aside>
+            <!-- Product Grid -->
+            <div>
+                <div class="flex justify-between items-end mb-8">
+                    <div>
+                        <h2 class="text-2xl font-semibold tracking-tight">Latest Arrivals</h2>
+                        <p class="text-sm text-on-surface-variant">Showing 14 premium items</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button
+                            class="flex items-center space-x-2 text-sm font-medium text-on-surface-variant bg-surface-container px-4 py-2 rounded-full hover:bg-surface-container-highest transition-all lg:hidden">
+                            <span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                            <span>Filter</span>
+                        </button>
+                        <select
+                            class="bg-white dark:bg-neutral-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white focus:ring-0 cursor-pointer pr-8 rounded-lg px-3 py-1 transition-colors duration-300"
+                            id="sort-select">
+                            <option>Featured</option>
+                            <option>Newest</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="product-grid"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 relative z-10">
+                    <!-- iPhone 17 Pro Max -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-17-pro-max-detail.html'" data-category="iPhones"
+                        data-price="1299" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]"
+                                data-alt="iPhone 17 Pro Max"
+                                src="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png">
+                            <span
+                                class="absolute top-6 right-6 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full">NEW</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">iPhone 17 Pro Max</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Titanium Black</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$1,299.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./iphone-17-pro-max-detail.html" onclick="event.stopPropagation();">+
+                                        Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 16 PRO MAX -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-16-pro-max-detail.html'" data-category="iPhones"
+                        data-price="1199" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.43]"
+                                data-alt="iPhone 16 Pro Max" src="./assets/images/Tienda/iphone-16-pro-max-desert.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 16
+                                Pro Max</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Desert Titanium</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$1,199.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./iphone-16-pro-max-detail.html" onclick="event.stopPropagation();">+
+                                        Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 16 PRO  -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-16-pro-detail.html'" data-category="iPhones"
+                        data-price="700" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.43]"
+                                data-alt="iPhone 16 Pro" src="./assets/images/Tienda/iphone-16-pro-max-desert.jpeg">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 16
+                                Pro</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Desert Titanium</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$700.00</span>
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">More
+                                        options available</span>
+                                    <a href="./iphone-16-pro-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 16 PLUS -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-16-detail.html'" data-category="iPhones" data-price="899"
+                        data-condition="pristine" data-video-intro="./assets/videos/iphone-16-plus-intro.mp4">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-[1.7] transition-transform duration-500 scale-[1.57]"
+                                data-alt="iPhone 16 Plus" src="./assets/images/Tienda/iphone-16-pink.jpeg">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 16
+                                Plus</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Pink</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$899.00</span>
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">More
+                                        options available</span>
+                                    <a href="./iphone-16-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 15 PRO MAX -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-15-pro-max-detail.html'" data-category="iPhones"
+                        data-price="900" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.2]"
+                                data-alt="iPhone 15 Pro Max"
+                                src="./assets/images/referential/iphone-15-pro-max-titanio.jpeg">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 15
+                                Pro Max</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Natural Titanium</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$900.00</span>
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">More
+                                        options available</span>
+                                    <a href="./iphone-15-pro-max-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 15 PRO -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-15-pro-detail.html'" data-category="iPhones"
+                        data-price="800" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.2]"
+                                data-alt="iPhone 15 Pro" src="./assets/images/Tienda/iphone-15-pro-max-titaniob.jpeg">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 15
+                                Pro</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Blue Titanium</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$800.00</span>
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">More
+                                        options available</span>
+                                    <a href="./iphone-15-pro-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone 11 SERIES -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-11-detail.html'" data-category="iPhones" data-price="499"
+                        data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-[0.9] transition-transform duration-500 scale-[0.8]"
+                                data-alt="iPhone 11 Series Purple"
+                                src="./assets/images/Tienda/Iphone_11_pro/iPhone-11-purple-.png">
+                            <span
+                                class="absolute top-6 right-6 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full">BEST
+                                VALUE</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 11
+                                Series</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Explore the Purple model. Pro
+                                performance, classic design.</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$499.00</span>
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">Select
+                                        color and capacity</span>
+                                    <a href="./iphone-11-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPhone XR -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='iphone-xr-detail.html'" data-category="iPhones" data-price="120"
+                        data-condition="good">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-500 scale-[0.91]"
+                                data-alt="iPhone XR classic model" src="./assets/images/Tienda/iphone-xr-black.jpeg">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone XR
+                            </h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Classic Collection</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$120.00</span>
+                                <div class="flex flex-col gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">More
+                                        options available</span>
+                                    <a href="./iphone-xr-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Samsung S25 Ultra -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='samsung-s25-ultra-detail.html'" data-category="Samsung"
+                        data-price="1100" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-[2.1] transition-transform duration-500 scale-[1.9]"
+                                data-alt="Samsung S25 Ultra" src="./assets/images/Tienda/s25_ultra_Png.png">
+                            <span
+                                class="absolute top-6 right-6 bg-inverse-surface text-white text-[10px] font-bold px-3 py-1 rounded-full">FLAGSHIP</span>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">Samsung S25
+                                Ultra</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Phantom Silver</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$1,100.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./samsung-s25-ultra-detail.html" onclick="event.stopPropagation();">+
+                                        Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- iPad 10TH GEN -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='ipad-10th-gen-detail.html'" data-category="iPads"
+                        data-price="300" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-[3.2] transition-transform duration-500 scale-[2.8]"
+                                data-alt="iPad 10th Generation" src="./assets/images/Ipad_10thgen.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPad 10th
+                                Gen</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Silver</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$300.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./ipad-10th-gen-detail.html" onclick="event.stopPropagation();">+ Quick
+                                        View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- APPLE WATCH -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='product-detail-apple-watch-ultra-2-final.html'"
+                        data-category="Smartwatch" data-price="399" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.04]"
+                                data-alt="Apple Watch Series 11"
+                                src="./assets/images/Tienda/Apple_Watch/Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">Apple Watch
+                                Series 11</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Jet Black Aluminum</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$399.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a href="./product-detail-apple-watch-ultra-2-final.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Switch OLED (White) -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='switch-oled-detail.html'" data-category="Consoles"
+                        data-price="120" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-[1.35] transition-transform duration-500 scale-[1.2]"
+                                data-alt="Nintendo Switch OLED" src="./assets/images/Switch_Oled_Screen.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">Switch OLED
+                            </h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Refurbished - White</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$120.00</span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] text-primary font-bold uppercase tracking-widest">30-Day
+                                        Warranty</span>
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./switch-oled-detail.html" onclick="event.stopPropagation();">+ Quick
+                                        View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- AirPods Pro -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='airpods-detail.html'" data-category="Accessories"
+                        data-price="150" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]"
+                                data-alt="Premium Wireless Audio AirPods" src="./assets/images/Tienda/airpods_pro.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">AirPods Pro</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Premium Wireless Audio</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$150.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./airpods-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Phone Cases and Covers -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='phone-cases-detail.html'" data-category="Accessories"
+                        data-price="15" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]"
+                                data-alt="Durable Protection Cases" src="./assets/images/Tienda/cases-png.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">Phone Cases and Covers
+                            </h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Durable Protection</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$15.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a href="./phone-cases-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Screen Protectors -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='screen-protectors-detail.html'" data-category="Accessories"
+                        data-price="15" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]"
+                                data-alt="Tempered Glass Protectors"
+                                src="./assets/images/Tienda/Screen-protector-png.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">Screen Protectors</h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">Tempered Glass</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$15.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        href="./screen-protectors-detail.html" onclick="event.stopPropagation();">+
+                                        Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chargers and Cables -->
+                    <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
+                        onclick="window.location.href='chargers-and-cables-detail.html'" data-category="Accessories"
+                        data-price="10" data-condition="pristine">
+                        <div
+                            class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
+                            <img class="max-w-full max-h-full object-contain group-hover:scale-[2.7] transition-transform duration-500 scale-[2.4]"
+                                data-alt="High-speed Power Cables" src="./assets/images/Tienda/charguers_png.png">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">Chargers and Cables
+                            </h3>
+                            <p class="text-sm text-on-surface-variant mb-4 font-medium">High-speed Power</p>
+                            <div class="mt-auto flex flex-col gap-4">
+                                <span class="text-lg font-bold text-on-surface">$10.00</span>
+                                <div class="flex items-center gap-2">
+                                    <a href="./chargers-and-cables-detail.html"
+                                        class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
+                                        onclick="event.stopPropagation();">+ Quick View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Out of Stock Placeholder -->
+                    <div id="empty-state"
+                        class="hidden col-span-full py-20 flex-col items-center justify-center text-center bg-slate-50 dark:bg-[#0a0a0a]/20 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all duration-500">
+                        <div
+                            class="w-20 h-20 bg-slate-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mb-6">
+                            <span class="material-symbols-outlined text-4xl text-slate-400">inventory_2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-on-surface mb-2">Out of Stock</h3>
+                        <p class="text-slate-500 dark:text-slate-400 max-w-xs mx-auto">This category is currently not
+                            available, but we're working on bringing more items soon.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Theme Toggle Toggle -->
-    <button id="themeToggle" class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-slate-700/50" aria-label="Toggle Theme">
-        <div class="relative w-[20px] h-[20px]">
-            <!-- Sun Icon -->
-            <svg class="absolute inset-0 w-full h-full text-amber-500 transition-all duration-300 transform dark:-rotate-180 dark:opacity-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-            </svg>
-            <!-- Moon Icon -->
-            <svg class="absolute inset-0 w-full h-full text-blue-400 transition-all duration-300 transform rotate-180 opacity-0 dark:rotate-0 dark:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-            </svg>
         </div>
-    </button>
-</div>
-</nav>
-</header>
-<main class="pt-16">
-<!-- Page Title Area -->
-<section class="bg-slate-50 dark:bg-[#0f0f0f] py-16 border-b border-slate-200 dark:border-slate-800 transition-colors duration-500">
-    <div class="max-w-[1440px] mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">Our Premium Shop</h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our curated collection of top-tier devices, certified and ready for their next journey.</p>
-    </div>
-</section>
-<!-- Shop Layout -->
-<div class="max-w-[1440px] mx-auto px-6 md:px-12 mt-16 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
-<!-- Sidebar Filters -->
-<aside class="sticky top-28 space-y-10 lg:block hidden">
-<div>
-<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Categories</h3>
-<ul class="space-y-4">
-<li><a class="text-sm font-medium text-primary flex items-center justify-between filter-category" href="#" data-filter="all">All</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="iPhones">iPhones</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="Samsung">Samsung</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="iPads">iPads</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="Smartwatch">Smartwatch</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="Accessories">Accessories</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="Consoles">Consoles</a></li>
-<li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" href="#" data-filter="Services">Services</a></li>
-</ul>
-</div>
-<div>
-<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Condition</h3>
-<div class="space-y-3">
-<label class="flex items-center space-x-3 cursor-pointer group">
-<input checked="" class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition" type="checkbox" data-filter="pristine">
-<span class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Brand new</span>
-</label>
-<label class="flex items-center space-x-3 cursor-pointer group">
-<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition" type="checkbox" data-filter="very-good">
-<span class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Very Good</span>
-</label>
-<label class="flex items-center space-x-3 cursor-pointer group">
-<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition" type="checkbox" data-filter="good">
-<span class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Good</span>
-</label>
-</div>
-</div>
-<div>
-<h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Price Range</h3>
-<div class="px-2">
-<input class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer" type="range" id="price-range" min="0" max="1500" value="1500">
-<div class="flex justify-between mt-4 text-[10px] font-bold text-outline uppercase tracking-wider">
-<span>$299</span>
-<span>$1299+</span>
-</div>
-</div>
-</div>
-<div class="pt-6">
-<!-- Warranty Highlight -->
-<div class="p-6 bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm transition-colors duration-500">
-<span class="material-symbols-outlined text-primary dark:text-blue-400 mb-3 text-3xl" data-icon="verified">verified</span>
-<h4 class="text-sm font-bold mb-2 text-primary dark:text-blue-400">30-Day Warranty</h4>
-<p class="text-xs text-on-surface-variant dark:text-slate-400 leading-relaxed">Every device undergoes a 90-point inspection and comes with a full month of protection.</p>
-</div>
-</div>
-</aside>
-<!-- Product Grid -->
-<div>
-<div class="flex justify-between items-end mb-8">
-<div>
-<h2 class="text-2xl font-semibold tracking-tight">Latest Arrivals</h2>
-<p class="text-sm text-on-surface-variant">Showing 14 premium items</p>
-</div>
-<div class="flex items-center space-x-4">
-<button class="flex items-center space-x-2 text-sm font-medium text-on-surface-variant bg-surface-container px-4 py-2 rounded-full hover:bg-surface-container-highest transition-all lg:hidden">
-<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
-<span>Filter</span>
-</button>
-<select class="bg-white dark:bg-neutral-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white focus:ring-0 cursor-pointer pr-8 rounded-lg px-3 py-1 transition-colors duration-300" id="sort-select">
-<option>Featured</option>
-<option>Newest</option>
-<option>Price: Low to High</option>
-<option>Price: High to Low</option>
-</select>
-</div>
-</div>
-<div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 relative z-10">
-<!-- iPhone 17 Pro Max -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-17-pro-max-detail.html'" data-category="iPhones" data-price="1299" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]" data-alt="iPhone 17 Pro Max" src="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png">
-<span class="absolute top-6 right-6 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full">NEW</span>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">iPhone 17 Pro Max</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Titanium Black</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$1,299.00</span>
-<div class="flex items-center gap-2">
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./iphone-17-pro-max-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone 16 PRO MAX -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-16-pro-max-detail.html'" data-category="iPhones" data-price="1199" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.43]" data-alt="iPhone 16 Pro Max" src="./assets/images/Tienda/iphone-16-pro-max-desert.png">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 16 Pro Max</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Desert Titanium</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$1,199.00</span>
-<div class="flex items-center gap-2">
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./iphone-16-pro-max-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone 16 PRO  -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-16-pro-detail.html'" data-category="iPhones" data-price="700" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.43]" data-alt="iPhone 16 Pro" src="./assets/images/Tienda/iphone-16-pro-max-desert.jpeg">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 16 Pro</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Desert Titanium</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$700.00</span>
-<div class="flex flex-col gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">More options available</span>
-<a href="./iphone-16-pro-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone 16 PLUS -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-16-detail.html'" data-category="iPhones" data-price="899" data-condition="pristine" data-video-intro="./assets/videos/iphone-16-plus-intro.mp4">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-[1.7] transition-transform duration-500 scale-[1.57]" data-alt="iPhone 16 Plus" src="./assets/images/Tienda/iphone-16-pink.jpeg">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 16 Plus</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Pink</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$899.00</span>
-<div class="flex flex-col gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">More options available</span>
-<a href="./iphone-16-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone 15 PRO MAX -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-15-pro-max-detail.html'" data-category="iPhones" data-price="900" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.2]" data-alt="iPhone 15 Pro Max" src="./assets/images/referential/iphone-15-pro-max-titanio.jpeg">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 15 Pro Max</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Natural Titanium</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$900.00</span>
-<div class="flex flex-col gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">More options available</span>
-<a href="./iphone-15-pro-max-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone 15 PRO -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-15-pro-detail.html'" data-category="iPhones" data-price="800" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.2]" data-alt="iPhone 15 Pro" src="./assets/images/Tienda/iphone-15-pro-max-titaniob.jpeg">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 15 Pro</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Blue Titanium</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$800.00</span>
-<div class="flex flex-col gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">More options available</span>
-<a href="./iphone-15-pro-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone 11 SERIES -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-11-detail.html'" data-category="iPhones" data-price="499" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-[0.65] transition-transform duration-500 scale-[0.6]" data-alt="iPhone 11 Series Purple" src="./assets/images/Tienda/Iphone_11_pro/iPhone-11-purple-.png">
-<span class="absolute top-6 right-6 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full">BEST VALUE</span>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone 11 Series</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Explore the Purple model. Pro performance, classic design.</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$499.00</span>
-<div class="flex flex-col gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">Select color and capacity</span>
-<a href="./iphone-11-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPhone XR -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-xr-detail.html'" data-category="iPhones" data-price="120" data-condition="good">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain opacity-80 group-hover:opacity-100 transition-all duration-500 scale-[0.91]" data-alt="iPhone XR classic model" src="./assets/images/Tienda/iphone-xr-black.jpeg">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPhone XR</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Classic Collection</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$120.00</span>
-<div class="flex flex-col gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">More options available</span>
-<a href="./iphone-xr-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Samsung S25 Ultra -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='samsung-s25-ultra-detail.html'" data-category="Samsung" data-price="1100" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-[2.1] transition-transform duration-500 scale-[1.9]" data-alt="Samsung S25 Ultra" src="./assets/images/Tienda/s25_ultra_Png.png">
-<span class="absolute top-6 right-6 bg-inverse-surface text-white text-[10px] font-bold px-3 py-1 rounded-full">FLAGSHIP</span>
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">Samsung S25 Ultra</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Phantom Silver</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$1,100.00</span>
-<div class="flex items-center gap-2">
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./samsung-s25-ultra-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- iPad 10TH GEN -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='ipad-10th-gen-detail.html'" data-category="iPads" data-price="300" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-[3.2] transition-transform duration-500 scale-[2.8]" data-alt="iPad 10th Generation" src="./assets/images/Ipad_10thgen.png">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">iPad 10th Gen</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Silver</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$300.00</span>
-<div class="flex items-center gap-2">
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./ipad-10th-gen-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- APPLE WATCH -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='product-detail-apple-watch-ultra-2-final.html'" data-category="Smartwatch" data-price="399" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.04]" data-alt="Apple Watch Series 11" src="./assets/images/Tienda/Apple_Watch/Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">Apple Watch Series 11</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Jet Black Aluminum</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$399.00</span>
-<div class="flex items-center gap-2">
-<a href="./product-detail-apple-watch-ultra-2-final.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Switch OLED (White) -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='switch-oled-detail.html'" data-category="Consoles" data-price="120" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-<img class="max-w-full max-h-full object-contain group-hover:scale-[1.35] transition-transform duration-500 scale-[1.2]" data-alt="Nintendo Switch OLED" src="./assets/images/Switch_Oled_Screen.png">
-</div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface uppercase">Switch OLED</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Refurbished - White</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$120.00</span>
-<div class="flex items-center gap-2">
-<span class="text-[10px] text-primary font-bold uppercase tracking-widest">30-Day Warranty</span>
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./switch-oled-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- AirPods Pro -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='airpods-detail.html'" data-category="Accessories" data-price="150" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative"><img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]" data-alt="Premium Wireless Audio AirPods" src="./assets/images/Tienda/airpods_pro.png"></div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">AirPods Pro</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Premium Wireless Audio</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$150.00</span>
-<div class="flex items-center gap-2">
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./airpods-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Phone Cases and Covers -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='phone-cases-detail.html'" data-category="Accessories" data-price="15" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative"><img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]" data-alt="Durable Protection Cases" src="./assets/images/Tienda/cases-png.png"></div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">Phone Cases and Covers</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Durable Protection</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$15.00</span>
-<div class="flex items-center gap-2">
-<a href="./phone-cases-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Screen Protectors -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='screen-protectors-detail.html'" data-category="Accessories" data-price="15" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative"><img class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]" data-alt="Tempered Glass Protectors" src="./assets/images/Tienda/Screen-protector-png.png"></div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">Screen Protectors</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">Tempered Glass</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$15.00</span>
-<div class="flex items-center gap-2">
-<a class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" href="./screen-protectors-detail.html" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Chargers and Cables -->
-<div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='chargers-and-cables-detail.html'" data-category="Accessories" data-price="10" data-condition="pristine">
-<div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative"><img class="max-w-full max-h-full object-contain group-hover:scale-[2.7] transition-transform duration-500 scale-[2.4]" data-alt="High-speed Power Cables" src="./assets/images/Tienda/charguers_png.png"></div>
-<div class="p-6 flex flex-col flex-grow">
-<h3 class="text-xl font-semibold tracking-tight mb-1 text-on-surface">Chargers and Cables</h3>
-<p class="text-sm text-on-surface-variant mb-4 font-medium">High-speed Power</p>
-<div class="mt-auto flex flex-col gap-4">
-<span class="text-lg font-bold text-on-surface">$10.00</span>
-<div class="flex items-center gap-2">
-<a href="./chargers-and-cables-detail.html" class="flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center" onclick="event.stopPropagation();">+ Quick View</a>
-</div>
-</div>
-</div>
-</div>
-<!-- Out of Stock Placeholder -->
-<div id="empty-state" class="hidden col-span-full py-20 flex-col items-center justify-center text-center bg-slate-50 dark:bg-[#0a0a0a]/20 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all duration-500">
-    <div class="w-20 h-20 bg-slate-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mb-6">
-        <span class="material-symbols-outlined text-4xl text-slate-400">inventory_2</span>
-    </div>
-    <h3 class="text-xl font-bold text-on-surface mb-2">Out of Stock</h3>
-    <p class="text-slate-500 dark:text-slate-400 max-w-xs mx-auto">This category is currently not available, but we're working on bringing more items soon.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0a0a0a] mt-20">
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
-<div class="col-span-2">
-<div class="font-semibold text-slate-900 dark:text-white text-xl mb-4">CellphonesAndRepair</div>
-<p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs">Restoring tech history with editorial precision. Quality curated refurbished classics for the modern era.</p>
-</div>
-<div class="flex flex-col gap-3">
-<h4 class="text-slate-900 dark:text-white font-semibold text-sm">Services</h4>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">iPhone Repair</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Android Repair</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Accessories</a>
-</div>
-<div class="flex flex-col gap-3">
-<h4 class="text-slate-900 dark:text-white font-semibold text-sm">Support</h4>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Warranty</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./sustainability.html">Sustainability</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./careers.html">Careers</a>
-</div>
-<div class="flex flex-col gap-3">
-<h4 class="text-slate-900 dark:text-white font-semibold text-sm">Legal</h4>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./privacy-policy-unified-nav.html">Privacy Policy</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./services-unified-nav.html">Terms of Service</a>
-</div>
-</div>
-</footer>
-<script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-container button.rounded-full');
+    </main>
+    <!-- Footer -->
+    <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0a0a0a] mt-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
+            <div class="col-span-2">
+                <div class="font-semibold text-slate-900 dark:text-white text-xl mb-4">CellphonesAndRepair</div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs">Restoring tech history with editorial
+                    precision. Quality curated refurbished classics for the modern era.</p>
+            </div>
+            <div class="flex flex-col gap-3">
+                <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Services</h4>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="#">iPhone Repair</a>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="#">Android Repair</a>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="#">Accessories</a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Support</h4>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="#">Warranty</a>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="./sustainability.html">Sustainability</a>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="./careers.html">Careers</a>
+            </div>
+            <div class="flex flex-col gap-3">
+                <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Legal</h4>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="./privacy-policy-unified-nav.html">Privacy Policy</a>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4"
+                    href="./services-unified-nav.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-container button.rounded-full');
 
-    function goToSlide(index) {
-        if (!slides[currentSlide] || !dots[currentSlide]) return;
-        
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('scale-125', 'bg-white');
-        dots[currentSlide].classList.add('bg-white/40');
+        function goToSlide(index) {
+            if (!slides[currentSlide] || !dots[currentSlide]) return;
 
-        currentSlide = index;
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('scale-125', 'bg-white');
+            dots[currentSlide].classList.add('bg-white/40');
 
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('scale-125', 'bg-white');
-        dots[currentSlide].classList.remove('bg-white/40');
-    }
+            currentSlide = index;
 
-    function nextSlide() {
-        let next = (currentSlide + 1) % slides.length;
-        goToSlide(next);
-    }
-
-    // Auto-advance
-    setInterval(nextSlide, 5000);
-</script>
-<!-- Main Logic Scripts -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = Array.from(document.querySelectorAll('.bento-card'));
-    const categoryLinks = document.querySelectorAll('.filter-category');
-    const conditionBoxes = document.querySelectorAll('.filter-condition');
-    const priceRange = document.getElementById('price-range');
-    const sortSelect = document.getElementById('sort-select');
-    const grid = document.getElementById('product-grid');
-    const countDisplay = document.querySelector('p.text-sm.text-on-surface-variant');
-
-    let activeCategory = 'all';
-
-    function updateFilters() {
-        let visibleCount = 0;
-        const maxPrice = priceRange ? parseInt(priceRange.value) : 1500;
-        
-        let activeConditions = Array.from(conditionBoxes)
-            .filter(box => box.checked)
-            .map(box => box.getAttribute('data-filter'));
-            
-        if (activeConditions.length === 0) {
-            activeConditions = ['pristine', 'very-good', 'good']; // If none checked, show all
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('scale-125', 'bg-white');
+            dots[currentSlide].classList.remove('bg-white/40');
         }
 
-        cards.forEach(card => {
-            const cat = card.getAttribute('data-category');
-            const price = parseFloat(card.getAttribute('data-price'));
-            const cond = card.getAttribute('data-condition');
-
-            const matchCategory = (activeCategory === 'all' || cat === activeCategory);
-            const matchPrice = price <= maxPrice;
-            const matchCondition = activeConditions.includes(cond);
-
-            if (matchCategory && matchPrice && matchCondition) {
-                card.style.display = '';
-                visibleCount++;
-            } else {
-                card.style.display = 'none';
-            }
-        });
-        
-        const emptyState = document.getElementById('empty-state');
-        if (visibleCount === 0) {
-            emptyState.classList.remove('hidden');
-            emptyState.classList.add('flex');
-        } else {
-            emptyState.classList.add('hidden');
-            emptyState.classList.remove('flex');
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
         }
 
-        if (countDisplay) {
-            countDisplay.innerHTML = 'Showing ' + visibleCount + ' premium items';
-        }
-    }
+        // Auto-advance
+        setInterval(nextSlide, 5000);
+    </script>
+    <!-- Main Logic Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = Array.from(document.querySelectorAll('.bento-card'));
+            const categoryLinks = document.querySelectorAll('.filter-category');
+            const conditionBoxes = document.querySelectorAll('.filter-condition');
+            const priceRange = document.getElementById('price-range');
+            const sortSelect = document.getElementById('sort-select');
+            const grid = document.getElementById('product-grid');
+            const countDisplay = document.querySelector('p.text-sm.text-on-surface-variant');
 
-    function sortCards() {
-        if (!sortSelect) return;
-        const val = sortSelect.value;
-        const visibleCards = cards.filter(c => c.style.display !== 'none');
-        const hiddenCards = cards.filter(c => c.style.display === 'none');
-        
-        if (val.includes('Low to High')) {
-            cards.sort((a,b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
-        } else if (val.includes('High to Low')) {
-            cards.sort((a,b) => parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')));
-        } else if (val.includes('Newest')) {
-            // Keep default order (assuming DOM order is newest)
-            cards.sort((a,b) => -1); // Just a mock for newest
-        }
-        
-        // Re-append to grid
-        if (grid) {
-            cards.forEach(c => grid.appendChild(c));
-        }
-    }
+            let activeCategory = 'all';
 
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Toggle logic
-            const filter = link.getAttribute('data-filter');
-            
-            // Remove active classes
-            categoryLinks.forEach(l => {
-                l.classList.remove('text-primary');
-                l.classList.add('text-on-surface-variant');
-            });
+            function updateFilters() {
+                let visibleCount = 0;
+                const maxPrice = priceRange ? parseInt(priceRange.value) : 1500;
 
-            if (activeCategory === filter) {
-                activeCategory = 'all'; 
-                // Restore "Latest Arrivals" title
-                document.querySelector('h2.text-2xl.font-semibold').textContent = 'Latest Arrivals';
-            } else {
-                activeCategory = filter;
-                link.classList.remove('text-on-surface-variant');
-                link.classList.add('text-primary');
-                // Change title to selected category
-                document.querySelector('h2.text-2xl.font-semibold').textContent = filter;
-            }
-            
-            updateFilters();
-            sortCards();
-        });
-    });
+                let activeConditions = Array.from(conditionBoxes)
+                    .filter(box => box.checked)
+                    .map(box => box.getAttribute('data-filter'));
 
-    conditionBoxes.forEach(box => {
-        box.addEventListener('change', () => {
-            updateFilters();
-            sortCards();
-        });
-    });
-
-    if (priceRange) {
-        priceRange.addEventListener('input', (e) => {
-            // Update labels if needed
-            const label = document.querySelector('.flex.justify-between.mt-4.text-\\[10px\\].font-bold span:last-child');
-            if (label) label.textContent = '$' + e.target.value;
-            updateFilters();
-            sortCards();
-        });
-    }
-
-    if (sortSelect) {
-        sortSelect.addEventListener('change', () => {
-             sortCards();
-        });
-    }
-    
-    const params = new URLSearchParams(window.location.search);
-    const categoryParam = params.get('category');
-    if (categoryParam) {
-        let found = false;
-        categoryLinks.forEach(btn => {
-            if (btn.dataset.filter.toLowerCase() === categoryParam.toLowerCase()) {
-                btn.click();
-                found = true;
-            }
-        });
-        if (!found) {
-             // Fallback to text search if category not found explicitly in sidebar
-             const query = categoryParam.toLowerCase();
-             let visibleCount = 0;
-             cards.forEach(card => {
-                 if (card.textContent.toLowerCase().includes(query)) {
-                     card.style.display = '';
-                     visibleCount++;
-                 } else {
-                     card.style.display = 'none';
-                 }
-             });
-        }
-    } else {
-        const query = params.get('search');
-        if (query) {
-            const q = query.toLowerCase();
-            let visibleCount = 0;
-            cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(q)) {
-                    card.style.display = '';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
+                if (activeConditions.length === 0) {
+                    activeConditions = ['pristine', 'very-good', 'good']; // If none checked, show all
                 }
-            });
-            if (countDisplay) {
-                countDisplay.innerHTML = 'Showing ' + visibleCount + ' results for "' + query + '"';
+
+                cards.forEach(card => {
+                    const cat = card.getAttribute('data-category');
+                    const price = parseFloat(card.getAttribute('data-price'));
+                    const cond = card.getAttribute('data-condition');
+
+                    const matchCategory = (activeCategory === 'all' || cat === activeCategory);
+                    const matchPrice = price <= maxPrice;
+                    const matchCondition = activeConditions.includes(cond);
+
+                    if (matchCategory && matchPrice && matchCondition) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                const emptyState = document.getElementById('empty-state');
+                if (visibleCount === 0) {
+                    emptyState.classList.remove('hidden');
+                    emptyState.classList.add('flex');
+                } else {
+                    emptyState.classList.add('hidden');
+                    emptyState.classList.remove('flex');
+                }
+
+                if (countDisplay) {
+                    countDisplay.innerHTML = 'Showing ' + visibleCount + ' premium items';
+                }
             }
-        }
-    }
-});
-</script>
+
+            function sortCards() {
+                if (!sortSelect) return;
+                const val = sortSelect.value;
+                const visibleCards = cards.filter(c => c.style.display !== 'none');
+                const hiddenCards = cards.filter(c => c.style.display === 'none');
+
+                if (val.includes('Low to High')) {
+                    cards.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
+                } else if (val.includes('High to Low')) {
+                    cards.sort((a, b) => parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')));
+                } else if (val.includes('Newest')) {
+                    // Keep default order (assuming DOM order is newest)
+                    cards.sort((a, b) => -1); // Just a mock for newest
+                }
+
+                // Re-append to grid
+                if (grid) {
+                    cards.forEach(c => grid.appendChild(c));
+                }
+            }
+
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Toggle logic
+                    const filter = link.getAttribute('data-filter');
+
+                    // Remove active classes
+                    categoryLinks.forEach(l => {
+                        l.classList.remove('text-primary');
+                        l.classList.add('text-on-surface-variant');
+                    });
+
+                    if (activeCategory === filter) {
+                        activeCategory = 'all';
+                        // Restore "Latest Arrivals" title
+                        document.querySelector('h2.text-2xl.font-semibold').textContent = 'Latest Arrivals';
+                    } else {
+                        activeCategory = filter;
+                        link.classList.remove('text-on-surface-variant');
+                        link.classList.add('text-primary');
+                        // Change title to selected category
+                        document.querySelector('h2.text-2xl.font-semibold').textContent = filter;
+                    }
+
+                    updateFilters();
+                    sortCards();
+                });
+            });
+
+            conditionBoxes.forEach(box => {
+                box.addEventListener('change', () => {
+                    updateFilters();
+                    sortCards();
+                });
+            });
+
+            if (priceRange) {
+                priceRange.addEventListener('input', (e) => {
+                    // Update labels if needed
+                    const label = document.querySelector('.flex.justify-between.mt-4.text-\\[10px\\].font-bold span:last-child');
+                    if (label) label.textContent = '$' + e.target.value;
+                    updateFilters();
+                    sortCards();
+                });
+            }
+
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    sortCards();
+                });
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const categoryParam = params.get('category');
+            if (categoryParam) {
+                let found = false;
+                categoryLinks.forEach(btn => {
+                    if (btn.dataset.filter.toLowerCase() === categoryParam.toLowerCase()) {
+                        btn.click();
+                        found = true;
+                    }
+                });
+                if (!found) {
+                    // Fallback to text search if category not found explicitly in sidebar
+                    const query = categoryParam.toLowerCase();
+                    let visibleCount = 0;
+                    cards.forEach(card => {
+                        if (card.textContent.toLowerCase().includes(query)) {
+                            card.style.display = '';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            } else {
+                const query = params.get('search');
+                if (query) {
+                    const q = query.toLowerCase();
+                    let visibleCount = 0;
+                    cards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        if (text.includes(q)) {
+                            card.style.display = '';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    if (countDisplay) {
+                        countDisplay.innerHTML = 'Showing ' + visibleCount + ' results for "' + query + '"';
+                    }
+                }
+            }
+        });
+    </script>
 
 
-<script src="./js/cart.js"></script><script src="./js/main.js"></script>
-<script src="./js/video-interstitial.js?v=V6"></script></body></html>
+    <script src="./js/cart.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/video-interstitial.js?v=V6"></script>
+</body>
 
-
-
-
-
-
-
+</html>
