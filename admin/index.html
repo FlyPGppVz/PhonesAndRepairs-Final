@@ -4,40 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PHONES AND REPAIRS - Admin</title>
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-      .netlify-identity-menu, .netlify-identity-footer { display: none !important; }
-    </style>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              window.netlifyIdentity.close();
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
 </head>
 <body>
     <!-- Netlify CMS Script -->
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-<style>
-  /* Fuerza la desaparición del logo y footer de Netlify */
-  .netlify-identity-menu, 
-  .netlify-identity-footer, 
-  .netlify-identity-logo,
-  [data-netlify-identity-menu],
-  .netlify-identity-widget footer {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    pointer-events: none !important;
-  }
-</style>
 </body>
 </html>

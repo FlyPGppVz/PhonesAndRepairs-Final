@@ -1,0 +1,114 @@
+[
+  {
+    "title": "iPhone 17 Pro Max",
+    "price": 1299.0,
+    "description": "Titanium Black",
+    "image": "./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone 16 Pro Max",
+    "price": 1199.0,
+    "description": "Desert Titanium",
+    "image": "./assets/images/Tienda/iphone-16-pro-max-desert.png",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone 16 Pro",
+    "price": 700.0,
+    "description": "Desert Titanium",
+    "image": "./assets/images/Tienda/iphone-16-pro-max-desert.jpeg",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone 16 Plus",
+    "price": 899.0,
+    "description": "Pink",
+    "image": "./assets/images/Tienda/iphone-16-pink.jpeg",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone 15 Pro Max",
+    "price": 900.0,
+    "description": "Natural Titanium",
+    "image": "./assets/images/referential/iphone-15-pro-max-titanio.jpeg",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone 15 Pro",
+    "price": 800.0,
+    "description": "Blue Titanium",
+    "image": "./assets/images/Tienda/iphone-15-pro-max-titaniob.jpeg",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone 11 Series",
+    "price": 499.0,
+    "description": "Explore the Purple model. Pro performance, classic design.",
+    "image": "./assets/images/Tienda/Iphone_11_pro/iPhone-11-purple-.png",
+    "category": "iphone"
+  },
+  {
+    "title": "iPhone XR",
+    "price": 120.0,
+    "description": "Classic Collection",
+    "image": "./assets/images/Tienda/iphone-xr-black.jpeg",
+    "category": "iphone"
+  },
+  {
+    "title": "Samsung S25 Ultra",
+    "price": 1100.0,
+    "description": "Phantom Silver",
+    "image": "./assets/images/Tienda/s25_ultra_Png.png",
+    "category": "samsung"
+  },
+  {
+    "title": "iPad 10th Gen",
+    "price": 300.0,
+    "description": "Silver",
+    "image": "./assets/images/Ipad_10thgen.png",
+    "category": "ipad"
+  },
+  {
+    "title": "Apple Watch Series 11",
+    "price": 399.0,
+    "description": "Jet Black Aluminum",
+    "image": "./assets/images/Tienda/Apple_Watch/Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png",
+    "category": "smartwatch"
+  },
+  {
+    "title": "Switch OLED",
+    "price": 120.0,
+    "description": "Refurbished - White",
+    "image": "./assets/images/Switch_Oled_Screen.png",
+    "category": "consoles"
+  },
+  {
+    "title": "AirPods Pro",
+    "price": 150.0,
+    "description": "Premium Wireless Audio",
+    "image": "./assets/images/Tienda/airpods_pro.png",
+    "category": "accessories"
+  },
+  {
+    "title": "Phone Cases and Covers",
+    "price": 15.0,
+    "description": "Durable Protection",
+    "image": "./assets/images/Tienda/cases-png.png",
+    "category": "accessories"
+  },
+  {
+    "title": "Screen Protectors",
+    "price": 15.0,
+    "description": "Tempered Glass",
+    "image": "./assets/images/Tienda/Screen-protector-png.png",
+    "category": "accessories"
+  },
+  {
+    "title": "Chargers and Cables",
+    "price": 10.0,
+    "description": "High-speed Power",
+    "image": "./assets/images/Tienda/charguers_png.png",
+    "category": "accessories"
+  }
+]

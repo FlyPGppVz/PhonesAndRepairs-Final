@@ -24,22 +24,6 @@
         })();
     </script>
 
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-      .netlify-identity-menu, .netlify-identity-footer { display: none !important; }
-    </style>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              window.netlifyIdentity.close();
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
 </head>
 <body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500">
 <!-- TopNavBar Updated as per COMPONENTS_95 - Sync 2026-04-11 -->
@@ -423,21 +407,7 @@ Shop
 
 
 
-<script src="./js/cart.js"></script><script src="./js/main.js"></script><style>
-  /* Fuerza la desaparición del logo y footer de Netlify */
-  .netlify-identity-menu, 
-  .netlify-identity-footer, 
-  .netlify-identity-logo,
-  [data-netlify-identity-menu],
-  .netlify-identity-widget footer {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    pointer-events: none !important;
-  }
-</style>
-</body>
+<script src="./js/cart.js"></script><script src="./js/main.js"></script></body>
 </html>
 
 
