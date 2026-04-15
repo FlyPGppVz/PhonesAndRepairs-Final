@@ -74,7 +74,7 @@ class ChatbotWidget {
         // Contenedor principal: z-index maximizado sobre WhatsApp
         this.container = document.createElement('div');
         this.container.id = 'cr-chatbot-container';
-        this.container.classList.add('fixed', 'bottom-6', 'left-6', 'z-[50000]', 'font-sans', 'flex', 'flex-col', 'items-start', 'pointer-events-none');
+        this.container.classList.add('fixed', 'bottom-6', 'left-6', 'z-[60000]', 'font-sans', 'flex', 'flex-col', 'items-start', 'pointer-events-none');
         
         // Ventana del Chat
         this.chatWindow = document.createElement('div');
