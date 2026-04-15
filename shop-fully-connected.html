@@ -435,14 +435,19 @@
             // 2. Intelligence Sorting
             function sortProducts(products) {
                 products.sort((a, b) => {
-                    // A. BRAND WEIGHT (Apple first, then Samsung, then others)
-                    const brandWeight = { 'Apple': 100, 'Samsung': 90, 'Console': 80, 'Other': 10 };
+                    // A. BRAND WEIGHT (Apple always first)
+                    const brandWeight = { 'Apple': 1000, 'Samsung': 90, 'Console': 80, 'Audio': 70, 'Other': 10 };
                     const weightA = brandWeight[a.brand] || 0;
                     const weightB = brandWeight[b.brand] || 0;
                     
                     if (weightA !== weightB) return weightB - weightA;
 
-                    // B. VERSION EXTRACTION (Regex for numbers like 17, 16, S25)
+                    // B. YEAR PRIORITY (Descending: 2025 > 2024)
+                    const yearA = parseInt(a.year) || 0;
+                    const yearB = parseInt(b.year) || 0;
+                    if (yearA !== yearB) return yearB - yearA;
+
+                    // C. VERSION EXTRACTION (Regex for numbers like 17, 16, S25)
                     const getVersion = (str) => {
                         const match = str.match(/\d+/);
                         return match ? parseInt(match[0]) : 0;
@@ -452,7 +457,7 @@
                     
                     if (verA !== verB) return verB - verA;
 
-                    // C. SUFFIX PRIORITY (Pro Max > Pro > Plus)
+                    // D. SUFFIX PRIORITY (Pro Max > Pro > Plus)
                     const getSuffixWeight = (str) => {
                         if (str.includes('Pro Max')) return 50;
                         if (str.includes('Ultra')) return 45;
