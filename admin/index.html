@@ -5,35 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PHONES AND REPAIRS - Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <style>
-    /* Ocultar logo de Decap y branding de Netlify en el widget */
-    #netlify-identity-widget, 
-    .netlify-identity-menu,
-    .netlify-identity-logo,
-    .netlify-identity-footer,
-    .netlify-identity-providers button::after {
-        display: none !important;
-    }
-
-    /* Ocultar el texto "Coded by Netlify" y logos internos */
-    [data-netlify-identity-menu] svg,
-    .nc-app-header-logo svg {
-        display: none !important;
-    }
-
-    /* Cambiar el color del botón para que sea neutro y profesional */
-    .netlify-identity-button {
-        background-color: #1f2937 !important; /* Gris oscuro profesional */
-        color: white !important;
-    }
-  </style>
 </head>
 <body>
   <!-- Decap CMS Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <script>
-    // ESTE ES EL PUENTE DE CONEXIÓN OBLIGATORIO PARA GITHUB PAGES
+    // 1. Puente de conexión para GitHub Pages
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
@@ -42,11 +20,37 @@
           });
         }
       });
-      // Importante: Referencia directa a tu API de Netlify
       window.netlifyIdentity.init({
         APIUrl: "https://phonesandrepairs-final.netlify.app/.netlify/identity"
       });
     }
+
+    // 2. Observador inteligente para ocultar el branding (Tu script)
+    const observer = new MutationObserver((mutations) => {
+      // Buscamos el iframe o los elementos del widget
+      const logo = document.querySelector('.netlify-identity-logo, .nc-app-header-logo, .netlify-identity-footer');
+      if (logo) {
+        logo.style.display = 'none';
+        logo.style.opacity = '0';
+        logo.style.visibility = 'hidden';
+      }
+      
+      // Intentamos limpiar el texto del footer del widget
+      const frames = document.getElementsByTagName('iframe');
+      for (let i = 0; i < frames.length; i++) {
+        try {
+          const frameDoc = frames[i].contentDocument || frames[i].contentWindow.document;
+          const frameLogo = frameDoc.querySelector('.logo, .footer, .btn-netlify');
+          if (frameLogo) {
+            frameLogo.style.display = 'none';
+          }
+        } catch (e) {
+          // A veces el navegador bloquea el acceso al iframe por seguridad
+        }
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
   </script>
 </body>
 </html>
