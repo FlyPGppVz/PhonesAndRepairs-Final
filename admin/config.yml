@@ -1,6 +1,6 @@
 backend:
-  name: github
-  branch: master
+  name: git-gateway
+  branch: tienda-dinamica #
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
