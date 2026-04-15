@@ -21,23 +21,33 @@
 
     <!-- Auth Overlay -->
     <div id="authOverlay" class="fixed inset-0 z-[100] bg-slate-100 dark:bg-slate-950 flex flex-col items-center justify-center p-6 text-center">
+        <!-- Restricted Access Modal (Pop-out) -->
+        <div id="restrictionModal" class="fixed inset-0 z-[110] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-6 transition-all duration-500">
+            <div class="bg-white dark:bg-slate-900 max-w-sm w-full rounded-[2.5rem] p-10 shadow-3xl text-center border border-slate-200 dark:border-slate-800 scale-100 animate-in fade-in zoom-in duration-300">
+                <div class="w-16 h-16 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-symbols-outlined text-4xl">gpp_maybe</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 tracking-tight">Warning!</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
+                    This area is reserved for <b>authorized administrators</b> only. If you are not an administrator, please leave this area immediately.
+                </p>
+                <div class="flex flex-col gap-3">
+                    <a href="./index.html" class="w-full bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold py-4 rounded-2xl hover:bg-slate-200 transition-all flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-xl">home</span>
+                        Back to Home
+                    </a>
+                    <button onclick="closeRestrictionModal()" class="w-full brand-blue text-white font-bold py-4 rounded-2xl shadow-xl hover:opacity-90 active:scale-95 transition-all">
+                        Continue to Login
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="max-w-md w-full slide-up flex flex-col items-center">
             <div class="flex justify-center w-full">
                 <a href="./index.html" class="hover:opacity-80 transition-opacity">
-                    <img src="./assets/images/logotipo_cellphones_and_repairs.png" alt="Cellphones & Repairs Logo" class="h-28 block mb-8 drop-shadow-2xl transition-transform hover:scale-105 duration-700 -ml-6">
+                    <img src="./assets/images/logotipo_cellphones_and_repairs.png" alt="Cellphones & Repairs Logo" class="h-28 block mb-10 drop-shadow-2xl transition-transform hover:scale-105 duration-700 -ml-6">
                 </a>
-            </div>
-
-            <!-- Access Warning -->
-            <div class="mb-8 flex items-start gap-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 p-4 rounded-2xl text-left">
-                <span class="material-symbols-outlined text-amber-600 dark:text-amber-400">warning</span>
-                <div>
-                    <h4 class="text-xs font-bold text-amber-900 dark:text-amber-400 uppercase tracking-widest mb-1">Restricted Access</h4>
-                    <p class="text-[11px] text-amber-800/80 dark:text-amber-500/80 leading-relaxed">
-                        This area is reserved for authorized administrators only. Unauthorized access is strictly prohibited. 
-                        If you are not an administrator, please <a href="./index.html" class="underline font-bold hover:text-amber-900 transition-colors">return to the home page</a>.
-                    </p>
-                </div>
             </div>
             
             <div class="glass p-8 rounded-3xl shadow-2xl relative border border-slate-200 w-full text-center">
@@ -183,6 +193,13 @@
         let currentFileSha = '';
         let base64Image = null;
         let fileName = null;
+
+        function closeRestrictionModal() {
+            const modal = document.getElementById('restrictionModal');
+            modal.style.opacity = '0';
+            modal.style.pointerEvents = 'none';
+            setTimeout(() => modal.classList.add('hidden'), 500);
+        }
 
         // AUTH LOGIC
         window.onload = () => {
