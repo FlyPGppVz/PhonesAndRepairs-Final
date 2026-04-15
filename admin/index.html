@@ -6,32 +6,25 @@
   <title>PHONES AND REPAIRS - Admin</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
-    /* Ocultar el logo original y el footer de Netlify */
-    .netlify-identity-logo, .netlify-identity-footer, .coded-by {
-      display: none !important;
+    /* Ocultar logo de Decap y branding de Netlify en el widget */
+    #netlify-identity-widget, 
+    .netlify-identity-menu,
+    .netlify-identity-logo,
+    .netlify-identity-footer,
+    .netlify-identity-providers button::after {
+        display: none !important;
     }
 
-    /* Ocultar el logo de Decap (v3) */
-    div[class*="LogoContainer"], 
-    div[class*="LoginLogo"],
-    svg[class*="Logo"] {
-      display: none !important;
+    /* Ocultar el texto "Coded by Netlify" y logos internos */
+    [data-netlify-identity-menu] svg,
+    .nc-app-header-logo svg {
+        display: none !important;
     }
 
-    /* Inyectar el logotipo de Blink Service */
-    div[class*="LoginPage"]::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 120px;
-      background: url('/assets/img/admin-logo.png') no-repeat center center;
-      background-size: contain;
-      margin-bottom: 2rem;
-    }
-    
-    /* Ajustes generales para un look más limpio */
-    body {
-      background-color: #f3f4f6 !important;
+    /* Cambiar el color del botón para que sea neutro y profesional */
+    .netlify-identity-button {
+        background-color: #1f2937 !important; /* Gris oscuro profesional */
+        color: white !important;
     }
   </style>
 </head>
