@@ -6,7 +6,8 @@
     <title>Admin Panel | Cellphones & Repairs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://unpkg.com/vanilla-picker@2"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
         .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
@@ -410,17 +411,35 @@
             if(!container) return;
             container.innerHTML = dynamicColors.map((color, index) => `
                 <div class="group relative flex items-center bg-white dark:bg-slate-800 rounded-2xl p-2 border border-slate-200 dark:border-white/10 shadow-sm transition-all hover:shadow-md">
-                    <input type="color" 
-                           value="${color}" 
-                           onchange="updateColor(${index}, this.value)"
-                           class="w-8 h-8 rounded-xl border-none cursor-pointer bg-transparent overflow-hidden">
-                    <span class="ml-2 text-[9px] font-mono text-slate-500 uppercase tracking-tighter">${color}</span>
+                    <div id="picker-${index}" class="w-8 h-8 rounded-xl border border-slate-200 dark:border-white/20 cursor-pointer shadow-inner transition-transform active:scale-95" style="background-color: ${color}"></div>
+                    <span class="ml-2 text-[9px] font-mono text-slate-500 uppercase tracking-tighter font-bold">${color}</span>
                     <button type="button" onclick="removeColor(${index})" 
                             class="ml-2 p-1 text-slate-400 hover:text-red-500 transition-colors">
                         <span class="material-symbols-outlined text-xs">close</span>
                     </button>
                 </div>
             `).join('');
+
+            // Attach advanced spectrum pickers
+            dynamicColors.forEach((color, index) => {
+                const el = document.getElementById(`picker-${index}`);
+                new Picker({
+                    parent: el,
+                    popup: 'bottom',
+                    color: color,
+                    onDone: (selected) => {
+                        const hex = selected.hex.slice(0, 7);
+                        el.style.backgroundColor = hex;
+                        el.nextElementSibling.innerText = hex;
+                        dynamicColors[index] = hex;
+                    },
+                    onChange: (selected) => {
+                        const hex = selected.hex.slice(0, 7);
+                        el.style.backgroundColor = hex;
+                        el.nextElementSibling.innerText = hex;
+                    }
+                });
+            });
         }
 
         function closeRestrictionModal() {
