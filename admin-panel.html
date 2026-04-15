@@ -135,8 +135,13 @@
                                 <input type="text" id="title" required class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
                             </div>
                             <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Price (USD)</label>
-                                <input type="number" step="0.01" id="price" required class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Brand</label>
+                                <select id="brand" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none appearance-none shadow-sm">
+                                    <option value="Apple">Apple</option>
+                                    <option value="Samsung">Samsung</option>
+                                    <option value="Console">Console / Gaming</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
                             <div>
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Category</label>
@@ -149,9 +154,41 @@
                                     <option value="consoles">Consoles</option>
                                 </select>
                             </div>
-                            <div class="col-span-2">
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Base Price (USD)</label>
+                                <input type="number" step="0.01" id="price" required class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
+                            </div>
+                            <div class="col-span-1">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Hero Description</label>
                                 <input type="text" id="description" required class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION: HARDWARE & COLORS -->
+                    <div class="bg-slate-50 dark:bg-slate-800/30 p-6 rounded-3xl border border-slate-100 dark:border-slate-800">
+                        <h4 class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">palette</span> Variants & Hardware
+                        </h4>
+                        <div class="grid grid-cols-3 gap-6">
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Color 1</label>
+                                <input type="color" id="color1" value="#1c1c1c" class="w-full h-12 bg-transparent border-none cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Color 2</label>
+                                <input type="color" id="color2" value="#f2f2f2" class="w-full h-12 bg-transparent border-none cursor-pointer">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Color 3</label>
+                                <input type="color" id="color3" value="#d1713f" class="w-full h-12 bg-transparent border-none cursor-pointer">
+                            </div>
+                            
+                            <div class="col-span-3 grid grid-cols-3 gap-4 border-t border-slate-200 dark:border-slate-700 pt-6">
+                                <div class="col-span-3 mb-2"><label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Storage Tiers (Label / +Price)</label></div>
+                                <div><input type="text" id="cap1" placeholder="256GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap1Extra" value="0" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
+                                <div><input type="text" id="cap2" placeholder="512GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap2Extra" value="200" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
+                                <div><input type="text" id="cap3" placeholder="1TB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap3Extra" value="400" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
                             </div>
                         </div>
                     </div>
@@ -163,12 +200,16 @@
                         </h4>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2">
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Engineering Title (e.g., Engineering Precision)</label>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Build Integrity Anotation (Bottom Left)</label>
+                                <textarea id="specBuildIntegrity" rows="2" placeholder="Grade 5 Titanium enclosure with brushed obsidian texture." class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm"></textarea>
+                            </div>
+                            <div class="col-span-2">
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Engineering Title</label>
                                 <input type="text" id="marketingTitle" placeholder="Engineering Precision." class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
                             <div class="col-span-2">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Engineering Subtitle</label>
-                                <input type="text" id="marketingSubtitle" placeholder="Every component refined for peak performance." class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
+                                <input type="text" id="marketingSubtitle" placeholder="Every component refined for professional peak performance." class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
                             <div class="col-span-2">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Main Images (Gallery)</label>
@@ -400,13 +441,16 @@
 
                 // 2. Data Map
                 const title = document.getElementById('title').value;
+                const basePrice = parseFloat(document.getElementById('price').value);
                 const slug = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
                 
                 const productData = {
                     title: title,
-                    price: parseFloat(document.getElementById('price').value),
+                    brand: document.getElementById('brand').value,
+                    price: basePrice,
                     description: document.getElementById('description').value,
                     category: document.getElementById('category').value,
+                    specBuildIntegrity: document.getElementById('specBuildIntegrity').value || 'Professional build quality.',
                     marketingTitle: document.getElementById('marketingTitle').value || 'Engineering Precision.',
                     marketingSubtitle: document.getElementById('marketingSubtitle').value || 'Every component refined for professional peak performance.',
                     specProcessor: document.getElementById('specProcessor').value || 'Power Process',
@@ -419,6 +463,16 @@
                     rev1Comment: document.getElementById('rev1Comment').value || 'Excellent Build Quality.',
                     rev2Name: document.getElementById('rev2Name').value || 'Client',
                     rev2Comment: document.getElementById('rev2Comment').value || 'Smooth and fast.',
+                    colors: [
+                        document.getElementById('color1').value,
+                        document.getElementById('color2').value,
+                        document.getElementById('color3').value
+                    ],
+                    storage: [
+                        { label: document.getElementById('cap1').value || 'Base', extra: parseFloat(document.getElementById('cap1Extra').value) || 0 },
+                        { label: document.getElementById('cap2').value || 'Mid', extra: parseFloat(document.getElementById('cap2Extra').value) || 200 },
+                        { label: document.getElementById('cap3').value || 'High', extra: parseFloat(document.getElementById('cap3Extra').value) || 400 }
+                    ],
                     images: uploadedUrls.length > 0 ? uploadedUrls : (JSON.parse(atob((await (await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${document.getElementById('editPath').value}`)).json())).content)).images,
                     fillerImage: fillerUrl,
                     url: `./${PRODUCTS_HTML_DIR}/${slug}.html`,
@@ -465,12 +519,42 @@
             // Hero Description
             html = html.replace(/<p class="text-on-surface-variant text-lg max-w-md mb-6">.*?<\/p>/, `<p class="text-on-surface-variant text-lg max-w-md mb-6">${data.description}</p>`);
             
-            // Price
+            // Price (Primary)
             html = html.replace(/<div class="product-price text-3xl font-semibold text-on-surface transition-all">\$.*?<\/div>/, `<div class="product-price text-3xl font-semibold text-on-surface transition-all">$${data.price.toFixed(2)}</div>`);
             
             // Main Image
             html = html.replace(/id="main-product-image" class=".*?" src=".*?"/, `id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="${data.images[0].replace('./assets/', '../assets/')}"`);
             
+            // Colors
+            data.colors.forEach((col, idx) => {
+                const regex = new RegExp(`(<button class="color-btn .*? style="background-color: )#.*?(;")`, 'g');
+                // Note: Template might not have style inline, so we look for the bg class or insert style
+                // Since template has fixed hex, we replace that specific string
+                if(idx === 0) html = html.replace(/bg-\[#1c1c1c\]/, `style="background-color: ${col};"`);
+                if(idx === 1) html = html.replace(/bg-\[#f2f2f2\]/, `style="background-color: ${col};"`);
+                if(idx === 2) html = html.replace(/bg-\[#d1713f\]/, `style="background-color: ${col};"`);
+            });
+
+            // Storage Tiers
+            data.storage.forEach((item, idx) => {
+                const totalPrice = (data.price + item.extra).toLocaleString();
+                if(idx === 0) {
+                    html = html.replace(/>256GB<\/button>/, `>${item.label}<\/button>`);
+                    html = html.replace(/data-price="\$1,299\.00"/, `data-price="$${totalPrice}"`);
+                }
+                if(idx === 1) {
+                    html = html.replace(/>512GB<\/button>/, `>${item.label}<\/button>`);
+                    html = html.replace(/data-price="\$1,499\.00"/, `data-price="$${totalPrice}"`);
+                }
+                if(idx === 2) {
+                    html = html.replace(/>1TB<\/button>/, `>${item.label}<\/button>`);
+                    html = html.replace(/data-price="\$1,699\.00"/, `data-price="$${totalPrice}"`);
+                }
+            });
+
+            // Build Integrity
+            html = html.replace(/<p class="text-on-surface text-sm font-medium">Grade 5 Titanium enclosure with brushed obsidian texture.<\/p>/, `<p class="text-on-surface text-sm font-medium">${data.specBuildIntegrity}<\/p>`);
+
             // Engineering Section
             html = html.replace(/<h2 class="text-4xl font-bold tracking-tight mb-4">.*?<\/h2>/, `<h2 class="text-4xl font-bold tracking-tight mb-4">${data.marketingTitle}</h2>`);
             html = html.replace(/<p class="text-on-surface-variant text-lg">.*?<\/p>/, `<p class="text-on-surface-variant text-lg">${data.marketingSubtitle}</p>`);
@@ -497,6 +581,110 @@
 
             return html;
         }
+
+        async function githubCommit(path, content, message, sha = null) {
+            const body = { message, content, branch: GITHUB_BRANCH };
+            if (sha) body.sha = sha;
+            const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+                method: 'PUT',
+                headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            return await res.json();
+        }
+
+        async function deleteProduct(path, sha, title) {
+            if(!confirm(`Delete ${title}?`)) return;
+            try {
+                await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Delete ${title}`, sha, branch: GITHUB_BRANCH })
+                });
+                showToast('Deleted');
+                loadInventory();
+            } catch (err) { showToast('Delete failed', 'error'); }
+        }
+
+        function editProduct(item) {
+            document.getElementById('modalTitle').innerText = 'Edit Full Product Data';
+            document.getElementById('title').value = item.title;
+            document.getElementById('brand').value = item.brand || 'Apple';
+            document.getElementById('price').value = item.price;
+            document.getElementById('description').value = item.description;
+            document.getElementById('category').value = item.category;
+            document.getElementById('specBuildIntegrity').value = item.specBuildIntegrity || '';
+            document.getElementById('marketingTitle').value = item.marketingTitle;
+            document.getElementById('marketingSubtitle').value = item.marketingSubtitle;
+            document.getElementById('specProcessor').value = item.specProcessor;
+            document.getElementById('specDisplay').value = item.specDisplay;
+            document.getElementById('specBrightness').value = item.specBrightness;
+            document.getElementById('specRefresh').value = item.specRefresh;
+            document.getElementById('specCamera').value = item.specCamera;
+            document.getElementById('specBattery').value = item.specBattery;
+            document.getElementById('rev1Name').value = item.rev1Name;
+            document.getElementById('rev1Comment').value = item.rev1Comment;
+            document.getElementById('rev2Name').value = item.rev2Name;
+            document.getElementById('rev2Comment').value = item.rev2Comment;
+            
+            if(item.colors) {
+                document.getElementById('color1').value = item.colors[0];
+                document.getElementById('color2').value = item.colors[1];
+                document.getElementById('color3').value = item.colors[2];
+            }
+            if(item.storage) {
+                document.getElementById('cap1').value = item.storage[0].label;
+                document.getElementById('cap1Extra').value = item.storage[0].extra;
+                document.getElementById('cap2').value = item.storage[1].label;
+                document.getElementById('cap2Extra').value = item.storage[1].extra;
+                document.getElementById('cap3').value = item.storage[2].label;
+                document.getElementById('cap3Extra').value = item.storage[2].extra;
+            }
+
+            document.getElementById('editSha').value = item.sha;
+            document.getElementById('editPath').value = item.path;
+            
+            document.getElementById('imagePreviewContainer').innerHTML = item.images.map(url => `
+                <div class="w-16 h-16 bg-slate-100 rounded-xl overflow-hidden border">
+                    <img src="${url}" class="h-full w-full object-cover">
+                </div>
+            `).join('');
+            
+            if(item.fillerImage) {
+                document.getElementById('fillerPreview').innerHTML = `<img src="${item.fillerImage}" class="h-full w-full object-cover">`;
+            }
+            
+            openModal();
+        }
+
+        function openModal() { document.getElementById('productModal').classList.remove('hidden'); }
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.getElementById('productForm').reset();
+            document.getElementById('imagePreviewContainer').innerHTML = '';
+            document.getElementById('fillerPreview').innerHTML = '<span class="text-xs text-slate-400">Preview image here</span>';
+            selectedImages = [];
+            fillerImage = null;
+        }
+
+        function setLoading(isLoading) {
+            const btn = document.getElementById('saveBtn');
+            const text = document.getElementById('saveBtnText');
+            const loader = document.getElementById('btnLoader');
+            btn.disabled = isLoading;
+            text.classList.toggle('hidden', isLoading);
+            loader.classList.toggle('hidden', !isLoading);
+        }
+
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => toast.classList.add('translate-y-32'), 3000);
+        }
+    </script>
+</body>
+</html>
 
         async function githubCommit(path, content, message, sha = null) {
             const body = { message, content, branch: GITHUB_BRANCH };

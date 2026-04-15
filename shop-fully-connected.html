@@ -420,6 +420,10 @@
                         });
                     
                     allProducts = await Promise.all(productPromises);
+                    
+                    // INTEL SORTING
+                    sortProducts(allProducts);
+                    
                     renderProducts(allProducts);
                     initFilters();
                 } catch (error) {
@@ -428,9 +432,51 @@
                 }
             }
 
-            // 2. Render Products
+            // 2. Intelligence Sorting
+            function sortProducts(products) {
+                products.sort((a, b) => {
+                    // A. BRAND WEIGHT (Apple first, then Samsung, then others)
+                    const brandWeight = { 'Apple': 100, 'Samsung': 90, 'Console': 80, 'Other': 10 };
+                    const weightA = brandWeight[a.brand] || 0;
+                    const weightB = brandWeight[b.brand] || 0;
+                    
+                    if (weightA !== weightB) return weightB - weightA;
+
+                    // B. VERSION EXTRACTION (Regex for numbers like 17, 16, S25)
+                    const getVersion = (str) => {
+                        const match = str.match(/\d+/);
+                        return match ? parseInt(match[0]) : 0;
+                    };
+                    const verA = getVersion(a.title);
+                    const verB = getVersion(b.title);
+                    
+                    if (verA !== verB) return verB - verA;
+
+                    // C. SUFFIX PRIORITY (Pro Max > Pro > Plus)
+                    const getSuffixWeight = (str) => {
+                        if (str.includes('Pro Max')) return 50;
+                        if (str.includes('Ultra')) return 45;
+                        if (str.includes('Pro')) return 40;
+                        if (str.includes('Plus')) return 30;
+                        return 20;
+                    };
+                    const suffixA = getSuffixWeight(a.title);
+                    const suffixB = getSuffixWeight(b.title);
+                    
+                    return suffixB - suffixA;
+                });
+            }
+
+            // 3. Render Products
             function renderProducts(products) {
                 grid.innerHTML = '';
+                
+                // UPDATE COUNT
+                const countDisplay = document.querySelector('.flex.justify-between.items-end.mb-8 p.text-sm.text-on-surface-variant') || document.querySelector('p.text-sm.text-on-surface-variant');
+                if (countDisplay) {
+                    countDisplay.innerHTML = `Showing <span class="text-on-surface font-bold">${products.length}</span> premium items`;
+                }
+
                 if (products.length === 0) {
                     emptyState.classList.remove('hidden');
                     emptyState.classList.add('flex');
@@ -467,10 +513,6 @@
 
                     grid.appendChild(clone);
                 });
-
-                if (countDisplay) {
-                    countDisplay.textContent = `Showing ${products.length} premium items`;
-                }
             }
 
             // 3. Filter Logic
