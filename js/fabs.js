@@ -19,7 +19,7 @@ class FabsManager {
         // Crear el contenedor principal para el dock de botones
         this.container = document.createElement('div');
         this.container.id = 'cr-fabs-container';
-        this.container.className = 'fixed bottom-24 left-6 z-[10020] flex flex-col items-start gap-4 pointer-events-none';
+        this.container.className = 'fixed bottom-24 left-6 z-[50000] flex flex-col items-start gap-4 pointer-events-none';
         
         // Botón WhatsApp
         const whatsappFab = this.createFab({
