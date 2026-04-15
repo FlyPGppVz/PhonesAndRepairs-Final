@@ -15,12 +15,12 @@
         })();
     </script>
 </head>
-<body class="bg-background text-on-surface selection:bg-primary/20">
+<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 selection:bg-primary/20">
 <!-- TopNavBar Updated as per COMPONENTS_95 - Sync 2026-04-11 -->
 <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
-<nav class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto">
+<nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto">
 <div class="flex-1 flex items-center">
-<a href="./index.html"><img alt="Logo" class="h-10 w-auto object-contain scale-95" src="./assets/images/logo-transparent.png"></a>
+<a href="./index.html"><img alt="Logo" class="h-12 w-auto object-contain scale-95" src="./assets/images/logo-transparent.png"></a>
 </div>
 <!-- Center Column: Navigation Links -->
 <div class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[15px] font-medium tracking-tight">
@@ -82,7 +82,7 @@ Shop
 </div>
 
 <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./services-unified-nav.html">Service</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer font-bold" href="./contact-unified-nav.html">Contact</a>
+<a class="text-slate-900 dark:text-white font-bold hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./contact-unified-nav.html">Contact</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./about-us-unified-nav.html">About Us</a>
 </div>
 
@@ -90,6 +90,7 @@ Shop
 <div class="flex-1 flex items-center justify-end gap-3 md:gap-5">
 <button class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity" id="mobileMenuBtn">menu</button>
 <div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
+
 <div class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
 <span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[22px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
 <input class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none" id="navSearchInput" placeholder="Search devices..." type="text">
