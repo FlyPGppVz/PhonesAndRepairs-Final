@@ -10,14 +10,14 @@
 // ¿Qué hace?: Define constantes utilizadas en todo el script en lugar de textos mágicos ("magic strings").
 // ¿Para qué sirve?: Facilita el mantenimiento (Clean code) y asegura que los valores sean siempre consistentes.
 const STORAGE_KEY = 'cr_chat_history';
-const MAX_Z_INDEX = 'z-[10005]'; 
-const OPEN_Z_INDEX = 'z-[10010]';
+const MAX_Z_INDEX = 'z-[60000]';
+const OPEN_Z_INDEX = 'z-[60010]';
 
 // # CLASE PRINCIPAL
 // ¿Qué hace?: Modela los datos, el estado visual y la lógica del widget.
 // ¿Para qué sirve?: Encapsula toda la lógica de chat sin contaminar el entorno global de JavaScript.
 class ChatbotWidget {
-    
+
     // # CONSTRUCTOR
     // ¿Qué hace?: Función que se llama al instanciar la clase mediante `new`. 
     // ¿Para qué sirve?: Declara los valores por defecto del chatbot y desencadena la inicialización.
@@ -32,12 +32,12 @@ class ChatbotWidget {
         this.sendBtn = null;        // Referencia al botón de enviar msj
         this.closeBtn = null;       // Referencia al botón cerrar de la cabecera
         this.messages = this.loadHistory(); // Cache local en RAM de los mensajes mostrados
-        
+
         this.init(); // Arranca el ciclo de vida del componente
     }
 
     // # MÉTODOS DE DATOS (DATA LAYER)
-    
+
     // ¿Qué hace?: Carga la secuencia de mensajes recuperando la cadena del localStorage.
     // ¿Para qué sirve?: Para que el usuario no pierda el contexto del chat si cambia de página o refresca.
     loadHistory() {
@@ -57,7 +57,7 @@ class ChatbotWidget {
     }
 
     // # MÉTODOS DE INICIALIZACIÓN
-    
+
     // ¿Qué hace?: Orquesta la construcción procedural del chatbot.
     // ¿Para qué sirve?: Para separar el dibujado, los eventos de usuario y el procesado de datos lógicamente.
     init() {
@@ -67,7 +67,7 @@ class ChatbotWidget {
     }
 
     // # MÉTODOS DE INTERFAZ GRÁFICA (UI)
-    
+
     // ¿Qué hace?: Inyecta código HTML seguro para armar la ventana interactiva del bot.
     // ¿Para qué sirve?: Evita modificar el HTML directamente en cada página, siendo un componente modular al 100%.
     renderWidget() {
@@ -75,15 +75,15 @@ class ChatbotWidget {
         this.container = document.createElement('div');
         this.container.id = 'cr-chatbot-container';
         this.container.classList.add('fixed', 'bottom-6', 'left-6', 'z-[60000]', 'font-sans', 'flex', 'flex-col', 'items-start', 'pointer-events-none');
-        
+
         // Ventana del Chat
         this.chatWindow = document.createElement('div');
         this.chatWindow.classList.add(
-             // Clean Code: se estructura el Tailwind por categoría en la misma línea visual a modo de componentes.
+            // Clean Code: se estructura el Tailwind por categoría en la misma línea visual a modo de componentes.
             'bg-surface-container-lowest', 'rounded-2xl', 'shadow-2xl', 'w-[350px]', 'h-[500px]', 'mb-4',
             'flex', 'flex-col', 'overflow-hidden', 'transition-all', 'duration-300', 'origin-bottom-left', 'border', 'border-slate-200', 'dark:border-slate-800'
         );
-        
+
         // Estado por defecto invisible y encogido
         this.chatWindow.style.opacity = '0';
         this.chatWindow.style.transform = 'scale(0.8)';
@@ -141,7 +141,7 @@ class ChatbotWidget {
         this.container.appendChild(this.chatWindow);
         this.container.appendChild(this.toggleBtn);
         document.body.appendChild(this.container);
-        
+
         // Caching optimizado (Clean Code) 
         // Previamente extraías con getElementById desde múltiples métodos de eventos, lo cual resultaba ineficiente en rendimiento.
         // Ahora todo vive cacheado a nivel de clase una vez se renderiza el widget:
@@ -152,17 +152,17 @@ class ChatbotWidget {
     }
 
     // # MÉTODOS DE EVENTOS
-    
+
     // ¿Qué hace?: Escucha interacciones en los elementos pre-cacheados (botones y teclado).
     // ¿Para qué sirve?: Dar vida al HTML, de forma que los clics desencadenen comportamientos.
     attachEventListeners() {
         this.toggleBtn.addEventListener('click', () => this.toggleChat());
         this.closeBtn.addEventListener('click', () => this.toggleChat());
         this.sendBtn.addEventListener('click', () => this.handleSend());
-        
+
         this.inputField.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault(); 
+                e.preventDefault();
                 this.handleSend();
             }
         });
@@ -175,7 +175,7 @@ class ChatbotWidget {
     }
 
     // # MÉTODOS DE LÓGICA DE INTERFAZ (TOGGLES Y RENDERIZADOS SECUNDARIOS)
-    
+
     // ¿Qué hace?: Alterna el switch `isOpen` y lanza animaciones para abrir o cerrar.
     // ¿Para qué sirve?: Es la puerta de entrada para mostrar (activar Pointer Events) u ocultar la ventana y el historial.
     toggleChat() {
@@ -189,7 +189,7 @@ class ChatbotWidget {
             this.chatWindow.style.pointerEvents = 'auto'; // Permitir clicks internos al abrir
             this.toggleIcon.style.transform = 'rotate(90deg)';
             setTimeout(() => { this.toggleIcon.textContent = 'close'; }, 150);
-            
+
             this.scrollToBottom();
             setTimeout(() => this.inputField.focus(), 300);
         } else {
@@ -218,7 +218,7 @@ class ChatbotWidget {
     appendMessageElement(msg) {
         const wrapper = document.createElement('div');
         wrapper.classList.add('flex', 'w-full');
-        
+
         const bubble = document.createElement('div');
         bubble.classList.add('max-w-[80%]', 'py-2', 'px-4', 'text-sm', 'leading-relaxed', 'shadow-sm');
 
@@ -236,7 +236,7 @@ class ChatbotWidget {
     }
 
     // # MÉTODOS DE LÓGICA DE NEGOCIO Y BOT
-    
+
     // ¿Qué hace?: Lee lo ingresado, valida que no esté vacío, lo envía al array y simula al bot.
     // ¿Para qué sirve?: Encapsular el ciclo principal humano -> máquina para no ensuciar el evento origen en teclado.
     handleSend() {
@@ -247,7 +247,7 @@ class ChatbotWidget {
         this.messages.push(userMsg);
         this.appendMessageElement(userMsg);
         this.saveHistory();
-        
+
         // Limpiamos los rastros y el alto forzado al enviar (Clean code preventivo visual)
         this.inputField.value = '';
         this.inputField.style.height = '40px';
@@ -276,11 +276,11 @@ class ChatbotWidget {
         // Emulamos el "Typing" del bot humano 
         setTimeout(() => {
             const typingIndicator = document.getElementById(typingId);
-            if(typingIndicator) typingIndicator.remove();
+            if (typingIndicator) typingIndicator.remove();
 
             let responseText = "Thanks for your message! Our team will get back to you shortly.";
             const lower = userText.toLowerCase();
-            
+
             // Clean Code Option (Optimización Posible Futura): Este mapeo de IFs puede cambiarse a un Mapa u Objeto literal externo
             // para escalar de manera natural agregando respuestas nuevas sin ensuciar la longitud del archivo local.
             if (lower.includes('repair') || lower.includes('broken')) {
@@ -297,11 +297,11 @@ class ChatbotWidget {
             this.saveHistory();
             this.scrollToBottom();
 
-        }, 1200); 
+        }, 1200);
     }
 
     // # UTILIDADES AUXILIARES
-    
+
     // ¿Qué hace?: Ajusta asincrónicamente el scrollTop hasta la altura máxima scrollable total del ChatBox.
     // ¿Para qué sirve?: Auto-baja la pantalla garantizando que se aprecie el último input o respuesta del bot inmediatamente.
     scrollToBottom() {
