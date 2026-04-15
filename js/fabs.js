@@ -19,7 +19,7 @@ class FabsManager {
         // Crear el contenedor principal para el dock de botones
         this.container = document.createElement('div');
         this.container.id = 'cr-fabs-container';
-        this.container.className = 'fixed bottom-24 left-6 z-[50000] flex flex-col items-start gap-4 pointer-events-none';
+        this.container.className = 'fixed bottom-24 right-6 z-[50000] flex flex-col items-end gap-4 pointer-events-none';
         
         // Botón WhatsApp
         const whatsappFab = this.createFab({
@@ -60,8 +60,8 @@ class FabsManager {
         const content = `
             <div class="relative ${bg} text-white ${expandable ? 'p-3 rounded-full' : 'w-12 h-12 flex-shrink-0 rounded-full'} shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 pointer-events-auto">
                 <div class="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping pointer-events-none"></div>
+                ${expandable ? `<span class="max-w-0 overflow-hidden group-hover:max-w-[150px] transition-all duration-500 ease-out font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pl-1 text-sm">${label}</span>` : ''}
                 ${icon}
-                ${expandable ? `<span class="max-w-0 overflow-hidden group-hover:max-w-[150px] transition-all duration-500 ease-out font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pr-1 text-sm">${label}</span>` : ''}
             </div>
         `;
         
