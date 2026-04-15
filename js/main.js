@@ -175,6 +175,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // -----------------------------------------------------------
+    //  #4. Dynamic Mobile Menu Injection & Logic
+    // -----------------------------------------------------------
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    if (mobileMenuBtn) {
+        // Create Mobile Menu Overlay dynamically if it doesn't exist
+        if (!document.getElementById('mobileMenuOverlay')) {
+            const overlay = document.createElement('div');
+            overlay.id = 'mobileMenuOverlay';
+            overlay.className = 'fixed inset-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-2xl z-[100] transform transition-transform duration-500 translate-x-full flex flex-col p-8';
+            overlay.innerHTML = `
+                <div class="flex justify-between items-center mb-12">
+                    <img src="./assets/images/logo-transparent.png" class="h-10 w-auto object-contain dark:invert" alt="Logo">
+                    <button id="closeMobileMenu" class="material-symbols-outlined text-3xl text-slate-600 dark:text-slate-400">close</button>
+                </div>
+                <nav class="flex flex-col gap-8">
+                    <a href="./index.html" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-500 transition-colors">Home</a>
+                    <a href="./shop-fully-connected.html" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-500 transition-colors">Shop</a>
+                    <a href="./services-unified-nav.html" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-500 transition-colors">Services</a>
+                    <a href="./contact-unified-nav.html" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-500 transition-colors">Contact</a>
+                    <a href="./about-us-unified-nav.html" class="text-3xl font-bold text-slate-900 dark:text-white hover:text-blue-500 transition-colors">About Us</a>
+                </nav>
+                <div class="mt-auto pt-10 border-t border-slate-200 dark:border-slate-800">
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">© 2024 CellphonesAndRepair</p>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            const closeBtn = document.getElementById('closeMobileMenu');
+            
+            const toggleMenu = (open) => {
+                if (open) {
+                    overlay.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    overlay.classList.add('translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            mobileMenuBtn.addEventListener('click', () => toggleMenu(true));
+            closeBtn.addEventListener('click', () => toggleMenu(false));
+            
+            // Close on link click
+            overlay.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+        }
+    }
+
     // Diagnóstico silencioso para QA (Útil a futuro)
     console.log("C&R App & Global Logic successfully initialized.");
 });
