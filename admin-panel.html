@@ -173,29 +173,24 @@
 
                     <!-- SECTION: HARDWARE & COLORS -->
                     <div class="bg-slate-50 dark:bg-slate-800/30 p-6 rounded-3xl border border-slate-100 dark:border-slate-800">
-                        <h4 class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-sm">palette</span> Variants & Hardware
-                        </h4>
-                        <div class="grid grid-cols-3 gap-6">
-                            <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Color 1</label>
-                                <input type="color" id="color1" value="#1c1c1c" class="w-full h-12 bg-transparent border-none cursor-pointer">
-                            </div>
-                            <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Color 2</label>
-                                <input type="color" id="color2" value="#f2f2f2" class="w-full h-12 bg-transparent border-none cursor-pointer">
-                            </div>
-                            <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Color 3</label>
-                                <input type="color" id="color3" value="#d1713f" class="w-full h-12 bg-transparent border-none cursor-pointer">
-                            </div>
-                            
-                            <div class="col-span-3 grid grid-cols-3 gap-4 border-t border-slate-200 dark:border-slate-700 pt-6">
-                                <div class="col-span-3 mb-2"><label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Storage Tiers (Label / +Price)</label></div>
-                                <div><input type="text" id="cap1" placeholder="256GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap1Extra" value="0" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
-                                <div><input type="text" id="cap2" placeholder="512GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap2Extra" value="200" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
-                                <div><input type="text" id="cap3" placeholder="1TB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap3Extra" value="400" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
-                            </div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">palette</span> Variants & Hardware
+                            </h4>
+                            <button type="button" onclick="addColor()" class="flex items-center gap-1 text-[10px] font-bold text-blue-500 hover:text-blue-600 transition-colors uppercase tracking-widest">
+                                <span class="material-symbols-outlined text-sm">add_circle</span> Add Color
+                            </button>
+                        </div>
+                        
+                        <div id="colorsContainer" class="flex flex-wrap gap-4 mb-8">
+                            <!-- Colors will be injected here via JS -->
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-slate-200 dark:border-slate-700 pt-6">
+                            <div class="col-span-3 mb-2"><label class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Storage Tiers (Label / +Price)</label></div>
+                            <div><input type="text" id="cap1" placeholder="256GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap1Extra" value="0" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
+                            <div><input type="text" id="cap2" placeholder="512GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap2Extra" value="200" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
+                            <div><input type="text" id="cap3" placeholder="1TB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm mb-2"><input type="number" id="cap3Extra" value="400" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 outline-none text-sm"></div>
                         </div>
                     </div>
 
@@ -317,6 +312,36 @@
         let GITHUB_TOKEN = localStorage.getItem('gh_token');
         let selectedImages = []; 
         let fillerImage = null; // {name, base64}
+        let dynamicColors = ['#1c1c1c', '#f2f2f2', '#d1713f']; // Initial variants
+
+        // COLOR DYNAMICS
+        function addColor() {
+            dynamicColors.push('#3b82f6'); 
+            renderColors();
+        }
+        function removeColor(index) {
+            dynamicColors.splice(index, 1);
+            renderColors();
+        }
+        function updateColor(index, value) { dynamicColors[index] = value; }
+
+        function renderColors() {
+            const container = document.getElementById('colorsContainer');
+            if(!container) return;
+            container.innerHTML = dynamicColors.map((color, index) => `
+                <div class="group relative flex items-center bg-white dark:bg-slate-800 rounded-2xl p-2 border border-slate-200 dark:border-white/10 shadow-sm transition-all hover:shadow-md">
+                    <input type="color" 
+                           value="${color}" 
+                           onchange="updateColor(${index}, this.value)"
+                           class="w-8 h-8 rounded-xl border-none cursor-pointer bg-transparent overflow-hidden">
+                    <span class="ml-2 text-[9px] font-mono text-slate-500 uppercase tracking-tighter">${color}</span>
+                    <button type="button" onclick="removeColor(${index})" 
+                            class="ml-2 p-1 text-slate-400 hover:text-red-500 transition-colors">
+                        <span class="material-symbols-outlined text-xs">close</span>
+                    </button>
+                </div>
+            `).join('');
+        }
 
         function closeRestrictionModal() {
             const modal = document.getElementById('restrictionModal');
@@ -330,6 +355,7 @@
             if (GITHUB_TOKEN) {
                 document.getElementById('authOverlay').classList.add('hidden');
                 document.getElementById('mainApp').classList.remove('hidden');
+                renderColors();
                 loadInventory();
             }
         };
@@ -455,6 +481,7 @@
                     brand: document.getElementById('brand').value,
                     year: parseInt(document.getElementById('year').value) || new Date().getFullYear(),
                     price: basePrice,
+                    colors: dynamicColors, // COLLECT ARRAY
                     description: document.getElementById('description').value,
                     category: document.getElementById('category').value,
                     specBuildIntegrity: document.getElementById('specBuildIntegrity').value || 'Professional build quality.',
@@ -532,16 +559,17 @@
             // Main Image
             html = html.replace(/id="main-product-image" class=".*?" src=".*?"/, `id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="${data.images[0].replace('./assets/', '../assets/')}"`);
             
-            // Colors
-            data.colors.forEach((col, idx) => {
-                const regex = new RegExp(`(<button class="color-btn .*? style="background-color: )#.*?(;")`, 'g');
-                // Note: Template might not have style inline, so we look for the bg class or insert style
-                // Since template has fixed hex, we replace that specific string
-                if(idx === 0) html = html.replace(/bg-\[#1c1c1c\]/, `style="background-color: ${col};"`);
-                if(idx === 1) html = html.replace(/bg-\[#f2f2f2\]/, `style="background-color: ${col};"`);
-                if(idx === 2) html = html.replace(/bg-\[#d1713f\]/, `style="background-color: ${col};"`);
-            });
-
+            // Dynamic Colors Generation
+            const colorButtonsHtml = data.colors.map((col, idx) => `
+                <button class="color-btn w-12 h-12 rounded-full border-2 border-transparent hover:border-blue-500 transition-all shadow-lg active:scale-95" 
+                        style="background-color: ${col};"
+                        data-color-name="Variant ${idx+1}"></button>
+            `).join('');
+            
+            // Reemplazar el contenedor de botones de color
+            const colorSectionRegex = /<div class="flex items-center space-x-4 mb-8">[\s\S]*?<\/div>/;
+            html = html.replace(colorSectionRegex, `<div class="flex items-center space-x-4 mb-8">${colorButtonsHtml}</div>`);
+            
             // Storage Tiers
             data.storage.forEach((item, idx) => {
                 const totalPrice = (data.price + item.extra).toLocaleString();
@@ -619,6 +647,9 @@
             document.getElementById('brand').value = item.brand || 'Apple';
             document.getElementById('year').value = item.year || '';
             document.getElementById('price').value = item.price;
+            
+            dynamicColors = item.colors || ['#1c1c1c', '#f2f2f2', '#d1713f'];
+            renderColors();
             document.getElementById('description').value = item.description;
             document.getElementById('category').value = item.category;
             document.getElementById('specBuildIntegrity').value = item.specBuildIntegrity || '';
