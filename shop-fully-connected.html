@@ -217,7 +217,7 @@ Shop
 </select>
 </div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 relative z-10">
+<div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 relative z-10">
 <!-- iPhone 17 Pro Max -->
 <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20" onclick="window.location.href='iphone-17-pro-max-detail.html'" data-category="iPhones" data-price="1299" data-condition="pristine">
 <div class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
@@ -542,7 +542,7 @@ Shop
     // Auto-advance
     setInterval(nextSlide, 5000);
 </script>
-<script src="./js/cart.js"></script><script src="./js/main.js"></script>
+<!-- Main Logic Scripts -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const cards = Array.from(document.querySelectorAll('.bento-card'));
@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const conditionBoxes = document.querySelectorAll('.filter-condition');
     const priceRange = document.getElementById('price-range');
     const sortSelect = document.getElementById('sort-select');
-    const grid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.xl\\:grid-cols-3');
+    const grid = document.getElementById('product-grid');
     const countDisplay = document.querySelector('p.text-sm.text-on-surface-variant');
 
     let activeCategory = 'all';
@@ -614,7 +614,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Re-append to grid
-        cards.forEach(c => grid.appendChild(c));
+        if (grid) {
+            cards.forEach(c => grid.appendChild(c));
+        }
     }
 
     categoryLinks.forEach(link => {
