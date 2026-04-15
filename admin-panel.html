@@ -26,7 +26,7 @@
             <h1 class="text-3xl font-bold mb-8 tracking-tighter uppercase">ADMIN PANEL</h1>
             
             <div class="glass p-8 rounded-3xl shadow-2xl relative border border-slate-200">
-                <label class="block text-left text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">GitHub Personal Token</label>
+                <label class="block text-left text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Access Key</label>
                 <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 mb-6 focus:ring-2 focus:ring-blue-500 transition-all outline-none">
                 <button onclick="saveToken()" class="w-full brand-blue text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-900/20 transition-all transform active:scale-95">
                     Access System
@@ -36,7 +36,7 @@
 
             <!-- Bottom Branding -->
             <div class="mt-12 flex flex-col items-center gap-2 opacity-80">
-                <img src="./assets/images/Logo_flat_blink_service.png" alt="Blink Service" class="h-10 grayscale brightness-50 dark:grayscale-0 dark:brightness-100">
+                <img src="./assets/images/Logo_flat_blink_service.png" alt="Blink Service" class="h-10">
                 <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 leading-tight">Professional Inventory Management System</p>
                 <p class="text-[10px] uppercase tracking-widest text-slate-400">Powered by Blink Service</p>
             </div>
@@ -180,7 +180,7 @@
                 document.getElementById('mainApp').classList.remove('hidden');
                 loadInventory();
             } else {
-                showToast('Invalid token. It must start with ghp_', 'error');
+                showToast('Incorrect Access Key', 'error');
             }
         }
 
