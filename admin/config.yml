@@ -2,7 +2,6 @@ backend:
   name: github
   repo: flypgppvz/PhonesAndRepairs-Final
   branch: tienda-dinamica
-  base_url: https://flypgppvz.github.io/PhonesAndRepairs-Final/
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
