@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!document.getElementById('mobileMenuOverlay')) {
             const overlay = document.createElement('div');
             overlay.id = 'mobileMenuOverlay';
-            overlay.className = 'fixed inset-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-2xl z-[100] transform transition-transform duration-500 translate-x-full flex flex-col p-8';
+            overlay.className = 'fixed inset-0 bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-2xl z-[100] transform transition-transform duration-500 translate-x-full pointer-events-none flex flex-col p-8';
             overlay.innerHTML = `
                 <div class="flex justify-between items-center mb-12">
                     <img src="./assets/images/logo-transparent.png" class="h-10 w-auto object-contain dark:invert" alt="Logo">
@@ -207,10 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const toggleMenu = (open) => {
                 if (open) {
-                    overlay.classList.remove('translate-x-full');
+                    overlay.classList.remove('translate-x-full', 'pointer-events-none');
+                    overlay.classList.add('pointer-events-auto');
                     document.body.style.overflow = 'hidden';
                 } else {
-                    overlay.classList.add('translate-x-full');
+                    overlay.classList.add('translate-x-full', 'pointer-events-none');
+                    overlay.classList.remove('pointer-events-auto');
                     document.body.style.overflow = '';
                 }
             };
