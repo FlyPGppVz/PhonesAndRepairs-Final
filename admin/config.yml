@@ -2,9 +2,15 @@ backend:
   name: github
   repo: flypgppvz/PhonesAndRepairs-Final
   branch: tienda-dinamica
+  commit_messages:
+    create: 'CMS: Crear {{collection}} "{{slug}}"'
+    update: 'CMS: Actualizar {{collection}} "{{slug}}"'
+    delete: 'CMS: Borrar {{collection}} "{{slug}}"'
+    uploadMedia: 'CMS: Subir imagen "{{path}}"'
+    deleteMedia: 'CMS: Borrar imagen "{{path}}"'
 
-media_folder: "assets/images"
-public_folder: "/assets/images"
+media_folder: "assets/img"
+public_folder: "/assets/img"
 
 collections:
   - name: "inventario"
