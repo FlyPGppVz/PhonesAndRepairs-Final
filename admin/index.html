@@ -4,28 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PHONES AND REPAIRS - Admin</title>
-  <!-- Main Identity Widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    .netlify-identity-logo, .netlify-identity-footer, .coded-by {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
   <!-- Decap CMS Script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  
-  <script>
-    // Force the widget to connect to your specific Netlify site instance
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-      // This is crucial for GitHub Pages to know which Netlify instance to talk to
-      window.netlifyIdentity.init({
-        APIUrl: "https://phonesandrepairs-final.netlify.app/.netlify/identity"
-      });
-    }
-  </script>
 </body>
 </html>

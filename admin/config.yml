@@ -1,8 +1,6 @@
 backend:
   name: git-gateway
   branch: tienda-dinamica
-  identity_url: "https://phonesandrepairs-final.netlify.app/.netlify/identity"
-  gateway_url: "https://phonesandrepairs-final.netlify.app/.netlify/git"
   commit_messages:
     create: 'CMS: Crear {{collection}} "{{slug}}"'
     update: 'CMS: Actualizar {{collection}} "{{slug}}"'
