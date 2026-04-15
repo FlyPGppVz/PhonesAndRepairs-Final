@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "pages"
+    label: "Pages Content"
+    files:
+      - file: "index.html"
+        label: "Home Page"
+        name: "index"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: "services-unified-nav.html"
+        label: "Services Page"
+        name: "services"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "markdown"}

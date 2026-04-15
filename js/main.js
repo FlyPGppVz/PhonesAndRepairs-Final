@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ¿Para qué sirve?: Para liberar los flujos paralelos del DOM, acelerando la carga visual de la página
     // y para forzar explícitamente a su renderización z-[2147483647] al último momento sin interrupciones.
     const chatbotScript = document.createElement('script');
-    chatbotScript.src = './js/chatbot.js';
+    chatbotScript.src = './js/chatbot.js?v=' + Date.now();
     document.body.appendChild(chatbotScript);
 
     const fabsScript = document.createElement('script');
-    fabsScript.src = './js/fabs.js';
+    fabsScript.src = './js/fabs.js?v=' + Date.now();
     document.body.appendChild(fabsScript);
 
 
