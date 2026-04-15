@@ -398,15 +398,33 @@
             let allProducts = [];
             let activeCategory = 'all';
 
-            // 1. Fetch Products
+            // 1. Fetch Products (Dynamic API Feed)
             async function loadProducts() {
                 try {
-                    const response = await fetch('./data/inventory.json');
-                    allProducts = await response.json();
+                    const GITHUB_OWNER = 'FlyPGppVz';
+                    const GITHUB_REPO = 'PhonesAndRepairs-Final';
+                    const PRODUCTS_PATH = 'data/products';
+                    
+                    // Step A: Get list of files in the directory
+                    const dirResponse = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${PRODUCTS_PATH}`);
+                    if (!dirResponse.ok) throw new Error('Could not fetch products directory');
+                    
+                    const files = await dirResponse.json();
+                    
+                    // Step B: Fetch each individual JSON content
+                    const productPromises = files
+                        .filter(f => f.name.endsWith('.json'))
+                        .map(async file => {
+                            const detailRes = await fetch(file.download_url);
+                            return await detailRes.json();
+                        });
+                    
+                    allProducts = await Promise.all(productPromises);
                     renderProducts(allProducts);
                     initFilters();
                 } catch (error) {
-                    console.error('Error loading inventory:', error);
+                    console.error('Error loading dynamic inventory:', error);
+                    grid.innerHTML = '<p class="col-span-full text-center text-slate-500 py-20">Unable to load products. Please check connection.</p>';
                 }
             }
 
@@ -428,7 +446,12 @@
                     card.setAttribute('data-category', product.category);
                     card.setAttribute('data-price', product.price);
                     
-                    clone.querySelector('.product-img').src = product.image;
+                    // Handle product link
+                    card.onclick = () => window.location.href = product.url;
+
+                    const primaryImage = product.images && product.images.length > 0 ? product.images[0] : './assets/images/placeholder.png';
+                    
+                    clone.querySelector('.product-img').src = primaryImage;
                     clone.querySelector('.product-img').alt = product.title;
                     clone.querySelector('.product-title').textContent = product.title;
                     clone.querySelector('.product-desc').textContent = product.description;
@@ -436,11 +459,11 @@
                     
                     // Snipcart Binding
                     const btn = clone.querySelector('.snipcart-add-item');
-                    btn.setAttribute('data-item-id', product.title.replace(/\s+/g, '-').toLowerCase());
+                    btn.setAttribute('data-item-id', product.id || product.title.replace(/\s+/g, '-').toLowerCase());
                     btn.setAttribute('data-item-name', product.title);
                     btn.setAttribute('data-item-price', product.price);
                     btn.setAttribute('data-item-description', product.description);
-                    btn.setAttribute('data-item-image', product.image);
+                    btn.setAttribute('data-item-image', primaryImage);
 
                     grid.appendChild(clone);
                 });

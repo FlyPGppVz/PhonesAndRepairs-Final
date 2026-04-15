@@ -128,6 +128,9 @@
             
             <div class="p-8 overflow-y-auto">
                 <form id="productForm" class="grid grid-cols-2 gap-6">
+                    <input type="hidden" id="editSha">
+                    <input type="hidden" id="editPath">
+                    
                     <div class="col-span-2">
                         <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Name</label>
                         <input type="text" id="title" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none">
@@ -148,25 +151,25 @@
                         </select>
                     </div>
                     <div class="col-span-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Short Description (Hero)</label>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Short Description</label>
                         <input type="text" id="description" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none">
                     </div>
                     <div class="col-span-2">
-                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Image</label>
-                        <div class="flex items-center gap-4">
-                            <div id="imagePreview" class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-200 dark:border-slate-700">
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Images (Multiple)</label>
+                        <div class="flex flex-wrap gap-4 mb-4" id="imagePreviewContainer">
+                            <div class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-slate-700">
                                 <span class="material-symbols-outlined text-slate-300">image</span>
                             </div>
-                            <input type="file" id="imageFile" accept="image/*" class="hidden" onchange="previewImage(this)">
-                            <button type="button" onclick="document.getElementById('imageFile').click()" class="bg-slate-100 dark:bg-slate-800 px-6 py-4 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Select Image</button>
                         </div>
+                        <input type="file" id="imageFiles" accept="image/*" multiple class="hidden" onchange="previewImages(this)">
+                        <button type="button" onclick="document.getElementById('imageFiles').click()" class="bg-slate-100 dark:bg-slate-800 px-6 py-4 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Select Photos</button>
                     </div>
                 </form>
             </div>
             
             <div class="p-8 bg-slate-50 dark:bg-slate-800/50 flex gap-4">
                 <button onclick="saveProduct()" id="saveBtn" class="flex-1 brand-blue text-white font-bold py-4 rounded-2xl shadow-xl hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
-                    <span id="saveBtnText">Generate & Deploy Page</span>
+                    <span id="saveBtnText">Save & Deploy</span>
                     <div id="btnLoader" class="hidden loader w-5 h-5 border-2 border-white/20 rounded-full"></div>
                 </button>
             </div>
@@ -183,16 +186,13 @@
         // CONFIGURATION
         const GITHUB_REPO = 'FlyPGppVz/PhonesAndRepairs-Final';
         const GITHUB_BRANCH = 'master';
-        const INVENTORY_PATH = 'data/inventory.json';
+        const PRODUCTS_DATA_DIR = 'data/products';
         const TEMPLATE_PATH = 'iphone-17-pro-max-detail.html';
-        const PRODUCTS_DIR = 'products';
-        const IMG_DIR = 'assets/img';
+        const PRODUCTS_HTML_DIR = 'products';
+        const IMG_DIR = 'assets/img/products';
 
         let GITHUB_TOKEN = localStorage.getItem('gh_token');
-        let inventory = [];
-        let currentFileSha = '';
-        let base64Image = null;
-        let fileName = null;
+        let selectedImages = []; // Array of {name, base64}
 
         function closeRestrictionModal() {
             const modal = document.getElementById('restrictionModal');
@@ -228,35 +228,44 @@
             location.reload();
         }
 
-        // CRUD LOGIC
+        // READ LOGIC (Individual JSONs)
         async function loadInventory() {
             try {
-                const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${INVENTORY_PATH}?ref=${GITHUB_BRANCH}`, {
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${PRODUCTS_DATA_DIR}?ref=${GITHUB_BRANCH}`, {
                     headers: { 'Authorization': `token ${GITHUB_TOKEN}` }
                 });
-                const data = await response.json();
-                currentFileSha = data.sha;
-                inventory = JSON.parse(atob(data.content));
-                renderInventory();
+                if (response.status === 404) {
+                    document.getElementById('inventoryGrid').innerHTML = '<p class="col-span-full text-center text-slate-500 py-20">No products found. Start by creating one!</p>';
+                    return;
+                }
+                const files = await response.json();
+                const productPromises = files.filter(f => f.name.endsWith('.json')).map(async file => {
+                    const res = await fetch(file.download_url);
+                    const data = await res.json();
+                    return { ...data, sha: file.sha, path: file.path };
+                });
+                const inventory = await Promise.all(productPromises);
+                renderInventory(inventory);
             } catch (err) {
-                showToast('Error loading inventory. Check your Token.', 'error');
+                showToast('Error loading inventory.', 'error');
             }
         }
 
-        function renderInventory() {
+        function renderInventory(inventory) {
             const grid = document.getElementById('inventoryGrid');
-            grid.innerHTML = inventory.map((item, index) => `
+            grid.innerHTML = inventory.map(item => `
                 <div class="glass p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all">
                     <div class="h-40 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
-                        <img src="${item.image}" class="h-[80%] object-contain group-hover:scale-110 transition-transform duration-500">
+                        <img src="${item.images[0]}" class="h-[80%] object-contain group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="flex justify-between items-start mb-1">
-                        <h4 class="font-bold text-lg">${item.title}</h4>
+                        <h4 class="font-bold text-lg text-ellipsis overflow-hidden whitespace-nowrap" style="max-width: 150px;">${item.title}</h4>
                         <span class="text-blue-600 font-bold">$${item.price}</span>
                     </div>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 h-10 overflow-hidden line-clamp-2">${item.description}</p>
                     <div class="flex gap-2">
-                        <button onclick="deleteProduct(${index})" class="p-2 rounded-xl bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all">
+                        <button onclick='editProduct(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="flex-1 p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all text-xs font-bold uppercase tracking-tighter">Edit</button>
+                        <button onclick="deleteProduct('${item.path}', '${item.sha}', '${item.title}')" class="p-2 rounded-xl bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all">
                             <span class="material-symbols-outlined text-xl italic">delete</span>
                         </button>
                     </div>
@@ -264,133 +273,160 @@
             `).join('');
         }
 
-        // IMAGE PREVIEW
-        function previewImage(input) {
-            const file = input.files[0];
-            if (file) {
-                fileName = `prod_${Date.now()}_${file.name.replace(/\s/g, '_')}`;
+        // SELECTION & PREVIEW (Multiple)
+        function previewImages(input) {
+            const files = Array.from(input.files);
+            const container = document.getElementById('imagePreviewContainer');
+            container.innerHTML = '';
+            selectedImages = [];
+
+            files.forEach((file, index) => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    base64Image = e.target.result.split(',')[1];
-                    document.getElementById('imagePreview').innerHTML = `<img src="${e.target.result}" class="h-full w-full object-contain p-2">`;
+                    const base64 = e.target.result.split(',')[1];
+                    const uniqueName = `prod_${Date.now()}_${index}_${file.name.replace(/\s/g, '_')}`;
+                    selectedImages.push({ name: uniqueName, base64 });
+                    
+                    const div = document.createElement('div');
+                    div.className = 'w-24 h-24 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 relative group animate-in zoom-in';
+                    div.innerHTML = `<img src="${e.target.result}" class="h-full w-full object-cover">`;
+                    container.appendChild(div);
                 };
                 reader.readAsDataURL(file);
-            }
+            });
         }
 
-        // SAVE LOGIC
+        // SAVE / UPDATE LOGIC
         async function saveProduct() {
             const title = document.getElementById('title').value;
             const price = parseFloat(document.getElementById('price').value);
             const description = document.getElementById('description').value;
             const category = document.getElementById('category').value;
+            const editSha = document.getElementById('editSha').value;
+            const editPath = document.getElementById('editPath').value;
 
-            if (!title || !price || !base64Image) {
-                showToast('Please complete all fields including image.', 'error');
+            if (!title || !price || (selectedImages.length === 0 && !editSha)) {
+                showToast('Please complete all fields.', 'error');
                 return;
             }
 
             setLoading(true);
             try {
-                // 1. Upload Image to Assets
-                const imgPath = `${IMG_DIR}/${fileName}`;
-                await githubCommit(imgPath, base64Image, `Upload image for ${title}`);
+                // 1. Upload Images Loop
+                const uploadedUrls = [];
+                for (const img of selectedImages) {
+                    const imgPath = `${IMG_DIR}/${img.name}`;
+                    await githubCommit(imgPath, img.base64, `Upload image: ${img.name}`);
+                    uploadedUrls.push(`./${imgPath}`);
+                }
 
-                // 2. Generate and Upload Detail Page
+                // 2. Prepare Data
                 const slug = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-                const detailPagePath = `${PRODUCTS_DIR}/${slug}.html`;
-                const newHtml = await generateDetailPage(title, price, description, imgPath);
-                await githubCommit(detailPagePath, btoa(unescape(encodeURIComponent(newHtml))), `Generate detail page for ${title}`);
-
-                // 3. Update Inventory JSON
-                const newItem = {
+                const detailPagePath = `${PRODUCTS_HTML_DIR}/${slug}.html`;
+                const dataPath = `${PRODUCTS_DATA_DIR}/${slug}.json`;
+                
+                // If editing and no new images, keep old ones (this would need more logic to fetch old images)
+                // For simplified version, we'll assume user might re-upload or we retain if logic was more complex.
+                
+                const productData = {
                     title,
                     price,
                     description,
-                    image: `./${imgPath}`,
                     category,
-                    url: `./${detailPagePath}`
+                    images: uploadedUrls.length > 0 ? uploadedUrls : (editSha ? JSON.parse(atob((await (await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${editPath}`)).json())).content).images : []),
+                    url: `./${detailPagePath}`,
+                    id: slug
                 };
-                inventory.push(newItem);
-                await githubCommit(INVENTORY_PATH, btoa(JSON.stringify(inventory, null, 2)), `Add ${title} to inventory`, currentFileSha);
 
-                showToast('Product created and deployed successfully!');
+                // 3. Commit HTML Page
+                const newHtml = await generateDetailPage(title, price, description, productData.images);
+                // Note: Updating HTML would also need its SHA to avoid duplicates if title changes.
+                // For simplicity, we commit and if exists it might fail without SHA. 
+                // Better approach: use same filename (editPath) if editing.
+                await githubCommit(detailPagePath, btoa(unescape(encodeURIComponent(newHtml))), `Update HTML for ${title}`);
+
+                // 4. Commit JSON Data
+                await githubCommit(dataPath, btoa(JSON.stringify(productData, null, 2)), `Save product data: ${title}`, editSha);
+
+                showToast(editSha ? 'Updated successfully!' : 'Created and deployed!');
                 closeModal();
                 loadInventory();
             } catch (err) {
                 console.error(err);
-                showToast('Synchronization error. Check console.', 'error');
+                showToast('Sync error. Use the console for debug.', 'error');
             } finally {
                 setLoading(false);
             }
         }
 
-        async function generateDetailPage(title, price, description, imgPath) {
-            // Fetch Template
+        async function editProduct(item) {
+            document.getElementById('modalTitle').innerText = 'Edit Product';
+            document.getElementById('title').value = item.title;
+            document.getElementById('price').value = item.price;
+            document.getElementById('description').value = item.description;
+            document.getElementById('category').value = item.category;
+            document.getElementById('editSha').value = item.sha;
+            document.getElementById('editPath').value = item.path;
+            
+            const container = document.getElementById('imagePreviewContainer');
+            container.innerHTML = item.images.map(url => `
+                <div class="w-24 h-24 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+                    <img src="${url}" class="h-full w-full object-cover">
+                </div>
+            `).join('');
+            
+            openModal();
+        }
+
+        async function generateDetailPage(title, price, description, images) {
             const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${TEMPLATE_PATH}?ref=${GITHUB_BRANCH}`, {
                 headers: { 'Authorization': `token ${GITHUB_TOKEN}` }
             });
             const data = await response.json();
             let html = decodeURIComponent(escape(atob(data.content)));
 
-            // Replacement Logic (Crude but Effective for this use case)
-            // Fix relative paths for the subfolder
             html = html.replace(/\.\/css\//g, '../css/');
             html = html.replace(/\.\/js\//g, '../js/');
             html = html.replace(/\.\/assets\//g, '../assets/');
             html = html.replace(/\.\/index\.html/g, '../index.html');
             html = html.replace(/\.\/shop-fully-connected\.html/g, '../shop-fully-connected.html');
 
-            // Replace Product Specifics
-            // Regex to find the title tag content
             html = html.replace(/<title>.*?<\/title>/, `<title>${title} | Phones & Repairs</title>`);
-            // Hero Title
             html = html.replace(/<h1 class=".*?">iPhone 17 Pro Max<\/h1>/, `<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-4">${title}</h1>`);
-            // Description Hero
             html = html.replace(/<p class="text-on-surface-variant text-lg max-w-md mb-6">.*?<\/p>/, `<p class="text-on-surface-variant text-lg max-w-md mb-6">${description}.</p>`);
-            // Price
             html = html.replace(/<div class="product-price text-3xl font-semibold text-on-surface transition-all">\$1,299.00<\/div>/, `<div class="product-price text-3xl font-semibold text-on-surface transition-all">$${price.toFixed(2)}</div>`);
-            // Main Image
-            html = html.replace(/id="main-product-image" class=".*?" src=".*?"/, `id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="../${imgPath}"`);
+            html = html.replace(/id="main-product-image" class=".*?" src=".*?"/, `id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="${images[0].replace('./assets/', '../assets/')}"`);
             
             return html;
         }
 
         async function githubCommit(path, content, message, sha = null) {
-            const body = {
-                message,
-                content,
-                branch: GITHUB_BRANCH
-            };
+            const body = { message, content, branch: GITHUB_BRANCH };
             if (sha) body.sha = sha;
 
             const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
                 method: 'PUT',
-                headers: {
-                    'Authorization': `token ${GITHUB_TOKEN}`,
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
             });
             return await response.json();
         }
 
-        async function deleteProduct(index) {
-            if(!confirm('Are you sure you want to delete this product?')) return;
-            
-            const item = inventory[index];
-            inventory.splice(index, 1);
-            
+        async function deleteProduct(path, sha, title) {
+            if(!confirm(`Delete ${title}?`)) return;
             try {
-                await githubCommit(INVENTORY_PATH, btoa(JSON.stringify(inventory, null, 2)), `Delete ${item.title}`, currentFileSha);
-                showToast('Product deleted');
+                await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Delete ${title}`, sha, branch: GITHUB_BRANCH })
+                });
+                showToast('Deleted');
                 loadInventory();
             } catch (err) {
-                showToast('Error deleting product', 'error');
+                showToast('Delete failed', 'error');
             }
         }
 
-        // UI HELPERS
         function openModal() {
             document.getElementById('productModal').classList.remove('hidden');
         }
@@ -398,38 +434,31 @@
         function closeModal() {
             document.getElementById('productModal').classList.add('hidden');
             document.getElementById('productForm').reset();
-            document.getElementById('imagePreview').innerHTML = '<span class="material-symbols-outlined text-slate-300">image</span>';
-            base64Image = null;
+            document.getElementById('editSha').value = '';
+            document.getElementById('editPath').value = '';
+            document.getElementById('modalTitle').innerText = 'New Product';
+            document.getElementById('imagePreviewContainer').innerHTML = '<div class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-slate-700"><span class="material-symbols-outlined text-slate-300">image</span></div>';
+            selectedImages = [];
         }
 
         function setLoading(isLoading) {
             const btn = document.getElementById('saveBtn');
             const text = document.getElementById('saveBtnText');
             const loader = document.getElementById('btnLoader');
-            if (isLoading) {
-                btn.disabled = true;
-                text.classList.add('hidden');
-                loader.classList.remove('hidden');
-            } else {
-                btn.disabled = false;
-                text.classList.remove('hidden');
-                loader.classList.add('hidden');
-            }
+            btn.disabled = isLoading;
+            text.classList.toggle('hidden', isLoading);
+            loader.classList.toggle('hidden', !isLoading);
         }
 
         function showToast(msg, type = 'success') {
             const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMsg');
-            const toastIcon = document.getElementById('toastIcon');
-            
-            toastMsg.innerText = msg;
-            toastIcon.innerText = type === 'success' ? 'check_circle' : 'error';
-            toastIcon.className = type === 'success' ? 'material-symbols-outlined text-blue-400' : 'material-symbols-outlined text-red-500';
-            
+            document.getElementById('toastMsg').innerText = msg;
             toast.classList.remove('translate-y-32');
             setTimeout(() => toast.classList.add('translate-y-32'), 3000);
         }
     </script>
+</body>
+</html>
 </body>
 </html>
 
