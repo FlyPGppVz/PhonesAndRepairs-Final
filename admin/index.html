@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PHONES AND REPAIRS - Admin</title>
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-      .netlify-identity-menu, .netlify-identity-footer { display: none !important; }
-    </style>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              window.netlifyIdentity.close();
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHONES AND REPAIRS - Admin</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-    <!-- Netlify CMS Script -->
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-<style>
-  /* Fuerza la desaparición del logo y footer de Netlify */
-  .netlify-identity-menu, 
-  .netlify-identity-footer, 
-  .netlify-identity-logo,
-  [data-netlify-identity-menu],
-  .netlify-identity-widget footer {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    pointer-events: none !important;
-  }
-</style>
+  <!-- Pantalla de Cortesía (Marca Blanca) -->
+  <div id="custom-login-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#f3f4f6; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999;">
+      <img src="/assets/img/logo-transparent.png" style="width:150px; margin-bottom:20px;">
+      <h2 style="font-family:sans-serif; color:#1f2937;">Panel de Administración</h2>
+      <p style="color:#6b7280; margin-bottom:30px;">Phones & Repairs Professional System</p>
+      <button id="btn-entrar" style="padding:12px 24px; background:#2563eb; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold; font-size:16px;">
+          Acceder al Sistema
+      </button>
+  </div>
+
+  <!-- Decap CMS Script -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    // 1. Puente de conexión para GitHub Pages
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+      window.netlifyIdentity.init({
+        APIUrl: "https://phonesandrepairs-final.netlify.app/.netlify/identity"
+      });
+    }
+
+    // 2. Lógica de Conexión Silenciosa (Tu script)
+    document.getElementById('btn-entrar').addEventListener('click', () => {
+      // Abrimos el cuadro oficial de Netlify
+      netlifyIdentity.open();
+    });
+
+    // Si el usuario ya se logueó, escondemos nuestra pantalla de carga
+    netlifyIdentity.on('login', () => {
+      document.getElementById('custom-login-screen').style.display = 'none';
+    });
+
+    // Si ya está logueado al entrar, que pase directo
+    if (netlifyIdentity.currentUser()) {
+      document.getElementById('custom-login-screen').style.display = 'none';
+    }
+  </script>
 </body>
 </html>

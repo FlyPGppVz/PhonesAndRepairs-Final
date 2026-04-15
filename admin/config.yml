@@ -1,25 +1,27 @@
 backend:
   name: git-gateway
-  branch: tienda-dinamica #
+  branch: tienda-dinamica
+  commit_messages:
+    create: 'CMS: Crear {{collection}} "{{slug}}"'
+    update: 'CMS: Actualizar {{collection}} "{{slug}}"'
+    delete: 'CMS: Borrar {{collection}} "{{slug}}"'
+    uploadMedia: 'CMS: Subir imagen "{{path}}"'
+    deleteMedia: 'CMS: Borrar imagen "{{path}}"'
 
-media_folder: "assets/images"
-public_folder: "/assets/images"
-
-publish_mode: editorial_workflow
+media_folder: "assets/img"
+public_folder: "/assets/img"
 
 collections:
-  - name: "pages"
-    label: "Pages Content"
-    files:
-      - file: "index.html"
-        label: "Home Page"
-        name: "index"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-      - file: "services-unified-nav.html"
-        label: "Services Page"
-        name: "services"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
+  - name: "inventario"
+    label: "Mis Productos"
+    folder: "data"
+    extension: "json"
+    format: "json"
+    create: true
+    slug: "{{title}}"
+    fields:
+      - {label: "Nombre del Producto", name: "title", widget: "string"}
+      - {label: "Precio", name: "price", widget: "number", value_type: "float"}
+      - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Imagen", name: "image", widget: "image"}
+      - {label: "Categoría", name: "category", widget: "select", options: ["iphone", "samsung", "ipad", "smartwatch", "accessories", "consoles", "service"]}
