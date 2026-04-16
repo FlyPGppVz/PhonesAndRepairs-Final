@@ -27,7 +27,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
   const handleAddToCart = () => {
     addToCart(product, activeVariant);
-    alert(`${product.title} (${activeVariant.color_name}) añadido al carrito`);
+    alert(`${product.title} (${activeVariant.color_name}) added to cart`);
   };
 
   return (

@@ -12,10 +12,10 @@ export default function CartPage() {
       <main className="min-h-screen pt-32 pb-24 px-6 flex flex-col items-center justify-center text-center">
         <div className="cupertino-glass p-12 rounded-[3rem] space-y-6 max-w-md animate-in fade-in zoom-in duration-500">
           <span className="material-symbols-outlined text-7xl text-slate-300 dark:text-zinc-700">shopping_basket</span>
-          <h1 className="text-3xl font-bold dark:text-white">Tu carrito está vacío</h1>
-          <p className="text-slate-500 dark:text-zinc-400">¿Todavía no has encontrado el dispositivo de tus sueños? Nuestra tienda está llena de novedades.</p>
+          <h1 className="text-3xl font-bold dark:text-white">Your cart is empty</h1>
+          <p className="text-slate-500 dark:text-zinc-400">Haven't found your dream device yet? Our store is full of the latest arrivals.</p>
           <Link href="/shop" className="inline-block bg-blue-600 dark:bg-blue-500 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700 dark:hover:bg-blue-600 transition-all active:scale-[0.98]">
-            Ir a la tienda
+            Go to Shop
           </Link>
         </div>
       </main>
@@ -26,8 +26,8 @@ export default function CartPage() {
     <main className="min-h-screen pt-32 pb-24 px-6 max-w-5xl mx-auto">
       <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700">
         <header className="space-y-2">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight dark:text-white text-center md:text-left">Tu Carrito.</h1>
-          <p className="text-slate-500 dark:text-zinc-400 text-lg text-center md:text-left">Revisa tus productos antes de finalizar la compra segura.</p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight dark:text-white text-center md:text-left">Your Cart.</h1>
+          <p className="text-slate-500 dark:text-zinc-400 text-lg text-center md:text-left">Review your products before completing your secure checkout.</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -62,7 +62,7 @@ export default function CartPage() {
           {/* Resumen de Compra */}
           <div className="lg:col-span-1">
             <div className="cupertino-glass p-8 rounded-[2.5rem] sticky top-32 space-y-6">
-              <h2 className="text-2xl font-bold dark:text-white border-b border-slate-200 dark:border-white/10 pb-4">Resumen</h2>
+              <h2 className="text-2xl font-bold dark:text-white border-b border-slate-200 dark:border-white/10 pb-4">Summary</h2>
               
               <div className="space-y-4">
                 <div className="flex justify-between text-slate-600 dark:text-zinc-400">
@@ -70,8 +70,8 @@ export default function CartPage() {
                   <span className="font-medium">${totalPrice.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-zinc-400">
-                  <span>Envío</span>
-                  <span className="text-green-500 font-medium">Gratis</span>
+                  <span>Shipping</span>
+                  <span className="text-green-500 font-medium">Free</span>
                 </div>
                 <div className="flex justify-between text-2xl font-bold dark:text-white pt-4 border-t border-slate-200 dark:border-white/10">
                   <span>Total</span>
@@ -81,15 +81,15 @@ export default function CartPage() {
 
               <button 
                 className="w-full bg-blue-600 dark:bg-blue-500 text-white py-5 rounded-3xl font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98] mt-4 flex items-center justify-center gap-2"
-                onClick={() => alert('Próximamente: Conexión con Stripe Checkout')}
+                onClick={() => alert('Coming Soon: Stripe Checkout Integration')}
               >
-                Pagar con Stripe
+                Pay with Stripe
                 <span className="material-symbols-outlined">shoppay</span>
               </button>
 
               <div className="text-center">
                 <p className="text-[11px] text-slate-400 dark:text-zinc-500">
-                  Pago seguro encriptado con SSL de 256 bits.<br/>Aceptamos Visa, MasterCard, Apple Pay y Google Pay.
+                  Secure payment encrypted with 256-bit SSL.<br/>We accept Visa, MasterCard, Apple Pay and Google Pay.
                 </p>
               </div>
             </div>
