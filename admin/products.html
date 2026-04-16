@@ -30,9 +30,14 @@
                 <h1 class="text-4xl font-bold tracking-tight">Shop Inventory</h1>
                 <p class="text-slate-500 mt-2">Manage products, variants and bento-specs.</p>
             </div>
-            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2">
-                <span class="material-symbols-outlined">add</span> New Product
-            </button>
+            <div class="flex items-center gap-4">
+                <a href="../shop-fully-connected.html" class="flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium">
+                    <span class="material-symbols-outlined">shopping_bag</span> Ver Tienda
+                </a>
+                <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2 shadow-lg shadow-blue-500/20">
+                    <span class="material-symbols-outlined">add</span> New Product
+                </button>
+            </div>
         </header>
 
         <!-- Product Grid -->

@@ -106,8 +106,8 @@ const NavbarComponent = {
                     </button>
                     <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
                         <div id="nav-user-dropdown" class="bg-white dark:bg-[#1a1c1e] rounded-2xl shadow-2xl border border-slate-200/50 dark:border-white/5 overflow-hidden min-w-[200px] py-2">
-                             <a href="${basePath}login-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Sign In</a>
-                             <a href="${basePath}create-account-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Register</a>
+                             <!-- Auth states will be injected here -->
+                             <div class="px-6 py-3 animate-pulse bg-slate-100 dark:bg-white/5 h-10 w-full mb-1"></div>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,36 @@ const NavbarComponent = {
         </nav>
         `;
 
+        this.updateAuthUI(basePath);
         this.attachListeners();
+    },
+
+    async updateAuthUI(basePath) {
+        const dropdown = document.getElementById('nav-user-dropdown');
+        if (!dropdown) return;
+
+        const { data: { session } } = await _supabase.auth.getSession();
+
+        if (!session) {
+            dropdown.innerHTML = `
+                <a href="${basePath}login-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Sign In</a>
+                <a href="${basePath}create-account-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Register</a>
+            `;
+            return;
+        }
+
+        // Check if Admin
+        const { data: admin } = await _supabase.from('admins').select('*').eq('user_id', session.user.id).single();
+
+        dropdown.innerHTML = `
+            <div class="px-6 py-2 border-b border-slate-100 dark:border-white/5 mb-2">
+                <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Account</p>
+                <p class="text-[12px] font-semibold truncate">${session.user.email}</p>
+            </div>
+            <a href="${basePath}my-profile-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">My Profile</a>
+            ${admin ? `<a href="${basePath}admin/products.html" class="block px-6 py-3 text-[13px] font-bold text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20">Admin Dashboard</a>` : ''}
+            <button onclick="_supabase.auth.signOut().then(()=>location.reload())" class="w-full text-left px-6 py-3 text-[13px] font-bold text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 border-t border-slate-100 dark:border-white/5 mt-2">Sign Out</button>
+        `;
     },
 
     attachListeners() {

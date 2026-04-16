@@ -158,7 +158,7 @@
             // 1. FETCH & ENGINE
             async function initShop() {
                 try {
-                    const { data, error } = await _supabase.from('products').select('*');
+                    const { data, error } = await _supabase.from('shop_products').select('*');
                     if (error) throw error;
                     
                     allProducts = data;
@@ -200,12 +200,12 @@
                     const card = clone.querySelector('div');
                     
                     clone.querySelector('.product-img').src = p.main_image_url || './assets/images/placeholder.png';
-                    clone.querySelector('.product-title').textContent = p.name;
+                    clone.querySelector('.product-title').textContent = p.title;
                     clone.querySelector('.product-category').textContent = p.category;
                     clone.querySelector('.product-desc').textContent = p.description;
                     clone.querySelector('.product-price').textContent = `$${parseFloat(p.price).toLocaleString()}`;
                     
-                    card.onclick = () => window.location.href = `./product-detail.html?id=${p.id}`;
+                    card.onclick = () => window.location.href = `./shop-product-detail.html?slug=${p.slug}`;
                     
                     grid.appendChild(clone);
                 });
