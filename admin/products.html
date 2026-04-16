@@ -68,6 +68,17 @@
                             <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Price</label>
                             <input type="number" id="price" required step="0.01" class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 transition-all outline-none">
                         </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Category</label>
+                            <select id="category" class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 transition-all outline-none">
+                                <option value="iPhones">iPhones</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="iPads">iPads</option>
+                                <option value="Smartwatch">Smartwatch</option>
+                                <option value="Accessories">Accessories</option>
+                                <option value="Consoles">Consoles</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div>
@@ -165,8 +176,9 @@
             document.getElementById('slug').value = data.slug;
             document.getElementById('price').value = data.price;
             document.getElementById('description').value = data.description;
-            document.getElementById('processor_title').value = data.processor_title;
-            document.getElementById('display_nits').value = data.display_nits;
+            document.getElementById('processor_title').value = data.processor_title || '';
+            document.getElementById('display_nits').value = data.display_nits || '';
+            document.getElementById('category').value = data.category || 'iPhones';
             
             document.getElementById('variants-container').innerHTML = '';
             (data.variants || []).forEach(v => addVariantRow(v));
@@ -190,6 +202,7 @@
                 title: document.getElementById('title').value,
                 slug: document.getElementById('slug').value,
                 price: parseFloat(document.getElementById('price').value),
+                category: document.getElementById('category').value,
                 description: document.getElementById('description').value,
                 processor_title: document.getElementById('processor_title').value,
                 display_nits: document.getElementById('display_nits').value,
