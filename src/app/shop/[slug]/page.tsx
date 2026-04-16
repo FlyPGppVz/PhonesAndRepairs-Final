@@ -3,14 +3,11 @@ import { notFound } from 'next/navigation';
 import ProductDetailClient from '@/components/Shop/ProductDetailClient';
 
 interface Props {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function ProductPage({ params }: Props) {
-  // Directly access params.slug as it is a resolved value in this context
-  const { slug } = params;
+  const { slug } = await params;
 
   const { data: product, error } = await supabase
     .from('products')

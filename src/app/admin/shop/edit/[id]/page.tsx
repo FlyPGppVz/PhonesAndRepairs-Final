@@ -5,9 +5,18 @@ import ProductForm from '@/components/Admin/ProductForm';
 import { supabase } from '@/lib/supabase';
 import { useParams } from 'next/navigation';
 
+interface Product {
+  id: string;
+  title: string;
+  slug: string;
+  price: number;
+  category: string;
+  [key: string]: any;
+}
+
 export default function EditProduct() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
