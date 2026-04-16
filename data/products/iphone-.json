@@ -1,0 +1,54 @@
+{
+  "title": "Iphone ",
+  "brand": "Apple",
+  "year": 2026,
+  "price": null,
+  "colors": [
+    "#1c1c1c",
+    "#d1713f"
+  ],
+  "description": "A19 Pro meets 7.1\" display.",
+  "category": "iphone",
+  "specBuildIntegrity": "Grade 5 Titanium enclosure.",
+  "marketingTitle": "Engineering Precision.",
+  "marketingSubtitle": "A19 Pro meets 7.1\" display.",
+  "specProcessor": "A19 Pro Chip",
+  "specRAM": "",
+  "specGPU": "",
+  "specDisplay": "7.1-inch Super Retina XDR",
+  "specBrightness": "",
+  "specRefresh": "120Hz ProMotion",
+  "specStorage": "",
+  "specCamera": "50MP Main | 10x Optical",
+  "specBattery": "100h Audio playback",
+  "storage": [
+    {
+      "label": "23232",
+      "extra": 23
+    },
+    {
+      "label": "2323",
+      "extra": 45
+    },
+    {
+      "label": "2232",
+      "extra": 55
+    }
+  ],
+  "revs": [
+    {
+      "name": "Jonathan D.",
+      "comment": "The build quality and the level of engineering precision is simply unmatched."
+    },
+    {
+      "name": "Sarah A.",
+      "comment": "Outstanding performance across all my professional workflows."
+    }
+  ],
+  "images": [
+    "./assets/img/products/p_1776302352985_0_iPhone-17-pro-max-black-alternate-.png"
+  ],
+  "fillerImage": "./assets/img/products/fill_1776302355705_iphone-17-pro-max-white.png",
+  "url": "./products/iphone-.html",
+  "id": "iphone-"
+}

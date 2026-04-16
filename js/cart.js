@@ -84,49 +84,6 @@ const Cart = (() => {
         dispatchChange(); 
     }
 
-    // ¿Qué hace?: Inicia el proceso de pago real con Stripe vía Vercel Serverless API.
-    async function checkout() {
-        const items = getItems();
-        if (items.length === 0) return;
-
-        const btn = document.getElementById('cart-checkout-btn');
-        const originalText = btn ? btn.innerHTML : 'Check Out';
-        if (btn) {
-            btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span> Processing...`;
-        }
-
-        try {
-            const response = await fetch('/api/create-checkout-session', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    cartItems: items.map(i => ({
-                        id: i.id,
-                        name: i.name,
-                        price: i.price,
-                        quantity: i.qty,
-                        image: i.image
-                    }))
-                })
-            });
-
-            const data = await response.json();
-            if (data.url) {
-                window.location.href = data.url;
-            } else {
-                throw new Error(data.error || 'Server error');
-            }
-        } catch (err) {
-            console.error('Checkout error:', err);
-            alert('Payment Error: ' + err.message);
-            if (btn) {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-            }
-        }
-    }
-
     // ¿Qué hace?: Emite un pulso sonoro u onda (CustomEvent) a todo el Documento.
     // ¿Para qué sirve?: Avisa a toda la Interfaz Gráfica (UI) que los datos por detrás acaban de mutar, para forzar redibujos.
     function dispatchChange() {
@@ -288,13 +245,6 @@ const Cart = (() => {
         if (summarySubtotal) summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
         if (summaryTax) summaryTax.textContent = `$${tax.toFixed(2)}`;
         if (summaryTotal) summaryTotal.textContent = `$${total.toFixed(2)}`;
-
-        if (checkoutBtn) {
-            checkoutBtn.onclick = (e) => {
-                e.preventDefault();
-                checkout();
-            };
-        }
     }
 
     // -----------------------------------------------------------
@@ -371,5 +321,5 @@ const Cart = (() => {
 
     // ¿Para qué sirve esto?: Exportar *solamente* los comandos públicos seguros para control manual de la página de HTML.
     // Esto oculta al exterior las variables y funciones privadas internas impidiendo hackeos visuales y variables sueltas.
-    return { addItem, removeItem, updateQty, clear, getItems, getCount, getSubtotal, checkout };
+    return { addItem, removeItem, updateQty, clear, getItems, getCount, getSubtotal };
 })();

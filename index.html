@@ -4,25 +4,152 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+
 <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
-    <!-- Modern Theme Engine -->
-    <script id="theme-engine">
+    <script>
+        // Anti-flicker theme initialization
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script id="anti_flicker">
         (function() {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.classList.toggle('dark', theme === 'dark');
+            if (theme === 'dark') document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
         })();
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/stripe-config.js"></script>
-    <script src="./js/auth.js"></script>
-    <script src="./js/navbar-component.js"></script>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+      .netlify-identity-logo, .netlify-identity-footer, .coded-by {
+        display: none !important;
+      }
+    </style>
 </head>
 <body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500">
-<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 h-[64px]"></header>
+<!-- TopNavBar Updated as per COMPONENTS_95 - Sync 2026-04-11 -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
+<nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto">
+<!-- Left Column: Logo -->
+<div class="flex-1 flex items-center">
+<a class="active:opacity-70 transition-all cursor-pointer" href="./index.html">
+<img alt="CellphonesAndRepair Logo" class="h-12 w-auto object-contain scale-95" data-alt="Professional CellphonesAndRepair brand logo" src="./assets/images/logo-transparent.png">
+</a>
+</div>
 
+<!-- Center Column: Navigation Links -->
+<div class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[15px] font-medium tracking-tight">
+<a class="text-slate-900 dark:text-white font-bold hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./index.html">Home</a>
+
+<!-- Shop Item with Full-Width Dropdown -->
+<div class="group h-full flex items-center">
+<a class="text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer flex items-center gap-1 py-4" href="./shop-fully-connected.html">
+Shop
+<span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+</a>
+<!-- Full-Width Mega Menu -->
+<div class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-3xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-[21000] py-16">
+<div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12">
+<!-- iPhones Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">iPhones</h4>
+<ul class="space-y-4">
+<li><a href="./shop-fully-connected.html?category=iPhones" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Shop All iPhone</a></li>
+<li><a href="./iphone-17-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 17 Pro Max</a></li>
+<li><a href="./iphone-16-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 16 Pro Max</a></li>
+<li><a href="./shop-fully-connected.html?category=iPhones" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Compare Models</a></li>
+</ul>
+</div>
+
+<!-- Android Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Android</h4>
+<ul class="space-y-4">
+<li><a href="./samsung-s25-ultra-detail.html" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Samsung Galaxy</a></li>
+<li><a href="./samsung-s25-ultra-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S25 Ultra</a></li>
+<li><a href="./shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S24 Series</a></li>
+<li><a href="./shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Certified Androids</a></li>
+</ul>
+</div>
+
+<!-- iPads & Watch Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Ecosystem</h4>
+<ul class="space-y-4">
+<li><a href="./shop-fully-connected.html?category=iPads" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">iPad</a></li>
+<li><a href="./product-detail-apple-watch-ultra-2-final.html" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Apple Watch</a></li>
+<li><a href="./shop-fully-connected.html?category=Consoles" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Consoles & Gaming</a></li>
+</ul>
+</div>
+
+<!-- Accessories Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Shop Selection</h4>
+<ul class="space-y-4">
+<li><a href="./shop-fully-connected.html?category=Accessories" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Essential Accessories</a></li>
+<li><a href="./chargers-and-cables-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cables & Power</a></li>
+<li><a href="./phone-cases-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cases & Protection</a></li>
+<li><a href="./airpods-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">AirPods & Audio</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./services-unified-nav.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./contact-unified-nav.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./about-us-unified-nav.html">About Us</a>
+</div>
+
+<!-- Right Column: Icons & Search -->
+<div class="flex-1 flex items-center justify-end gap-3 md:gap-5">
+<button class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity" id="mobileMenuBtn">menu</button>
+<div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
+<div class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[22px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
+<input class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none" id="navSearchInput" placeholder="Search devices..." type="text">
+</div>
+</div>
+<div class="relative group" id="nav-cart-wrapper">
+<a href="./shopping-cart-final-nav.html" class="relative material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer" aria-label="View cart">shopping_cart</a>
+<span id="nav-cart-badge" class="hidden absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center pointer-events-none leading-none">0</span>
+<div class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+<div class="cupertino-glass bg-white/95 dark:bg-neutral-800/95 rounded-2xl shadow-2xl overflow-hidden min-w-[300px] p-5 border border-slate-200/50" id="nav-cart-dropdown">
+<!-- Filled by cart.js -->
+</div>
+</div>
+</div>
+    <div class="relative group">
+        <button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer">person</button>
+        <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+            <div class="cupertino-glass bg-white/90 dark:bg-neutral-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
+                <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="./login-final-nav.html">Sign In</a>
+                <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="./create-account-final-nav.html">Create Account</a>
+                <a class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" id="navMyAccountLink" href="./my-profile-final-nav.html">My Account</a>
+            </div>
+        </div>
+    </div>
+    <!-- Theme Toggle Toggle -->
+    <button id="themeToggle" class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-slate-700/50" aria-label="Toggle Theme">
+        <div class="relative w-[20px] h-[20px]">
+            <!-- Sun Icon -->
+            <svg class="absolute inset-0 w-full h-full text-amber-500 transition-all duration-300 transform dark:-rotate-180 dark:opacity-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+            <!-- Moon Icon -->
+            <svg class="absolute inset-0 w-full h-full text-blue-400 transition-all duration-300 transform rotate-180 opacity-0 dark:rotate-0 dark:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+        </div>
+    </button>
+</div>
+</nav>
+</header>
 <main class="pt-16">
 <!-- Hero Section -->
 <section class="relative h-[870px] flex items-end pb-32 justify-center overflow-hidden bg-white">
@@ -44,49 +171,56 @@
 </div>
 </div>
 <div class="absolute inset-0 z-0 overflow-hidden bg-slate-900">
+    <!-- Premium background video with Apple-style subtle opacity and scaling -->
     <video autoplay muted loop playsinline poster="https://lh3.googleusercontent.com/aida-public/AB6AXuDAexPkkQ4kZoA4k8YfeyXLX_2ZlBtnlLdWAFdexA_XC-Z7mjGYID_OIOroCbpcV353oeLeoJjdPqIqe5f_U3y_pjH67cSTKWtWblw_suTppBBxUF--80WdoRqh6fUAksLkGTNHjGvMbBjUVvYPCFjKcayZ8IZcPGAps61tPRLSXkD-0XaHPudBigXCWZOx8Eu5z7xFKrBE8FYzv9_cES0frMbf5EXxKbEtJs_EdUqVatVKf-WuNcVrEeJuxeDUGftkXwmGhuzqlZc" class="w-full h-full object-cover opacity-60 scale-105">
         <source src="./assets/videos/Home-iphone-17.mp4" type="video/mp4">
     </video>
+    <!-- Dark overlay for superior text contrast (iPhone style) -->
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90 dark:to-background"></div>
 </div>
 <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
 </section>
-
-<!-- Category Icons Row -->
+<!-- Category Icons Row - Circular Style - Fixed overlap with FABs -->
 <section class="max-w-[1440px] mx-auto px-12 md:px-20 py-24 relative z-30">
     <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 lg:gap-24">
+        <!-- 1. iPhone -->
         <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[1]" href="./shop-fully-connected.html?category=iPhones">
             <div class="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-neutral-800 transition-all group-hover:bg-slate-50 dark:group-hover:bg-slate-700 shadow-sm overflow-hidden pointer-events-none">
                 <span class="material-symbols-outlined text-[46px] text-[#1d1d1f] dark:text-white">smartphone</span>
             </div>
             <span class="text-xs font-medium text-[#1d1d1f] dark:text-white font-sans tracking-tight pointer-events-none">iPhone</span>
         </a>
+        <!-- 2. Samsung (Android) -->
         <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[1]" href="./shop-fully-connected.html?category=Samsung">
             <div class="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-neutral-800 transition-all group-hover:bg-slate-50 dark:group-hover:bg-slate-700 shadow-sm overflow-hidden pointer-events-none">
                 <span class="material-symbols-outlined text-[46px] text-[#1d1d1f] dark:text-white">phone_android</span>
             </div>
             <span class="text-xs font-medium text-[#1d1d1f] dark:text-white font-sans tracking-tight pointer-events-none">Samsung</span>
         </a>
+        <!-- 3. iPads -->
         <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[1]" href="./shop-fully-connected.html?category=iPads">
             <div class="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-neutral-800 transition-all group-hover:bg-slate-50 dark:group-hover:bg-slate-700 shadow-sm overflow-hidden pointer-events-none">
                 <span class="material-symbols-outlined text-[46px] text-[#1d1d1f] dark:text-white">tablet_mac</span>
             </div>
             <span class="text-xs font-medium text-[#1d1d1f] dark:text-white font-sans tracking-tight pointer-events-none">iPads</span>
         </a>
+        <!-- 4. Smartwatch -->
         <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[1]" href="./shop-fully-connected.html?category=Smartwatch">
             <div class="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-neutral-800 transition-all group-hover:bg-slate-50 dark:group-hover:bg-slate-700 shadow-sm overflow-hidden pointer-events-none">
                 <span class="material-symbols-outlined text-[46px] text-[#1d1d1f] dark:text-white">watch</span>
             </div>
             <span class="text-xs font-medium text-[#1d1d1f] dark:text-white font-sans tracking-tight pointer-events-none">Smartwatch</span>
         </a>
+        <!-- 5. Accesorios -->
         <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[1]" href="./shop-fully-connected.html?category=Accessories">
             <div class="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-neutral-800 transition-all group-hover:bg-slate-50 dark:group-hover:bg-slate-700 shadow-sm overflow-hidden pointer-events-none">
                 <span class="material-symbols-outlined text-[46px] text-[#1d1d1f] dark:text-white">headphones</span>
             </div>
             <span class="text-xs font-medium text-[#1d1d1f] dark:text-white font-sans tracking-tight pointer-events-none">Accessories</span>
         </a>
-        <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[99999]" href="./shop-fully-connected.html?category=Consoles">
+        <!-- 6. Consoles -->
+        <a class="group flex flex-col items-center gap-4 transition-all cursor-pointer relative z-[99999]" style="pointer-events: auto !important;" onclick="window.location.href='./shop-fully-connected.html?category=Consoles'; return false;" href="./shop-fully-connected.html?category=Consoles">
             <div class="w-28 h-28 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center bg-white dark:bg-neutral-800 transition-all group-hover:bg-slate-50 dark:group-hover:bg-slate-700 shadow-xl dark:shadow-blue-900/10 overflow-hidden pointer-events-none">
                 <span class="material-symbols-outlined text-[46px] text-[#1d1d1f] dark:text-white">videogame_asset</span>
             </div>
@@ -94,49 +228,57 @@
         </a>
     </div>
 </section>
-
 <!-- Bento Grid Section -->
 <section class="px-8 py-24 max-w-[1440px] mx-auto" id="service">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main Feature Bento (iPhone) -->
 <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group border border-transparent dark:border-white/5 transition-all duration-500">
 <div class="z-10">
 <span class="text-primary font-semibold tracking-widest text-xs uppercase mb-2 block">Premium Care</span>
 <h2 class="text-3xl md:text-4xl font-bold text-on-surface mb-4">iPhone Repair</h2>
 <p class="text-on-surface-variant max-w-sm mb-6">From screen replacements to logic board diagnostics, we restore your iPhone to factory standards.</p>
+<!-- Link to iPhone Repair sub-page -->
 <a class="text-primary font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all" href="./services-unified-nav.html">
                         Start my repair <span class="material-symbols-outlined">chevron_right</span>
 </a>
 </div>
 <div class="mt-12 flex justify-end">
-<img class="w-4/5 h-auto object-contain transform group-hover:scale-105 transition-transform duration-700" src="./assets/images/iphone-16-pro-max-desert.png">
+<img class="w-4/5 h-auto object-contain transform group-hover:scale-105 transition-transform duration-700" data-alt="Stunning architectural shot of a sleek modern iPhone reflecting soft light on its glass surface" src="./assets/images/iphone-16-pro-max-desert.png">
 </div>
 </div>
+<!-- Secondary Bento (Samsung/Android) -->
 <div class="md:col-span-4 bg-inverse-surface rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group text-white cursor-pointer" onclick="window.location.href='./services-unified-nav.html'">
 <div class="z-10">
 <h2 class="text-3xl font-bold mb-4">Samsung Repair</h2>
 <p class="text-inverse-on-surface text-sm mb-6">Certified parts for Galaxy S and Note series. Original quality, zero compromise.</p>
+<!-- Link to Android Repair sub-page -->
 <a class="text-white font-medium text-sm flex items-center gap-1" href="./services-unified-nav.html">
                         Explore services <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
-<div class="mt-8">
-<img class="w-full h-auto object-contain transform animate-float-high transition-transform duration-700" src="./assets/images/Tienda/S25-png.webp">
+<div class="mt-8 cursor-pointer" onclick="window.location.href='./services-unified-nav.html'">
+<img class="w-full h-auto object-contain transform animate-float-high transition-transform duration-700" data-alt="Samsung S25 Ultra with S Pen" src="./assets/images/Tienda/S25-png.webp">
 </div>
 </div>
+<!-- Third Bento (New and Used Devices/Shop) -->
 <div class="md:col-span-4 bg-[#f2f2f2] dark:bg-[#1a1c1e] rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group cursor-pointer border border-slate-100 dark:border-slate-800" onclick="window.location.href='./shop-fully-connected.html'" id="shop">
     <div>
         <h2 class="text-2xl font-bold text-[#1d1d1f] dark:text-white mb-2">New and Used Devices</h2>
         <p class="text-slate-600 dark:text-slate-400 text-sm">Quality checked and ready for you.</p>
     </div>
+    
     <div class="flex-grow flex items-center justify-center py-6">
-        <video class="w-full h-auto rounded-[3rem] transition-transform duration-700 group-hover:scale-105 shadow-sm" autoplay muted loop playsinline>
+        <video class="w-full h-auto rounded-[3rem] transition-transform duration-700 group-hover:scale-105 shadow-sm" autoplay muted loop playsinline style="mask-image: linear-gradient(to bottom, black, black); -webkit-mask-image: linear-gradient(to bottom, black, black); border-radius: 3rem;">
             <source src="./assets/videos/new_and_used_device.mp4" type="video/mp4">
         </video>
     </div>
+
+    <!-- Link to Shop sub-page -->
     <a class="bg-[#063183] text-white rounded-full py-4 px-8 text-sm font-bold w-fit inline-block hover:bg-[#002D72] hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-900/40 transition-all duration-300 active:scale-95" href="./shop-fully-connected.html">
         Shop Devices
     </a>
 </div>
+<!-- Fourth Bento (Repair Standard) -->
 <div class="md:col-span-8 bg-[#f2f2f2] dark:bg-[#1a1c1e] rounded-lg p-10 flex flex-col md:flex-row items-center gap-10 border border-slate-100 dark:border-slate-800">
 <div class="flex-1">
 <h2 class="text-3xl font-bold text-on-surface mb-4">The Repair Standard</h2>
@@ -160,13 +302,88 @@
 <div class="flex-1">
 <div class="aspect-video rounded-xl overflow-hidden shadow-2xl relative group bg-black">
     <video src="./assets/videos/Iphone-17-repair.mp4" autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"></video>
+    <div class="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-xl"></div>
 </div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Footer -->
+<!-- Newsletter Subscribe Banner -->
+<section class="max-w-[1440px] mx-auto px-8 mb-4 group/banner">
+  <div class="relative overflow-hidden rounded-3xl bg-black p-8 md:p-10 shadow-2xl transition-all duration-500">
+    <!-- Hover glow: blue glow behind header on hover -->
+    <div class="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[250px] bg-transparent group-hover/banner:bg-[#063183]/25 rounded-full blur-[120px] transition-all duration-700 pointer-events-none"></div>
+    <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <!-- Text Content -->
+      <div>
+        <p class="text-[11px] font-bold uppercase tracking-[0.25em] text-neutral-400 font-bold mb-4">Stay in the loop</p>
+        <h2 class="text-5xl md:text-[4rem] font-black bg-gradient-to-r from-[#063183] via-[#4e8df7] to-[#063183] bg-clip-text text-transparent leading-[1.1] tracking-tighter mb-6 drop-shadow-[0_2px_10px_rgba(78,141,247,0.2)]">Subscribe to keep up with our great deals.</h2>
+        <p class="text-neutral-500 text-[16px] leading-relaxed mb-8 max-w-md">Stay ahead of the curve with exclusive offers, the latest product updates, and special discounts delivered straight to your inbox.</p>
+        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+          <input type="email" placeholder="Enter your email"
+                 class="flex-1 px-6 py-4 rounded-full bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#063183]/50 focus:bg-white/10 transition-all text-sm">
+          <button class="px-8 py-4 bg-[#063183] text-white rounded-full font-bold text-sm hover:bg-[#0a4dc7] active:scale-95 transition-all shadow-lg whitespace-nowrap">
+            Subscribe Now
+          </button>
+        </div>
+        <p class="text-[11px] text-neutral-400 tracking-wide">No spam, ever. Unsubscribe at any time.</p>
+      </div>
+      <!-- Product Image (grayscale, with subtle hover color reveal) -->
+      <div class="hidden md:flex items-center justify-end scale-110 translate-x-4">
+        <img src="./assets/images/banner-subscribe-products.png" alt="iPhone, AirPods & Apple Watch"
+             class="w-full max-w-[550px] object-contain drop-shadow-2xl grayscale group-hover/banner:grayscale-0 transition-all duration-700 opacity-80 group-hover/banner:opacity-100 animate-float">
+      </div>
+    </div>
+    <!-- Subtle noise texture overlay -->
+    <div class="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')] pointer-events-none rounded-3xl"></div>
+  </div>
+</section>
+<!-- Social Media Section - Apple Style -->
+<section style="padding: 96px 24px; background: var(--md-sys-color-surface-container-low, #f5f5f7);">
+  <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+    <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6e6e73; margin-bottom: 16px; font-family: 'Inter', -apple-system, sans-serif;">Follow Us</p>
+    <h2 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; color: #1d1d1f; line-height: 1.1; margin-bottom: 16px; font-family: 'Inter', -apple-system, sans-serif;">Connect with us.</h2>
+    <p style="font-size: 17px; color: #6e6e73; margin-bottom: 56px; font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6;">News, offers, and exclusive content on our social media.</p>
+
+    <div style="display: flex; justify-content: center; align-items: center; gap: 48px;">
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/p/Cellphones-and-Repairs-100076521337365/" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #6e6e73; transition: color 0.3s ease, transform 0.3s ease;" 
+         onmouseover="this.style.color='#1877F2'; this.style.transform='translateY(-4px)'" 
+         onmouseout="this.style.color='#6e6e73'; this.style.transform='translateY(0)'">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.04em; font-family: 'Inter', -apple-system, sans-serif;">Facebook</span>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/cellphonesandrepairs/" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #6e6e73; transition: color 0.3s ease, transform 0.3s ease;"
+         onmouseover="this.style.color='#E1306C'; this.style.transform='translateY(-4px)'" 
+         onmouseout="this.style.color='#6e6e73'; this.style.transform='translateY(0)'">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.04em; font-family: 'Inter', -apple-system, sans-serif;">Instagram</span>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@cellphonesrepairs7" target="_blank" rel="noopener" style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; color: #6e6e73; transition: color 0.3s ease, transform 0.3s ease;"
+         onmouseover="this.style.color='#000000'; this.style.transform='translateY(-4px)'" 
+         onmouseout="this.style.color='#6e6e73'; this.style.transform='translateY(0)'">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.84 4.84 0 01-1.01-.07z"/>
+        </svg>
+        <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.04em; font-family: 'Inter', -apple-system, sans-serif;">TikTok</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- Footer Updated to match navigation links -->
 <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0a0a0a] mt-20">
 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
 <div class="col-span-2">
@@ -175,23 +392,65 @@
 </div>
 <div class="flex flex-col gap-3">
 <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Services</h4>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./services-unified-nav.html">iPhone Repair</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./services-unified-nav.html">Android Repair</a>
-<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./shop-fully-connected.html">Shop Items</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">iPhone Repair</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Android Repair</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Accessories</a>
 </div>
 <div class="flex flex-col gap-3">
 <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Support</h4>
 <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="#">Warranty</a>
 <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./sustainability.html">Sustainability</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./careers.html">Careers</a>
 </div>
 <div class="flex flex-col gap-3">
 <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Legal</h4>
 <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./privacy-policy-unified-nav.html">Privacy Policy</a>
+<a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./services-unified-nav.html">Terms of Service</a>
 </div>
 </div>
 </footer>
 
-<script src="./js/cart.js"></script>
-<script src="./js/main.js"></script>
+
+
+
+<script src="./js/cart.js"></script><script src="./js/main.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
