@@ -86,9 +86,10 @@ const NavbarComponent = {
 
                 <!-- Cart -->
                 <a href="${basePath}cart-final.html" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all relative group">
-                    <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors text-[24px]">shopping_bag</span>
+                    <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors text-[24px]">shopping_cart</span>
                     <div id="cart-badge-count" class="absolute top-1 right-1 w-4 h-4 bg-primary text-on-primary text-[10px] font-black rounded-full flex items-center justify-center opacity-0 scale-0 transition-transform shadow-lg">0</div>
                 </a>
+
 
                 <!-- Account -->
                 <div class="relative group">
