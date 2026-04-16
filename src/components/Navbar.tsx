@@ -42,7 +42,10 @@ export default function Navbar() {
           <Link href="/" className={`${pathname === '/' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Home</Link>
           <Link href="/shop" className={`${pathname?.startsWith('/shop') && !pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Shop</Link>
           <Link href="/services" className="text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors">Services</Link>
-          <Link href="/admin/shop" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors font-bold border-l pl-8 border-slate-200 dark:border-white/10`}>Admin Panel</Link>
+          
+          {user?.email?.startsWith('flypg65') && (
+            <Link href="/admin/shop" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors font-bold border-l pl-8 border-slate-200 dark:border-white/10`}>Admin Panel</Link>
+          )}
         </div>
 
         <div className="flex-1 flex items-center justify-end gap-5">
