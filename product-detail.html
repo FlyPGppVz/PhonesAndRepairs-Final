@@ -3,96 +3,117 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Product Details - CellphonesAndRepair</title>
+    <title>Product Detail | CellphonesAndRepair</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/navbar-component.js"></script>
+
     <script id="anti_flicker">
-        (function () {
+        (function() {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             if (theme === 'dark') document.documentElement.classList.add('dark');
             else document.documentElement.classList.remove('dark');
         })();
     </script>
-    <!-- FOUNDATION -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="./js/supabase-config.js"></script>
-    <script src="./js/stripe-config.js"></script>
-    <script src="./js/auth.js"></script>
-    <script src="./js/navbar-component.js"></script>
-    
-    <style>
-        .color-dot.active {
-            box-shadow: 0 0 0 2px white, 0 0 0 4px #3b82f6;
-        }
-    </style>
 </head>
 
-<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500">
+<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 overflow-x-hidden">
     <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 h-[64px]"></header>
 
-    <main class="pt-24 pb-20">
-        <div id="product-loading" class="max-w-[1440px] mx-auto px-6 py-20 text-center">
-            <div class="animate-spin inline-block w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mb-4"></div>
-            <p class="text-slate-500">Loading product details...</p>
-        </div>
-
-        <div id="product-container" class="hidden max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <!-- Left: Gallery -->
-            <div class="sticky top-28 space-y-6">
-                <div class="aspect-square bg-[#f5f5f7] dark:bg-[#0f0f0f] rounded-[2.5rem] overflow-hidden flex items-center justify-center p-12 transition-all duration-700 ease-out shadow-inner">
-                    <img id="main-image" class="w-full h-full object-contain transform hover:scale-105 transition-transform duration-700" src="" alt="Product Image">
-                </div>
-                <div id="thumbnail-grid" class="flex gap-4 justify-center">
-                    <!-- Thumbnails loaded here -->
-                </div>
-            </div>
-
-            <!-- Right: Details -->
-            <div class="space-y-10">
-                <div>
-                    <nav class="flex items-center gap-2 text-[13px] text-slate-400 font-medium mb-6">
-                        <a href="./shop-fully-connected.html" class="hover:text-blue-500">Shop</a>
-                        <span class="material-symbols-outlined text-sm">chevron_right</span>
-                        <span id="breadcrumb-category">Category</span>
-                    </nav>
-                    <h1 id="product-name" class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Product Name</h1>
-                    <p id="product-subtitle" class="text-lg text-slate-500 font-medium mb-6">Subtitle goes here</p>
-                    <p id="product-price" class="text-3xl font-black text-on-surface">$0</p>
-                </div>
-
-                <!-- Color Selection -->
-                <div id="color-section" class="hidden">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Choose a Color</h3>
-                    <div id="color-dots" class="flex gap-4">
-                        <!-- Dots dynamically loaded -->
+    <main id="main-content" class="pt-24 pb-20 opacity-0 transition-opacity duration-1000">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+            <!-- 1. HERO SECTION -->
+            <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-32">
+                <div class="lg:col-span-7 bg-slate-50 dark:bg-[#1a1c1e] rounded-[4rem] h-[750px] flex flex-col items-center justify-center relative p-12 border border-slate-100 dark:border-white/5 overflow-hidden">
+                    <img id="main-product-img" src="" class="max-w-full max-h-[85%] object-contain drop-shadow-[0_45px_45px_rgba(0,0,0,0.2)] transition-all duration-700">
+                    <div id="color-selector" class="mt-8 flex gap-6 z-10 bg-white/50 dark:bg-black/30 backdrop-blur-3xl p-6 rounded-[2.5rem] border border-white/10 shadow-sm hidden">
+                        <!-- Colors injected here -->
                     </div>
                 </div>
 
-                <!-- Processor / Specs Section -->
-                <div id="specs-section" class="hidden p-8 bg-blue-50 dark:bg-blue-900/10 rounded-[2rem] border border-blue-100 dark:border-blue-800/20">
-                    <div class="flex items-center gap-6">
-                        <img id="processor-img" class="w-16 h-16 object-contain" src="" alt="Processor Chip">
-                        <div>
-                            <h4 class="font-bold text-blue-600 dark:text-blue-400">Pro-Grade Performance</h4>
-                            <p class="text-xs text-blue-800 dark:text-blue-300 opacity-70">Experience seamless speed with original certified components.</p>
+                <div class="lg:col-span-5 space-y-12">
+                    <div class="space-y-6">
+                        <span id="label-new" class="text-primary font-black text-[14px] uppercase tracking-[0.4em] block">New Arrival</span>
+                        <h1 id="title-name" class="text-7xl md:text-8xl font-black tracking-tighter leading-[0.85]">Asset</h1>
+                        <p id="label-subtitle" class="text-on-surface-variant text-2xl leading-relaxed max-w-sm font-medium tracking-tight">Tagline content loading...</p>
+                        <div class="text-6xl font-black text-primary">$<span id="label-price">0.00</span></div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 max-w-sm">
+                        <button onclick="addToCartEvent()" class="group h-20 bg-black dark:bg-white text-white dark:text-black rounded-full w-full flex items-center justify-center text-[11px] font-black uppercase tracking-[0.3em] shadow-2xl hover:scale-105 transition-all">
+                            Add to Cart
+                        </button>
+                        <button class="h-20 border border-slate-200 dark:border-white/10 rounded-full w-full flex items-center justify-center text-[11px] font-black uppercase tracking-[0.3em] transition-all hover:bg-slate-50 dark:hover:bg-white/5">
+                            Buy Now
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 pt-12 border-t border-slate-100 dark:border-white/5">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">local_shipping</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest opacity-50">Free Express Ship</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">verified_user</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest opacity-50">Global Warranty</span>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="space-y-4">
-                    <button id="buy-now-btn" class="w-full py-5 rounded-full bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-blue-500/25">Buy Now</button>
-                    <button id="add-to-cart-btn" class="w-full py-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-lg hover:opacity-90 transition-all">Add to Cart</button>
+            <!-- 2. BENTO SPECS SECTION -->
+            <section class="max-w-[1440px] mx-auto space-y-24 mb-32">
+                <div class="text-center space-y-6">
+                    <h2 id="label-marketing-title" class="text-7xl font-black tracking-tight leading-none">Engineering Precision.</h2>
+                    <p id="label-marketing-subtitle" class="text-on-surface-variant text-2xl tracking-tight max-w-3xl mx-auto leading-relaxed">Every component refined for professional peak performance.</p>
                 </div>
 
-                <!-- Description -->
-                <div class="pt-10 border-t border-slate-100 dark:border-white/5">
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Overview</h3>
-                    <p id="product-description" class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm"></p>
+                <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-8 h-auto md:h-[800px]">
+                    <!-- Dark Block -->
+                    <div class="md:col-span-2 md:row-span-2 bg-[#121417] text-white rounded-[4.5rem] p-20 flex flex-col justify-between overflow-hidden relative shadow-2xl border border-white/5">
+                        <div class="space-y-8 relative z-10">
+                            <h3 id="label-spec-dark-title" class="text-5xl font-black tracking-tight">Silicon Mastery</h3>
+                            <p id="label-proc-desc" class="text-white/40 text-2xl leading-relaxed max-w-xs font-medium italic">High-performance architecture.</p>
+                        </div>
+                        <img id="label-proc-img" src="" class="w-80 h-80 absolute -bottom-16 -right-16 opacity-40 object-contain drop-shadow-2xl">
+                    </div>
+
+                    <!-- Performance Card -->
+                    <div class="md:col-span-2 bg-slate-50 dark:bg-[#151719] rounded-[4.5rem] p-20 flex flex-col justify-between border border-slate-100 dark:border-white/5">
+                        <div class="flex justify-between items-start">
+                            <div class="space-y-3">
+                                <h4 id="label-perf-title" class="text-4xl font-black tracking-tighter">Performance</h4>
+                                <p id="label-perf-subtitle" class="text-on-surface-variant font-bold text-lg">Benchmarks optimized.</p>
+                            </div>
+                            <span class="material-symbols-outlined text-primary text-6xl">model_training</span>
+                        </div>
+                        <div class="flex gap-24">
+                            <div class="space-y-3">
+                                <p id="label-stat1" class="text-7xl font-black tracking-tighter">--</p>
+                                <p id="label-stat1-lbl" class="text-[12px] font-black uppercase tracking-[0.3em] text-primary">Benchmark 01</p>
+                            </div>
+                            <div class="space-y-3">
+                                <p id="label-stat2" class="text-7xl font-black tracking-tighter">--</p>
+                                <p id="label-stat2-lbl" class="text-[12px] font-black uppercase tracking-[0.3em] opacity-30">Benchmark 02</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="bg-indigo-600 rounded-[3.5rem] p-12 flex flex-col items-center justify-center text-center gap-5 text-white">
+                        <span class="material-symbols-outlined text-5xl">shield_with_heart</span>
+                        <h5 class="font-black text-[11px] uppercase tracking-[0.3em]">Security Core</h5>
+                    </div>
+                    <div class="bg-black dark:bg-white rounded-[3.5rem] p-12 flex flex-col items-center justify-center text-center gap-5 text-white dark:text-black">
+                        <span class="material-symbols-outlined text-5xl">auto_awesome</span>
+                        <h5 class="font-black text-[11px] uppercase tracking-[0.3em]">Pro Logic</h5>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 
@@ -107,92 +128,68 @@
             }
 
             try {
-                const { data: p, error } = await _supabase
-                    .from('products')
-                    .select('*')
-                    .eq('id', productId)
-                    .single();
+                const { data: p, error } = await _supabase.from('products').select('*').eq('id', productId).single();
+                if (error) throw error;
 
-                if (error || !p) throw error || new Error('Product not found');
+                // Sync UI
+                document.title = `${p.name} | CellphonesAndRepair`;
+                document.getElementById('label-new').textContent = p.new_arrival_text || 'New Arrival';
+                document.getElementById('title-name').textContent = p.name;
+                document.getElementById('label-subtitle').textContent = p.subtitle;
+                document.getElementById('label-price').textContent = parseFloat(p.price).toLocaleString();
+                document.getElementById('main-product-img').src = p.main_image_url;
 
-                // POPULATE UI
-                document.getElementById('product-loading').classList.add('hidden');
-                document.getElementById('product-container').classList.remove('hidden');
+                document.getElementById('label-marketing-title').textContent = p.marketing_title || 'Engineering Precision.';
+                document.getElementById('label-marketing-subtitle').textContent = p.marketing_subtitle || 'Professional peak performance.';
+                
+                document.getElementById('label-spec-dark-title').textContent = p.spec_dark_title || 'Silicon Mastery';
+                document.getElementById('label-proc-desc').textContent = p.processor_description;
+                document.getElementById('label-proc-img').src = p.processor_image_url;
 
-                document.title = `${p.name} - CellphonesAndRepair`;
-                document.getElementById('product-name').textContent = p.name;
-                document.getElementById('product-subtitle').textContent = p.subtitle || 'Premium Refurbished Classic';
-                document.getElementById('product-price').textContent = `$${parseFloat(p.price).toLocaleString()}`;
-                document.getElementById('product-description').textContent = p.description;
-                document.getElementById('breadcrumb-category').textContent = p.category;
-                document.getElementById('main-image').src = p.main_image_url;
+                document.getElementById('label-perf-title').textContent = p.performance_title || 'Performance';
+                document.getElementById('label-perf-subtitle').textContent = p.performance_subtitle || 'Benchmarks optimized.';
 
-                // Color Selection
-                if (p.colors && p.colors.length > 0) {
-                    const colorContainer = document.getElementById('color-section');
-                    const dotsContainer = document.getElementById('color-dots');
-                    colorContainer.classList.remove('hidden');
-                    
-                    p.colors.forEach((c, idx) => {
-                        const dot = document.createElement('button');
-                        dot.className = `color-dot w-8 h-8 rounded-full border border-slate-200 dark:border-white/10 transition-all ${idx === 0 ? 'active' : ''}`;
-                        dot.style.backgroundColor = c.hex;
-                        dot.title = c.name;
-                        
-                        dot.onclick = () => {
-                            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
-                            dot.classList.add('active');
-                            if (c.image_url) {
-                                document.getElementById('main-image').src = c.image_url;
-                            }
+                if (p.display_tech_description) {
+                   const [val, lbl] = p.display_tech_description.split(' | ');
+                   document.getElementById('label-stat1').textContent = val;
+                   document.getElementById('label-stat1-lbl').textContent = lbl || 'Stat 01';
+                }
+                if (p.battery_life_description) {
+                   const [val, lbl] = p.battery_life_description.split(' | ');
+                   document.getElementById('label-stat2').textContent = val;
+                   document.getElementById('label-stat2-lbl').textContent = lbl || 'Stat 02';
+                }
+
+                // Color variants logic
+                if (p.colors) {
+                    const container = document.getElementById('color-selector');
+                    container.classList.remove('hidden');
+                    Object.entries(p.colors).forEach(([hex, url]) => {
+                        const circle = document.createElement('div');
+                        circle.className = 'w-10 h-10 rounded-full border-4 border-white/20 hover:border-white transition-all cursor-pointer';
+                        circle.style.backgroundColor = hex;
+                        circle.onclick = () => {
+                            const img = document.getElementById('main-product-img');
+                            img.classList.add('opacity-0', 'scale-95', 'blur-sm');
+                            setTimeout(() => {
+                                img.src = url;
+                                img.classList.remove('opacity-0', 'scale-95', 'blur-sm');
+                            }, 350);
                         };
-                        dotsContainer.appendChild(dot);
+                        container.appendChild(circle);
                     });
                 }
 
-                // Processor
-                if (p.processor_power_img_url) {
-                    document.getElementById('specs-section').classList.remove('hidden');
-                    document.getElementById('processor-img').src = p.processor_power_img_url;
-                }
-
-                // Stripe Checkout Logic
-                document.getElementById('buy-now-btn').onclick = async () => {
-                    const btn = document.getElementById('buy-now-btn');
-                    const originalText = btn.textContent;
-                    btn.disabled = true;
-                    btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span> Processing...`;
-
-                    try {
-                        const response = await fetch('/api/create-checkout-session', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ 
-                                productId: p.id,
-                                quantity: 1 
-                            })
-                        });
-
-                        const session = await response.json();
-
-                        if (session.url) {
-                            window.location.href = session.url;
-                        } else {
-                            throw new Error(session.error || 'Checkout session failed');
-                        }
-                    } catch (err) {
-                        console.error('Stripe Error:', err);
-                        alert('Error connecting to Stripe: ' + err.message);
-                        btn.disabled = false;
-                        btn.textContent = originalText;
-                    }
-                };
-
-            } catch (e) {
-                console.error('Detail Error:', e);
-                document.getElementById('product-loading').innerHTML = '<p class="text-red-500">Product not found.</p>';
+                document.getElementById('main-content').classList.remove('opacity-0');
+            } catch (err) {
+                console.error('Fetch Error:', err);
+                alert('Product asset not found.');
             }
         });
+
+        function addToCartEvent() {
+            alert('Product added to curation. Redirecting to payment...');
+        }
     </script>
 </body>
 </html>
