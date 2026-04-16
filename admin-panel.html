@@ -919,9 +919,11 @@
                 const cleanImg = img.replace('./assets/', '../assets/');
                 variantsMap[color] = cleanImg;
                 
+                const activeClasses = idx === 0 ? 'ring-2 ring-primary ring-offset-4 ring-offset-background active-color' : '';
+                
                 return `
                 <button onclick="window.syncVariantImage('${cleanImg}', '${color}')"
-                        class="color-btn w-12 h-12 rounded-full border-2 ${idx === 0 ? 'border-primary' : 'border-transparent'} hover:border-blue-500 transition-all shadow-lg active:scale-95" 
+                        class="color-btn group relative w-12 h-12 rounded-full transition-all hover:scale-110 active:scale-95 ${activeClasses}" 
                         style="background-color: ${color};"
                         data-variant-img="${cleanImg}"></button>
             `;}).join('');
@@ -932,6 +934,7 @@
                 window.variantsMap = ${JSON.stringify(variantsMap)};
                 window.syncVariantImage = function(imgUrl, color) {
                     const mainImg = document.getElementById('main-product-image');
+                    const colorLabel = document.querySelector('.color-label');
                     if(mainImg) {
                         mainImg.style.opacity = '0';
                         setTimeout(() => {
@@ -939,22 +942,22 @@
                             mainImg.style.opacity = '1';
                         }, 150);
                     }
-                    // Update borders
+                    if(colorLabel) colorLabel.innerText = color;
+
+                    // Update ring/borders
                     document.querySelectorAll('.color-btn').forEach(btn => {
+                        btn.classList.remove('ring-2', 'ring-primary', 'ring-offset-4', 'ring-offset-background', 'active-color');
                         const btnStyle = btn.getAttribute('style') || "";
                         if(btnStyle.toLowerCase().includes(color.toLowerCase())) {
-                            btn.classList.add('border-primary');
-                            btn.classList.remove('border-transparent');
-                        } else {
-                            btn.classList.remove('border-primary');
-                            btn.classList.add('border-transparent');
+                            btn.classList.add('ring-2', 'ring-primary', 'ring-offset-4', 'ring-offset-background', 'active-color');
                         }
                     });
                 };
             <\/script>`;
             
-            const colorSectionRegex = /<div class="flex items-center space-x-4 mb-8">[\s\S]*?<\/div>/;
-            html = html.replace(colorSectionRegex, `<div class="flex items-center space-x-4 mb-8">${colorButtonsHtml}</div>${variantScript}`);
+            // REPAIR: Updated Regex to match the actual template container
+            const colorSectionRegex = /<div class="mt-8 flex gap-6 z-10 bg-white\/10 backdrop-blur-md p-4 rounded-2xl border border-white\/10">[\s\S]*?<\/div>/;
+            html = html.replace(colorSectionRegex, `<div class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">${colorButtonsHtml}</div>${variantScript}`);
             
             // Storage Tiers
             data.storage.forEach((item, idx) => {
