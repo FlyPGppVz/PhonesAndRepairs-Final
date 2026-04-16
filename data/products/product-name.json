@@ -1,0 +1,55 @@
+{
+  "title": "Product Name",
+  "brand": "ASUS ROG",
+  "year": 2026,
+  "price": 1500,
+  "colors": [
+    "#d70a00",
+    "#3b82f6",
+    "#3b82f6"
+  ],
+  "description": "Hero Description",
+  "category": "samsung",
+  "specBuildIntegrity": "Build Integrity Anotation (Bottom Left)",
+  "marketingTitle": "Engineering Title",
+  "marketingSubtitle": "Engineering Subtitle",
+  "specProcessor": "Processor Name",
+  "specRAM": "RAM / Memory",
+  "specGPU": "Graphics / GPU",
+  "specDisplay": "Display Type",
+  "specBrightness": "Brightness (nits)",
+  "specRefresh": "Refresh Rate",
+  "specStorage": "Additional Storage Info",
+  "specCamera": "Camera Megapixels",
+  "specBattery": " Battery Info",
+  "storage": [
+    {
+      "label": "Storage Tiers (Label / +Price)",
+      "extra": 200
+    },
+    {
+      "label": "Storage Tiers (Label / +Price)",
+      "extra": 300
+    },
+    {
+      "label": "Storage Tiers (Label / +Price)",
+      "extra": 400
+    }
+  ],
+  "revs": [
+    {
+      "name": "Jonathan D.",
+      "comment": "The build quality and the level of engineering precision is simply unmatched."
+    },
+    {
+      "name": "Sarah A.",
+      "comment": "Outstanding performance across all my professional workflows."
+    }
+  ],
+  "images": [
+    "./assets/img/products/p_1776302807892_0_Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png"
+  ],
+  "fillerImage": "./assets/img/products/fill_1776302812116_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
+  "url": "./products/product-name.html",
+  "id": "product-name"
+}
