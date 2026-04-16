@@ -1,6 +1,8 @@
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ShopPage() {
   const { data: products } = await supabase
     .from('products')

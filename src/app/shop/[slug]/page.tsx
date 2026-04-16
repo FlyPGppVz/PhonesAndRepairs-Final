@@ -2,6 +2,8 @@ import { supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';
 import ProductDetailClient from '@/components/Shop/ProductDetailClient';
 
+export const dynamic = 'force-dynamic';
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
