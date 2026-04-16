@@ -60,7 +60,7 @@
     "./assets/img/products/p_1776305994392_1_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
     "./assets/img/products/p_1776305994394_2_Apple-Watch-Series-11-42mm-Silver-Aluminum-Case-Purple-Fog-Sport-Band.png"
   ],
-  "fillerImage": "./assets/img/products/fill_1776306015019_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
+  "fillerImage": "https://flypgppvz.github.io/PhonesAndRepairs-Final/assets/img/products/fill_1776306015019_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
   "url": "./products/apple-watch.html",
   "id": "apple-watch"
 }
