@@ -814,15 +814,31 @@
 
                 // 2. Data Map
                 const title = document.getElementById('title').value;
-                const basePrice = parseFloat(document.getElementById('price').value);
+                const basePrice = parseFloat(document.getElementById('price').value) || 0;
                 const slug = title.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+                const editPath = document.getElementById('editPath').value;
+
+                // Secure Image Retrieval
+                let finalImages = uploadedUrls;
+                if (uploadedUrls.length === 0 && editPath) {
+                    try {
+                        const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${editPath}?ref=${GITHUB_BRANCH}`, {
+                            headers: { 'Authorization': `token ${GITHUB_TOKEN}` }
+                        });
+                        const existingData = JSON.parse(atob((await res.json()).content));
+                        finalImages = existingData.images || [];
+                    } catch (e) {
+                        console.warn("Could not fetch existing images, using empty array.");
+                        finalImages = [];
+                    }
+                }
                 
                 const productData = {
                     title: title,
                     brand: document.getElementById('brand').value,
                     year: parseInt(document.getElementById('year').value) || new Date().getFullYear(),
                     price: basePrice,
-                    colors: dynamicColors, // COLLECT ARRAY
+                    colors: dynamicColors, // Linked Variants Object
                     description: document.getElementById('description').value,
                     category: document.getElementById('category').value,
                     specBuildIntegrity: document.getElementById('specBuildIntegrity').value || 'Professional build quality.',
@@ -837,14 +853,13 @@
                     specStorage: document.getElementById('specStorage').value || '',
                     specCamera: document.getElementById('specCamera').value || '',
                     specBattery: document.getElementById('specBattery').value || '',
-                    colors: dynamicColors,
                     storage: [
                         { label: document.getElementById('cap1').value || 'Base', extra: parseFloat(document.getElementById('cap1Extra').value) || 0 },
                         { label: document.getElementById('cap2').value || 'Mid', extra: parseFloat(document.getElementById('cap2Extra').value) || 200 },
                         { label: document.getElementById('cap3').value || 'High', extra: parseFloat(document.getElementById('cap3Extra').value) || 400 }
                     ],
                     revs: dynamicReviews,
-                    images: uploadedUrls.length > 0 ? uploadedUrls : (JSON.parse(atob((await (await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${document.getElementById('editPath').value}`)).json())).content)).images,
+                    images: finalImages,
                     fillerImage: fillerUrl,
                     url: `./${PRODUCTS_HTML_DIR}/${slug}.html`,
                     id: slug
