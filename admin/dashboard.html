@@ -440,7 +440,7 @@
 
         document.getElementById('productForm').onsubmit = async (e) => {
             e.preventDefault();
-            console.log("🚀 Starting publish process...");
+            console.log("🚀 Iniciando proceso de publicación...");
             
             const btn = document.querySelector('button[type="submit"]');
             const data = new FormData(e.target);
@@ -449,7 +449,7 @@
             btn.innerHTML = `<span class="animate-spin mr-2">...</span> PUBLISHING`;
 
             try {
-                // 1. Data Collection
+                // Construcción del objeto con limpieza de datos
                 const colorMap = {};
                 document.querySelectorAll('.color-row').forEach(row => {
                     const hex = row.querySelector('input[type="color"]').value;
@@ -465,12 +465,12 @@
                 const productData = {
                     name: data.get('name') || 'Unnamed Asset',
                     subtitle: data.get('subtitle') || '',
-                    description: data.get('subtitle') || '',
+                    description: data.get('subtitle') || 'Asset Description', // Requerido por el catálogo
                     price: parseFloat(data.get('price')) || 0,
                     category: data.get('category') || 'Other',
                     new_arrival_text: data.get('new_arrival_text') || 'New Arrival',
                     marketing_title: data.get('marketing_title') || 'Engineering Precision.',
-                    marketing_subtitle: data.get('marketing_subtitle') || 'Superior build quality.',
+                    marketing_subtitle: data.get('marketing_subtitle') || 'Quality build.',
                     spec_dark_title: data.get('spec_dark_title') || 'Silicon Mastery',
                     processor_description: data.get('proc_desc') || '',
                     processor_image_url: data.get('proc_image') || '',
@@ -480,39 +480,36 @@
                     battery_life_description: `${data.get('stat2') || '--'} | ${data.get('stat2_lbl') || 'Stat'}`,
                     main_image_url: data.get('main_image') || '',
                     gallery_urls: galleryArr,
-                    colors: Object.keys(colorMap).length > 0 ? colorMap : null,
+                    colors: Object.keys(colorMap).length > 0 ? colorMap : {},
                     stock_quantity: 10
                 };
 
-                console.log("📦 Payload ready:", productData);
+                console.log("📦 Datos a enviar:", productData);
 
-                // 2. Database Insert (Simple version without .select() to avoid RLS hangs)
-                console.log("📡 Sending to Supabase...");
-                const { error } = await _supabase
-                    .from('products')
-                    .insert([productData]);
+                // Race contra un timeout de 15 segundos para evitar carga infinita
+                const insertPromise = _supabase.from('products').insert([productData]);
+                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout de Supabase (15s)')), 15000));
+
+                console.log("📡 Conectando con Supabase...");
+                const { error } = await Promise.race([insertPromise, timeoutPromise]);
 
                 if (error) {
-                    console.error("❌ Supabase Error:", error);
-                    let msg = `Error: ${error.message}`;
-                    if (error.message.includes('column')) {
-                        msg += '\n\nATENCIÓN: Parece que faltan columnas en tu tabla de Supabase. ¿Ejecutaste el código SQL?';
-                    }
-                    alert(msg);
+                    console.error("❌ Error de Supabase:", error);
+                    alert(`ERROR DE BASE DE DATOS:\n${error.message}\n\nDetalles: ${error.details || 'Verifica si ejecutaste el SQL de las columnas.'}`);
                 } else {
-                    console.log("✅ Success!");
+                    console.log("✅ ¡Éxito total!");
                     alert('¡Producto publicado con éxito!');
                     closeProductModal();
                     loadInventory();
                 }
 
             } catch (err) {
-                console.error("🔥 Critical Crash:", err);
-                alert('Error crítico: ' + err.message);
+                console.error("🔥 Error crítico:", err);
+                alert('FALLO EN EL NAVEGADOR:\n' + err.message);
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = 'Publish';
-                console.log("🏁 Process finished.");
+                console.log("🏁 Proceso finalizado.");
             }
         };
 
