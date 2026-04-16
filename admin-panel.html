@@ -963,17 +963,19 @@
                 };
             <\/script>`;
             
-            // REPAIR: Highly resilient regex for the color container
-            const colorSectionRegex = /<div [^>]*class="[^"]*mt-8 flex gap-6[^"]*"[^>]*>[\s\S]*?<\/div>/;
+            // REPAIR: Atomic precision marker-based replacement
+            const markerRegex = /<!-- COLORS_START -->[\s\S]*?<!-- COLORS_END -->/;
+            const classRegex = /<div [^>]*class="[^"]*mt-8 flex gap-6[^"]*"[^>]*>[\s\S]*?<\/div>/;
             
-            // Si el regex específico falla, usamos uno de emergencia que busca botones color-btn
-            const fallbackRegex = /<div [^>]*>[\s\S]*?<button [^>]*class="color-btn[\s\S]*?<\/div>/;
+            const finalReplacement = `<!-- COLORS_START -->\n<div class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">\n${colorButtonsHtml}\n</div>\n${variantScript}\n<!-- COLORS_END -->`;
             
-            const finalReplacement = `<div class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">${colorButtonsHtml}</div>${variantScript}`;
-            
-            if (colorSectionRegex.test(html)) {
-                html = html.replace(colorSectionRegex, finalReplacement);
+            if (markerRegex.test(html)) {
+                html = html.replace(markerRegex, finalReplacement);
+            } else if (classRegex.test(html)) {
+                html = html.replace(classRegex, finalReplacement);
             } else {
+                // Last resort fallback
+                const fallbackRegex = /<div [^>]*>[\s\S]*?<button [^>]*class="color-btn[\s\S]*?<\/div>/;
                 html = html.replace(fallbackRegex, finalReplacement);
             }
             
