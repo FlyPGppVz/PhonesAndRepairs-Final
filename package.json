@@ -1,0 +1,14 @@
+{
+  "name": "phones-and-repairs",
+  "version": "1.0.0",
+  "description": "E-commerce platform for Phones and Repairs",
+  "main": "index.html",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "stripe": "^14.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "serve ."
+  }
+}

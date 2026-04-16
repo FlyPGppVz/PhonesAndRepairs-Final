@@ -111,56 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -----------------------------------------------------------
-    //  #2. Selector UI de Colores (Apple-Style Switcher)
+    //  #2. Logic Handled by Dynamic Injection Engine
     // -----------------------------------------------------------
-    const colorButtons = document.querySelectorAll('.color-btn');
-    const mainProductImage = document.querySelector('.product-main-image');
-    
-    if (colorButtons.length > 0 && mainProductImage) {
-        // Preload color images for instant switching
-        colorButtons.forEach(btn => {
-            const imgUrl = btn.dataset.image || btn.getAttribute('data-image');
-            if (imgUrl) {
-                const img = new Image();
-                img.src = imgUrl;
-            }
-        });
-
-        colorButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const newImage = btn.getAttribute('data-image') || btn.dataset.image;
-                if (!newImage || mainProductImage.src.includes(newImage)) return;
-
-                // Apple-style premium transition
-                mainProductImage.style.opacity = '0.4';
-                mainProductImage.style.transform = 'scale(0.98)';
-                
-                const img = new Image();
-                img.onload = () => {
-                    mainProductImage.src = newImage;
-                    mainProductImage.style.opacity = '1';
-                    mainProductImage.style.transform = 'scale(1)';
-                };
-                img.src = newImage;
-
-                // Update UI selection
-                colorButtons.forEach(b => {
-                    b.classList.remove('active-color', 'ring-primary');
-                    b.style.outline = 'none';
-                });
-                
-                btn.classList.add('active-color');
-                btn.style.outline = '2px solid #063183';
-                btn.style.outlineOffset = '3px';
-
-                // Update text label if present
-                const colorLabel = document.querySelector('.color-label');
-                if (colorLabel && btn.getAttribute('aria-label')) {
-                    colorLabel.textContent = btn.getAttribute('aria-label');
-                }
-            });
-        });
-    }
 
     // -----------------------------------------------------------
     //  #3. Theme Toggle Logic (Dark/Light Mode)

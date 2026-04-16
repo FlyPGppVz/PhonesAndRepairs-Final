@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Product Details - CellphonesAndRepair</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
+    <script id="anti_flicker">
+        (function () {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+        })();
+    </script>
+    <!-- FOUNDATION -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/stripe-config.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/navbar-component.js"></script>
+    
+    <style>
+        .color-dot.active {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500">
+    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 h-[64px]"></header>
+
+    <main class="pt-24 pb-20">
+        <div id="product-loading" class="max-w-[1440px] mx-auto px-6 py-20 text-center">
+            <div class="animate-spin inline-block w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mb-4"></div>
+            <p class="text-slate-500">Loading product details...</p>
+        </div>
+
+        <div id="product-container" class="hidden max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <!-- Left: Gallery -->
+            <div class="sticky top-28 space-y-6">
+                <div class="aspect-square bg-[#f5f5f7] dark:bg-[#0f0f0f] rounded-[2.5rem] overflow-hidden flex items-center justify-center p-12 transition-all duration-700 ease-out shadow-inner">
+                    <img id="main-image" class="w-full h-full object-contain transform hover:scale-105 transition-transform duration-700" src="" alt="Product Image">
+                </div>
+                <div id="thumbnail-grid" class="flex gap-4 justify-center">
+                    <!-- Thumbnails loaded here -->
+                </div>
+            </div>
+
+            <!-- Right: Details -->
+            <div class="space-y-10">
+                <div>
+                    <nav class="flex items-center gap-2 text-[13px] text-slate-400 font-medium mb-6">
+                        <a href="./shop-fully-connected.html" class="hover:text-blue-500">Shop</a>
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                        <span id="breadcrumb-category">Category</span>
+                    </nav>
+                    <h1 id="product-name" class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Product Name</h1>
+                    <p id="product-subtitle" class="text-lg text-slate-500 font-medium mb-6">Subtitle goes here</p>
+                    <p id="product-price" class="text-3xl font-black text-on-surface">$0</p>
+                </div>
+
+                <!-- Color Selection -->
+                <div id="color-section" class="hidden">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Choose a Color</h3>
+                    <div id="color-dots" class="flex gap-4">
+                        <!-- Dots dynamically loaded -->
+                    </div>
+                </div>
+
+                <!-- Processor / Specs Section -->
+                <div id="specs-section" class="hidden p-8 bg-blue-50 dark:bg-blue-900/10 rounded-[2rem] border border-blue-100 dark:border-blue-800/20">
+                    <div class="flex items-center gap-6">
+                        <img id="processor-img" class="w-16 h-16 object-contain" src="" alt="Processor Chip">
+                        <div>
+                            <h4 class="font-bold text-blue-600 dark:text-blue-400">Pro-Grade Performance</h4>
+                            <p class="text-xs text-blue-800 dark:text-blue-300 opacity-70">Experience seamless speed with original certified components.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <button id="buy-now-btn" class="w-full py-5 rounded-full bg-blue-600 text-white font-bold text-lg hover:bg-blue-700 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-blue-500/25">Buy Now</button>
+                    <button id="add-to-cart-btn" class="w-full py-5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-lg hover:opacity-90 transition-all">Add to Cart</button>
+                </div>
+
+                <!-- Description -->
+                <div class="pt-10 border-t border-slate-100 dark:border-white/5">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">Overview</h3>
+                    <p id="product-description" class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (!productId) {
+                window.location.href = './shop-fully-connected.html';
+                return;
+            }
+
+            try {
+                const { data: p, error } = await _supabase
+                    .from('products')
+                    .select('*')
+                    .eq('id', productId)
+                    .single();
+
+                if (error || !p) throw error || new Error('Product not found');
+
+                // POPULATE UI
+                document.getElementById('product-loading').classList.add('hidden');
+                document.getElementById('product-container').classList.remove('hidden');
+
+                document.title = `${p.name} - CellphonesAndRepair`;
+                document.getElementById('product-name').textContent = p.name;
+                document.getElementById('product-subtitle').textContent = p.subtitle || 'Premium Refurbished Classic';
+                document.getElementById('product-price').textContent = `$${parseFloat(p.price).toLocaleString()}`;
+                document.getElementById('product-description').textContent = p.description;
+                document.getElementById('breadcrumb-category').textContent = p.category;
+                document.getElementById('main-image').src = p.main_image_url;
+
+                // Color Selection
+                if (p.colors && p.colors.length > 0) {
+                    const colorContainer = document.getElementById('color-section');
+                    const dotsContainer = document.getElementById('color-dots');
+                    colorContainer.classList.remove('hidden');
+                    
+                    p.colors.forEach((c, idx) => {
+                        const dot = document.createElement('button');
+                        dot.className = `color-dot w-8 h-8 rounded-full border border-slate-200 dark:border-white/10 transition-all ${idx === 0 ? 'active' : ''}`;
+                        dot.style.backgroundColor = c.hex;
+                        dot.title = c.name;
+                        
+                        dot.onclick = () => {
+                            document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+                            dot.classList.add('active');
+                            if (c.image_url) {
+                                document.getElementById('main-image').src = c.image_url;
+                            }
+                        };
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+
+                // Processor
+                if (p.processor_power_img_url) {
+                    document.getElementById('specs-section').classList.remove('hidden');
+                    document.getElementById('processor-img').src = p.processor_power_img_url;
+                }
+
+                // Stripe Checkout Logic
+                document.getElementById('buy-now-btn').onclick = async () => {
+                    const btn = document.getElementById('buy-now-btn');
+                    const originalText = btn.textContent;
+                    btn.disabled = true;
+                    btn.innerHTML = `<span class="animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"></span> Processing...`;
+
+                    try {
+                        const response = await fetch('/api/create-checkout-session', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 
+                                productId: p.id,
+                                quantity: 1 
+                            })
+                        });
+
+                        const session = await response.json();
+
+                        if (session.url) {
+                            window.location.href = session.url;
+                        } else {
+                            throw new Error(session.error || 'Checkout session failed');
+                        }
+                    } catch (err) {
+                        console.error('Stripe Error:', err);
+                        alert('Error connecting to Stripe: ' + err.message);
+                        btn.disabled = false;
+                        btn.textContent = originalText;
+                    }
+                };
+
+            } catch (e) {
+                console.error('Detail Error:', e);
+                document.getElementById('product-loading').innerHTML = '<p class="text-red-500">Product not found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

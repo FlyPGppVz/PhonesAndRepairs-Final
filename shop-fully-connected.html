@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Shop - CellphonesAndRepair</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
-
-
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/tailwind-config.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
     <script id="anti_flicker">
         (function () {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -22,582 +15,228 @@
             else document.documentElement.classList.remove('dark');
         })();
     </script>
+    <!-- FOUNDATION -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/stripe-config.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/navbar-component.js"></script>
 </head>
 
-<body
-    class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 selection:bg-primary/20">
-    <!-- TopNavBar - Sync 2026-04-11 -->
-    <header
-        class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
-        <nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto">
-            <!-- Left Column: Logo -->
-            <div class="flex-1 flex items-center">
-                <a class="active:opacity-70 transition-all cursor-pointer" href="./index.html">
-                    <img alt="CellphonesAndRepair Logo" class="h-12 w-auto object-contain scale-95"
-                        data-alt="Professional CellphonesAndRepair brand logo"
-                        src="./assets/images/logo-transparent.png">
-                </a>
-            </div>
+<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 selection:bg-primary/20">
+    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 h-[64px]"></header>
 
-            <!-- Center Column: Navigation Links -->
-            <div
-                class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[15px] font-medium tracking-tight">
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
-                    href="./index.html">Home</a>
-
-                <!-- Shop Item with Full-Width Dropdown -->
-                <div class="group h-full flex items-center">
-                    <a class="text-slate-900 dark:text-white font-bold group-hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer flex items-center gap-1 py-4"
-                        href="./shop-fully-connected.html">
-                        Shop
-                        <span
-                            class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
-                    </a>
-                    <!-- Full-Width Mega Menu -->
-                    <div
-                        class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-3xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 py-16">
-                        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12">
-                            <!-- iPhones Column -->
-                            <div>
-                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">iPhones
-                                </h4>
-                                <ul class="space-y-4">
-                                    <li><a href="./shop-fully-connected.html?category=iPhones"
-                                            class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Shop
-                                            All iPhone</a></li>
-                                    <li><a href="./iphone-17-pro-max-detail.html"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone
-                                            17 Pro Max</a></li>
-                                    <li><a href="./iphone-16-pro-max-detail.html"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone
-                                            16 Pro Max</a></li>
-                                    <li><a href="./shop-fully-connected.html?category=iPhones"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Compare
-                                            Models</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Android Column -->
-                            <div>
-                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Android
-                                </h4>
-                                <ul class="space-y-4">
-                                    <li><a href="./samsung-s25-ultra-detail.html"
-                                            class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Samsung
-                                            Galaxy</a></li>
-                                    <li><a href="./samsung-s25-ultra-detail.html"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S25
-                                            Ultra</a></li>
-                                    <li><a href="./shop-fully-connected.html?category=Samsung"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S24
-                                            Series</a></li>
-                                    <li><a href="./shop-fully-connected.html?category=Samsung"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Certified
-                                            Androids</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- iPads & Watch Column -->
-                            <div>
-                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">
-                                    Ecosystem</h4>
-                                <ul class="space-y-4">
-                                    <li><a href="./shop-fully-connected.html?category=iPads"
-                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">iPad</a>
-                                    </li>
-                                    <li><a href="./product-detail-apple-watch-ultra-2-final.html"
-                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Apple
-                                            Watch</a></li>
-                                    <li><a href="./shop-fully-connected.html?category=Consoles"
-                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Consoles
-                                            & Gaming</a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Accessories Column -->
-                            <div>
-                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Shop
-                                    Selection</h4>
-                                <ul class="space-y-4">
-                                    <li><a href="./shop-fully-connected.html?category=Accessories"
-                                            class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Essential
-                                            Accessories</a></li>
-                                    <li><a href="./chargers-and-cables-detail.html"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cables
-                                            & Power</a></li>
-                                    <li><a href="./phone-cases-detail.html"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cases &
-                                            Protection</a></li>
-                                    <li><a href="./airpods-detail.html"
-                                            class="text-sm text-slate-500 hover:text-blue-500 transition-colors">AirPods
-                                            & Audio</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
-                    href="./services-unified-nav.html">Services</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
-                    href="./contact-unified-nav.html">Contact</a>
-                <a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer"
-                    href="./about-us-unified-nav.html">About Us</a>
-            </div>
-
-            <!-- Right Column: Icons & Search -->
-            <div class="flex-1 flex items-center justify-end gap-3 md:gap-5">
-                <button
-                    class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity"
-                    id="mobileMenuBtn">menu</button>
-                <div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
-
-                    <div
-                        class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
-                        <span
-                            class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[22px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
-                        <input
-                            class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none"
-                            id="navSearchInput" placeholder="Search devices..." type="text">
-                    </div>
-                </div>
-                <div class="relative group" id="nav-cart-wrapper">
-                    <a href="./shopping-cart-final-nav.html"
-                        class="relative material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer"
-                        aria-label="View cart">shopping_cart</a>
-                    <span id="nav-cart-badge"
-                        class="hidden absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center pointer-events-none leading-none">0</span>
-                    <div
-                        class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-                        <div class="cupertino-glass bg-white/95 dark:bg-neutral-800/95 rounded-2xl shadow-2xl overflow-hidden min-w-[300px] p-5 border border-slate-200/50"
-                            id="nav-cart-dropdown">
-                            <!-- Filled by cart.js -->
-                        </div>
-                    </div>
-                </div>
-                <div class="relative group">
-                    <button
-                        class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer">person</button>
-                    <div
-                        class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-                        <div
-                            class="cupertino-glass bg-white/90 dark:bg-neutral-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
-                            <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase"
-                                href="./login-final-nav.html">Sign In</a>
-                            <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10"
-                                href="./create-account-final-nav.html">Create Account</a>
-                            <a class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1"
-                                id="navMyAccountLink" href="./my-profile-final-nav.html">My Account</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Theme Toggle Toggle -->
-                <button id="themeToggle"
-                    class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-slate-700/50"
-                    aria-label="Toggle Theme">
-                    <div class="relative w-[20px] h-[20px]">
-                        <!-- Sun Icon -->
-                        <svg class="absolute inset-0 w-full h-full text-amber-500 transition-all duration-300 transform dark:-rotate-180 dark:opacity-0 pointer-events-none"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                        </svg>
-                        <!-- Moon Icon -->
-                        <svg class="absolute inset-0 w-full h-full text-blue-400 transition-all duration-300 transform rotate-180 opacity-0 dark:rotate-0 dark:opacity-100 pointer-events-none"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                        </svg>
-                    </div>
-                </button>
-            </div>
-        </nav>
-    </header>
     <main class="pt-16">
-        <!-- Page Title Area -->
-        <section
-            class="bg-slate-50 dark:bg-[#0f0f0f] py-16 border-b border-slate-200 dark:border-slate-800 transition-colors duration-500">
+        <!-- Page Title -->
+        <section class="bg-slate-50 dark:bg-[#0f0f0f] py-16 border-b border-slate-200 dark:border-slate-800 transition-colors duration-500">
             <div class="max-w-[1440px] mx-auto px-6 text-center">
                 <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-on-surface mb-4">Our Premium Shop</h1>
-                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our curated collection of
-                    top-tier devices, certified and ready for their next journey.</p>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Explore our curated collection of top-tier devices, certified and ready for their next journey.</p>
             </div>
         </section>
+
         <!-- Shop Layout -->
-        <div
-            class="max-w-[1440px] mx-auto px-6 md:px-12 mt-16 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 mt-16 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 items-start">
             <!-- Sidebar Filters -->
             <aside class="sticky top-28 space-y-10 lg:block hidden">
                 <div>
                     <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Categories</h3>
                     <ul class="space-y-4">
-                        <li><a class="text-sm font-medium text-primary flex items-center justify-between filter-category"
-                                href="#" data-filter="all">All</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="iPhones">iPhones</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="Samsung">Samsung</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="iPads">iPads</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="Smartwatch">Smartwatch</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="Accessories">Accessories</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="Consoles">Consoles</a></li>
-                        <li><a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category"
-                                href="#" data-filter="Services">Services</a></li>
+                        <li><button class="text-sm font-medium text-primary flex items-center justify-between filter-category" data-filter="all">All</button></li>
+                        <li><button class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" data-filter="iPhones">iPhones</button></li>
+                        <li><button class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" data-filter="Samsung">Samsung</button></li>
+                        <li><button class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" data-filter="iPads">iPads</button></li>
+                        <li><button class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" data-filter="Smartwatch">Smartwatch</button></li>
+                        <li><button class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" data-filter="Accessories">Accessories</button></li>
+                        <li><button class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors filter-category" data-filter="Consoles">Consoles</button></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Condition</h3>
-                    <div class="space-y-3">
-                        <label class="flex items-center space-x-3 cursor-pointer group">
-                            <input checked=""
-                                class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition"
-                                type="checkbox" data-filter="pristine">
-                            <span
-                                class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Brand
-                                new</span>
-                        </label>
-                        <label class="flex items-center space-x-3 cursor-pointer group">
-                            <input
-                                class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition"
-                                type="checkbox" data-filter="very-good">
-                            <span
-                                class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Very
-                                Good</span>
-                        </label>
-                        <label class="flex items-center space-x-3 cursor-pointer group">
-                            <input
-                                class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary/20 transition-all filter-condition"
-                                type="checkbox" data-filter="good">
-                            <span
-                                class="text-sm font-medium text-on-surface group-hover:text-primary transition-colors">Good</span>
-                        </label>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Price Range</h3>
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-on-surface mb-6">Price Limit</h3>
                     <div class="px-2">
-                        <input
-                            class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer"
-                            type="range" id="price-range" min="0" max="1500" value="1500">
-                        <div
-                            class="flex justify-between mt-4 text-[10px] font-bold text-outline uppercase tracking-wider">
-                            <span>$299</span>
-                            <span>$1299+</span>
+                        <input class="w-full h-1.5 bg-surface-container-highest rounded-full appearance-none accent-primary cursor-pointer" type="range" id="price-range" min="0" max="2500" value="2500">
+                        <div class="flex justify-between mt-4 text-[10px] font-bold text-outline uppercase tracking-wider">
+                            <span>$0</span>
+                            <span id="price-limit-display">$2500</span>
                         </div>
                     </div>
                 </div>
+                <!-- Warranty Highlight -->
                 <div class="pt-6">
-                    <!-- Warranty Highlight -->
-                    <div
-                        class="p-6 bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm transition-colors duration-500">
-                        <span class="material-symbols-outlined text-primary dark:text-blue-400 mb-3 text-3xl"
-                            data-icon="verified">verified</span>
-                        <h4 class="text-sm font-bold mb-2 text-primary dark:text-blue-400">30-Day Warranty</h4>
-                        <p class="text-xs text-on-surface-variant dark:text-slate-400 leading-relaxed">Every device
-                            undergoes a 90-point inspection and comes with a full month of protection.</p>
+                    <div class="p-6 bg-white dark:bg-neutral-900 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm transition-colors duration-500">
+                        <span class="material-symbols-outlined text-primary mb-3 text-3xl">verified</span>
+                        <h4 class="text-sm font-bold mb-2">30-Day Warranty</h4>
+                        <p class="text-xs text-on-surface-variant leading-relaxed">Every device undergoes a 90-point inspection and comes with a full month of protection.</p>
                     </div>
                 </div>
             </aside>
+
             <!-- Product Grid -->
             <div>
-                <div class="flex justify-between items-end mb-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
                     <div>
-                        <h2 class="text-2xl font-semibold tracking-tight">Latest Arrivals</h2>
-                        <p id="product-count" class="text-sm text-on-surface-variant">Showing 0 premium items</p>
+                        <h2 class="text-2xl font-semibold tracking-tight" id="category-title">Latest Arrivals</h2>
+                        <p id="product-count" class="text-sm text-on-surface-variant">Checking stock...</p>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <button
-                            class="flex items-center space-x-2 text-sm font-medium text-on-surface-variant bg-surface-container px-4 py-2 rounded-full hover:bg-surface-container-highest transition-all lg:hidden">
-                            <span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
-                            <span>Filter</span>
-                        </button>
-                        <select
-                            class="bg-white dark:bg-neutral-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white focus:ring-0 cursor-pointer pr-8 rounded-lg px-3 py-1 transition-colors duration-300"
-                            id="sort-select">
-                            <option>Featured</option>
-                            <option>Newest</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
+                        <select class="bg-white dark:bg-neutral-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-white focus:ring-0 cursor-pointer pr-8 rounded-lg px-3 py-1 transition-colors duration-300" id="sort-select">
+                            <option value="featured">Intel Sort (Premium First)</option>
+                            <option value="asc">Price: Low to High</option>
+                            <option value="desc">Price: High to Low</option>
                         </select>
                     </div>
                 </div>
-                <div id="product-grid"
-                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 relative z-10">
-                    <!-- Products will be loaded dynamically from inventory.json -->
+
+                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10 min-h-[400px]">
+                    <!-- Skeleton Loader -->
+                    <div class="animate-pulse bg-white/5 h-80 rounded-2xl"></div>
+                    <div class="animate-pulse bg-white/5 h-80 rounded-2xl"></div>
+                    <div class="animate-pulse bg-white/5 h-80 rounded-2xl"></div>
                 </div>
 
                 <!-- Empty State -->
-                <div id="empty-state"
-                    class="hidden py-20 flex-col items-center justify-center text-center bg-slate-50 dark:bg-[#0a0a0a]/20 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all duration-500">
-                    <div
-                        class="w-20 h-20 bg-slate-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mb-6">
+                <div id="empty-state" class="hidden py-20 flex flex-col items-center justify-center text-center bg-slate-50 dark:bg-[#0a0a0a]/20 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 transition-all duration-500">
+                    <div class="w-20 h-20 bg-slate-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mb-6">
                         <span class="material-symbols-outlined text-4xl text-slate-400">inventory_2</span>
                     </div>
-                    <h3 class="text-xl font-bold text-on-surface mb-2">Out of Stock</h3>
-                    <p class="text-slate-500 dark:text-slate-400 max-w-xs mx-auto">This category is currently not
-                        available, but we're working on bringing more items soon.</p>
+                    <h3 class="text-xl font-bold text-on-surface mb-2">No items found</h3>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xs mx-auto">Try adjusting your filters or category.</p>
                 </div>
             </div>
         </div>
-
-        <!-- Product Card Template -->
-        <template id="product-card-template">
-            <div class="bento-card group relative bg-surface-container-lowest dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col h-full cursor-pointer z-20"
-                data-category="" data-price="" data-condition="pristine">
-                <div
-                    class="aspect-[4/5] overflow-hidden bg-white dark:bg-[#1a1c1e] p-8 flex items-center justify-center relative">
-                    <img class="product-img max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500 scale-[1.3]"
-                        src="" alt="">
-                    <span class="badge absolute top-6 right-6 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full hidden">NEW</span>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="product-title text-xl font-semibold tracking-tight mb-1 text-on-surface"></h3>
-                    <p class="product-desc text-sm text-on-surface-variant mb-4 font-medium"></p>
-                    <div class="mt-auto flex flex-col gap-4">
-                        <span class="product-price text-lg font-bold text-on-surface"></span>
-                        <div class="flex items-center gap-2">
-                            <button class="snipcart-add-item flex-grow py-2 px-4 rounded-full bg-surface-container-high text-xs font-bold hover:bg-primary hover:text-white transition-all uppercase tracking-wider text-center"
-                                data-item-id=""
-                                data-item-price=""
-                                data-item-url="/shop-fully-connected.html"
-                                data-item-description=""
-                                data-item-image=""
-                                data-item-name="">
-                                + Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
     </main>
 
-    <!-- Footer same as before -->
     <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0a0a0a] mt-20">
-        <!-- ... Footer Content ... -->
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
+            <div class="col-span-2">
+                <div class="font-semibold text-slate-900 dark:text-white text-xl mb-4">CellphonesAndRepair</div>
+                <p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs">Restoring tech history with editorial precision. Quality curated refurbished classics for the modern era.</p>
+            </div>
+            <div class="flex flex-col gap-3">
+                <h4 class="text-slate-900 dark:text-white font-semibold text-sm">Legal</h4>
+                <a class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white text-sm hover:underline transition-all underline-offset-4" href="./privacy-policy-unified-nav.html">Privacy Policy</a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- PRODUCT CARD TEMPLATE -->
+    <template id="product-card-template">
+        <div class="group relative bg-white dark:bg-[#1a1c1e] rounded-3xl overflow-hidden flex flex-col h-full border border-slate-100 dark:border-white/5 hover:shadow-2xl transition-all duration-500 cursor-pointer">
+            <div class="aspect-square bg-[#f5f5f7] dark:bg-[#0a0a0a] p-8 flex items-center justify-center relative overflow-hidden">
+                <img class="product-img w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 ease-out" src="" alt="">
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+                <p class="product-category text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-2"></p>
+                <h3 class="product-title text-lg font-bold tracking-tight mb-2"></h3>
+                <p class="product-desc text-[13px] text-slate-500 dark:text-slate-400 line-clamp-2 mb-4"></p>
+                <div class="mt-auto flex items-center justify-between">
+                    <span class="product-price text-lg font-black text-on-surface"></span>
+                    <button class="buy-btn bg-slate-900 dark:bg-white text-white dark:text-black w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- SHOP LOGIC -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const grid = document.getElementById('product-grid');
             const template = document.getElementById('product-card-template');
             const emptyState = document.getElementById('empty-state');
-            const countDisplay = document.querySelector('p.text-sm.text-on-surface-variant');
-            const sortSelect = document.getElementById('sort-select');
-            const categoryLinks = document.querySelectorAll('.filter-category');
-            const conditionBoxes = document.querySelectorAll('.filter-condition');
+            const countDisplay = document.getElementById('product-count');
+            const filterBtns = document.querySelectorAll('.filter-category');
             const priceRange = document.getElementById('price-range');
+            const priceLimitDisplay = document.getElementById('price-limit-display');
+            const sortSelect = document.getElementById('sort-select');
 
             let allProducts = [];
             let activeCategory = 'all';
 
-            // 1. Fetch Products (Dynamic API Feed)
-            async function loadProducts() {
+            // 1. FETCH & ENGINE
+            async function initShop() {
                 try {
-                    const GITHUB_OWNER = 'FlyPGppVz';
-                    const GITHUB_REPO = 'PhonesAndRepairs-Final';
-                    const PRODUCTS_PATH = 'data/products';
+                    const { data, error } = await _supabase.from('products').select('*');
+                    if (error) throw error;
                     
-                    // Step A: Get list of files in the directory
-                    const dirResponse = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${PRODUCTS_PATH}`);
-                    if (!dirResponse.ok) throw new Error('Could not fetch products directory');
-                    
-                    const files = await dirResponse.json();
-                    
-                    // Step B: Fetch each individual JSON content
-                    const productPromises = files
-                        .filter(f => f.name.endsWith('.json'))
-                        .map(async file => {
-                            const detailRes = await fetch(file.download_url);
-                            return await detailRes.json();
-                        });
-                    
-                    allProducts = await Promise.all(productPromises);
-                    
-                    // INTEL SORTING
-                    intelSort(allProducts);
-                    
-                    renderProducts(allProducts);
-                    initFilters();
-                } catch (error) {
-                    console.error('Error loading dynamic inventory:', error);
-                    grid.innerHTML = '<p class="col-span-full text-center text-slate-500 py-20">Unable to load products. Please check connection.</p>';
+                    allProducts = data;
+                    renderProducts(applyFilters(intelSort([...allProducts])));
+                } catch (e) {
+                    console.error('Shop Error:', e);
+                    grid.innerHTML = '<p class="col-span-full text-center py-20 opacity-50">Unable to load inventory.</p>';
                 }
             }
 
-            // 2. Intelligence Sorting
             function intelSort(products) {
-                products.sort((a, b) => {
-                    // A. BRAND WEIGHT (Apple always first)
-                    const brandWeight = { 'Apple': 1000, 'Samsung': 90, 'Console': 80, 'Audio': 70, 'Other': 10 };
-                    const weightA = brandWeight[a.brand] || 0;
-                    const weightB = brandWeight[b.brand] || 0;
-                    
-                    if (weightA !== weightB) return weightB - weightA;
-
-                    // B. YEAR PRIORITY (Descending: 2025 > 2024)
-                    const yearA = parseInt(a.year) || 0;
-                    const yearB = parseInt(b.year) || 0;
-                    if (yearA !== yearB) return yearB - yearA;
-
-                    // C. VERSION EXTRACTION (Regex for numbers like 17, 16, S25)
-                    const getVersion = (str) => {
-                        const match = str.match(/\d+/);
-                        return match ? parseInt(match[0]) : 0;
-                    };
-                    const verA = getVersion(a.title);
-                    const verB = getVersion(b.title);
-                    
-                    if (verA !== verB) return verB - verA;
-
-                    // D. SUFFIX PRIORITY (Pro Max > Pro > Plus)
-                    const getSuffixWeight = (str) => {
-                        if (str.includes('Pro Max')) return 50;
-                        if (str.includes('Ultra')) return 45;
-                        if (str.includes('Pro')) return 40;
-                        if (str.includes('Plus')) return 30;
-                        return 20;
-                    };
-                    const suffixA = getSuffixWeight(a.title);
-                    const suffixB = getSuffixWeight(b.title);
-                    
-                    return suffixB - suffixA;
+                return products.sort((a, b) => {
+                    const getWeight = (c) => c?.toLowerCase().includes('iphone') ? 10 : 5;
+                    return getWeight(b.category) - getWeight(a.category);
                 });
             }
 
-            // 3. Render Products
+            function applyFilters(products) {
+                const maxPrice = parseInt(priceRange.value);
+                return products.filter(p => {
+                    const catMatch = activeCategory === 'all' || p.category.toLowerCase() === activeCategory.toLowerCase();
+                    const priceMatch = p.price <= maxPrice;
+                    return catMatch && priceMatch;
+                });
+            }
+
             function renderProducts(products) {
                 grid.innerHTML = '';
+                countDisplay.textContent = `Showing ${products.length} premium items`;
                 
-                // UPDATE COUNT
-                const countDisplay = document.getElementById('product-count');
-                if (countDisplay) {
-                    countDisplay.innerHTML = `Showing <span class="text-on-surface font-bold">${products.length}</span> premium items`;
-                }
-
                 if (products.length === 0) {
                     emptyState.classList.remove('hidden');
-                    emptyState.classList.add('flex');
                     return;
                 }
                 emptyState.classList.add('hidden');
-                emptyState.classList.remove('flex');
 
-                products.forEach(product => {
+                products.forEach(p => {
                     const clone = template.content.cloneNode(true);
-                    const card = clone.querySelector('.bento-card');
+                    const card = clone.querySelector('div');
                     
-                    card.setAttribute('data-category', product.category);
-                    card.setAttribute('data-price', product.price);
+                    clone.querySelector('.product-img').src = p.main_image_url || './assets/images/placeholder.png';
+                    clone.querySelector('.product-title').textContent = p.name;
+                    clone.querySelector('.product-category').textContent = p.category;
+                    clone.querySelector('.product-desc').textContent = p.description;
+                    clone.querySelector('.product-price').textContent = `$${parseFloat(p.price).toLocaleString()}`;
                     
-                    // Handle product link
-                    card.onclick = () => window.location.href = product.url;
-
-                    const primaryImage = product.images && product.images.length > 0 ? product.images[0] : './assets/images/placeholder.png';
+                    card.onclick = () => window.location.href = `./product-detail.html?id=${p.id}`;
                     
-                    clone.querySelector('.product-img').src = primaryImage;
-                    clone.querySelector('.product-img').alt = product.title;
-                    clone.querySelector('.product-title').textContent = product.title;
-                    clone.querySelector('.product-desc').textContent = product.description;
-                    clone.querySelector('.product-price').textContent = `$${parseFloat(product.price).toLocaleString()}`;
-                    
-                    // Snipcart Binding
-                    const btn = clone.querySelector('.snipcart-add-item');
-                    btn.setAttribute('data-item-id', product.id || product.title.replace(/\s+/g, '-').toLowerCase());
-                    btn.setAttribute('data-item-name', product.title);
-                    btn.setAttribute('data-item-price', product.price);
-                    btn.setAttribute('data-item-description', product.description);
-                    btn.setAttribute('data-item-image', primaryImage);
-
                     grid.appendChild(clone);
                 });
             }
 
-            // 3. Filter Logic
-            function applyFilters() {
-                const maxPrice = priceRange ? parseInt(priceRange.value) : 1500;
-                let activeConditions = Array.from(conditionBoxes)
-                    .filter(box => box.checked)
-                    .map(box => box.getAttribute('data-filter'));
+            // LISTENERS
+            filterBtns.forEach(btn => {
+                btn.onclick = () => {
+                    filterBtns.forEach(b => b.classList.remove('text-primary'));
+                    btn.classList.add('text-primary');
+                    activeCategory = btn.dataset.filter;
+                    document.getElementById('category-title').textContent = activeCategory === 'all' ? 'Latest Arrivals' : activeCategory;
+                    renderProducts(applyFilters(intelSort([...allProducts])));
+                };
+            });
 
-                if (activeConditions.length === 0) activeConditions = ['pristine', 'very-good', 'good'];
+            priceRange.oninput = (e) => {
+                priceLimitDisplay.textContent = `$${e.target.value}`;
+                renderProducts(applyFilters(intelSort([...allProducts])));
+            };
 
-                const filtered = allProducts.filter(p => {
-                    const matchCategory = (activeCategory === 'all' || p.category.toLowerCase() === activeCategory.toLowerCase());
-                    const matchPrice = p.price <= maxPrice;
-                    // Note: In JSON we use 'pristine' as default for simplicity in this migration
-                    return matchCategory && matchPrice; 
-                });
-
-                renderProducts(filtered);
-                uiSort();
+            sortSelect.onchange = () => {
+                let sorted = [...allProducts];
+                if (sortSelect.value === 'asc') sorted.sort((a,b) => a.price - b.price);
+                else if (sortSelect.value === 'desc') sorted.sort((a,b) => b.price - a.price);
+                else sorted = intelSort(sorted);
+                renderProducts(applyFilters(sorted));
             }
 
-            function uiSort() {
-                const val = sortSelect.value;
-                const cards = Array.from(grid.children);
-                
-                if (val.includes('Low to High')) {
-                    cards.sort((a, b) => parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price')));
-                } else if (val.includes('High to Low')) {
-                    cards.sort((a, b) => parseFloat(b.getAttribute('data-price')) - parseFloat(a.getAttribute('data-price')));
-                }
-                
-                cards.forEach(c => grid.appendChild(c));
-            }
-
-            function initFilters() {
-                categoryLinks.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const filter = link.getAttribute('data-filter');
-                        categoryLinks.forEach(l => {
-                            l.classList.remove('text-primary');
-                            l.classList.add('text-on-surface-variant');
-                        });
-                        
-                        if (activeCategory === filter) {
-                            activeCategory = 'all';
-                            document.querySelector('h2.text-2xl.font-semibold').textContent = 'Latest Arrivals';
-                        } else {
-                            activeCategory = filter;
-                            link.classList.remove('text-on-surface-variant');
-                            link.classList.add('text-primary');
-                            document.querySelector('h2.text-2xl.font-semibold').textContent = filter;
-                        }
-                        applyFilters();
-                    });
-                });
-
-                if (priceRange) {
-                    priceRange.addEventListener('input', (e) => {
-                        const label = document.querySelector('.flex.justify-between.mt-4.text-\\[10px\\].font-bold span:last-child');
-                        if (label) label.textContent = '$' + e.target.value;
-                        applyFilters();
-                    });
-                }
-
-                if (sortSelect) {
-                    sortSelect.addEventListener('change', uiSort);
-                }
-            }
-
-            // Start the engine
-            loadProducts();
+            initShop();
         });
     </script>
-
-
-    <script src="./js/cart.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/video-interstitial.js?v=V6"></script>
 </body>
-
 </html>

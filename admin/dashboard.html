@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Admin Dashboard - CellphonesAndRepair</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- FOUNDATION -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/auth.js"></script>
+
+    <script>
+        // IMMEDIATE ROLE CHECK
+        (async () => {
+            const admin = await AuthManager.isAdmin();
+            if (!admin) {
+                window.location.href = '../login-final-nav.html?error=unauthorized';
+            }
+        })();
+    </script>
+</head>
+
+<body class="bg-slate-50 dark:bg-neutral-950 text-slate-900 dark:text-white min-h-screen">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white dark:bg-neutral-900 border-r border-slate-200 dark:border-white/5 flex flex-col">
+            <div class="p-8">
+                <h1 class="font-black text-xl tracking-tighter text-primary">ADMIN PANEL</h1>
+            </div>
+            <nav class="flex-grow px-4 space-y-2">
+                <button onclick="showTab('inventory')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-500 text-white font-bold" id="btn-inventory">
+                    <span class="material-symbols-outlined">inventory_2</span> Inventory
+                </button>
+                <button onclick="showTab('inbox')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5" id="btn-inbox">
+                    <span class="material-symbols-outlined">inbox</span> Inbox
+                </button>
+            </nav>
+            <div class="p-4 border-t border-slate-100 dark:border-white/5">
+                <button onclick="AuthManager.logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 font-bold">
+                    <span class="material-symbols-outlined">logout</span> Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-grow overflow-y-auto p-12">
+            <!-- Inventory Tab -->
+            <div id="tab-inventory" class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h2 class="text-4xl font-black">Inventory</h2>
+                        <p class="text-slate-500">Manage your product catalog.</p>
+                    </div>
+                    <button onclick="openAddModal()" class="px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold shadow-xl hover:scale-105 transition-transform">Add Product</button>
+                </div>
+
+                <div class="grid grid-cols-1 gap-4" id="inventory-list">
+                    <!-- Products loaded here -->
+                    <div class="animate-pulse bg-white dark:bg-neutral-900 h-24 rounded-2xl border border-slate-200 dark:border-white/5"></div>
+                </div>
+            </div>
+
+            <!-- Inbox Tab -->
+            <div id="tab-inbox" class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <div>
+                    <h2 class="text-4xl font-black">Inbox</h2>
+                    <p class="text-slate-500">Quotes and contact requests.</p>
+                </div>
+                <div class="grid grid-cols-1 gap-4" id="inbox-list">
+                    <!-- Quotes loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals (Add Product) -->
+    <div id="productModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeProductModal()"></div>
+        <div class="relative bg-white dark:bg-[#1a1c1e] w-full max-w-lg rounded-[2.5rem] p-10 shadow-2xl">
+            <h2 class="text-2xl font-black mb-6">New Product</h2>
+            <form id="productForm" class="space-y-6">
+                <input type="text" name="name" placeholder="Product Name" required class="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-none rounded-2xl focus:ring-2 focus:ring-blue-500/50">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="number" step="0.01" name="price" placeholder="Price (USD)" required class="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-none rounded-2xl focus:ring-2 focus:ring-blue-500/50">
+                    <select name="category" class="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-none rounded-2xl focus:ring-2 focus:ring-blue-500/50">
+                        <option>iPhones</option>
+                        <option>Samsung</option>
+                        <option>iPads</option>
+                        <option>Consoles</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+                <input type="url" name="image_url" placeholder="Image URL (Public)" required class="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-none rounded-2xl focus:ring-2 focus:ring-blue-500/50">
+                <textarea name="description" placeholder="Description..." required rows="4" class="w-full px-6 py-4 bg-slate-50 dark:bg-white/5 border-none rounded-2xl focus:ring-2 focus:ring-blue-500/50"></textarea>
+                <button type="submit" class="w-full py-5 bg-blue-600 text-white rounded-full font-bold shadow-xl shadow-blue-500/20">Create Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.add('hidden'));
+            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+            
+            // UI Toggle
+            document.querySelectorAll('[id^="btn-"]').forEach(b => {
+                b.classList.remove('bg-blue-500', 'text-white', 'font-bold');
+                b.classList.add('text-slate-500');
+            });
+            document.getElementById(`btn-${tab}`).classList.add('bg-blue-500', 'text-white', 'font-bold');
+            document.getElementById(`btn-${tab}`).classList.remove('text-slate-500');
+
+            if (tab === 'inventory') loadInventory();
+            if (tab === 'inbox') loadInbox();
+        }
+
+        async function loadInventory() {
+            const list = document.getElementById('inventory-list');
+            try {
+                const { data, error } = await _supabase.from('products').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+                
+                list.innerHTML = data.map(p => `
+                    <div class="bg-white dark:bg-neutral-900 p-6 rounded-2xl border border-slate-200 dark:border-white/5 flex items-center justify-between group">
+                        <div class="flex items-center gap-6">
+                            <img src="${p.main_image_url || p.image_url}" class="w-16 h-16 object-contain rounded-lg">
+                            <div>
+                                <h4 class="font-black">${p.name}</h4>
+                                <p class="text-xs text-slate-500">${p.category} | $${p.price}</p>
+                            </div>
+                        </div>
+                        <button onclick="deleteProduct('${p.id}')" class="p-4 text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </div>
+                `).join('') || '<p class="py-20 text-center opacity-50">Empty inventory.</p>';
+            } catch (e) { list.innerHTML = 'Error loading data.'; }
+        }
+
+        async function loadInbox() {
+            const list = document.getElementById('inbox-list');
+            try {
+                const { data, error } = await _supabase.from('appointments_quotes').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+
+                list.innerHTML = data.map(q => `
+                    <div class="bg-white dark:bg-neutral-900 p-8 rounded-3xl border border-slate-200 dark:border-white/5 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-600 dark:bg-white/5 dark:text-blue-400 rounded-full text-[10px] font-black uppercase tracking-widest">${q.type}</span>
+                                <h4 class="text-xl font-bold mt-2">${q.customer_name}</h4>
+                                <p class="text-sm text-slate-500">${q.customer_email}</p>
+                            </div>
+                            <span class="text-[10px] text-slate-400 uppercase font-bold">${new Date(q.created_at).toLocaleDateString()}</span>
+                        </div>
+                        <div class="p-6 bg-slate-50 dark:bg-white/5 rounded-2xl italic text-sm">
+                            "${q.issue_description}"
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="mailto:${q.customer_email}" class="px-6 py-2 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full text-xs font-bold">Reply</a>
+                            <button onclick="updateStatus('${q.id}', 'viewed')" class="px-6 py-2 bg-slate-100 dark:bg-white/5 rounded-full text-xs font-bold">Mark Read</button>
+                        </div>
+                    </div>
+                `).join('') || '<p class="py-20 text-center opacity-50">Zero messages.</p>';
+            } catch (e) { list.innerHTML = 'Error loading data.'; }
+        }
+
+        async function deleteProduct(id) {
+            if (!confirm('Are you sure?')) return;
+            const { error } = await _supabase.from('products').delete().eq('id', id);
+            if (!error) loadInventory();
+        }
+
+        function openAddModal() { document.getElementById('productModal').classList.remove('hidden'); }
+        function closeProductModal() { document.getElementById('productModal').classList.add('hidden'); }
+
+        document.getElementById('productForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const product = {
+                name: formData.get('name'),
+                price: parseFloat(formData.get('price')),
+                category: formData.get('category'),
+                main_image_url: formData.get('image_url'),
+                description: formData.get('description')
+            };
+
+            const { error } = await _supabase.from('products').insert([product]);
+            if (error) console.error(error);
+            else {
+                closeProductModal();
+                loadInventory();
+                e.target.reset();
+            }
+        };
+
+        // Init
+        loadInventory();
+    </script>
+</body>
+</html>

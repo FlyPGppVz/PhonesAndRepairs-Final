@@ -6,14 +6,41 @@
             else document.documentElement.classList.remove('dark');
         })();
     </script>
-</head><body class="bg-background text-on-background font-body min-h-screen flex flex-col">```html
-
-
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="./js/supabase-config.js"></script>
+    <script src="./js/stripe-config.js"></script>
+    <script src="./js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('login-form');
+            const errorMsg = document.getElementById('error-message');
+
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('identity').value;
+                const password = document.getElementById('password').value;
+
+                const { data, error } = await _supabase.auth.signInWithPassword({
+                    email,
+                    password,
+                });
+
+                if (error) {
+                    errorMsg.textContent = error.message;
+                    errorMsg.classList.remove('hidden');
+                } else {
+                    window.location.href = './index.html';
+                }
+            });
+        });
+    </script>
+</head><body class="bg-background text-on-background font-body min-h-screen flex flex-col">
 
 
 <!-- TopNavBar (Updated to match SCREEN_109) -->
@@ -148,7 +175,8 @@ Shop
 <p class="text-on-surface-variant text-sm font-medium">Precision repair for your digital life.</p>
 </div>
 <!-- Login Form -->
-<form class="space-y-6">
+<form class="space-y-6" id="login-form">
+    <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-xs mb-4" role="alert"></div>
 <div>
 <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-2 px-1" for="identity">Email / Username</label>
 <div class="relative">
