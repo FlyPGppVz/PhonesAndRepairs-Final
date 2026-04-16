@@ -440,50 +440,64 @@
 
         document.getElementById('productForm').onsubmit = async (e) => {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
+            console.log("Publishing asset...");
+            
+            // Fix: Button is outside form, so select it globally or via form id
+            const btn = document.querySelector('button[type="submit"]');
             const data = new FormData(e.target);
+            
             btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin text-[8px]">...</span>`;
+            btn.innerHTML = `<span class="animate-spin mr-2">...</span> Publishing`;
 
-            const colorMap = {};
-            document.querySelectorAll('.color-row').forEach(row => {
-                const hex = row.querySelector('input[type="color"]').value;
-                const img = row.querySelector('input[type="text"]').value;
-                if (img) colorMap[hex] = img;
-            });
+            try {
+                const colorMap = {};
+                document.querySelectorAll('.color-row').forEach(row => {
+                    const hex = row.querySelector('input[type="color"]').value;
+                    const img = row.querySelector('input[type="text"]').value;
+                    if (img) colorMap[hex] = img;
+                });
 
-            const galleryArr = [];
-            document.querySelectorAll('input[name="main_image"], input[name="extra_image"]').forEach(i => { if(i.value) galleryArr.push(i.value); });
+                const galleryArr = [];
+                document.querySelectorAll('input[name="main_image"], input[name="extra_image"]').forEach(i => { 
+                    if(i.value) galleryArr.push(i.value); 
+                });
 
-            const product = {
-                name: data.get('name'),
-                subtitle: data.get('subtitle'),
-                price: parseFloat(data.get('price')),
-                category: data.get('category'),
-                new_arrival_text: data.get('new_arrival_text'),
-                marketing_title: data.get('marketing_title'),
-                marketing_subtitle: data.get('marketing_subtitle'),
-                spec_dark_title: data.get('spec_dark_title'),
-                processor_description: data.get('proc_desc'),
-                processor_image_url: data.get('proc_image'),
-                performance_title: data.get('performance_title'),
-                performance_subtitle: data.get('performance_subtitle'),
-                display_tech_description: `${data.get('stat1')} | ${data.get('stat1_lbl')}`,
-                battery_life_description: `${data.get('stat2')} | ${data.get('stat2_lbl')}`,
-                main_image_url: data.get('main_image'),
-                gallery_urls: galleryArr,
-                colors: Object.keys(colorMap).length > 0 ? colorMap : null,
-                stock_quantity: 10
-            };
+                const product = {
+                    name: data.get('name') || 'Unnamed Asset',
+                    subtitle: data.get('subtitle') || '',
+                    price: parseFloat(data.get('price')) || 0,
+                    category: data.get('category') || 'Other',
+                    new_arrival_text: data.get('new_arrival_text') || 'New Arrival',
+                    marketing_title: data.get('marketing_title') || 'Engineering Precision.',
+                    marketing_subtitle: data.get('marketing_subtitle') || 'Superior build quality.',
+                    spec_dark_title: data.get('spec_dark_title') || 'Silicon Mastery',
+                    processor_description: data.get('proc_desc') || '',
+                    processor_image_url: data.get('proc_image') || '',
+                    performance_title: data.get('performance_title') || 'Performance',
+                    performance_subtitle: data.get('performance_subtitle') || 'Optimized.',
+                    display_tech_description: `${data.get('stat1') || '--'} | ${data.get('stat1_lbl') || 'Stat'}`,
+                    battery_life_description: `${data.get('stat2') || '--'} | ${data.get('stat2_lbl') || 'Stat'}`,
+                    main_image_url: data.get('main_image') || '',
+                    gallery_urls: galleryArr,
+                    colors: Object.keys(colorMap).length > 0 ? colorMap : null,
+                    stock_quantity: 10
+                };
 
-            const { error } = await _supabase.from('products').insert([product]);
-            if (error) {
-                alert('Publish Fail: ' + error.message);
-                btn.disabled = false;
-                btn.innerHTML = 'Publish';
-            } else {
-                closeProductModal();
-                loadInventory();
+                const { data: insertResult, error } = await _supabase.from('products').insert([product]).select();
+
+                if (error) {
+                    console.error("DB Error:", error);
+                    alert('Error al publicar: ' + error.message + '\nDetalle: ' + (error.details || 'Revisar consola'));
+                } else {
+                    console.log("Success:", insertResult);
+                    closeProductModal();
+                    loadInventory();
+                    alert('¡Publicado con éxito!');
+                }
+            } catch (err) {
+                console.error("Critical:", err);
+                alert('Ocurrió un error crítico en el navegador.');
+            } finally {
                 btn.disabled = false;
                 btn.innerHTML = 'Publish';
             }
