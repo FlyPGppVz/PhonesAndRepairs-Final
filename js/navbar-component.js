@@ -22,59 +22,67 @@ const NavbarComponent = {
 
             <!-- Modern Navigation -->
             <div class="hidden md:flex items-center gap-10">
-                <a href="${basePath}index.html" class="text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all">Home</a>
+                <a href="${basePath}index.html" class="text-sm font-bold ${currentPath.endsWith('index.html') || currentPath === '/' || currentPath.endsWith('/') ? 'text-primary' : 'opacity-70'} hover:opacity-100 hover:text-primary transition-all">Home</a>
                 
-                <!-- Apple-style Mega Menu (The design from 5 hours ago) -->
-                <div class="group py-4">
-                    <a href="${basePath}shop-fully-connected.html" class="flex items-center gap-1 text-sm font-bold opacity-70 group-hover:opacity-100 group-hover:text-primary transition-all">
+                <!-- Full-Width Mega Menu (Restored from 6 hours ago) -->
+                <div class="group h-full flex items-center">
+                    <a href="${basePath}shop-fully-connected.html" class="flex items-center gap-1 text-sm font-bold ${currentPath.includes('shop') ? 'text-primary' : 'opacity-70'} group-hover:opacity-100 group-hover:text-primary transition-all py-4 cursor-pointer">
                         Shop
-                        <span class="material-symbols-outlined text-[18px] group-hover:rotate-180 transition-transform duration-500">expand_more</span>
+                        <span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
                     </a>
                     
-                    <div class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-2xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 py-12">
-                        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12">
-                            <div class="space-y-6">
-                                <h3 class="text-[11px] font-black uppercase tracking-widest text-primary/80">Smartphones</h3>
+                    <div class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-3xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-[21000] py-16">
+                        <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12 text-left">
+                            <!-- iPhones Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">iPhones</h4>
                                 <ul class="space-y-4">
-                                    <li><a href="${basePath}shop-fully-connected.html?brand=Apple" class="flex items-center gap-3 text-sm font-bold opacity-60 hover:opacity-100 hover:text-primary transition-all">
-                                        <span class="material-symbols-outlined text-lg">apple</span> iPhone Series
-                                    </a></li>
-                                    <li><a href="${basePath}shop-fully-connected.html?brand=Samsung" class="flex items-center gap-3 text-sm font-bold opacity-60 hover:opacity-100 hover:text-primary transition-all">
-                                        <span class="material-symbols-outlined text-lg">smartphone</span> Samsung Galaxy
-                                    </a></li>
+                                    <li><a href="${basePath}shop-fully-connected.html?category=iPhones" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Shop All iPhone</a></li>
+                                    <li><a href="${basePath}iphone-17-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 17 Pro Max</a></li>
+                                    <li><a href="${basePath}iphone-16-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 16 Pro Max</a></li>
+                                    <li><a href="${basePath}shop-fully-connected.html?category=iPhones" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Compare Models</a></li>
                                 </ul>
                             </div>
-                            <div class="space-y-6">
-                                <h3 class="text-[11px] font-black uppercase tracking-widest text-primary/80">Computing</h3>
+
+                            <!-- Android Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Android</h4>
                                 <ul class="space-y-4">
-                                    <li><a href="${basePath}shop-fully-connected.html?brand=Apple" class="flex items-center gap-3 text-sm font-bold opacity-60 hover:opacity-100 hover:text-primary transition-all">
-                                        <span class="material-symbols-outlined text-lg">tablet_mac</span> iPads & Tablets
-                                    </a></li>
+                                    <li><a href="${basePath}samsung-s25-ultra-detail.html" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Samsung Galaxy</a></li>
+                                    <li><a href="${basePath}samsung-s25-ultra-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S25 Ultra</a></li>
+                                    <li><a href="${basePath}shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S24 Series</a></li>
+                                    <li><a href="${basePath}shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Certified Androids</a></li>
                                 </ul>
                             </div>
-                            <div class="space-y-6">
-                                <h3 class="text-[11px] font-black uppercase tracking-widest text-primary/80">Gaming</h3>
+
+                            <!-- iPads & Watch Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Ecosystem</h4>
                                 <ul class="space-y-4">
-                                    <li><a href="${basePath}shop-fully-connected.html?brand=Sony" class="flex items-center gap-3 text-sm font-bold opacity-60 hover:opacity-100 hover:text-primary transition-all">
-                                        <span class="material-symbols-outlined text-lg">videogame_asset</span> PlayStation 5
-                                    </a></li>
+                                    <li><a href="${basePath}shop-fully-connected.html?category=iPads" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">iPad</a></li>
+                                    <li><a href="${basePath}product-detail-apple-watch-ultra-2-final.html" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Apple Watch</a></li>
+                                    <li><a href="${basePath}shop-fully-connected.html?category=Consoles" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Consoles & Gaming</a></li>
                                 </ul>
                             </div>
-                            <div class="bg-primary/5 dark:bg-white/5 rounded-3xl p-6 flex flex-col justify-between border border-primary/10">
-                                <div>
-                                    <span class="px-2 py-1 bg-primary text-on-primary text-[9px] font-black uppercase tracking-widest rounded mb-4 inline-block">Weekly Deal</span>
-                                    <h4 class="text-sm font-bold mb-2">iPhone 15 Pro Max</h4>
-                                    <p class="text-[11px] opacity-60">Genuine screen replacement starting at $199.</p>
-                                </div>
-                                <a href="${basePath}shop-fully-connected.html" class="text-xs font-black uppercase tracking-widest text-primary mt-4 flex items-center gap-2">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+
+                            <!-- Accessories Column -->
+                            <div>
+                                <h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Shop Selection</h4>
+                                <ul class="space-y-4">
+                                    <li><a href="${basePath}shop-fully-connected.html?category=Accessories" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Essential Accessories</a></li>
+                                    <li><a href="${basePath}chargers-and-cables-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cables & Power</a></li>
+                                    <li><a href="${basePath}phone-cases-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cases & Protection</a></li>
+                                    <li><a href="${basePath}airpods-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">AirPods & Audio</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <a href="${basePath}services-unified-nav.html" class="text-sm font-bold ${currentPath.includes('services') ? 'text-primary' : 'opacity-70'} hover:opacity-100 hover:text-primary transition-all">Services</a>
-                <a href="${basePath}contact-unified-nav.html" class="text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all">Contact</a>
-                <a href="${basePath}about-us-unified-nav.html" class="text-sm font-bold opacity-70 hover:opacity-100 hover:text-primary transition-all">About Us</a>
+                <a href="${basePath}contact-unified-nav.html" class="text-sm font-bold ${currentPath.includes('contact') ? 'text-primary' : 'opacity-70'} hover:opacity-100 hover:text-primary transition-all">Contact</a>
+                <a href="${basePath}about-us-unified-nav.html" class="text-sm font-bold ${currentPath.includes('about-us') ? 'text-primary' : 'opacity-70'} hover:opacity-100 hover:text-primary transition-all">About Us</a>
+
             </div>
 
             <!-- Modern Actions -->
