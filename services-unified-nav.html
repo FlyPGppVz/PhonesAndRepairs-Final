@@ -64,15 +64,45 @@
             </div>
 
             <!-- Consoles -->
-            <div class="md:col-span-4 bg-slate-900 text-white rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden">
+            <div class="md:col-span-4 bg-slate-900 text-white rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
                 <div class="relative z-10">
                     <span class="material-symbols-outlined text-primary text-3xl mb-6">videogame_asset</span>
                     <h2 class="text-[1.75rem] font-semibold mb-4">Consoles</h2>
                     <p class="text-white/60 mb-6 italic">PlayStation, Xbox & Nintendo.</p>
-                    <button onclick="openQuoteModal('Console')" class="px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Request Service</button>
+                    <button onclick="openQuoteModal('Console')" class="px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all active:scale-95">Request Service</button>
                 </div>
-                <div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12">
-                   <span class="material-symbols-outlined text-[10rem]">videogame_asset</span>
+                <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-all duration-700 transform group-hover:rotate-12 group-hover:scale-110">
+                   <span class="material-symbols-outlined text-[12rem]">videogame_asset</span>
+                </div>
+            </div>
+
+            <!-- Android Repairs -->
+            <div class="md:col-span-6 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-green-500 text-3xl">android</span>
+                    <h2 class="text-[1.75rem] font-semibold">Android Repairs</h2>
+                </div>
+                <div class="aspect-[16/9] overflow-hidden rounded-2xl">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="./assets/images/Services/service_android_repair.jpg" alt="Android Repair">
+                </div>
+                <div class="flex items-center justify-between">
+                    <p class="text-on-surface-variant text-sm max-w-[200px]">Samsung Galaxy, Pixels & more.</p>
+                    <button onclick="openQuoteModal('Android')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
+                </div>
+            </div>
+
+            <!-- iPad & Tablet -->
+            <div class="md:col-span-6 bg-surface-container-high dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-amber-500 text-3xl">tablet_mac</span>
+                    <h2 class="text-[1.75rem] font-semibold">iPad & Tablets</h2>
+                </div>
+                <div class="aspect-[16/9] overflow-hidden rounded-2xl">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="./assets/images/Services/service_tablet_repair.jpg" alt="Tablet Repair">
+                </div>
+                <div class="flex items-center justify-between">
+                    <p class="text-on-surface-variant text-sm max-w-[200px]">Screen & Battery specialists.</p>
+                    <button onclick="openQuoteModal('iPad/Tablet')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
             </div>
         </section>
