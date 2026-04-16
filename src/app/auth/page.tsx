@@ -37,7 +37,8 @@ export default function AuthPage() {
           }
         });
         if (error) throw error;
-        alert('Registration successful! Please check your email for verification.');
+        alert('Registration successful! You can now log in.');
+        setMode('login');
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
