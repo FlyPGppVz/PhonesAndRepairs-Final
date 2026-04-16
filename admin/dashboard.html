@@ -465,6 +465,7 @@
                 const product = {
                     name: data.get('name') || 'Unnamed Asset',
                     subtitle: data.get('subtitle') || '',
+                    description: data.get('subtitle') || '', // Map subtitle to description for shop grid compatibility
                     price: parseFloat(data.get('price')) || 0,
                     category: data.get('category') || 'Other',
                     new_arrival_text: data.get('new_arrival_text') || 'New Arrival',
@@ -492,7 +493,7 @@
                     console.log("Success:", insertResult);
                     closeProductModal();
                     loadInventory();
-                    alert('¡Publicado con éxito!');
+                    alert('¡Publicado con éxito! El producto ahora aparecerá en la tienda.');
                 }
             } catch (err) {
                 console.error("Critical:", err);
