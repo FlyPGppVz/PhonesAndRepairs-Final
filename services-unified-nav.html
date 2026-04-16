@@ -26,18 +26,18 @@
 
     <main class="pt-24 pb-20">
         <!-- Hero Section -->
-        <section class="max-w-[1440px] mx-auto px-8 mb-24 pt-12">
+        <section class="max-w-[1440px] mx-auto px-8 mb-16 pt-12">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="text-center lg:text-left">
                     <h1 class="text-[3.5rem] md:text-[4.5rem] font-bold tracking-tight text-on-surface mb-8 leading-[1.05]">Precision Repair for the <br><span class="text-primary">Devices You Love.</span></h1>
                     <p class="text-[1.25rem] text-on-surface-variant leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">Specialized technical solutions for mobile hardware, tablets, and gaming consoles. We restore your technology to original factory standards.</p>
                     <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <button onclick="openQuoteModal('General')" class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-xl shadow-primary/20 active:scale-95">Book a Repair</button>
-                        <a href="./contact-unified-nav.html" class="px-8 py-4 bg-surface-container text-on-surface rounded-full font-bold text-sm hover:bg-surface-container-high transition-all border border-outline-variant/30 active:scale-95">Talk to a Technician</a>
+                        <button onclick="openQuoteModal('General')" class="px-10 py-4 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-xl shadow-primary/20 active:scale-95">Book a Repair</button>
+                        <a href="./contact-unified-nav.html" class="px-10 py-4 bg-surface-container text-on-surface rounded-full font-bold text-sm hover:bg-surface-container-high transition-all border border-outline-variant/30 active:scale-95">Talk to a Technician</a>
                     </div>
                 </div>
-                <div class="relative group">
-                    <div class="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-white/20 dark:border-white/10">
+                <div class="relative">
+                    <div class="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-white/10">
                         <video class="w-full h-full object-cover" autoplay muted loop playsinline>
                             <source src="./assets/videos/Video_service.mp4" type="video/mp4">
                         </video>
@@ -46,63 +46,95 @@
             </div>
         </section>
 
-        <!-- Services Bento -->
-        <section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8" id="services">
-            <!-- iPhone -->
-            <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/10 shadow-sm transition-colors duration-500">
+        <!-- Main Services Grid -->
+        <section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
+            <!-- iPhone Repairs -->
+            <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-2xl p-10 flex flex-col md:flex-row gap-8 items-center border border-slate-100 dark:border-white/5 shadow-sm transition-colors duration-500">
                 <div class="flex-1 space-y-6">
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-primary text-3xl">smartphone</span>
                         <h2 class="text-[1.75rem] font-semibold">iPhone Repairs</h2>
                     </div>
                     <p class="text-on-surface-variant">Complete restoration for all iPhone generations. Original parts and certified care.</p>
-                    <button onclick="openQuoteModal('iPhone')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get iPhone Quote</button>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Screen & OLED Replacement</li>
+                        <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Battery Health Restoration</li>
+                    </ul>
+                    <button onclick="openQuoteModal('iPhone')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
                 <div class="flex-1">
-                    <img class="w-full h-64 md:h-80 rounded-2xl object-cover" src="./assets/images/Services/service_iphone_repair.jpg" alt="iPhone Repair">
-                </div>
-            </div>
-
-            <!-- Consoles -->
-            <div class="md:col-span-4 bg-slate-900 text-white rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
-                <div class="relative z-10">
-                    <span class="material-symbols-outlined text-primary text-3xl mb-6">videogame_asset</span>
-                    <h2 class="text-[1.75rem] font-semibold mb-4">Consoles</h2>
-                    <p class="text-white/60 mb-6 italic">PlayStation, Xbox & Nintendo.</p>
-                    <button onclick="openQuoteModal('Console')" class="px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all active:scale-95">Request Service</button>
-                </div>
-                <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-all duration-700 transform group-hover:rotate-12 group-hover:scale-110">
-                   <span class="material-symbols-outlined text-[12rem]">videogame_asset</span>
+                    <img class="w-full h-64 h-auto rounded-xl object-cover shadow-sm" src="./assets/images/service_iphone_repair.jpg" alt="iPhone Repair">
                 </div>
             </div>
 
             <!-- Android Repairs -->
-            <div class="md:col-span-6 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-green-500 text-3xl">android</span>
-                    <h2 class="text-[1.75rem] font-semibold">Android Repairs</h2>
+            <div class="md:col-span-4 bg-slate-50 dark:bg-[#1a1c1e] rounded-2xl p-10 flex flex-col justify-between border border-slate-100 dark:border-white/5 transition-colors duration-500">
+                <div>
+                    <span class="material-symbols-outlined text-green-500 text-3xl mb-6">android</span>
+                    <h2 class="text-[1.75rem] font-semibold mb-4">Android Repairs</h2>
+                    <p class="text-on-surface-variant mb-6 text-sm">Samsung, Pixel & more. Specialized hardware diagnostics and part replacement.</p>
                 </div>
-                <div class="aspect-[16/9] overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="./assets/images/Services/service_android_repair.jpg" alt="Android Repair">
-                </div>
-                <div class="flex items-center justify-between">
-                    <p class="text-on-surface-variant text-sm max-w-[200px]">Samsung Galaxy, Pixels & more.</p>
-                    <button onclick="openQuoteModal('Android')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
-                </div>
+                <button onclick="openQuoteModal('Android')" class="px-6 py-3 bg-white dark:bg-black text-on-surface border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
             </div>
 
-            <!-- iPad & Tablet -->
-            <div class="md:col-span-6 bg-surface-container-high dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-amber-500 text-3xl">tablet_mac</span>
-                    <h2 class="text-[1.75rem] font-semibold">iPad & Tablets</h2>
+            <!-- iPad and Tablets -->
+            <div class="md:col-span-6 bg-slate-900 text-white rounded-2xl p-10 relative overflow-hidden group">
+                <div class="relative z-10 h-full flex flex-col justify-between">
+                    <div>
+                        <span class="material-symbols-outlined text-primary text-3xl mb-6 uppercase">tablet_mac</span>
+                        <h2 class="text-[1.75rem] font-semibold mb-4">iPad & Tablets</h2>
+                        <p class="text-white/70 mb-8 max-w-sm">Professional tablet restoration. Screen digitizers, logic boards, and more.</p>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-medium opacity-80">
+                            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">bolt</span> Logic Board Repair</div>
+                            <div class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">touch_app</span> Glass/Digitizer</div>
+                        </div>
+                    </div>
+                    <button onclick="openQuoteModal('iPad/Tablet')" class="mt-10 self-start px-8 py-3 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
                 </div>
-                <div class="aspect-[16/9] overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="./assets/images/Services/service_tablet_repair.jpg" alt="Tablet Repair">
+                <span class="material-symbols-outlined absolute right-[-5%] bottom-[-5%] text-[15rem] opacity-5 text-white pointer-events-none">tablet_mac</span>
+            </div>
+
+            <!-- Consoles Repairs -->
+            <div class="md:col-span-6 bg-slate-50 dark:bg-[#1a1c1e] rounded-2xl p-10 border border-slate-100 dark:border-white/5 flex flex-col md:flex-row items-center gap-8 transition-colors duration-500">
+                <div class="flex-1">
+                    <span class="material-symbols-outlined text-primary text-3xl mb-6">videogame_asset</span>
+                    <h2 class="text-[1.75rem] font-semibold text-on-surface mb-4">Consoles Repairs</h2>
+                    <p class="text-on-surface-variant mb-6 text-sm">PlayStation, Xbox, and Nintendo specialized tech service.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-on-surface-variant mt-0.5 text-lg">ac_unit</span>
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider opacity-60">Thermal Care</p>
+                                <p class="text-xs text-on-surface-variant font-medium">Overheating & Fans</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button onclick="openQuoteModal('Console')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
-                <div class="flex items-center justify-between">
-                    <p class="text-on-surface-variant text-sm max-w-[200px]">Screen & Battery specialists.</p>
-                    <button onclick="openQuoteModal('iPad/Tablet')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
+                <div class="flex-1 rounded-xl overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <img class="w-full h-full object-cover" src="./assets/images/service_android_repair.jpg" alt="Technical Repair">
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Indicators Section -->
+        <section class="max-w-[1440px] mx-auto px-8 mt-24 py-16 bg-slate-50 dark:bg-[#0f0f0f] rounded-3xl border border-slate-200 dark:border-white/5 transition-colors duration-500">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">15k+</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Repairs Completed</p>
+                </div>
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">30d</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Service Warranty</p>
+                </div>
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">4.9</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Customer Rating</p>
+                </div>
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">1hr</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Avg. Repair Time</p>
                 </div>
             </div>
         </section>
@@ -141,6 +173,13 @@
             </div>
         </div>
     </main>
+
+    <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950 py-12">
+        <div class="max-w-7xl mx-auto px-8 text-center space-y-4">
+            <div class="text-lg font-bold">CellphonesAndRepair</div>
+            <p class="text-xs text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         function openQuoteModal(category) {
