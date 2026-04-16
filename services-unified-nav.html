@@ -65,43 +65,53 @@
             </div>
 
             <!-- Android -->
-            <div class="md:col-span-4 bg-slate-50 dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col justify-between border border-slate-100 dark:border-white/5 transition-colors duration-500 shadow-sm">
-                <div class="space-y-4">
-                    <span class="material-symbols-outlined text-green-500 text-3xl">android</span>
-                    <h2 class="text-[1.75rem] font-semibold">Android Repairs</h2>
-                    <p class="text-on-surface-variant text-sm">Samsung Galaxy, Pixel, and OnePlus expert technical service.</p>
+            <div class="md:col-span-4 bg-slate-50 dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col justify-between border border-slate-100 dark:border-white/5 transition-all duration-500 shadow-sm relative overflow-hidden group">
+                <div class="space-y-4 relative z-10">
+                    <h2 class="text-[1.75rem] font-bold">Android Repairs</h2>
+                    <p class="text-on-surface-variant text-sm max-w-[200px]">Technical service for Samsung S-Series, Z-Fold, and Google Pixel.</p>
                 </div>
-                <button onclick="openQuoteModal('Android')" class="mt-8 px-6 py-3 bg-white dark:bg-black text-on-surface border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
+                <div class="mt-4 relative z-10">
+                    <button onclick="openQuoteModal('Android')" class="px-6 py-3 bg-white dark:bg-black text-on-surface border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
+                </div>
+                <div class="absolute -right-6 -bottom-6 w-40 h-40 opacity-20 dark:opacity-40 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-700 pointer-events-none">
+                    <img src="./assets/images/Tienda/s25_ultra_Png.png" alt="Android Phone" class="w-full h-full object-contain">
+                </div>
             </div>
+
 
             <!-- iPad & Tablet -->
             <div class="md:col-span-6 bg-[#0a0a0a] text-white rounded-3xl p-10 overflow-hidden relative group">
                 <div class="relative z-10 h-full flex flex-col justify-between">
                     <div class="space-y-6">
                         <span class="material-symbols-outlined text-primary text-3xl">tablet_mac</span>
-                        <h2 class="text-[1.75rem] font-semibold">iPad & Tablets Repairs</h2>
+                        <h2 class="text-[1.75rem] font-bold">iPad & Tablets Repairs</h2>
                         <div class="grid grid-cols-2 gap-4 text-xs font-bold opacity-70">
-                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">bolt</span> Logic Board</span>
-                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">touch_app</span> Glass Fix</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm font-bold">bolt</span> Logic Board</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm font-bold">touch_app</span> Digitizer Fix</span>
                         </div>
                     </div>
                     <button onclick="openQuoteModal('iPad/Tablet')" class="mt-10 self-start px-8 py-3 bg-white text-black rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
                 </div>
-                <span class="material-symbols-outlined absolute -right-8 -bottom-8 text-[12rem] opacity-5 text-white pointer-events-none group-hover:scale-110 transition-transform duration-700">tablet_mac</span>
+                <!-- Real iPad Image background -->
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 opacity-20 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-700 pointer-events-none">
+                    <img src="./assets/images/Tienda/Ipad_10thgen.png" alt="iPad" class="w-full h-full object-contain brightness-125">
+                </div>
             </div>
 
+
             <!-- Consoles -->
-            <div class="md:col-span-6 bg-slate-50 dark:bg-[#1a1c1e] rounded-3xl p-10 border border-slate-100 dark:border-white/5 flex items-center gap-8 shadow-sm">
-                <div class="flex-1 space-y-6">
+            <div class="md:col-span-6 bg-slate-50 dark:bg-[#1a1c1e] rounded-3xl p-10 border border-slate-100 dark:border-white/5 flex items-center gap-8 shadow-sm relative overflow-hidden group">
+                <div class="flex-1 space-y-6 relative z-10">
                     <span class="material-symbols-outlined text-primary text-3xl">videogame_asset</span>
-                    <h2 class="text-[1.75rem] font-semibold">Consoles Repairs</h2>
+                    <h2 class="text-[1.75rem] font-bold">Consoles Repairs</h2>
                     <p class="text-on-surface-variant text-sm">PlayStation, Xbox, and Nintendo specialized tech service.</p>
                     <button onclick="openQuoteModal('Console')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
-                <div class="flex-1 rounded-2xl overflow-hidden shadow-sm hidden sm:block">
-                    <img src="./assets/images/service_android_repair.jpg" class="w-full h-full object-cover" alt="Console Tech">
+                <div class="flex-1 h-48 rounded-2xl overflow-hidden shadow-sm hidden sm:block relative z-10 group-hover:scale-105 transition-transform duration-700">
+                    <img src="./assets/images/Tienda/Switch_Oled_Screen.png" class="w-full h-full object-contain" alt="Console Tech">
                 </div>
             </div>
+
         </section>
 
         <!-- Trust Indicators Section -->
