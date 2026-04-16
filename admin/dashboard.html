@@ -413,40 +413,49 @@
 
         // SAVE LOGIC
         async function saveProduct() {
-            const f = document.getElementById('productForm');
-            const editId = document.getElementById('editId').value;
             setLoading(true);
+            const editId = document.getElementById('editId').value;
 
+            // 1. Convertir colores a formato Mapa (hex: imageURL) para compatibilidad
+            const colorsMap = {};
+            colorVariants.forEach(cv => {
+                if (cv.hex) colorsMap[cv.hex] = cv.image || '';
+            });
+
+            // 2. Construir objeto EXACTO según el esquema de Supabase
             const product = {
                 name: document.getElementById('title').value,
+                subtitle: document.getElementById('description').value, // El subtítulo se usa en la tienda
                 price: parseFloat(document.getElementById('price').value),
                 category: document.getElementById('category').value,
                 description: document.getElementById('description').value,
-                gallery_urls: galleryAssets,
                 main_image_url: galleryAssets[0] || '',
-                colors: colorVariants,
+                gallery_urls: galleryAssets,
+                colors: colorsMap, 
                 storage: [
                     { label: document.getElementById('cap1').value, price: parseFloat(document.getElementById('cap1Price').value) },
                     { label: document.getElementById('cap2').value, price: parseFloat(document.getElementById('cap2Price').value) },
                     { label: document.getElementById('cap3').value, price: parseFloat(document.getElementById('cap3Price').value) }
                 ],
-                spec_dark_title: document.getElementById('specBuild').value,
+                // Specs para product-detail.html
+                spec_dark_title: document.getElementById('specBuild').value || 'Build Quality',
                 processor_description: document.getElementById('specProc').value,
                 display_tech_description: document.getElementById('specDisp').value,
-                battery_life_description: document.getElementById('specCam').value, // Used for legacy camera mapping
+                battery_life_description: document.getElementById('specBatt').value,
                 marketing_title: document.getElementById('editTitle').value,
                 marketing_subtitle: document.getElementById('editDesc').value
             };
 
             try {
                 let error;
-                if(editId) {
+                if (editId) {
                     const { error: err } = await _supabase.from('products').update(product).eq('id', editId);
                     error = err;
                 } else {
                     const { error: err } = await _supabase.from('products').insert([product]);
                     error = err;
                 }
+
                 if(error) throw error;
                 showToast('Master Deployment Complete Synchronized!', 'success');
                 closeModal();
@@ -485,8 +494,14 @@
             galleryAssets = p.gallery_urls || (p.main_image_url ? [p.main_image_url] : []);
             renderGallery();
             
-            colorVariants = Array.isArray(p.colors) ? p.colors : [];
+            // Convertir mapa de colores de DB a Array del panel para editar
+            if (p.colors && typeof p.colors === 'object' && !Array.isArray(p.colors)) {
+                colorVariants = Object.entries(p.colors).map(([hex, image]) => ({ name: 'Legacy Variant', hex, image }));
+            } else {
+                colorVariants = Array.isArray(p.colors) ? p.colors : [];
+            }
             renderColorVariants();
+
             
             if(p.storage && p.storage.length >= 3) {
                 document.getElementById('cap1').value = p.storage[0].label;
