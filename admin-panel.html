@@ -573,12 +573,13 @@
             const container = document.getElementById('colorsContainer');
             if(!container) return;
             container.innerHTML = dynamicColors.map((variant, index) => {
+                // Handle both old string format and new object format
                 const color = typeof variant === 'string' ? variant : variant.color;
-                const imgThumb = variant.image ? `<img src="${variant.image}" class="w-full h-full object-cover">` : '<span class="material-symbols-outlined text-xs">add_a_photo</span>';
+                const imgThumb = (variant && variant.image) ? `<img src="${variant.image}" class="w-full h-full object-cover">` : '<span class="material-symbols-outlined text-xs">add_a_photo</span>';
                 
                 return `
                 <div class="group relative flex flex-col bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200 dark:border-white/10 shadow-sm transition-all hover:shadow-md">
-                    <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center justify-between mb-3 text-on-surface">
                         <div class="flex items-center gap-2">
                             <div id="picker-${index}" class="w-10 h-10 rounded-xl border border-slate-200 dark:border-white/20 cursor-pointer shadow-inner transition-transform active:scale-95" style="background-color: ${color}"></div>
                             <span class="text-[10px] font-mono text-slate-500 uppercase font-bold tracking-tight">${color}</span>
@@ -598,16 +599,17 @@
                         </div>
                         <div class="flex-1">
                             <p class="text-[9px] uppercase font-bold text-slate-400 mb-1">Variant Image</p>
-                            <p class="text-[10px] text-slate-500 truncate max-w-[120px]">${variant.image ? 'Asset Linked ✓' : 'No image linked'}</p>
+                            <p class="text-[10px] text-slate-500 truncate max-w-[120px]">${(variant && variant.image) ? 'Linked ✓' : 'Add Image'}</p>
                         </div>
                     </div>
                 </div>
             `;}).join('');
 
-            // Attach pickers
+            // Attach pickers safely
             dynamicColors.forEach((variant, index) => {
                 const color = typeof variant === 'string' ? variant : variant.color;
                 const el = document.getElementById(`picker-${index}`);
+                if (!el) return;
                 new Picker({
                     parent: el,
                     popup: 'bottom',
@@ -626,21 +628,25 @@
         async function uploadVariantImage(index, input) {
             const file = input.files[0];
             if (!file) return;
-            showToast('Uploading variant asset...', 'info');
+            showToast('Uploading variant image...', 'info');
             const reader = new FileReader();
             reader.onload = async (e) => {
                 const base64 = e.target.result.split(',')[1];
                 const fileName = `v_${Date.now()}_${file.name}`;
-                const res = await githubCommit(`${IMG_DIR}/${fileName}`, base64, `Variant Asset: ${fileName}`);
-                const url = `./${IMG_DIR}/${fileName}`;
-                
-                if(typeof dynamicColors[index] === 'string') {
-                    dynamicColors[index] = { color: dynamicColors[index], image: url };
-                } else {
-                    dynamicColors[index].image = url;
+                try {
+                    await githubCommit(`${IMG_DIR}/${fileName}`, base64, `CMS: Uploaded variant image ${fileName}`);
+                    const url = `./${IMG_DIR}/${fileName}`;
+                    
+                    if(typeof dynamicColors[index] === 'string') {
+                        dynamicColors[index] = { color: dynamicColors[index], image: url };
+                    } else {
+                        dynamicColors[index].image = url;
+                    }
+                    renderColors();
+                    showToast('Image linked successfully!');
+                } catch (err) {
+                    showToast('Upload failed', 'error');
                 }
-                renderColors();
-                showToast('Image linked to color!');
             };
             reader.readAsDataURL(file);
         }
@@ -897,7 +903,7 @@
             const variantsMap = {};
             const colorButtonsHtml = data.colors.map((variant, idx) => {
                 const color = typeof variant === 'string' ? variant : variant.color;
-                const img = typeof variant === 'string' ? data.images[0] : variant.image;
+                const img = (variant && variant.image) ? variant.image : data.images[0];
                 const cleanImg = img.replace('./assets/', '../assets/');
                 variantsMap[color] = cleanImg;
                 
@@ -923,9 +929,8 @@
                     }
                     // Update borders
                     document.querySelectorAll('.color-btn').forEach(btn => {
-                        const btnColor = btn.style.backgroundColor;
-                        // Convert to hex for comparison if needed, or use simple check
-                        if(btn.style.backgroundColor.includes(color) || btn.getAttribute('style').includes(color.toLowerCase())) {
+                        const btnStyle = btn.getAttribute('style') || "";
+                        if(btnStyle.toLowerCase().includes(color.toLowerCase())) {
                             btn.classList.add('border-primary');
                             btn.classList.remove('border-transparent');
                         } else {
