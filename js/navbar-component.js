@@ -78,20 +78,21 @@ const NavbarComponent = {
             </div>
 
             <!-- Modern Actions -->
-            <div class="flex-1 flex items-center justify-end gap-2 md:gap-4">
-                <!-- Modern Night Mode Toggle (Amber/Blue) -->
-                <button id="themeToggle" class="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all active:scale-90 border border-slate-200/50 dark:border-white/5">
-                    <span class="material-symbols-outlined text-amber-500 dark:hidden text-[22px]">light_mode</span>
-                    <span class="material-symbols-outlined text-blue-400 hidden dark:block text-[22px]">dark_mode</span>
+            <div class="flex-1 flex items-center justify-end gap-1 md:gap-3">
+                <!-- Search Icon -->
+                <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-500 dark:text-slate-400 hover:text-primary">
+                    <span class="material-symbols-outlined text-[24px]">search</span>
                 </button>
 
-                <a href="${basePath}cart-final.html" class="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all relative group">
+                <!-- Cart -->
+                <a href="${basePath}cart-final.html" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all relative group">
                     <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors text-[24px]">shopping_bag</span>
                     <div id="cart-badge-count" class="absolute top-1 right-1 w-4 h-4 bg-primary text-on-primary text-[10px] font-black rounded-full flex items-center justify-center opacity-0 scale-0 transition-transform shadow-lg">0</div>
                 </a>
 
+                <!-- Account -->
                 <div class="relative group">
-                    <button class="p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-500 dark:text-slate-400 hover:text-primary">
+                    <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all text-slate-500 dark:text-slate-400 hover:text-primary">
                         <span class="material-symbols-outlined text-[24px]">account_circle</span>
                     </button>
                     <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
@@ -107,7 +108,14 @@ const NavbarComponent = {
                         </div>
                     </div>
                 </div>
+
+                <!-- Modern Night Mode Toggle (Amber/Blue) -->
+                <button id="themeToggle" class="ml-1 p-2 rounded-full bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 transition-all active:scale-90 border border-slate-200/50 dark:border-white/5 shadow-sm">
+                    <span class="material-symbols-outlined text-amber-500 dark:hidden text-[20px]">light_mode</span>
+                    <span class="material-symbols-outlined text-blue-400 hidden dark:block text-[20px]">dark_mode</span>
+                </button>
             </div>
+
         </nav>
         `;
 
