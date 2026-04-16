@@ -432,12 +432,8 @@
                 main_image_url: galleryAssets[0] || '',
                 gallery_urls: galleryAssets,
                 colors: colorsMap, 
-                storage: [
-                    { label: document.getElementById('cap1').value, price: parseFloat(document.getElementById('cap1Price').value) },
-                    { label: document.getElementById('cap2').value, price: parseFloat(document.getElementById('cap2Price').value) },
-                    { label: document.getElementById('cap3').value, price: parseFloat(document.getElementById('cap3Price').value) }
-                ],
                 // Specs para product-detail.html
+
                 spec_dark_title: document.getElementById('specBuild').value || 'Build Quality',
                 processor_description: document.getElementById('specProc').value,
                 display_tech_description: document.getElementById('specDisp').value,
@@ -502,17 +498,8 @@
             }
             renderColorVariants();
 
-            
-            if(p.storage && p.storage.length >= 3) {
-                document.getElementById('cap1').value = p.storage[0].label;
-                document.getElementById('cap1Price').value = p.storage[0].price;
-                document.getElementById('cap2').value = p.storage[1].label;
-                document.getElementById('cap2Price').value = p.storage[1].price;
-                document.getElementById('cap3').value = p.storage[2].label;
-                document.getElementById('cap3Price').value = p.storage[2].price;
-            }
-
             document.getElementById('specBuild').value = p.spec_dark_title || '';
+
             document.getElementById('specProc').value = p.processor_description || '';
             document.getElementById('specDisp').value = p.display_tech_description || '';
             document.getElementById('specCam').value = p.battery_life_description || '';
