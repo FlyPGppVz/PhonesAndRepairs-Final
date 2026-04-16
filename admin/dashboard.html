@@ -424,34 +424,57 @@
                 // Abrir el modal
                 openAddModal();
                 
-                // Rellenar campos básicos
+                // Rellenar campos básicos (usando nombres EXACTOS del form)
                 const f = document.getElementById('productForm');
-                f.dataset.editId = p.id; // Guardamos el ID para saber que es edición
+                f.dataset.editId = p.id; 
                 
+                // Campos de Identidad
                 f.name.value = p.name || '';
-                f.category.value = p.category || '';
+                if(f.category) f.category.value = p.category || 'Other';
                 f.price.value = p.price || 0;
-                f.main_image_url.value = p.main_image_url || '';
-                f.marketing_title.value = p.marketing_title || '';
-                f.marketing_description.value = p.marketing_description || '';
-                f.performance_tag.value = p.performance_tag || '';
-                f.screen_specs.value = p.screen_specs || '';
-                f.camera_specs.value = p.camera_specs || '';
-                f.battery_specs.value = p.battery_specs || '';
+                
+                // Campos de Marketing (Legacy & New)
+                if(f.subtitle) f.subtitle.value = p.subtitle || p.marketing_description || '';
+                if(f.marketing_title) f.marketing_title.value = p.marketing_title || '';
+                if(f.marketing_description) f.marketing_description.value = p.marketing_description || '';
+                if(f.new_arrival_text) f.new_arrival_text.value = p.new_arrival_text || 'New Arrival';
+
+                // Imágenes
+                if(f.main_image) f.main_image.value = p.main_image_url || '';
+                
+                // Performance & Specs
+                if(f.performance_title) f.performance_title.value = p.performance_title || 'Performance';
+                if(f.performance_subtitle) f.performance_subtitle.value = p.performance_subtitle || '';
+                
+                // Parseamos las estadísticas si vienen en formato descriptivo
+                if(p.display_tech_description && p.display_tech_description.includes('|')) {
+                    const parts = p.display_tech_description.split('|');
+                    if(f.stat1) f.stat1.value = parts[0].trim();
+                    if(f.stat1_lbl) f.stat1_lbl.value = parts[1].trim();
+                }
+
+                if(p.battery_life_description && p.battery_life_description.includes('|')) {
+                    const parts = p.battery_life_description.split('|');
+                    if(f.stat2) f.stat2.value = parts[0].trim();
+                    if(f.stat2_lbl) f.stat2_lbl.value = parts[1].trim();
+                }
 
                 // Sincronizar colores si existen
                 const colorManager = document.getElementById('live-color-manager');
                 colorManager.innerHTML = '';
-                if (p.colors && p.colors.length > 0) {
-                    p.colors.forEach(c => {
+                if (p.colors) {
+                    // Si es un objeto (legacy) o array (nuevo)
+                    const colorData = Array.isArray(p.colors) ? p.colors : Object.entries(p.colors).map(([hex, image]) => ({ hex, image, name: 'Option' }));
+                    
+                    colorData.forEach(c => {
                         const div = document.createElement('div');
-                        div.className = 'bg-slate-50 dark:bg-white/5 p-4 rounded-xl space-y-3';
+                        div.className = 'color-row bg-slate-50 dark:bg-white/5 p-4 rounded-xl space-y-3';
                         div.innerHTML = `
                             <div class="flex gap-2">
-                                <input type="text" placeholder="Color Name" class="flex-1 bg-transparent border-b border-slate-200 text-xs py-1" value="${c.name || ''}" oninput="syncColors()">
-                                <input type="color" class="w-8 h-8 rounded-full overflow-hidden border-0 p-0" value="${c.hex || '#000000'}" oninput="syncColors()">
+                                <input type="text" placeholder="Color Name" class="flex-1 bg-transparent border-b border-slate-200 text-xs py-1" value="${c.name || ''}" oninput="liveUpdate()">
+                                <input type="color" class="w-8 h-8 rounded-full overflow-hidden border-0 p-0" value="${c.hex || '#000000'}" oninput="liveUpdate()">
                             </div>
-                            <input type="text" placeholder="Image URL" class="w-full bg-transparent border-b border-slate-200 text-[10px] py-1" value="${c.image || ''}" oninput="syncColors()">
+                            <input type="text" placeholder="Image URL" class="w-full bg-transparent border-b border-slate-200 text-[10px] py-1" value="${c.image || ''}" oninput="liveUpdate()">
                         `;
                         colorManager.appendChild(div);
                     });
@@ -459,7 +482,10 @@
                 
                 // Actualizar la previsualización
                 liveUpdate();
-            } catch (err) { alert('Error al cargar producto para editar'); }
+            } catch (err) { 
+                console.error("Error cargando producto:", err);
+                alert('Error al cargar producto para editar. Revisa la consola para más detalles.'); 
+            }
         }
 
         async function deleteProduct(id) {
