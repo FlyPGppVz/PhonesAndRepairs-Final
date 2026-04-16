@@ -276,17 +276,42 @@
         let colorVariants = [];
 
         // STARTUP
+        // STARTUP
         window.onload = async () => {
-             const user = await AuthManager.checkAdmin();
-             if(!user) {
-                 window.location.href = '../login-final-nav.html';
-                 return;
-             }
-             document.getElementById('userEmail').textContent = user.email;
-             document.getElementById('authGuard').classList.add('hidden');
-             document.getElementById('mainApp').classList.replace('opacity-0', 'opacity-100');
-             loadInventory();
+            try {
+                // 1. Obtener sesión actual
+                const { data: { session }, error: sessionError } = await _supabase.auth.getSession();
+                
+                if (sessionError || !session) {
+                    window.location.href = '../login-final-nav.html';
+                    return;
+                }
+
+                // 2. Verificar si el usuario está en la tabla de admins
+                const { data: adminRecord, error: adminError } = await _supabase
+                    .from('admins')
+                    .select('*')
+                    .eq('user_id', session.user.id)
+                    .maybeSingle();
+
+                if (adminError || !adminRecord) {
+                    alert('Acceso restringido: Solo administradores autorizados.');
+                    window.location.href = '../index.html';
+                    return;
+                }
+
+                // 3. Acceso concedido
+                document.getElementById('userEmail').textContent = session.user.email;
+                document.getElementById('authGuard').classList.add('hidden');
+                document.getElementById('mainApp').classList.replace('opacity-0', 'opacity-100');
+                loadInventory();
+                
+            } catch (err) {
+                console.error('Master Auth Sync Error:', err);
+                window.location.href = '../login-final-nav.html';
+            }
         };
+
 
         // INVENTORY CORE
         async function loadInventory() {
