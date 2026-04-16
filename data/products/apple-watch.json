@@ -1,0 +1,57 @@
+{
+  "title": "Apple Watch",
+  "brand": "Apple Watch",
+  "year": 2025,
+  "price": 1500,
+  "colors": [
+    "#3b82f6",
+    "#3b82f6",
+    "#3b82f6"
+  ],
+  "description": "Hero Description",
+  "category": "iphone",
+  "specBuildIntegrity": "The best Watch",
+  "marketingTitle": "Engineering Title",
+  "marketingSubtitle": "Engineering Subtitle",
+  "specProcessor": "Processor Name",
+  "specRAM": "RAM / Memory",
+  "specGPU": "Graphics / GPU",
+  "specDisplay": "Display Type",
+  "specBrightness": "Brightness (nits)",
+  "specRefresh": "Refresh Rate",
+  "specStorage": "Additional Storage Info",
+  "specCamera": "Camera Megapixels",
+  "specBattery": "Battery Info",
+  "storage": [
+    {
+      "label": "128",
+      "extra": 0
+    },
+    {
+      "label": "256",
+      "extra": 200
+    },
+    {
+      "label": "1",
+      "extra": 400
+    }
+  ],
+  "revs": [
+    {
+      "name": "Jonathan D.",
+      "comment": "The build quality and the level of engineering precision is simply unmatched."
+    },
+    {
+      "name": "Sarah A.",
+      "comment": "Outstanding performance across all my professional workflows."
+    }
+  ],
+  "images": [
+    "./assets/img/products/p_1776304685826_0_Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png",
+    "./assets/img/products/p_1776304685830_1_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
+    "./assets/img/products/p_1776304685834_2_Apple-Watch-Series-11-42mm-Silver-Aluminum-Case-Purple-Fog-Sport-Band.png"
+  ],
+  "fillerImage": "./assets/img/products/fill_1776304693933_charguers_png.png",
+  "url": "./products/apple-watch.html",
+  "id": "apple-watch"
+}
