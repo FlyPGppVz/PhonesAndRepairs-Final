@@ -133,7 +133,21 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2">
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Product Name</label>
-                                <input type="text" id="title" required class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm">
+                                <div class="relative">
+                                    <input type="text" id="title" required oninput="triggerAssistant()" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm font-medium">
+                                    
+                                    <!-- SMART ASSISTANT BUBBLE -->
+                                    <div id="autofillPrompt" class="hidden absolute right-4 top-1/2 -translate-y-1/2 animate-bounce-horizontal">
+                                        <button type="button" 
+                                                onclick="confirmAutofill()" 
+                                                onmouseenter="previewData(true)" 
+                                                onmouseleave="previewData(false)"
+                                                class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-4 py-2 rounded-full shadow-lg flex items-center gap-2 transition-all">
+                                            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                                            Auto-fill?
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <!-- BRAND SEARCHABLE SELECT -->
                             <div class="relative group/brand">
@@ -322,6 +336,93 @@
         let selectedImages = []; 
         let fillerImage = null; // {name, base64}
         let dynamicColors = ['#1c1c1c', '#f2f2f2', '#d1713f']; // Initial variants
+
+        // SMART KNOWLEDGE DATABASE
+        const PRODUCT_KNOWLEDGE = {
+            "iphone 17 pro max": { 
+                brand: "Apple", category: "iphone", year: 2026, processor: "A19 Pro Chip", display: "7.1-inch Super Retina XDR", colors: ["#1c1c1c", "#f2f2f2", "#d1713f"], 
+                integrity: "Grade 5 Titanium enclosure with brushed obsidian texture.", mktTitle: "Engineering Precision.", mktSub: "The fastest chip ever in a smartphone."
+            },
+            "lenovo nitro v 15": { 
+                brand: "Lenovo", category: "computing", year: 2024, processor: "Intel Core i7-13620H", display: "15.6-inch FHD 144Hz IPS", colors: ["#000000", "#1a1a1a"], 
+                integrity: "Built with military-grade durability and dual-fan cooling.", mktTitle: "Dominate the Game.", mktSub: "Unleash performance with RTX Graphics."
+            },
+            "sony playstation 5 pro": { 
+                brand: "Sony", category: "consoles", year: 2024, processor: "AMD Ryzen Zen 2 Custom", display: "8K Output Support", colors: ["#ffffff", "#1e1e1e"], 
+                integrity: "Liquid metal cooling with high-velocity airflow.", mktTitle: "Play Has No Limits.", mktSub: "Depper immersion with RTX Ray Tracing."
+            }
+        };
+
+        let currentSuggestion = null;
+
+        function triggerAssistant() {
+            const titleInput = document.getElementById('title');
+            const val = titleInput.value.toLowerCase().trim();
+            const prompt = document.getElementById('autofillPrompt');
+            
+            // Flexible match
+            currentSuggestion = null;
+            for(let key in PRODUCT_KNOWLEDGE) {
+                if(val.length > 4 && (key.includes(val) || val.includes(key))) {
+                    currentSuggestion = PRODUCT_KNOWLEDGE[key];
+                    break;
+                }
+            }
+
+            if (currentSuggestion) {
+                prompt.classList.remove('hidden');
+            } else {
+                prompt.classList.add('hidden');
+            }
+        }
+
+        function previewData(active) {
+            if (!currentSuggestion) return;
+            const s = currentSuggestion;
+            
+            setGhostText('brandSearch', s.brand, active);
+            setGhostText('specProcessor', s.processor, active);
+            setGhostText('specDisplay', s.display, active);
+            setGhostText('year', s.year, active);
+            setGhostText('specBuildIntegrity', s.integrity, active);
+            setGhostText('marketingTitle', s.mktTitle, active);
+            setGhostText('marketingSubtitle', s.mktSub, active);
+        }
+
+        function setGhostText(id, text, active) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (active) {
+                if (el.value === '') {
+                    el.placeholder = text;
+                    el.classList.add('italic', 'opacity-50');
+                }
+            } else {
+                el.placeholder = '';
+                el.classList.remove('italic', 'opacity-50');
+            }
+        }
+
+        function confirmAutofill() {
+            if (!currentSuggestion) return;
+            const s = currentSuggestion;
+            
+            document.getElementById('brandSearch').value = s.brand;
+            document.getElementById('brand').value = s.brand;
+            document.getElementById('specProcessor').value = s.processor;
+            document.getElementById('specDisplay').value = s.display;
+            document.getElementById('year').value = s.year;
+            document.getElementById('category').value = s.category;
+            document.getElementById('specBuildIntegrity').value = s.integrity;
+            document.getElementById('marketingTitle').value = s.mktTitle;
+            document.getElementById('marketingSubtitle').value = s.mktSub;
+            
+            dynamicColors = [...s.colors];
+            renderColors();
+
+            document.getElementById('autofillPrompt').classList.add('hidden');
+            showToast(`Auto-filled ${s.brand} specifications!`, 'success');
+        }
 
         const BRAND_DATA = {
             "Top Brands": ["Apple", "Samsung", "PlayStation", "Xbox"],
