@@ -49,17 +49,17 @@
         <!-- Services Bento -->
         <section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8" id="services">
             <!-- iPhone -->
-            <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/10 shadow-sm transition-colors duration-500">
+            <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#121212] rounded-3xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/10 shadow-sm transition-colors duration-500">
                 <div class="flex-1 space-y-6">
                     <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary text-3xl">smartphone</span>
-                        <h2 class="text-[1.75rem] font-semibold">iPhone Repairs</h2>
+                        <span class="material-symbols-outlined text-primary text-3xl font-bold">smartphone</span>
+                        <h2 class="text-[1.75rem] font-bold">iPhone Repairs</h2>
                     </div>
-                    <p class="text-on-surface-variant">Complete restoration for all iPhone generations. Original parts and certified care.</p>
-                    <button onclick="openQuoteModal('iPhone')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get iPhone Quote</button>
+                    <p class="text-on-surface-variant leading-relaxed">Complete restoration for all iPhone generations. Original parts and certified care.</p>
+                    <button onclick="openQuoteModal('iPhone')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get iPhone Quote</button>
                 </div>
                 <div class="flex-1">
-                    <img class="w-full h-64 h-auto rounded-2xl object-cover" src="./assets/images/Services/service_iphone_repair.jpg" alt="iPhone Repair">
+                    <img class="w-full h-64 md:h-80 rounded-2xl object-cover" src="./assets/images/Services/service_iphone_repair.jpg" alt="iPhone Repair">
                 </div>
             </div>
 
@@ -67,9 +67,9 @@
             <div class="md:col-span-4 bg-slate-900 text-white rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
                 <div class="relative z-10">
                     <span class="material-symbols-outlined text-primary text-3xl mb-6">videogame_asset</span>
-                    <h2 class="text-[1.75rem] font-semibold mb-4">Consoles</h2>
-                    <p class="text-white/60 mb-6 italic">PlayStation, Xbox & Nintendo.</p>
-                    <button onclick="openQuoteModal('Console')" class="px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all active:scale-95">Request Service</button>
+                    <h2 class="text-[1.75rem] font-bold mb-4 tracking-tight">Consoles</h2>
+                    <p class="text-white/60 mb-6 italic leading-relaxed">PlayStation, Xbox & Nintendo specialized care.</p>
+                    <button onclick="openQuoteModal('Console')" class="px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">Request Service</button>
                 </div>
                 <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-all duration-700 transform group-hover:rotate-12 group-hover:scale-110">
                    <span class="material-symbols-outlined text-[12rem]">videogame_asset</span>
@@ -77,17 +77,17 @@
             </div>
 
             <!-- Android Repairs -->
-            <div class="md:col-span-6 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
+            <div class="md:col-span-6 bg-surface-container-lowest dark:bg-[#121212] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-green-500 text-3xl">android</span>
-                    <h2 class="text-[1.75rem] font-semibold">Android Repairs</h2>
+                    <h2 class="text-[1.75rem] font-bold">Android Repairs</h2>
                 </div>
-                <div class="aspect-[16/9] overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="./assets/images/Services/service_android_repair.jpg" alt="Android Repair">
+                <div class="aspect-video overflow-hidden rounded-2xl">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" src="./assets/images/Services/service_android_repair.jpg" alt="Android Repair">
                 </div>
                 <div class="flex items-center justify-between">
-                    <p class="text-on-surface-variant text-sm max-w-[200px]">Samsung Galaxy, Pixels & more.</p>
-                    <button onclick="openQuoteModal('Android')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
+                    <p class="text-on-surface-variant text-sm font-medium tracking-tight">Samsung Galaxy, Pixels & more.</p>
+                    <button onclick="openQuoteModal('Android')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
             </div>
 
@@ -95,36 +95,14 @@
             <div class="md:col-span-6 bg-surface-container-high dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-amber-500 text-3xl">tablet_mac</span>
-                    <h2 class="text-[1.75rem] font-semibold">iPad & Tablets</h2>
+                    <h2 class="text-[1.75rem] font-bold">iPad & Tablets</h2>
                 </div>
-                <div class="aspect-[16/9] overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="./assets/images/Services/service_tablet_repair.jpg" alt="Tablet Repair">
+                <div class="aspect-video overflow-hidden rounded-2xl">
+                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" src="./assets/images/Services/service_tablet_repair.jpg" alt="Tablet Repair">
                 </div>
                 <div class="flex items-center justify-between">
-                    <p class="text-on-surface-variant text-sm max-w-[200px]">Screen & Battery specialists.</p>
-                    <button onclick="openQuoteModal('iPad/Tablet')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Trust Indicators -->
-        <section class="max-w-[1440px] mx-auto px-8 mt-24 py-16 bg-slate-50 dark:bg-[#0f0f0f] rounded-3xl border border-slate-200 dark:border-white/5 transition-colors duration-500">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                    <p class="text-[2.5rem] font-bold text-primary mb-1">15k+</p>
-                    <p class="text-sm text-on-surface-variant font-medium">Repairs Completed</p>
-                </div>
-                <div>
-                    <p class="text-[2.5rem] font-bold text-primary mb-1">90d</p>
-                    <p class="text-sm text-on-surface-variant font-medium">Service Warranty</p>
-                </div>
-                <div>
-                    <p class="text-[2.5rem] font-bold text-primary mb-1">4.9</p>
-                    <p class="text-sm text-on-surface-variant font-medium">Customer Rating</p>
-                </div>
-                <div>
-                    <p class="text-[2.5rem] font-bold text-primary mb-1">1hr</p>
-                    <p class="text-sm text-on-surface-variant font-medium">Avg. Screen Repair</p>
+                    <p class="text-on-surface-variant text-sm font-medium tracking-tight">Screen & Battery specialists.</p>
+                    <button onclick="openQuoteModal('iPad/Tablet')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
             </div>
         </section>
@@ -134,23 +112,23 @@
             <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuoteModal()"></div>
             <div class="relative bg-white dark:bg-[#1a1c1e] w-full max-w-xl rounded-[2.5rem] shadow-2xl p-8 md:p-12 transition-all duration-500 transform scale-95 opacity-0" id="modalContent">
                 <h2 class="text-3xl font-black mb-2" id="modalTitle">Request Quote</h2>
-                <p class="text-slate-500 mb-8 text-sm">Tell us about your device issue and we'll get back to you with a free estimate.</p>
+                <p class="text-slate-500 mb-8 text-sm font-medium">Tell us about your device issue and we'll get back to you with a free estimate.</p>
                 
                 <form id="quoteForm" class="space-y-6">
                     <input type="hidden" id="device_category" name="device_category">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-1">Your Name</label>
-                            <input type="text" name="name" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm">
+                            <input type="text" name="name" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold">
                         </div>
                         <div class="space-y-2">
                             <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-1">Email Address</label>
-                            <input type="email" name="email" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm">
+                            <input type="email" name="email" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold">
                         </div>
                     </div>
                     <div class="space-y-2">
                         <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-1">Issue Description</label>
-                        <textarea name="description" required rows="4" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Ex: Cracked screen, battery draining fast, water damage..."></textarea>
+                        <textarea name="description" required rows="4" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold placeholder:font-normal" placeholder="Ex: Cracked screen, battery draining fast, water damage..."></textarea>
                     </div>
                     <button type="submit" class="w-full py-5 bg-primary text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">Send Request</button>
                 </form>
@@ -164,7 +142,7 @@
         </div>
     </main>
 
-    <!-- FABs -->
+    <!-- FABs (Directly integrated as requested) -->
     <a href="https://api.whatsapp.com/send/?phone=13136268888&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="fixed bottom-[160px] right-6 z-[10001] group cursor-pointer animate-fade-in-up" aria-label="Chat on WhatsApp" style="animation-delay: 0.5s;">
         <div class="relative bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center pointer-events-auto">
             <div class="absolute inset-0 bg-[#25D366]/40 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping pointer-events-none"></div>
@@ -177,16 +155,16 @@
         <div class="relative bg-gradient-to-tr from-primary to-blue-500 text-white p-3 rounded-full shadow-2xl hover:shadow-primary/50 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center gap-3 pointer-events-auto">
             <div class="absolute inset-0 bg-primary/40 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping pointer-events-none"></div>
             <span class="material-symbols-outlined relative z-10 group-hover:animate-bounce">support_agent</span>
-            <span class="max-w-0 overflow-hidden group-hover:max-w-[200px] transition-all duration-500 ease-out font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pr-1 relative z-10">
+            <span class="max-w-0 overflow-hidden group-hover:max-w-[200px] transition-all duration-500 ease-out font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pr-1 relative z-10 font-bold uppercase tracking-widest text-[10px]">
                 Service Area
             </span>
         </div>
     </a>
 
-    <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950 py-12">
-        <div class="max-w-7xl mx-auto px-8 text-center">
-            <div class="text-lg font-bold mb-4">CellphonesAndRepair</div>
-            <p class="text-xs text-slate-500">© 2024 CellphonesAndRepair. All rights reserved.</p>
+    <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950 py-12 text-center">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-xl font-bold mb-4">CellphonesAndRepair</div>
+            <p class="text-xs text-slate-500 font-medium">© 2024 CellphonesAndRepair. All rights reserved.</p>
         </div>
     </footer>
 
