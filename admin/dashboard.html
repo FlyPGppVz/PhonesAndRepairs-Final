@@ -440,16 +440,16 @@
 
         document.getElementById('productForm').onsubmit = async (e) => {
             e.preventDefault();
-            console.log("Publishing asset...");
+            console.log("🚀 Starting publish process...");
             
-            // Fix: Button is outside form, so select it globally or via form id
             const btn = document.querySelector('button[type="submit"]');
             const data = new FormData(e.target);
             
             btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin mr-2">...</span> Publishing`;
+            btn.innerHTML = `<span class="animate-spin mr-2">...</span> PUBLISHING`;
 
             try {
+                // 1. Data Collection
                 const colorMap = {};
                 document.querySelectorAll('.color-row').forEach(row => {
                     const hex = row.querySelector('input[type="color"]').value;
@@ -462,10 +462,10 @@
                     if(i.value) galleryArr.push(i.value); 
                 });
 
-                const product = {
+                const productData = {
                     name: data.get('name') || 'Unnamed Asset',
                     subtitle: data.get('subtitle') || '',
-                    description: data.get('subtitle') || '', // Map subtitle to description for shop grid compatibility
+                    description: data.get('subtitle') || '',
                     price: parseFloat(data.get('price')) || 0,
                     category: data.get('category') || 'Other',
                     new_arrival_text: data.get('new_arrival_text') || 'New Arrival',
@@ -484,23 +484,35 @@
                     stock_quantity: 10
                 };
 
-                const { data: insertResult, error } = await _supabase.from('products').insert([product]).select();
+                console.log("📦 Payload ready:", productData);
+
+                // 2. Database Insert (Simple version without .select() to avoid RLS hangs)
+                console.log("📡 Sending to Supabase...");
+                const { error } = await _supabase
+                    .from('products')
+                    .insert([productData]);
 
                 if (error) {
-                    console.error("DB Error:", error);
-                    alert('Error al publicar: ' + error.message + '\nDetalle: ' + (error.details || 'Revisar consola'));
+                    console.error("❌ Supabase Error:", error);
+                    let msg = `Error: ${error.message}`;
+                    if (error.message.includes('column')) {
+                        msg += '\n\nATENCIÓN: Parece que faltan columnas en tu tabla de Supabase. ¿Ejecutaste el código SQL?';
+                    }
+                    alert(msg);
                 } else {
-                    console.log("Success:", insertResult);
+                    console.log("✅ Success!");
+                    alert('¡Producto publicado con éxito!');
                     closeProductModal();
                     loadInventory();
-                    alert('¡Publicado con éxito! El producto ahora aparecerá en la tienda.');
                 }
+
             } catch (err) {
-                console.error("Critical:", err);
-                alert('Ocurrió un error crítico en el navegador.');
+                console.error("🔥 Critical Crash:", err);
+                alert('Error crítico: ' + err.message);
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = 'Publish';
+                console.log("🏁 Process finished.");
             }
         };
 
