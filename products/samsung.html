@@ -1,0 +1,364 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Samsung | Phones & Repairs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../css/style.css"><script src="../js/tailwind-config.js"></script>
+    <script>
+        // Anti-flicker theme initialization
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <script id="anti_flicker">
+        (function() {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') document.documentElement.classList.add('dark');
+            else document.documentElement.classList.remove('dark');
+        })();
+    </script>
+</head>
+<body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500">
+<!-- TopNavBar Updated as per COMPONENTS_95 - Sync 2026-04-11 -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
+<nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto">
+<!-- Left Column: Logo -->
+<div class="flex-1 flex items-center">
+<a class="active:opacity-70 transition-all cursor-pointer" href="../index.html">
+<img alt="CellphonesAndRepair Logo" class="h-12 w-auto object-contain scale-95" data-alt="Professional CellphonesAndRepair brand logo" src="../assets/images/logo-transparent.png">
+</a>
+</div>
+
+<!-- Center Column: Navigation Links -->
+<div class="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[15px] font-medium tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="../index.html">Home</a>
+
+<!-- Shop Item with Full-Width Dropdown -->
+<div class="group h-full flex items-center">
+<a class="text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer flex items-center gap-1 py-4" href="../shop-fully-connected.html">
+Shop
+<span class="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+</a>
+<!-- Full-Width Mega Menu -->
+<div class="fixed top-[64px] left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-3xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 z-50 py-16">
+<div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-12">
+<!-- iPhones Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">iPhones</h4>
+<ul class="space-y-4">
+<li><a href="../shop-fully-connected.html?category=iPhones" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Shop All iPhone</a></li>
+<li><a href="./iphone-17-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 17 Pro Max</a></li>
+<li><a href="./iphone-16-pro-max-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">iPhone 16 Pro Max</a></li>
+<li><a href="../shop-fully-connected.html?category=iPhones" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Compare Models</a></li>
+</ul>
+</div>
+
+<!-- Android Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Android</h4>
+<ul class="space-y-4">
+<li><a href="./samsung-s25-ultra-detail.html" class="text-2xl font-semibold text-slate-800 dark:text-white hover:text-blue-500 transition-all">Samsung Galaxy</a></li>
+<li><a href="./samsung-s25-ultra-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S25 Ultra</a></li>
+<li><a href="../shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">S24 Series</a></li>
+<li><a href="../shop-fully-connected.html?category=Samsung" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Certified Androids</a></li>
+</ul>
+</div>
+
+<!-- iPads & Watch Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Ecosystem</h4>
+<ul class="space-y-4">
+<li><a href="../shop-fully-connected.html?category=iPads" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">iPad</a></li>
+<li><a href="./product-detail-apple-watch-ultra-2-final.html" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Apple Watch</a></li>
+<li><a href="../shop-fully-connected.html?category=Consoles" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Consoles & Gaming</a></li>
+</ul>
+</div>
+
+<!-- Accessories Column -->
+<div>
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-8">Shop Selection</h4>
+<ul class="space-y-4">
+<li><a href="../shop-fully-connected.html?category=Accessories" class="text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-500 transition-colors">Essential Accessories</a></li>
+<li><a href="./chargers-and-cables-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cables & Power</a></li>
+<li><a href="./phone-cases-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">Cases & Protection</a></li>
+<li><a href="./airpods-detail.html" class="text-sm text-slate-500 hover:text-blue-500 transition-colors">AirPods & Audio</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./services-unified-nav.html">Services</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./contact-unified-nav.html">Contact</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer" href="./about-us-unified-nav.html">About Us</a>
+</div>
+
+<!-- Right Column: Icons & Search -->
+<div class="flex-1 flex items-center justify-end gap-5">
+<button class="lg:hidden material-symbols-outlined text-slate-600 dark:text-slate-400 text-2xl active:opacity-70 transition-opacity" id="mobileMenuBtn">menu</button>
+<div class="group relative hidden lg:flex items-center justify-end h-10 ml-4">
+<div class="flex items-center bg-transparent group-hover:bg-slate-100/90 dark:group-hover:bg-slate-800/90 rounded-full border border-transparent group-hover:border-slate-200/50 dark:group-hover:border-slate-700/50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] overflow-hidden w-9 group-hover:w-64 focus-within:w-64 h-9 group-hover:h-10 focus-within:h-10 focus-within:bg-slate-100/90 dark:focus-within:bg-slate-800/90 focus-within:border-slate-200/50 dark:focus-within:border-slate-700/50 cursor-pointer">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 group-focus-within:text-blue-500 dark:group-focus-within:text-blue-400 text-[18px] absolute left-1.5 z-10 pointer-events-none transition-colors duration-300">search</span>
+<input class="w-full h-full bg-transparent border-none focus:ring-0 text-[13px] pl-9 pr-4 opacity-0 group-hover:opacity-100 focus:opacity-100 placeholder:text-slate-400 dark:text-white transition-opacity duration-300 delay-100 outline-none" id="navSearchInput" placeholder="Search devices..." type="text">
+</div>
+</div>
+<div class="relative group" id="nav-cart-wrapper">
+<a href="./shopping-cart-final-nav.html" class="relative material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 text-[24px] scale-95 active:opacity-70 cursor-pointer" aria-label="View cart">shopping_cart</a>
+<span id="nav-cart-badge" class="hidden absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center pointer-events-none leading-none">0</span>
+<div class="absolute right-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+<div class="cupertino-glass bg-white/95 dark:bg-neutral-800/95 rounded-2xl shadow-2xl overflow-hidden min-w-[300px] p-5 border border-slate-200/50" id="nav-cart-dropdown">
+</div>
+</div>
+</div><div class="relative group">
+<button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors duration-300 scale-95 active:opacity-70 cursor-pointer">person</button>
+<div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
+<div class="cupertino-glass bg-white/90 dark:bg-neutral-800/90 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
+<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="./login-final-nav.html">Sign In</a>
+<a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="./create-account-final-nav.html">Create Account</a>
+<a class="hidden px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase mt-1" id="navMyAccountLink" href="./my-profile-final-nav.html">My Account</a>
+</div>
+</div>
+        <!-- Theme Toggle Toggle -->
+        <button id="themeToggle" class="relative p-2 rounded-full hover:bg-slate-100 dark:hover:bg-neutral-800 transition-all group overflow-hidden focus:outline-none ml-1 shadow-sm border border-slate-200/50 dark:border-white/5" aria-label="Toggle Theme">
+            <div class="relative w-[20px] h-[20px]">
+                <!-- Sun Icon -->
+                <svg class="absolute inset-0 w-full h-full text-amber-500 transition-all duration-300 transform dark:-rotate-180 dark:opacity-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M3 12h2.25m.386-6.364l1.591 1.591M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                </svg>
+                <!-- Moon Icon -->
+                <svg class="absolute inset-0 w-full h-full text-blue-400 transition-all duration-300 transform rotate-180 opacity-0 dark:rotate-0 dark:opacity-100 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+            </div>
+        </button>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-24 pb-20 px-4 md:px-8 max-w-[1440px] mx-auto">
+<!-- Hero Section: Editorial Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-24">
+<!-- Asymmetric Image Column -->
+<div class="lg:col-span-7 relative h-[600px] md:h-[800px] bg-surface-container dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col items-center justify-center p-8 md:p-12">
+<img id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="../assets/img/products/p_1776302653721_0_s25_ultra_Png.png">
+<div class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+<button class="color-btn group relative w-12 h-12 rounded-full bg-[#1c1c1c] active-color ring-2 ring-primary ring-offset-4 ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="../assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png" aria-label="Titanium Black"></button>
+<button class="color-btn group relative w-12 h-12 rounded-full bg-[#f2f2f2] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="../assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-white.png" aria-label="Titanium White"></button>
+<button class="color-btn group relative w-12 h-12 rounded-full bg-[#d1713f] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="../assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-orange-.png" aria-label="Cosmic Orange"></button>
+</div>
+<!-- Floating Detail Badge -->
+<div class="absolute bottom-10 left-10 p-6 bg-surface-container-lowest/80 backdrop-blur-md rounded-lg max-w-[240px]">
+<p class="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">Build Integrity</p>
+<p class="text-on-surface text-sm font-medium">Titanium Frame with Gorilla Armor.</p>
+</div>
+</div>
+<!-- Configuration Column -->
+<div class="lg:col-span-5 flex flex-col justify-center sticky top-24">
+<div class="mb-8">
+<span class="text-primary font-semibold tracking-wide text-xs uppercase mb-3 block">New Arrival</span>
+<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-4">Samsung</h1>
+<p class="text-on-surface-variant text-lg max-w-md mb-6">The ultimate smartphone experience.</p>
+<div class="product-price-container min-h-[60px] flex items-center">
+<div class="product-price text-3xl font-semibold text-on-surface transition-all">$3232.00</div>
+</div>
+</div>
+<!-- Storage Selector -->
+<div class="mb-10">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4 block">Select Capacity</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="storage-btn px-6 py-4 rounded-lg bg-primary-container text-on-primary-container ring-1 ring-primary font-semibold transition-all active:scale-95" data-price="$3,232">300</button>
+<button class="storage-btn px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all active:scale-95" data-price="$3,432">300</button>
+<button class="storage-btn px-6 py-4 rounded-lg bg-surface-container-lowest ring-1 ring-outline-variant/20 text-on-surface hover:ring-primary transition-all active:scale-95" data-price="$3,632">300</button>
+</div>
+</div>
+<!-- Action Group -->
+<div class="flex flex-col gap-4">
+<button class="w-full py-5 bg-primary text-on-primary rounded-full font-semibold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                        Add to Cart
+                        <span class="material-symbols-outlined text-xl">shopping_bag</span>
+</button>
+<button class="w-full py-5 bg-inverse-surface text-surface rounded-full font-semibold text-lg hover:bg-on-surface transition-colors">
+                        Buy Now
+                    </button>
+</div>
+<!-- USP Chips -->
+<div class="mt-12 grid grid-cols-2 gap-4 border-t border-surface-container pt-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span class="text-xs font-medium text-on-surface-variant">Free Express Shipping</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-xs font-medium text-on-surface-variant">2-Year Limited Warranty</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Specs Section -->
+<section class="mb-24">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold tracking-tight mb-4">Galaxy AI is Here.</h2>
+<p class="text-on-surface-variant text-lg">The ultimate smartphone experience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[600px]">
+<!-- Processor Block -->
+<div class="md:col-span-2 md:row-span-2 bg-inverse-surface text-white rounded-lg p-10 flex flex-col justify-between overflow-hidden relative">
+<div>
+<h3 class="text-3xl font-bold mb-4">Snapdragon 8 Gen 3 for Galaxy</h3>
+<p class="text-white/60 text-lg leading-relaxed max-w-sm">The first 3-nanometer chip in the industry. Up to 20% faster CPU and 6-core GPU for console-level gaming.</p>
+</div>
+<div class="relative h-48 mt-8">
+<img class="absolute -bottom-10 -right-10 w-64 h-64 object-contain opacity-50" src="../assets/img/products/fill_1776302661104_iphone-air-black-alternate.jpeg">
+</div>
+</div>
+<!-- Display Block -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-lg p-10 flex flex-col justify-between border border-outline-variant/10">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="text-2xl font-bold mb-2">6.8-inch QHD+ Dynamic AMOLED 2X</h3>
+<p class="text-on-surface-variant text-sm">6.9" ProMotion technology with Always-On display.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">edgesensor_high</span>
+</div>
+<div class="flex items-end gap-8">
+<div>
+<p class="text-3xl font-bold"></p>
+<p class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Peak Brightness</p>
+</div>
+<div>
+<p class="text-3xl font-bold"></p>
+<p class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Refresh Rate</p>
+</div>
+</div>
+</div>
+<!-- Camera Block -->
+<div class="bg-surface-container-high rounded-lg p-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-weight="fill">camera_enhance</span>
+<h3 class="font-bold">Pro Camera System</h3>
+<p class="text-xs text-on-surface-variant mt-2">200MP Main | 100x Space Zoom</p>
+</div>
+<!-- Battery Block -->
+<div class="bg-surface-container-low rounded-lg p-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">battery_charging_full</span>
+<h3 class="font-bold">All-Day Power</h3>
+<p class="text-xs text-on-surface-variant mt-2">5000mAh | 45W Fast Charging</p>
+</div>
+</div>
+</section>
+<!-- Customer Reviews Section: High-Fidelity List -->
+<section class="max-w-4xl mx-auto mb-24">
+<div class="flex items-end justify-between mb-12 border-b border-surface-container pb-6">
+<div>
+<h2 class="text-3xl font-bold tracking-tight">Verified Feedback</h2>
+<div class="flex items-center gap-2 mt-2">
+<div class="flex text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="text-sm font-semibold">4.8 out of 5 based on 2,490 reviews</span>
+</div>
+</div>
+<button class="px-6 py-3 rounded-full border border-outline-variant/30 text-sm font-semibold hover:bg-surface-container transition-colors">Write a Review</button>
+</div>
+<div class="space-y-8">
+<!-- Review 1 -->
+<div class="p-8 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface-variant">JD</div>
+<div>
+<p class="text-sm font-bold">Jonathan D.</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-medium">Verified Purchase</p>
+</div>
+</div>
+<span class="text-xs text-on-surface-variant font-medium italic">2 days ago</span>
+</div>
+<h4 class="font-bold mb-2">Unmatched performance</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm">The transition to titanium is incredible. You can really feel the weight difference, and the A19 Pro chip handles heavy video editing like a breeze. The Black Titanium is the most elegant finish yet.</p>
+</div>
+<!-- Review 2 -->
+<div class="p-8 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-on-surface-variant">SA</div>
+<div>
+<p class="text-sm font-bold">Sarah A.</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-medium">Verified Purchase</p>
+</div>
+</div>
+<span class="text-xs text-on-surface-variant font-medium italic">1 week ago</span>
+</div>
+<h4 class="font-bold mb-2">The camera is a game changer</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm">The 5x optical zoom is finally where I need it to be for travel photography. Low light performance on the 48MP main sensor is noticeably better than last year.</p>
+</div>
+</div>
+<div class="mt-12 text-center">
+<button class="text-primary font-bold flex items-center gap-2 mx-auto hover:underline underline-offset-4 transition-all">
+                    View All 2,490 Reviews
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 px-8 py-16 max-w-7xl mx-auto">
+<div class="col-span-2 lg:col-span-1">
+<div class="font-semibold text-slate-900 dark:text-white mb-4">CellphonesAndRepair</div>
+<p class="font-sans text-sm text-slate-500 dark:text-slate-400 max-w-xs">Precision engineering for your digital life. Repairs and accessories for the modern professional.</p>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white">Services</p>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="#">iPhone Repair</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="#">Android Repair</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="#">Warranty</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white">Products</p>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="#">Accessories</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="./sustainability.html">Sustainability</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="./careers.html">Careers</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white">Legal</p>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="./privacy-policy-unified-nav.html">Privacy Policy</a>
+<a class="font-sans text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:underline transition-all underline-offset-4" href="./services-unified-nav.html">Terms of Service</a>
+</div>
+</div>
+<div class="px-8 py-8 border-t border-slate-200/50 dark:border-slate-800/50 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-sans text-sm text-slate-500 dark:text-slate-400">© 2024 CellphonesAndRepair. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-400">public</span>
+<span class="material-symbols-outlined text-slate-400">language</span>
+</div>
+</div>
+</footer>
+<script src="../js/cart.js"></script><script src="../js/main.js">
+</script>
+<!-- No inline scripts needed, using global js/main.js -->
+
+
+</body></html>
+
+
+
+
+
+
+
+
+
+
+
+
