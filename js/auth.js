@@ -30,16 +30,21 @@ const AuthManager = {
     // Actualizar elementos de la Nav Bar (Sign In -> Profile / My Account)
     // Verificar si el usuario es Admin
     async checkAdminStatus(userId) {
-        const { data, error } = await _supabase
-            .from('admins')
-            .select('*')
-            .eq('user_id', userId)
-            .single();
+        try {
+            const { data, error } = await _supabase
+                .from('admins')
+                .select('user_id')
+                .eq('user_id', userId)
+                .maybeSingle();
 
-        if (data) {
-            localStorage.setItem('is_admin', 'true');
-            this.showAdminLink();
-        } else {
+            if (data) {
+                localStorage.setItem('is_admin', 'true');
+                this.showAdminLink();
+            } else {
+                localStorage.setItem('is_admin', 'false');
+            }
+        } catch (err) {
+            console.error('Error verificando admin:', err);
             localStorage.setItem('is_admin', 'false');
         }
     },
