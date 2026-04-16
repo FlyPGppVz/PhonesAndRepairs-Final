@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useCart } from '@/context/CartContext';
 
 interface Variant {
   color_hex: string;
@@ -22,6 +23,12 @@ interface Product {
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const [activeVariant, setActiveVariant] = useState(product.variants[0] || { color_hex: '', image_url: '', color_name: '' });
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart(product, activeVariant);
+    alert(`${product.title} (${activeVariant.color_name}) añadido al carrito`);
+  };
 
   return (
     <main className="pt-24 pb-20 px-4 md:px-8 max-w-[1440px] mx-auto min-h-screen">

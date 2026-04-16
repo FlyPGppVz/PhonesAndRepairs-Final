@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
+import { useCart } from '@/context/CartContext';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -29,6 +30,8 @@ export default function Navbar() {
     router.refresh();
   };
 
+  const { totalItems } = useCart();
+
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900 dark:text-white">
       <nav className="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto h-16">
@@ -50,7 +53,15 @@ export default function Navbar() {
 
         <div className="flex-1 flex items-center justify-end gap-5">
           <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[22px] hover:text-blue-500 transition-colors">search</button>
-          <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[22px] hover:text-blue-500 transition-colors">shopping_cart</button>
+          
+          <Link href="/cart" className="relative group">
+            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[22px] hover:text-blue-500 transition-colors">shopping_cart</span>
+            {totalItems > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </Link>
           
           {user ? (
             <div className="flex items-center gap-4">
