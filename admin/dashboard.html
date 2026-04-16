@@ -332,7 +332,7 @@
                             <div class="flex justify-between items-start">
                                 <div>
                                     <h4 class="font-black text-xl tracking-tighter truncate leading-tight mb-1">${p.name}</h4>
-                                    <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">${p.category} | ${p.brand || 'Global'}</span>
+                                    <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">${p.category}</span>
                                 </div>
                                 <span class="text-blue-600 font-black italic">$${p.price}</span>
                             </div>
@@ -419,7 +419,6 @@
 
             const product = {
                 name: document.getElementById('title').value,
-                brand: document.getElementById('brand').value,
                 price: parseFloat(document.getElementById('price').value),
                 category: document.getElementById('category').value,
                 description: document.getElementById('description').value,
@@ -479,7 +478,6 @@
             document.getElementById('editId').value = p.id;
             
             document.getElementById('title').value = p.name;
-            document.getElementById('brand').value = p.brand || '';
             document.getElementById('price').value = p.price;
             document.getElementById('category').value = p.category;
             document.getElementById('description').value = p.description || '';
