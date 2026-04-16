@@ -76,6 +76,14 @@ const NavbarComponent = {
                     <button class="material-symbols-outlined text-slate-600 dark:text-slate-400 hover:text-blue-500 transition-colors text-[24px]">person</button>
                     <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
                         <div id="nav-user-dropdown" class="cupertino-glass bg-white dark:bg-neutral-800 rounded-2xl shadow-2xl overflow-hidden min-w-[200px] py-2 border border-slate-200/50">
+                            ${isAdmin ? `
+                                <a class="block px-6 py-3 text-[13px] font-bold tracking-wide text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors uppercase border-b border-slate-200/50" href="./admin/dashboard.html">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-base">dashboard_customize</span>
+                                        Admin Dashboard
+                                    </div>
+                                </a>
+                            ` : ''}
                             <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase" href="./login-final-nav.html">Sign In</a>
                             <a class="block px-6 py-3 text-[13px] font-semibold tracking-wide text-on-surface hover:bg-black/5 dark:hover:bg-white/5 transition-colors uppercase border-b border-on-surface/10" href="./create-account-final-nav.html">Create Account</a>
                         </div>
