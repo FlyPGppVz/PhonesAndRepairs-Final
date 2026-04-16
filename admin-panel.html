@@ -348,6 +348,7 @@
             { name: "Jonathan D.", comment: "The build quality and the level of engineering precision is simply unmatched." },
             { name: "Sarah A.", comment: "Outstanding performance across all my professional workflows." }
         ];
+        let currentInventory = []; // Global memory for products
 
         // SMART KNOWLEDGE DATABASE (Ultra Expanded)
         const PRODUCT_KNOWLEDGE = {
@@ -736,6 +737,7 @@
                     return { ...data, sha: file.sha, path: file.path };
                 });
                 const inventory = await Promise.all(productPromises);
+                currentInventory = inventory; // Save to global state
                 renderInventory(inventory);
             } catch (err) {
                 showToast('Error loading inventory.', 'error');
@@ -744,7 +746,7 @@
 
         function renderInventory(inventory) {
             const grid = document.getElementById('inventoryGrid');
-            grid.innerHTML = inventory.map(item => `
+            grid.innerHTML = inventory.map((item, index) => `
                 <div class="glass p-6 rounded-[2rem] group hover:border-blue-500/50 transition-all">
                     <div class="h-40 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
                         <img src="${item.images[0]}" class="h-[80%] object-contain group-hover:scale-110 transition-transform duration-500">
@@ -755,13 +757,19 @@
                     </div>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 h-10 overflow-hidden line-clamp-2">${item.description}</p>
                     <div class="flex gap-2">
-                        <button onclick='editProduct(${JSON.stringify(item).replace(/'/g, "&apos;")})' class="flex-1 p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all text-xs font-bold uppercase tracking-tighter">Edit Content</button>
+                        <button onclick="editProductByIndex(${index})" class="flex-1 p-2 rounded-xl bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all text-xs font-bold uppercase tracking-tighter">Edit Content</button>
                         <button onclick="deleteProduct('${item.path}', '${item.sha}', '${item.title}')" class="p-2 rounded-xl bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all">
                             <span class="material-symbols-outlined text-xl italic">delete</span>
                         </button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function editProductByIndex(index) {
+            const item = currentInventory[index];
+            if (!item) return;
+            editProduct(item);
         }
 
         // ASSET LOGIC
@@ -1093,7 +1101,13 @@
             document.getElementById('year').value = item.year || '';
             document.getElementById('price').value = item.price;
             
-            dynamicColors = item.colors || ['#1c1c1c', '#f2f2f2', '#d1713f'];
+            // Map colors whether they are strings (legacy) or objects (new)
+            dynamicColors = (item.colors || []).map(c => {
+                if (typeof c === 'string') return c;
+                return { color: c.color, image: c.image };
+            });
+            if (dynamicColors.length === 0) dynamicColors = ['#1c1c1c', '#f2f2f2', '#d1713f'];
+            
             renderColors();
             document.getElementById('description').value = item.description;
             document.getElementById('category').value = item.category;
@@ -1116,11 +1130,6 @@
             ];
             renderReviews();
             
-            if(item.colors) {
-                document.getElementById('color1').value = item.colors[0];
-                document.getElementById('color2').value = item.colors[1];
-                document.getElementById('color3').value = item.colors[2];
-            }
             if(item.storage) {
                 document.getElementById('cap1').value = item.storage[0].label;
                 document.getElementById('cap1Extra').value = item.storage[0].extra;
@@ -1133,7 +1142,7 @@
             document.getElementById('editSha').value = item.sha;
             document.getElementById('editPath').value = item.path;
             
-            document.getElementById('imagePreviewContainer').innerHTML = item.images.map(url => `
+            document.getElementById('imagePreviewContainer').innerHTML = (item.images || []).map(url => `
                 <div class="w-16 h-16 bg-slate-100 rounded-xl overflow-hidden border">
                     <img src="${url}" class="h-full w-full object-cover">
                 </div>
@@ -1146,7 +1155,14 @@
             openModal();
         }
 
-        function openModal() { document.getElementById('productModal').classList.remove('hidden'); }
+        function openModal() {
+            const isNew = document.getElementById('modalTitle').innerText.includes('New');
+            if (isNew) {
+                document.getElementById('editPath').value = '';
+                document.getElementById('editSha').value = '';
+            }
+            document.getElementById('productModal').classList.remove('hidden');
+        }
         function closeModal() {
             document.getElementById('productModal').classList.add('hidden');
             document.getElementById('productForm').reset();
