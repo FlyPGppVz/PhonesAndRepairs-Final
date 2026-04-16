@@ -79,7 +79,10 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           </div>
 
           <div className="flex flex-col gap-4">
-            <button className="w-full py-5 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.98]">
+            <button 
+              onClick={handleAddToCart}
+              className="w-full py-5 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold text-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-[0.98]"
+            >
               Add to Cart
               <span className="material-symbols-outlined text-xl">shopping_bag</span>
             </button>

@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
+import AddToCartSmall from '@/components/Shop/AddToCartSmall';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,14 +38,17 @@ export default async function ShopPage() {
               <p className="text-slate-500 text-sm mb-6 line-clamp-2 px-4">{p.description}</p>
               <div className="text-xl font-bold">${Number(p.price).toLocaleString()}</div>
               
-              <div className="mt-6 flex gap-2">
-                {p.variants?.map((v: any, i: number) => (
-                  <div 
-                    key={i} 
-                    className="w-3 h-3 rounded-full border border-white/20 shadow-sm" 
-                    style={{ backgroundColor: v.color_hex }}
-                  />
-                ))}
+              <div className="mt-6 flex items-center justify-between w-full px-4">
+                <div className="flex gap-2">
+                  {p.variants?.map((v: any, i: number) => (
+                    <div 
+                      key={i} 
+                      className="w-3 h-3 rounded-full border border-white/20 shadow-sm" 
+                      style={{ backgroundColor: v.color_hex }}
+                    />
+                  ))}
+                </div>
+                <AddToCartSmall product={p} />
               </div>
             </Link>
           );
