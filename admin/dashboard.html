@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Advanced Inventory - CellphonesAndRepair</title>
+    <title>Pro Master Admin - CellphonesAndRepair</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&amp;display=swap" rel="stylesheet">
@@ -23,478 +23,446 @@
     </script>
 </head>
 
-<body class="bg-slate-50 dark:bg-neutral-950 text-slate-900 dark:text-white min-h-screen font-body transition-colors duration-500">
-    <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar Premium -->
+<body class="bg-slate-50 dark:bg-neutral-950 text-slate-900 dark:text-white min-h-screen font-body transition-colors duration-500 overflow-hidden">
+    <div class="flex h-screen">
+        <!-- Sidebar Corregida -->
         <aside class="w-72 bg-white dark:bg-neutral-900 border-r border-slate-200 dark:border-white/5 flex flex-col z-50">
             <div class="p-8">
-                <div class="flex items-center gap-3 mb-8">
+                <div class="flex items-center gap-3 mb-10">
                     <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
                         <span class="material-symbols-outlined text-white">admin_panel_settings</span>
                     </div>
                     <div>
                         <h1 class="font-black text-lg tracking-tight">Admin</h1>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Digital Curator</p>
+                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-none">Digital Curator</p>
                     </div>
                 </div>
                 
-                <nav class="space-y-2">
-                    <button onclick="showTab('inventory')" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl bg-primary text-white font-bold transition-all shadow-lg shadow-primary/20" id="btn-inventory">
-                        <span class="material-symbols-outlined">inventory_2</span> 
-                        <span class="text-sm">Inventory</span>
+                <nav class="space-y-1">
+                    <button onclick="showTab('inventory')" class="w-full flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-300 group relative" id="btn-inventory">
+                        <span class="material-symbols-outlined transition-colors">inventory_2</span> 
+                        <span class="text-sm font-bold">Inventory</span>
                     </button>
-                    <button onclick="showTab('inbox')" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-all" id="btn-inbox">
+                    <button onclick="showTab('inbox')" class="w-full flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-300 group relative text-slate-400" id="btn-inbox">
                         <span class="material-symbols-outlined">inbox</span> 
-                        <span class="text-sm">Inbox</span>
+                        <span class="text-sm font-bold">Inbox</span>
                     </button>
-                    <button onclick="showTab('analytics')" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-all" id="btn-analytics">
+                    <button onclick="showTab('analytics')" class="w-full flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-300 group relative text-slate-400" id="btn-analytics">
                         <span class="material-symbols-outlined">analytics</span> 
-                        <span class="text-sm">Analytics</span>
+                        <span class="text-sm font-bold">Analytics</span>
                     </button>
                 </nav>
             </div>
 
             <div class="mt-auto p-8 border-t border-slate-100 dark:border-white/5">
-                <button onclick="AuthManager.logout()" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 font-bold transition-all">
+                <button onclick="AuthManager.logout()" class="w-full flex items-center gap-4 px-5 py-4 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 font-bold transition-all">
                     <span class="material-symbols-outlined">logout</span> 
                     <span class="text-sm">Sign Out</span>
                 </button>
             </div>
         </aside>
 
-        <!-- Main Workspace -->
-        <main class="flex-grow overflow-y-auto bg-slate-50 dark:bg-black/20">
-            <!-- Header bar -->
-            <div class="sticky top-0 z-40 bg-white/50 dark:bg-neutral-950/50 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 px-12 py-6 flex justify-between items-center">
-                <div id="tab-title">
-                    <h2 class="text-2xl font-bold">Inventory Management</h2>
-                    <p class="text-xs text-slate-500 font-medium">Control your premium tech catalog</p>
+        <!-- Workspace -->
+        <main class="flex-grow overflow-y-auto bg-slate-50 dark:bg-neutral-950">
+            <div class="sticky top-0 z-40 bg-slate-50/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-slate-200 dark:border-white/5 px-12 py-8 flex justify-between items-center">
+                <div>
+                    <h2 id="page-title" class="text-3xl font-black tracking-tight">Inventory</h2>
                 </div>
-                <div class="flex items-center gap-6">
-                    <div id="sync-status" class="flex items-center gap-2 text-[10px] font-bold text-green-500 uppercase tracking-widest">
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        Live Connection
-                    </div>
-                </div>
+                <button onclick="openAddModal()" class="flex items-center gap-3 px-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold shadow-2xl hover:scale-105 active:scale-95 transition-all">
+                    <span class="material-symbols-outlined">add</span>
+                    Create Product
+                </button>
             </div>
 
-            <div class="p-12 max-w-[1600px] mx-auto">
-                <!-- Inventory View -->
-                <div id="tab-inventory" class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <div class="flex justify-between items-center">
-                        <div class="relative w-full max-w-md">
-                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-                            <input type="text" placeholder="Search inventory..." class="w-full pl-12 pr-6 py-4 bg-white dark:bg-neutral-900 border-none rounded-2xl shadow-sm focus:ring-2 focus:ring-primary/20 transition-all text-sm">
-                        </div>
-                        <button onclick="openAddModal()" class="flex items-center gap-3 px-10 py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold shadow-2xl hover:scale-105 active:scale-95 transition-all group">
-                            <span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add</span>
-                            Add Product
-                        </button>
+            <div class="p-12">
+                <!-- Tabs -->
+                <div id="tab-inventory" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8"></div>
+                <div id="tab-inbox" class="hidden space-y-6"></div>
+                <div id="tab-analytics" class="hidden">
+                    <div class="p-20 text-center space-y-4 opacity-50">
+                         <span class="material-symbols-outlined text-6xl">query_stats</span>
+                         <h3 class="text-2xl font-bold">Analytics Engine Connecting...</h3>
+                         <p>Sales and visitor data will appear here shortly.</p>
                     </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="inventory-list">
-                        <!-- Advanced loading skeleton -->
-                        <div class="animate-pulse bg-white dark:bg-neutral-900 h-64 rounded-3xl border border-slate-200 dark:border-white/5"></div>
-                    </div>
-                </div>
-
-                <!-- Other tabs... -->
-                <div id="tab-inbox" class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                     <div class="grid grid-cols-1 gap-6" id="inbox-list"></div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- MEGA MODAL: Create/Edit Product -->
+    <!-- WYSIWYG MEGA MODAL -->
     <div id="productModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeProductModal()"></div>
-        <div class="relative bg-white dark:bg-neutral-900 w-full max-w-5xl rounded-[3rem] shadow-[0_32px_128px_rgba(0,0,0,0.5)] flex flex-col max-h-[90vh] overflow-hidden transition-all duration-500 transform scale-95 opacity-0" id="modalContent">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-xl" onclick="closeProductModal()"></div>
+        
+        <div class="relative bg-white dark:bg-neutral-900 w-full max-w-[95vw] h-[90vh] rounded-[3rem] shadow-2xl flex overflow-hidden scale-95 opacity-0 transition-all duration-500" id="modalContent">
             
-            <div class="flex justify-between items-center px-12 py-8 border-b border-slate-100 dark:border-white/5">
-                <h2 class="text-3xl font-black tracking-tight" id="modal-heading">Curate Product</h2>
-                <button onclick="closeProductModal()" class="w-12 h-12 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 flex items-center justify-center transition-all opacity-50 hover:opacity-100">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </div>
-
-            <div class="flex-grow overflow-y-auto p-12 custom-scrollbar">
-                <form id="productForm" class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <!-- Column 1: Core Info -->
-                    <div class="space-y-10">
-                        <section class="space-y-6">
-                            <h3 class="text-[11px] font-bold text-primary uppercase tracking-[0.2em]">General Information</h3>
-                            <div class="space-y-4">
-                                <div class="group">
-                                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Display Name</label>
-                                    <input type="text" name="name" required class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="e.g. iPhone 15 Pro Max Titanium">
-                                </div>
-                                <div class="group">
-                                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Subtitle / Short Spec</label>
-                                    <input type="text" name="subtitle" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="e.g. 256GB, Blue Titanium">
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="group">
-                                        <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Base Price ($)</label>
-                                        <input type="number" step="0.01" name="price" required class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="99.99">
-                                    </div>
-                                    <div class="group">
-                                        <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Initial Stock</label>
-                                        <input type="number" name="stock" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="10">
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="space-y-6">
-                            <h3 class="text-[11px] font-bold text-primary uppercase tracking-[0.2em]">Classification</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="group">
-                                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Brand</label>
-                                    <select name="brand" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 transition-all">
-                                        <option>Apple</option>
-                                        <option>Samsung</option>
-                                        <option>Sony</option>
-                                        <option>Microsoft</option>
-                                        <option>Google</option>
-                                        <option>LG</option>
-                                        <option>Asus</option>
-                                        <option>Dell</option>
-                                        <option>HP</option>
-                                        <option>Logitech</option>
-                                        <option>Nintendo</option>
-                                        <option>JBL</option>
-                                        <option>Nikon</option>
-                                        <option>Canon</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
-                                <div class="group">
-                                    <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Category</label>
-                                    <select name="category" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 transition-all">
-                                        <option>Phones</option>
-                                        <option>Tablets</option>
-                                        <option>Laptops</option>
-                                        <option>PCs</option>
-                                        <option>Televisions</option>
-                                        <option>Smartwatches</option>
-                                        <option>Sound & Audio</option>
-                                        <option>Photography</option>
-                                        <option>Components</option>
-                                        <option>Consoles</option>
-                                        <option>Video Games</option>
-                                        <option>Cases & Protection</option>
-                                        <option>Chargers & Power</option>
-                                        <option>Cables & HDMI</option>
-                                        <option>Accessories</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="group">
-                            <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 px-1">Full Description</label>
-                            <textarea name="description" required rows="6" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-3xl px-6 py-6 focus:ring-2 focus:ring-primary/20 transition-all text-sm leading-relaxed" placeholder="Tell the product's story..."></textarea>
-                        </section>
+            <!-- Left: Edit Panel -->
+            <div class="w-1/2 flex flex-col border-r border-slate-100 dark:border-white/5">
+                <div class="px-12 py-8 border-b border-slate-100 dark:border-white/5 flex justify-between items-center">
+                    <h2 class="text-2xl font-black">Curate Product</h2>
+                    <div class="flex gap-4">
+                        <button type="button" onclick="closeProductModal()" class="px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-widest">Cancel</button>
+                        <button type="submit" form="productForm" class="px-8 py-2 bg-primary text-white rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-primary/20">Publish Changes</button>
                     </div>
+                </div>
 
-                    <!-- Column 2: Visuals & Variants -->
-                    <div class="space-y-10">
+                <div class="flex-grow overflow-y-auto p-12 custom-scrollbar space-y-12">
+                     <form id="productForm" class="space-y-12">
+                        <!-- Basic Info Section -->
+                        <section class="space-y-6">
+                            <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-primary">Core Details</h3>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-bold uppercase text-slate-400 px-1">Product Title</label>
+                                    <input type="text" name="name" oninput="updatePreview('name', this.value)" required class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-bold uppercase text-slate-400 px-1">Price ($)</label>
+                                    <input type="number" step="0.01" name="price" oninput="updatePreview('price', this.value)" required class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[9px] font-bold uppercase text-slate-400 px-1">Short Description</label>
+                                <textarea name="description" oninput="updatePreview('description', this.value)" rows="3" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/20 text-sm"></textarea>
+                            </div>
+                        </section>
+
+                        <!-- Visual Assets Section -->
                         <section class="space-y-6">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-[11px] font-bold text-primary uppercase tracking-[0.2em]">Color Variants</h3>
-                                <button type="button" onclick="addColorVariant()" class="text-[10px] font-black bg-slate-100 dark:bg-white/10 px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-all">Add Color</button>
+                                <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-primary">Visual Assets</h3>
+                                <button type="button" onclick="addGalleryItem()" class="text-[9px] font-bold bg-slate-100 dark:bg-white/10 px-3 py-1.5 rounded-lg">+ Add to Gallery</button>
                             </div>
-                            
-                            <div id="variants-container" class="space-y-4">
-                                <!-- Variant row placeholder -->
-                                <p class="text-xs text-slate-400 italic">No colors defined. The product will use the main image.</p>
-                            </div>
-                        </section>
-
-                        <section class="p-8 bg-slate-50 dark:bg-white/5 rounded-[2rem] space-y-6 border border-slate-100 dark:border-white/5">
-                            <h3 class="text-[11px] font-bold text-slate-900 dark:text-white uppercase tracking-[0.2em]">Main Visual (Featured)</h3>
-                            
-                            <div class="flex flex-col gap-4">
-                                <!-- Image Source Tabs -->
-                                <div class="flex bg-slate-200/50 dark:bg-black/20 p-1 rounded-xl">
-                                    <button type="button" onclick="setImgSource('url')" class="flex-1 py-2 text-[10px] font-bold rounded-lg bg-white dark:bg-white/10 shadow-sm transition-all" id="src-url-btn">URL</button>
-                                    <button type="button" onclick="setImgSource('repo')" class="flex-1 py-2 text-[10px] font-bold rounded-lg transition-all" id="src-repo-btn">Repo Asset</button>
-                                    <button type="button" onclick="setImgSource('upload')" class="flex-1 py-2 text-[10px] font-bold rounded-lg transition-all" id="src-upload-btn">Upload</button>
-                                </div>
-
-                                <div id="img-input-container">
-                                    <input type="url" name="main_image" id="main-img-input" class="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 text-xs focus:ring-2 focus:ring-primary/20 transition-all" placeholder="https://...">
-                                </div>
-
-                                <div class="aspect-square bg-white dark:bg-black/20 rounded-3xl border-2 border-dashed border-slate-200 dark:border-white/10 flex items-center justify-center overflow-hidden relative group">
-                                    <img id="main-preview" class="w-full h-full object-contain hidden">
-                                    <div id="preview-placeholder" class="text-center space-y-2 opacity-50">
-                                        <span class="material-symbols-outlined text-4xl">image_search</span>
-                                        <p class="text-[10px] uppercase font-bold tracking-widest">Global Preview</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-bold uppercase text-slate-400 px-1">Main Image (URL/File)</label>
+                                    <div class="flex gap-2">
+                                        <input type="text" name="main_image" id="main_img_url" oninput="updatePreview('img', this.value)" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 text-xs">
+                                        <button type="button" onclick="document.getElementById('main_file').click()" class="px-3 bg-slate-100 dark:bg-white/10 rounded-xl"><span class="material-symbols-outlined text-sm">upload</span></button>
+                                        <input type="file" id="main_file" class="hidden" onchange="handleProUpload(this, 'main_img_url')">
                                     </div>
                                 </div>
+                                <div class="space-y-2" id="gallery-inputs">
+                                    <label class="text-[9px] font-bold uppercase text-slate-400 px-1">Gallery Additional Photos</label>
+                                    <!-- Dynamic Gallery Inputs -->
+                                </div>
                             </div>
                         </section>
-                    </div>
-                </form>
+
+                        <!-- Advanced Specs Section -->
+                        <section class="space-y-8 p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/5">
+                            <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-primary">Engineering Precision (Specs)</h3>
+                            
+                            <!-- Processor -->
+                            <div class="space-y-4">
+                                <label class="text-[9px] font-bold uppercase text-slate-400">Processor Info & Image</label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                     <textarea name="processor_desc" oninput="updatePreview('proc_desc', this.value)" placeholder="Processor description..." class="w-full bg-white dark:bg-black/20 border-none rounded-xl p-4 text-xs"></textarea>
+                                     <div class="flex flex-col gap-2">
+                                         <input type="text" id="proc_img_url" name="processor_img" oninput="updatePreview('proc_img', this.value)" placeholder="Processor Image URL" class="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-2 text-xs">
+                                         <button type="button" onclick="document.getElementById('proc_file').click()" class="py-2 bg-slate-200 dark:bg-white/10 rounded-xl text-[9px] font-bold">Upload Proc Image</button>
+                                         <input type="file" id="proc_file" class="hidden" onchange="handleProUpload(this, 'proc_img_url')">
+                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-bold uppercase text-slate-400">Display Tech (e.g. 120Hz Oled)</label>
+                                    <input type="text" name="display_tech" oninput="updatePreview('display', this.value)" class="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 text-xs">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-[9px] font-bold uppercase text-slate-400">Battery Life (e.g. 29h usage)</label>
+                                    <input type="text" name="battery_life" oninput="updatePreview('battery', this.value)" class="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 text-xs">
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Color Variants Section -->
+                        <section class="space-y-6">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-primary">Color Variants</h3>
+                                <button type="button" onclick="addProColor()" class="text-[9px] font-bold bg-slate-100 dark:bg-white/10 px-3 py-1.5 rounded-lg">+ Add Color</button>
+                            </div>
+                            <div id="color-manager" class="space-y-3">
+                                <!-- Colors here -->
+                            </div>
+                        </section>
+                     </form>
+                </div>
             </div>
 
-            <!-- Modal Footer Actions -->
-            <div class="px-12 py-10 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-black/20 flex justify-between items-center">
-                <button onclick="closeProductModal()" class="px-10 py-5 text-sm font-bold opacity-50 hover:opacity-100 transition-all">Cancel</button>
-                <div class="flex items-center gap-6">
-                    <div id="form-validation-msg" class="text-[10px] font-bold text-red-500 uppercase tracking-widest opacity-0">Please fill required fields</div>
-                    <button type="submit" form="productForm" id="final-submit-btn" class="px-16 py-5 bg-primary text-white rounded-full font-black shadow-2xl shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-3">
-                        Deploy Product 
-                        <span class="material-symbols-outlined">rocket_launch</span>
-                    </button>
+            <!-- Right: Live Preview Panel (Mimics detail page) -->
+            <div class="w-1/2 bg-slate-100 dark:bg-black/40 overflow-y-auto custom-scrollbar p-12">
+                <div class="flex items-center gap-2 mb-8 opacity-50">
+                    <span class="material-symbols-outlined text-sm">visibility</span>
+                    <span class="text-[10px] font-black uppercase tracking-widest">Live Page Preview</span>
+                </div>
+
+                <!-- Preview Content (The actual design) -->
+                <div class="bg-white dark:bg-neutral-900 rounded-[3rem] shadow-xl overflow-hidden min-h-[1200px] border border-slate-200 dark:border-white/5 p-12 space-y-20">
+                     <!-- Hero Mockup -->
+                     <section class="flex flex-col items-center text-center space-y-8">
+                         <div class="space-y-4">
+                             <span class="px-4 py-1.5 bg-blue-500 text-white rounded-full text-[10px] font-bold uppercase tracking-widest">New Arrival</span>
+                             <h4 id="pre-name" class="text-4xl font-black">Titanium X Pro Max</h4>
+                             <p id="pre-desc" class="text-on-surface-variant max-w-sm mx-auto text-sm">Engineered for excellence.</p>
+                             <div class="text-3xl font-black text-primary">$<span id="pre-price">1099.00</span></div>
+                         </div>
+                         <div class="w-72 h-72 bg-slate-50 dark:bg-white/5 rounded-3xl flex items-center justify-center p-8">
+                             <img id="pre-main-img" src="" class="max-w-full max-h-full object-contain drop-shadow-2xl">
+                         </div>
+                         <div id="pre-colors" class="flex gap-3"></div>
+                     </section>
+
+                     <!-- Spec Box Mockup -->
+                     <section class="space-y-12">
+                         <div class="text-center italic font-medium text-slate-400">Engineering Precision.</div>
+                         
+                         <div class="bg-slate-900 text-white p-10 rounded-[2.5rem] flex items-center gap-10">
+                              <div class="flex-1 space-y-4">
+                                  <h5 class="text-blue-400 font-bold uppercase tracking-widest text-xs">Processor Power</h5>
+                                  <p id="pre-proc-desc" class="text-sm text-slate-300 leading-relaxed">Loading silicon details...</p>
+                              </div>
+                              <div class="w-32 h-32 bg-white/10 rounded-3xl flex items-center justify-center p-6 backdrop-blur-xl border border-white/10 overflow-hidden">
+                                   <img id="pre-proc-img" src="" class="max-w-full max-h-full object-contain">
+                              </div>
+                         </div>
+
+                         <div class="grid grid-cols-2 gap-6">
+                              <div class="bg-slate-50 dark:bg-white/5 p-8 rounded-[2rem] text-center space-y-4">
+                                  <h5 class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Display Tech</h5>
+                                  <p id="pre-display" class="font-bold">ProMotion 120Hz</p>
+                              </div>
+                              <div class="bg-slate-50 dark:bg-white/5 p-8 rounded-[2rem] text-center space-y-4">
+                                  <h5 class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Battery Life</h5>
+                                  <p id="pre-battery" class="font-bold">29h Video Playback</p>
+                              </div>
+                         </div>
+                     </section>
+
+                     <!-- Feedback Mockup -->
+                     <section class="opacity-50 space-y-6">
+                         <div class="h-px bg-slate-100 dark:bg-white/5 w-full"></div>
+                         <div class="flex justify-between items-center">
+                             <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-yellow-500 text-sm">star</span>
+                                <span class="font-black text-sm">4.8</span>
+                             </div>
+                             <span class="text-[10px] font-medium uppercase tracking-widest">Verified Feedback</span>
+                         </div>
+                         <div class="bg-slate-50 dark:bg-white/5 h-20 rounded-2xl w-full animate-pulse"></div>
+                     </section>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Variant Row Template (Hidden) -->
-    <template id="variant-template">
-        <div class="variant-row bg-white dark:bg-black/20 p-6 rounded-2xl border border-slate-100 dark:border-white/5 flex flex-col gap-4 group animate-in slide-in-from-right-2 duration-300">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <input type="color" onchange="updateVariantColorPreview(this)" class="w-8 h-8 rounded-full border-none cursor-pointer bg-transparent">
-                    <div class="color-preview w-8 h-8 rounded-full shadow-inner border border-white/10"></div>
-                    <input type="text" placeholder="Color Name (e.g. Titanium Blue)" class="bg-transparent border-none text-xs font-bold p-0 focus:ring-0 placeholder:text-slate-400 w-44">
-                </div>
-                <button type="button" onclick="this.closest('.variant-row').remove()" class="text-red-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span class="material-symbols-outlined text-sm">delete</span>
-                </button>
-            </div>
-            <div class="flex items-center gap-3">
-                <select onchange="toggleVarInput(this)" class="bg-slate-100 dark:bg-white/5 border-none rounded-lg text-[10px] font-bold px-3 py-1.5 focus:ring-0">
-                    <option value="url">URL</option>
-                    <option value="repo">Repo</option>
-                    <option value="upload">Upload</option>
-                </select>
-                <input type="text" placeholder="Variant image source..." class="flex-grow bg-slate-100 dark:bg-white/5 border-none rounded-lg text-xs px-4 py-1.5 focus:ring-1 focus:ring-primary/30 h-[28px]">
-                <input type="file" class="hidden" accept="image/*">
-            </div>
-        </div>
-    </template>
-
     <script>
-        let currentImgSource = 'url';
-
+        // Tab System Correction
         function showTab(tab) {
             document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.add('hidden'));
             document.getElementById(`tab-${tab}`).classList.remove('hidden');
             
             document.querySelectorAll('[id^="btn-"]').forEach(b => {
-                b.classList.remove('bg-primary', 'text-white', 'font-bold', 'shadow-lg', 'shadow-primary/20');
-                b.classList.add('text-slate-500');
+                b.classList.remove('bg-white', 'text-slate-900', 'shadow-xl', 'dark:bg-white/10', 'dark:text-white');
+                b.classList.add('text-slate-400');
             });
-            document.getElementById(`btn-${tab}`).classList.add('bg-primary', 'text-white', 'font-bold', 'shadow-lg', 'shadow-primary/20');
-            document.getElementById(`btn-${tab}`).classList.remove('text-slate-500');
 
+            const activeBtn = document.getElementById(`btn-${tab}`);
+            activeBtn.classList.remove('text-slate-400');
+            activeBtn.classList.add('bg-white', 'text-slate-900', 'shadow-xl', 'dark:bg-white/10', 'dark:text-white');
+            
+            document.getElementById('page-title').textContent = tab.charAt(0).toUpperCase() + tab.slice(1);
+            
             if (tab === 'inventory') loadInventory();
             if (tab === 'inbox') loadInbox();
         }
 
+        // Live Preview Connector
+        function updatePreview(field, val) {
+            const map = {
+                'name': 'pre-name',
+                'price': 'pre-price',
+                'description': 'pre-desc',
+                'img': 'pre-main-img',
+                'proc_desc': 'pre-proc-desc',
+                'proc_img': 'pre-proc-img',
+                'display': 'pre-display',
+                'battery': 'pre-battery'
+            };
+            const target = map[field];
+            if (!target) return;
+            
+            const el = document.getElementById(target);
+            if (target.includes('img')) el.src = val;
+            else el.textContent = val || '-';
+        }
+
+        // Pro Upload Logic
+        async function handleProUpload(input, targetId) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const originalBtn = input.previousElementSibling;
+            originalBtn.innerHTML = `<span class="animate-spin text-xs">...</span>`;
+
+            try {
+                const fileName = `${Date.now()}_${file.name.replace(/ /g, '_')}`;
+                const { data, error } = await _supabase.storage.from('products').upload(fileName, file);
+                
+                if (error) {
+                    if (error.message.includes('Bucket not found')) {
+                        throw new Error('Please run the SQL Fix first (Bucket "products" missing)');
+                    }
+                    throw error;
+                }
+
+                const { data: { publicUrl } } = _supabase.storage.from('products').getPublicUrl(fileName);
+                const targetInput = document.getElementById(targetId);
+                targetInput.value = publicUrl;
+                
+                // Trigger preview
+                const fieldName = targetId.includes('main') ? 'img' : (targetId.includes('proc') ? 'proc_img' : '');
+                if (fieldName) updatePreview(fieldName, publicUrl);
+                
+                originalBtn.innerHTML = `<span class="material-symbols-outlined text-green-500 text-sm">check</span>`;
+            } catch (err) {
+                alert('Upload Error: ' + err.message);
+                originalBtn.innerHTML = `<span class="material-symbols-outlined text-sm">upload</span>`;
+            }
+        }
+
+        // Mega Modal Logic
         function openAddModal() {
-            const modal = document.getElementById('productModal');
-            const content = document.getElementById('modalContent');
-            modal.classList.remove('hidden');
+            document.getElementById('productModal').classList.remove('hidden');
             setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
+                document.getElementById('modalContent').classList.remove('scale-95', 'opacity-0');
             }, 10);
         }
 
         function closeProductModal() {
-            const modal = document.getElementById('productModal');
             const content = document.getElementById('modalContent');
             content.classList.add('scale-95', 'opacity-0');
             setTimeout(() => {
-                modal.classList.add('hidden');
+                document.getElementById('productModal').classList.add('hidden');
                 document.getElementById('productForm').reset();
-                document.getElementById('variants-container').innerHTML = '<p class="text-xs text-slate-400 italic">No colors defined. The product will use the main image.</p>';
-                document.getElementById('main-preview').classList.add('hidden');
-                document.getElementById('preview-placeholder').classList.remove('hidden');
             }, 300);
         }
 
-        function addColorVariant() {
-            const container = document.getElementById('variants-container');
-            if (container.querySelector('p')) container.innerHTML = '';
-            
-            const template = document.getElementById('variant-template');
-            const clone = template.content.cloneNode(true);
-            container.appendChild(clone);
+        // Dynamic Elements
+        function addGalleryItem() {
+            const div = document.createElement('div');
+            div.className = 'flex gap-2 animate-in slide-in-from-right-2 mt-2';
+            div.innerHTML = `
+                <input type="text" placeholder="Gallery URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-2 text-xs">
+                <button type="button" onclick="this.parentElement.remove()" class="text-red-500"><span class="material-symbols-outlined text-sm">delete</span></button>
+            `;
+            document.getElementById('gallery-inputs').appendChild(div);
         }
 
-        function updateVariantColorPreview(input) {
-            input.nextElementSibling.style.backgroundColor = input.value;
+        function addProColor() {
+            const div = document.createElement('div');
+            div.className = 'flex items-center gap-3 bg-white dark:bg-white/5 p-4 rounded-2xl animate-in fade-in';
+            div.innerHTML = `
+                <input type="color" onchange="this.nextElementSibling.style.backgroundColor = this.value; updatePreColors()" class="w-8 h-8 rounded-full border-none cursor-pointer bg-transparent">
+                <div class="w-8 h-8 rounded-full border"></div>
+                <input type="text" placeholder="Image for this color (URL)" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-2 text-xs">
+                <button type="button" onclick="this.parentElement.remove(); updatePreColors()" class="text-red-500"><span class="material-symbols-outlined text-sm">close</span></button>
+            `;
+            document.getElementById('color-manager').appendChild(div);
         }
 
-        function setImgSource(src) {
-            currentImgSource = src;
-            const container = document.getElementById('img-input-container');
-            const btns = ['url', 'repo', 'upload'];
-            
-            btns.forEach(b => {
-                const btn = document.getElementById(`src-${b}-btn`);
-                btn.classList.remove('bg-white', 'dark:bg-white/10', 'shadow-sm');
+        function updatePreColors() {
+            const colors = document.querySelectorAll('#color-manager input[type="color"]');
+            const preContainer = document.getElementById('pre-colors');
+            preContainer.innerHTML = '';
+            colors.forEach(c => {
+                const circle = document.createElement('div');
+                circle.className = 'w-4 h-4 rounded-full border';
+                circle.style.backgroundColor = c.value;
+                preContainer.appendChild(circle);
             });
-            document.getElementById(`src-${src}-btn`).classList.add('bg-white', 'dark:bg-white/10', 'shadow-sm');
-
-            if (src === 'url') {
-                container.innerHTML = `<input type="url" name="main_image" onchange="previewMain(this.value)" class="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 text-xs focus:ring-2 focus:ring-primary/20" placeholder="https://...">`;
-            } else if (src === 'repo') {
-                container.innerHTML = `<select onchange="previewMain(this.value)" name="main_image" class="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 text-xs focus:ring-2 focus:ring-primary/20">
-                    <option value="">Select repo asset...</option>
-                    <option value="./assets/images/phones/iphone-15.png">iPhone 15 Case</option>
-                    <option value="./assets/images/accessories/charger.png">Universal Charger</option>
-                    <option value="./assets/images/Services/service_iphone_repair.jpg">Repair Placeholder</option>
-                </select>`;
-            } else {
-                container.innerHTML = `<input type="file" onchange="handleFileUpload(this, 'main')" class="w-full text-xs file:bg-primary file:text-white file:border-none file:px-4 file:py-2 file:rounded-lg file:mr-4 file:font-bold">`;
-            }
-        }
-
-        function previewMain(url) {
-            const img = document.getElementById('main-preview');
-            const placeholder = document.getElementById('preview-placeholder');
-            if (url) {
-                img.src = url;
-                img.classList.remove('hidden');
-                placeholder.classList.add('hidden');
-            } else {
-                img.classList.add('hidden');
-                placeholder.classList.remove('hidden');
-            }
-        }
-
-        async function handleFileUpload(input, target) {
-            const file = input.files[0];
-            if (!file) return;
-
-            // Local preview
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                if (target === 'main') previewMain(e.target.result);
-                // If it's a variant, you'd handle it differently
-            };
-            reader.readAsDataURL(file);
-
-            // Real upload logic to Supabase
-            try {
-                const fileName = `${Date.now()}_${file.name}`;
-                const { data, error } = await _supabase.storage.from('products').upload(fileName, file);
-                if (error) throw error;
-
-                const { data: { publicUrl } } = _supabase.storage.from('products').getPublicUrl(fileName);
-                
-                if (target === 'main') {
-                    // Update the hidden or actual URL field after upload
-                    const inputUrl = document.createElement('input');
-                    inputUrl.type = 'hidden';
-                    inputUrl.name = 'main_image_url_final';
-                    inputUrl.value = publicUrl;
-                    document.getElementById('productForm').appendChild(inputUrl);
-                } else {
-                    // For variants, set the text input value to the public URL
-                    input.previousElementSibling.value = publicUrl;
-                }
-            } catch (err) { alert('Upload failed: ' + err.message); }
         }
 
         async function loadInventory() {
-            const list = document.getElementById('inventory-list');
+            const list = document.getElementById('tab-inventory');
+            list.innerHTML = `<div class="col-span-full py-20 text-center animate-pulse">Syncing catalog...</div>`;
+            
             try {
                 const { data, error } = await _supabase.from('products').select('*').order('created_at', { ascending: false });
                 if (error) throw error;
                 
                 list.innerHTML = data.map(p => `
-                    <div class="bg-white dark:bg-neutral-900 overflow-hidden rounded-[2rem] border border-slate-200 dark:border-white/5 flex flex-col group animate-in zoom-in-95 duration-500">
-                        <div class="h-40 bg-slate-100 dark:bg-black/20 flex items-center justify-center relative p-6">
-                            <img src="${p.main_image_url || p.image_url}" class="max-w-full max-h-full object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                            <span class="absolute top-4 right-4 bg-white/80 dark:bg-black/50 backdrop-blur-md text-[9px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest">${p.category}</span>
+                    <div class="bg-white dark:bg-neutral-900 rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-white/5 group transition-all hover:shadow-2xl">
+                        <div class="h-48 bg-slate-100 dark:bg-black/20 flex items-center justify-center p-8 relative">
+                             <img src="${p.main_image_url}" class="max-w-full max-h-full object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500">
+                             <div class="absolute top-4 left-4 bg-white/80 dark:bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">${p.category || 'Tech'}</div>
                         </div>
-                        <div class="p-8 flex-grow">
-                            <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-black text-lg leading-tight">${p.name}</h4>
-                                <p class="font-black text-primary">$${p.price}</p>
-                            </div>
-                            <p class="text-xs text-slate-400 line-clamp-2">${p.description || 'No description.'}</p>
-                            
-                            <!-- Variant preview circles -->
-                            <div class="flex gap-2 mt-4">
-                                ${p.colors ? Object.keys(p.colors).map(c => `
-                                    <div class="w-3 h-3 rounded-full border border-black/10 shadow-sm" style="background-color: ${c}"></div>
-                                `).join('') : ''}
-                            </div>
-                        </div>
-                        <div class="px-8 pb-8 flex gap-2">
-                             <button onclick="editProduct('${p.id}')" class="flex-grow py-3 bg-slate-100 dark:bg-white/5 rounded-full text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-slate-200 transition-all">Edit</button>
-                             <button onclick="deleteProduct('${p.id}')" class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 dark:bg-red-500/10 rounded-full hover:bg-red-500 hover:text-white transition-all">
-                                <span class="material-symbols-outlined text-sm">delete</span>
-                             </button>
+                        <div class="p-8">
+                             <div class="flex justify-between items-start mb-2">
+                                 <h4 class="font-bold text-lg leading-tight truncate pr-4">${p.name}</h4>
+                                 <span class="text-primary font-black">$${p.price}</span>
+                             </div>
+                             <p class="text-xs text-slate-400 line-clamp-2">${p.description || '--'}</p>
+                             <div class="mt-6 flex gap-3">
+                                 <button class="flex-grow py-3 bg-slate-100 dark:bg-white/5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-all">Edit</button>
+                                 <button onclick="deleteProduct('${p.id}')" class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 dark:bg-red-500/10 rounded-full hover:bg-red-500 hover:text-white transition-all">
+                                    <span class="material-symbols-outlined text-sm">delete</span>
+                                 </button>
+                             </div>
                         </div>
                     </div>
-                `).join('') || '<div class="col-span-full py-32 text-center text-slate-400 font-bold uppercase tracking-widest opacity-30">Zero Products Found</div>';
-            } catch (e) { list.innerHTML = 'Error loading data.'; }
+                `).join('') || `<div class="col-span-full py-40 text-center opacity-30 text-sm font-black uppercase tracking-[0.3em]">No items in inventory</div>`;
+            } catch (err) { list.innerHTML = 'Error loading inventory.'; }
         }
 
+        async function deleteProduct(id) {
+            if (!confirm('Deseas eliminar este producto permanentemente?')) return;
+            const { error } = await _supabase.from('products').delete().eq('id', id);
+            if (!error) loadInventory();
+        }
+
+        // Final Submit Logic
         document.getElementById('productForm').onsubmit = async (e) => {
             e.preventDefault();
-            const btn = document.getElementById('final-submit-btn');
+            const btn = e.target.querySelector('button[type="submit"]');
             const formData = new FormData(e.target);
             
             btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full"></span> DEPLOYING...`;
-
-            // Prepare Colors JSON
-            const colorData = {};
-            const variantRows = document.querySelectorAll('.variant-row');
-            variantRows.forEach(row => {
-                const colorValue = row.querySelector('input[type="color"]').value;
-                const imgSource = row.querySelector('input[type="text"]').value;
-                if (imgSource) colorData[colorValue] = imgSource;
-            });
-
-            const mainImageUrl = formData.get('main_image_url_final') || formData.get('main_image');
+            btn.innerHTML = `<span class="animate-spin text-[8px]">...</span>`;
 
             const product = {
                 name: formData.get('name'),
-                subtitle: formData.get('subtitle'),
                 price: parseFloat(formData.get('price')),
-                category: formData.get('category'),
-                main_image_url: mainImageUrl,
                 description: formData.get('description'),
-                stock_quantity: parseInt(formData.get('stock')) || 10,
-                colors: Object.keys(colorData).length > 0 ? colorData : null
+                main_image_url: formData.get('main_image'),
+                processor_description: formData.get('processor_desc'),
+                processor_image_url: formData.get('processor_img'),
+                display_tech_description: formData.get('display_tech'),
+                battery_life_description: formData.get('battery_life'),
+                stock_quantity: 10,
+                category: 'Tech' // Default
             };
 
             const { error } = await _supabase.from('products').insert([product]);
-            
+
             if (error) {
-                console.error('Supabase error:', error);
-                alert('Database Error: ' + error.message);
+                alert('Database error: ' + error.message);
                 btn.disabled = false;
-                btn.innerHTML = `Retry Deployment <span class="material-symbols-outlined">refresh</span>`;
+                btn.innerHTML = 'Publish Changes';
             } else {
                 closeProductModal();
                 loadInventory();
                 btn.disabled = false;
-                btn.innerHTML = `Deploy Product <span class="material-symbols-outlined">rocket_launch</span>`;
+                btn.innerHTML = 'Publish Changes';
             }
         };
 
-        // Init
-        AuthManager.isAdmin().then(admin => {
-            if (admin) loadInventory();
-        });
+        // Init on first tab
+        showTab('inventory');
     </script>
-
     <style>
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
         .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
     </style>
