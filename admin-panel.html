@@ -176,6 +176,8 @@
                                 <select id="category" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none appearance-none shadow-sm">
                                     <option value="iphone">iPhone</option>
                                     <option value="samsung">Samsung</option>
+                                    <option value="android">Android (Google, Huawei, Motorola...)</option>
+                                    <option value="xiaomi">Xiaomi / Poco</option>
                                     <option value="ipad">iPad</option>
                                     <option value="smartwatch">Apple Watch</option>
                                     <option value="audio">Audio</option>
@@ -263,16 +265,24 @@
                                 <input type="text" id="specProcessor" placeholder="A19 Pro Chip" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
                             <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Display Name</label>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">RAM / Memory</label>
+                                <input type="text" id="specRAM" placeholder="16GB DDR5" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Graphics / GPU</label>
+                                <input type="text" id="specGPU" placeholder="RTX 4060" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
+                            </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Display Type</label>
                                 <input type="text" id="specDisplay" placeholder="Super Retina XDR" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
                             <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Brightness (nits)</label>
-                                <input type="text" id="specBrightness" placeholder="2500 nits" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Refresh Rate</label>
+                                <input type="text" id="specRefresh" placeholder="120Hz" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
                             <div>
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Refresh Rate (Hz)</label>
-                                <input type="text" id="specRefresh" placeholder="120Hz" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Additional Storage Info</label>
+                                <input type="text" id="specStorage" placeholder="1TB NVMe SSD" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
                             <div>
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Camera Megapixels</label>
@@ -282,27 +292,25 @@
                                 <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Battery Info</label>
                                 <input type="text" id="specBattery" placeholder="30 hours playback" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
                             </div>
+                            <div>
+                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Brightness (nits)</label>
+                                <input type="text" id="specBrightness" placeholder="2500 nits" class="w-full bg-white dark:bg-slate-800 border-none rounded-xl p-4 outline-none shadow-sm">
+                            </div>
                         </div>
                     </div>
 
                     <!-- SECTION: REVIEWS -->
                     <div class="bg-slate-50 dark:bg-slate-800/30 p-6 rounded-3xl border border-slate-100 dark:border-slate-800">
-                        <h4 class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-sm">reviews</span> Customer Reviews
-                        </h4>
-                        <div class="space-y-6">
-                            <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl">
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Reviewer 1 Name</label>
-                                <input type="text" id="rev1Name" class="w-full mb-3 border-b border-slate-100 dark:border-slate-700 outline-none pb-2">
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Review 1 Comment</label>
-                                <textarea id="rev1Comment" rows="2" class="w-full text-sm outline-none resize-none"></textarea>
-                            </div>
-                            <div class="p-4 bg-white dark:bg-slate-800 rounded-2xl">
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Reviewer 2 Name</label>
-                                <input type="text" id="rev2Name" class="w-full mb-3 border-b border-slate-100 dark:border-slate-700 outline-none pb-2">
-                                <label class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Review 2 Comment</label>
-                                <textarea id="rev2Comment" rows="2" class="w-full text-sm outline-none resize-none"></textarea>
-                            </div>
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-blue-600 font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">reviews</span> Customer Reviews
+                            </h4>
+                            <button type="button" onclick="addReview()" class="flex items-center gap-1 text-[10px] font-bold text-blue-500 hover:text-blue-600 transition-colors uppercase tracking-widest">
+                                <span class="material-symbols-outlined text-sm">add_circle</span> Add Review
+                            </button>
+                        </div>
+                        <div id="reviewsContainer" class="space-y-4">
+                            <!-- Reviews will be injected here via JS -->
                         </div>
                     </div>
                 </form>
@@ -336,20 +344,52 @@
         let selectedImages = []; 
         let fillerImage = null; // {name, base64}
         let dynamicColors = ['#1c1c1c', '#f2f2f2', '#d1713f']; // Initial variants
+        let dynamicReviews = [
+            { name: "Jonathan D.", comment: "The build quality and the level of engineering precision is simply unmatched." },
+            { name: "Sarah A.", comment: "Outstanding performance across all my professional workflows." }
+        ];
 
-        // SMART KNOWLEDGE DATABASE
+        // SMART KNOWLEDGE DATABASE (Ultra Expanded)
         const PRODUCT_KNOWLEDGE = {
             "iphone 17 pro max": { 
                 brand: "Apple", category: "iphone", year: 2026, processor: "A19 Pro Chip", display: "7.1-inch Super Retina XDR", colors: ["#1c1c1c", "#f2f2f2", "#d1713f"], 
-                integrity: "Grade 5 Titanium enclosure with brushed obsidian texture.", mktTitle: "Engineering Precision.", mktSub: "The fastest chip ever in a smartphone."
+                integrity: "Grade 5 Titanium enclosure.", mktTitle: "Engineering Precision.", mktSub: "A19 Pro meets 7.1\" display.",
+                specs: { camera: "50MP Main | 10x Optical", battery: "100h Audio playback", refresh: "120Hz ProMotion" }
             },
             "lenovo nitro v 15": { 
                 brand: "Lenovo", category: "computing", year: 2024, processor: "Intel Core i7-13620H", display: "15.6-inch FHD 144Hz IPS", colors: ["#000000", "#1a1a1a"], 
-                integrity: "Built with military-grade durability and dual-fan cooling.", mktTitle: "Dominate the Game.", mktSub: "Unleash performance with RTX Graphics."
+                integrity: "Military-grade durability (MIL-STD 810H).", mktTitle: "Dominate the Game.", mktSub: "RTX 4050 Performance.",
+                specs: { ram: "16GB DDR5 5200MHz", gpu: "NVIDIA RTX 4050 6GB", refresh: "144Hz", storage: "512GB Gen4 SSD" }
             },
-            "sony playstation 5 pro": { 
-                brand: "Sony", category: "consoles", year: 2024, processor: "AMD Ryzen Zen 2 Custom", display: "8K Output Support", colors: ["#ffffff", "#1e1e1e"], 
-                integrity: "Liquid metal cooling with high-velocity airflow.", mktTitle: "Play Has No Limits.", mktSub: "Depper immersion with RTX Ray Tracing."
+            "acer nitro 5 v": { 
+                brand: "Acer", category: "computing", year: 2024, processor: "Ryzen 7 7000 Series", display: "15.6-inch QHD 165Hz", colors: ["#1e1e1e", "#333333"], 
+                integrity: "Dual-fan, quad-exhaust cooling design.", mktTitle: "Sizzling Speed.", mktSub: "High-octane gaming performance.",
+                specs: { ram: "32GB DDR5", gpu: "NVIDIA RTX 4070", refresh: "165Hz", storage: "1TB SSD" }
+            },
+            "macbook air m3": { 
+                brand: "Apple", category: "computing", year: 2024, processor: "Apple M3 Chip (8-core CPU)", display: "13.6-inch Liquid Retina", colors: ["#2d2e32", "#e3e4e5", "#f3f0e9"], 
+                integrity: "100% Recycled Aluminum enclosure.", mktTitle: "Lean. Mean. M3 Machine.", mktSub: "Strikingly thin, mind-blowing speed.",
+                specs: { ram: "16GB Unified Memory", battery: "Up to 18 hours battery life", storage: "512GB SSD" }
+            },
+            "samsung s24 ultra": { 
+                brand: "Samsung", category: "samsung", year: 2024, processor: "Snapdragon 8 Gen 3 for Galaxy", display: "6.8-inch QHD+ Dynamic AMOLED 2X", colors: ["#2b2b2b", "#e3e4e5", "#cfb997"], 
+                integrity: "Titanium Frame with Gorilla Armor.", mktTitle: "Galaxy AI is Here.", mktSub: "The ultimate smartphone experience.",
+                specs: { ram: "12GB LPDDR5X", gpu: "Adreno 750", camera: "200MP Main | 100x Space Zoom", battery: "5000mAh | 45W Fast Charging" }
+            },
+            "google pixel 8 pro": { 
+                brand: "Google", category: "android", year: 2023, processor: "Google Tensor G3", display: "6.7-inch Super Actua Display", colors: ["#c5d1eb", "#1c1c1c", "#f3f0e9"], 
+                integrity: "Polished aluminum frame with matte back glass.", mktTitle: "The best of Google AI.", mktSub: "Pro-level photos, even better processing.",
+                specs: { ram: "12GB LPDDR5X", camera: "50MP Triple Rear System", refresh: "120Hz LTPO", battery: "5050mAh" }
+            },
+            "huawei mate 60 pro": { 
+                brand: "Huawei", category: "android", year: 2023, processor: "Kirin 9000S", display: "6.82-inch LTPO OLED", colors: ["#000000", "#ffffff", "#006400"], 
+                integrity: "Basalt architecture for extreme durability.", mktTitle: "Pioneering Innovation.", mktSub: "Satellite communication and ultra-fast charging.",
+                specs: { ram: "12GB", camera: "50MP XMAGE OIS", storage: "512GB NM Card Expandable", battery: "5000mAh | 88W Charging" }
+            },
+            "xiaomi 14 ultra": { 
+                brand: "Xiaomi", category: "android", year: 2024, processor: "Snapdragon 8 Gen 3", display: "6.73-inch AMOLED 120Hz", colors: ["#000000", "#ffffff", "#0047ab"], 
+                integrity: "Xiaomi Shield Glass protection.", mktTitle: "Lens to Legend.", mktSub: "Leica Optical System for professional imaging.",
+                specs: { ram: "16GB", gpu: "Adreno 750", camera: "50MP 1-inch Sensor Leica", refresh: "120Hz" }
             }
         };
 
@@ -360,7 +400,6 @@
             const val = titleInput.value.toLowerCase().trim();
             const prompt = document.getElementById('autofillPrompt');
             
-            // Flexible match
             currentSuggestion = null;
             for(let key in PRODUCT_KNOWLEDGE) {
                 if(val.length > 4 && (key.includes(val) || val.includes(key))) {
@@ -387,6 +426,14 @@
             setGhostText('specBuildIntegrity', s.integrity, active);
             setGhostText('marketingTitle', s.mktTitle, active);
             setGhostText('marketingSubtitle', s.mktSub, active);
+
+            // Conditional Ghost Specs
+            if(s.specs) {
+                if(s.specs.camera) setGhostText('specCamera', s.specs.camera, active);
+                if(s.specs.battery) setGhostText('specBattery', s.specs.battery, active);
+                if(s.specs.refresh) setGhostText('specRefresh', s.specs.refresh, active);
+                // RAM/GPU usually go to description or extra specs
+            }
         }
 
         function setGhostText(id, text, active) {
@@ -407,16 +454,31 @@
             if (!currentSuggestion) return;
             const s = currentSuggestion;
             
-            document.getElementById('brandSearch').value = s.brand;
-            document.getElementById('brand').value = s.brand;
-            document.getElementById('specProcessor').value = s.processor;
-            document.getElementById('specDisplay').value = s.display;
-            document.getElementById('year').value = s.year;
-            document.getElementById('category').value = s.category;
-            document.getElementById('specBuildIntegrity').value = s.integrity;
-            document.getElementById('marketingTitle').value = s.mktTitle;
-            document.getElementById('marketingSubtitle').value = s.mktSub;
+            if(s.brand) { document.getElementById('brandSearch').value = s.brand; document.getElementById('brand').value = s.brand; }
+            if(s.processor) document.getElementById('specProcessor').value = s.processor;
+            if(s.display) document.getElementById('specDisplay').value = s.display;
+            if(s.year) document.getElementById('year').value = s.year;
+            if(s.category) document.getElementById('category').value = s.category;
+            if(s.integrity) document.getElementById('specBuildIntegrity').value = s.integrity;
+            if(s.mktTitle) document.getElementById('marketingTitle').value = s.mktTitle;
+            if(s.mktSub) document.getElementById('marketingSubtitle').value = s.mktSub;
             
+            if(s.specs) {
+                if(s.specs.camera) document.getElementById('specCamera').value = s.specs.camera;
+                if(s.specs.battery) document.getElementById('specBattery').value = s.specs.battery;
+                if(s.specs.refresh) document.getElementById('specRefresh').value = s.specs.refresh;
+                
+                // POPULATE DEDICATED HARDWARE FIELDS
+                if(s.specs.ram) document.getElementById('specRAM').value = s.specs.ram;
+                if(s.specs.gpu) document.getElementById('specGPU').value = s.specs.gpu;
+                if(s.specs.storage) document.getElementById('specStorage').value = s.specs.storage;
+
+                // Base Description
+                if(document.getElementById('description').value === "") {
+                    document.getElementById('description').value = s.mktSub || "Advanced performance for professional deployment.";
+                }
+            }
+
             dynamicColors = [...s.colors];
             renderColors();
 
@@ -425,7 +487,7 @@
         }
 
         const BRAND_DATA = {
-            "Top Brands": ["Apple", "Samsung", "PlayStation", "Xbox"],
+            "Top Brands": ["Apple", "Samsung", "Lenovo", "Acer", "PlayStation", "Xbox"],
             "Gaming & Consoles": [
                 "Sony", "Microsoft", "Nintendo", "Valve", "NVIDIA", "Razer", 
                 "Logitech G", "SteelSeries", "Corsair", "HyperX", "Scuf Gaming", 
@@ -435,7 +497,7 @@
             "Smartphones & Mobile": [
                 "Google", "Xiaomi", "Huawei", "Honor", "Oppo", "Vivo", 
                 "Realme", "OnePlus", "Motorola", "Nokia", "Nothing", 
-                "Sony (Xperia)", "ZTE", "ASUS"
+                "Sony (Xperia)", "ZTE", "ASUS", "Blackberry", "TCL", "ROG Phone"
             ],
             "Audio & Sound": [
                 "Bose", "JBL", "Beats by Dre", "Sennheiser", "Jabra", 
@@ -543,8 +605,43 @@
             });
         }
 
+        // REVIEWS DYNAMICS
+        function addReview() {
+            dynamicReviews.push({ name: "New Reviewer", comment: "Enter feedback here..." });
+            renderReviews();
+        }
+        function removeReview(index) {
+            dynamicReviews.splice(index, 1);
+            renderReviews();
+        }
+        function updateReview(index, field, value) {
+            dynamicReviews[index][field] = value;
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviewsContainer');
+            if(!container) return;
+            container.innerHTML = dynamicReviews.map((rev, index) => `
+                <div class="p-5 bg-white dark:bg-slate-800 rounded-[2rem] border border-slate-100 dark:border-white/5 shadow-sm group relative slide-up">
+                    <button type="button" onclick="removeReview(${index})" class="absolute top-4 right-4 text-slate-300 hover:text-red-500 transition-colors">
+                        <span class="material-symbols-outlined text-sm">close</span>
+                    </button>
+                    <div class="mb-4">
+                        <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1 block">Reviewer Name</label>
+                        <input type="text" value="${rev.name}" oninput="updateReview(${index}, 'name', this.value)" 
+                               class="w-full bg-transparent border-b border-slate-100 dark:border-slate-700 outline-none text-sm font-bold pb-1 focus:border-blue-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-1 block">Comment</label>
+                        <textarea oninput="updateReview(${index}, 'comment', this.value)" 
+                                  class="w-full bg-transparent outline-none text-sm leading-relaxed resize-none cupertino-scroll scrollbar-hide" rows="2">${rev.comment}</textarea>
+                    </div>
+                </div>
+            `).join('');
+        }
         function closeRestrictionModal() {
             const modal = document.getElementById('restrictionModal');
+            if(!modal) return;
             modal.style.opacity = '0';
             modal.style.pointerEvents = 'none';
             setTimeout(() => modal.classList.add('hidden'), 500);
@@ -556,6 +653,7 @@
                 document.getElementById('authOverlay').classList.add('hidden');
                 document.getElementById('mainApp').classList.remove('hidden');
                 renderColors();
+                renderReviews();
                 loadInventory();
             }
         };
@@ -687,26 +785,22 @@
                     specBuildIntegrity: document.getElementById('specBuildIntegrity').value || 'Professional build quality.',
                     marketingTitle: document.getElementById('marketingTitle').value || 'Engineering Precision.',
                     marketingSubtitle: document.getElementById('marketingSubtitle').value || 'Every component refined for professional peak performance.',
-                    specProcessor: document.getElementById('specProcessor').value || 'Power Process',
-                    specDisplay: document.getElementById('specDisplay').value || 'High Res Display',
-                    specBrightness: document.getElementById('specBrightness').value || '2000 nits',
-                    specRefresh: document.getElementById('specRefresh').value || '120Hz',
-                    specCamera: document.getElementById('specCamera').value || 'Pro System',
-                    specBattery: document.getElementById('specBattery').value || 'All Day Power',
-                    rev1Name: document.getElementById('rev1Name').value || 'Admin',
-                    rev1Comment: document.getElementById('rev1Comment').value || 'Excellent Build Quality.',
-                    rev2Name: document.getElementById('rev2Name').value || 'Client',
-                    rev2Comment: document.getElementById('rev2Comment').value || 'Smooth and fast.',
-                    colors: [
-                        document.getElementById('color1').value,
-                        document.getElementById('color2').value,
-                        document.getElementById('color3').value
-                    ],
+                    specProcessor: document.getElementById('specProcessor').value || '',
+                    specRAM: document.getElementById('specRAM').value || '',
+                    specGPU: document.getElementById('specGPU').value || '',
+                    specDisplay: document.getElementById('specDisplay').value || '',
+                    specBrightness: document.getElementById('specBrightness').value || '',
+                    specRefresh: document.getElementById('specRefresh').value || '',
+                    specStorage: document.getElementById('specStorage').value || '',
+                    specCamera: document.getElementById('specCamera').value || '',
+                    specBattery: document.getElementById('specBattery').value || '',
+                    colors: dynamicColors,
                     storage: [
                         { label: document.getElementById('cap1').value || 'Base', extra: parseFloat(document.getElementById('cap1Extra').value) || 0 },
                         { label: document.getElementById('cap2').value || 'Mid', extra: parseFloat(document.getElementById('cap2Extra').value) || 200 },
                         { label: document.getElementById('cap3').value || 'High', extra: parseFloat(document.getElementById('cap3Extra').value) || 400 }
                     ],
+                    revs: dynamicReviews,
                     images: uploadedUrls.length > 0 ? uploadedUrls : (JSON.parse(atob((await (await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${document.getElementById('editPath').value}`)).json())).content)).images,
                     fillerImage: fillerUrl,
                     url: `./${PRODUCTS_HTML_DIR}/${slug}.html`,
@@ -796,6 +890,41 @@
             
             // Processor Block
             html = html.replace(/<h3 class="text-3xl font-bold mb-4">.*?<\/h3>/, `<h3 class="text-3xl font-bold mb-4">${data.specProcessor}</h3>`);
+            
+            // SMART CONDITIONAL RENDERING ENGINE
+            const specBlocks = [
+                { id: 'specDisplay', label: '7.1-inch Super Retina XDR' },
+                { id: 'specBrightness', label: '2500 nits' },
+                { id: 'specRefresh', label: '120Hz' },
+                { id: 'specCamera', label: '48MP Main | 5x Optical Zoom' },
+                { id: 'specBattery', label: 'Up to 30 hours video playback.' },
+                { id: 'specProcessor', label: 'A19 Pro Chip' }
+            ];
+
+            specBlocks.forEach(block => {
+                const val = data[block.id] ? data[block.id].trim() : "";
+                if (!val || val === "") {
+                    // This regex finds the <div> that contains the specific label and removes it
+                    const removalRegex = new RegExp(`<div[^>]*>\\s*<label[^>]*>.*?${block.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}.*?<\\/label>[^]*?<\\/div>`, 'gi');
+                    html = html.replace(removalRegex, '');
+                    // Clear secondary mentions
+                    html = html.replace(new RegExp(block.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), '');
+                } else {
+                    const replaceRegex = new RegExp(block.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+                    html = html.replace(replaceRegex, val);
+                }
+            });
+
+            // INTERNAL ENGINEERING SUMMARY (RAM, GPU, EXTRA STORAGE)
+            if(data.specRAM || data.specGPU || data.specStorage) {
+                let techSummary = `<div class="mt-8 p-10 bg-slate-50 border border-slate-200 rounded-[2.5rem] dark:bg-slate-900 border-none flex flex-col items-center shadow-inner"><h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-8">Internal Engineering</h4><div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">`;
+                if(data.specRAM) techSummary += `<div class="text-center p-4 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-100 dark:border-white/5"><p class="text-[9px] text-slate-400 uppercase font-bold mb-1 tracking-widest">Memory</p><p class="text-xl font-bold tracking-tight">${data.specRAM}</p></div>`;
+                if(data.specGPU) techSummary += `<div class="text-center p-4 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-100 dark:border-white/5"><p class="text-[9px] text-slate-400 uppercase font-bold mb-1 tracking-widest">Graphics</p><p class="text-xl font-bold tracking-tight">${data.specGPU}</p></div>`;
+                if(data.specStorage) techSummary += `<div class="text-center p-4 bg-white dark:bg-slate-800 rounded-3xl shadow-sm border border-slate-100 dark:border-white/5"><p class="text-[9px] text-slate-400 uppercase font-bold mb-1 tracking-widest">Tech Storage</p><p class="text-xl font-bold tracking-tight">${data.specStorage}</p></div>`;
+                techSummary += `</div></div>`;
+                html = html.replace(/<section id="reviews"/, `${techSummary}<section id="reviews"`);
+            }
+
             // Filler Image
             if(data.fillerImage) {
                 html = html.replace(/<img class="absolute -bottom-10 -right-10 w-64 h-64 object-contain opacity-50" .*? src=".*?"/, `<img class="absolute -bottom-10 -right-10 w-64 h-64 object-contain opacity-50" src="${data.fillerImage.replace('./assets/', '../assets/')}"`);
@@ -808,11 +937,30 @@
             html = html.replace(/<p class="text-xs text-on-surface-variant mt-2">48MP Main | 5x Optical Zoom<\/p>/, `<p class="text-xs text-on-surface-variant mt-2">${data.specCamera}</p>`);
             html = html.replace(/<p class="text-xs text-on-surface-variant mt-2">Up to 30 hours video playback.<\/p>/, `<p class="text-xs text-on-surface-variant mt-2">${data.specBattery}</p>`);
 
-            // Reviews
-            html = html.replace(/<p class="text-sm font-bold">Jonathan D.<\/p>/, `<p class="text-sm font-bold">${data.rev1Name}</p>`);
-            html = html.replace(/<p class="text-on-surface-variant leading-relaxed text-sm">The transition to titanium is incredible..*?<\/p>/, `<p class="text-on-surface-variant leading-relaxed text-sm">${data.rev1Comment}</p>`);
-            html = html.replace(/<p class="text-sm font-bold">Sarah A.<\/p>/, `<p class="text-sm font-bold">${data.rev2Name}</p>`);
-            html = html.replace(/<p class="text-on-surface-variant leading-relaxed text-sm">The 5x optical zoom is finally where I need it to be.*?<\/p>/, `<p class="text-on-surface-variant leading-relaxed text-sm">${data.rev2Comment}</p>`);
+            // DYNAMIC REVIEWS RENDERING
+            if(data.revs && data.revs.length > 0) {
+                const reviewsHtml = data.revs.map(rev => `
+                    <div class="p-8 bg-slate-50 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm">
+                        <div class="flex items-center gap-2 mb-4">
+                            ${Array(5).fill('<span class="material-symbols-outlined text-xs text-blue-500">star</span>').join('')}
+                        </div>
+                        <p class="text-on-surface-variant leading-relaxed mb-6 font-medium italic">"${rev.comment}"</p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
+                                <span class="material-symbols-outlined text-blue-600 text-lg">person</span>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-on-surface">${rev.name}</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest font-bold font-mono">Verified Deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Reemplazamos el contenedor de reviews estático con el dinámico
+                const reviewsSectionRegex = /<div class="grid grid-cols-1 md:grid-cols-2 gap-8">[\s\S]*?<\/div>/;
+                html = html.replace(reviewsSectionRegex, `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">${reviewsHtml}</div>`);
+            }
 
             return html;
         }
@@ -858,15 +1006,20 @@
             document.getElementById('marketingTitle').value = item.marketingTitle;
             document.getElementById('marketingSubtitle').value = item.marketingSubtitle;
             document.getElementById('specProcessor').value = item.specProcessor;
+            document.getElementById('specRAM').value = item.specRAM || '';
+            document.getElementById('specGPU').value = item.specGPU || '';
             document.getElementById('specDisplay').value = item.specDisplay;
             document.getElementById('specBrightness').value = item.specBrightness;
             document.getElementById('specRefresh').value = item.specRefresh;
+            document.getElementById('specStorage').value = item.specStorage || '';
             document.getElementById('specCamera').value = item.specCamera;
             document.getElementById('specBattery').value = item.specBattery;
-            document.getElementById('rev1Name').value = item.rev1Name;
-            document.getElementById('rev1Comment').value = item.rev1Comment;
-            document.getElementById('rev2Name').value = item.rev2Name;
-            document.getElementById('rev2Comment').value = item.rev2Comment;
+            
+            dynamicReviews = item.revs || [
+                { name: "Jonathan D.", comment: "Excellent build quality." },
+                { name: "Sarah A.", comment: "State of the art technology." }
+            ];
+            renderReviews();
             
             if(item.colors) {
                 document.getElementById('color1').value = item.colors[0];
