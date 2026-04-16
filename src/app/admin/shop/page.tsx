@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
+import { revalidateShop } from '@/app/actions';
 
 interface Product {
   id: string;
@@ -34,7 +35,10 @@ export default function AdminShop() {
   const deleteProduct = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
     const { error } = await supabase.from('products').delete().eq('id', id);
-    if (!error) fetchProducts();
+    if (!error) {
+      await revalidateShop();
+      fetchProducts();
+    }
     else alert('Error deleting product');
   };
 

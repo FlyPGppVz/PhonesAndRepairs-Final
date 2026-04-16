@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
+import { revalidateShop } from '@/app/actions';
 
 interface Variant {
   color_hex: string;
@@ -104,6 +105,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
     if (error) {
       alert(error.message);
     } else {
+      await revalidateShop();
       router.push('/admin/shop');
       router.refresh();
     }
