@@ -1,0 +1,66 @@
+{
+  "title": "Apple Watch",
+  "brand": "Apple",
+  "year": 2026,
+  "price": 1500,
+  "colors": [
+    {
+      "color": "#1c1c1c",
+      "image": "./assets/img/products/v_1776305952988_Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png"
+    },
+    {
+      "color": "#f2f2f2",
+      "image": "./assets/img/products/v_1776305956069_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png"
+    },
+    {
+      "color": "#3fd15e",
+      "image": "./assets/img/products/v_1776305958762_Apple-Watch-Series-11-42mm-Silver-Aluminum-Case-Purple-Fog-Sport-Band.png"
+    }
+  ],
+  "description": "Hero Description",
+  "category": "smartwatch",
+  "specBuildIntegrity": "Professional build quality.",
+  "marketingTitle": "Engineering Precision.",
+  "marketingSubtitle": "Every component refined for professional peak performance.",
+  "specProcessor": "Processor Name",
+  "specRAM": "RAM / Memory",
+  "specGPU": "Graphics / GPU",
+  "specDisplay": "Display Type",
+  "specBrightness": "Brightness (nits)",
+  "specRefresh": "Refresh Rate",
+  "specStorage": "Additional Storage Info",
+  "specCamera": "Camera Megapixels",
+  "specBattery": "Battery Info",
+  "storage": [
+    {
+      "label": "256",
+      "extra": 0
+    },
+    {
+      "label": "512",
+      "extra": 200
+    },
+    {
+      "label": "1tb",
+      "extra": 400
+    }
+  ],
+  "revs": [
+    {
+      "name": "Jonathan D.",
+      "comment": "The build quality and the level of engineering precision is simply unmatched."
+    },
+    {
+      "name": "Sarah A.",
+      "comment": "Outstanding performance across all my professional workflows."
+    }
+  ],
+  "images": [
+    "./assets/img/products/p_1776305994388_0_Apple-Watch-Series-11-42mm-Jet-Black-Aluminum-Case-Black-Sport-Band-.png",
+    "./assets/img/products/p_1776305994392_1_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
+    "./assets/img/products/p_1776305994394_2_Apple-Watch-Series-11-42mm-Silver-Aluminum-Case-Purple-Fog-Sport-Band.png"
+  ],
+  "fillerImage": "./assets/img/products/fill_1776306015019_Apple-Watch-Series-11-42mm-Rose-Gold-Aluminum-Case-Light-Blush-Sport-Band.png",
+  "url": "./products/apple-watch.html",
+  "id": "apple-watch"
+}
