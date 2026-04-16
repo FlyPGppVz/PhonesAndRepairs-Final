@@ -405,7 +405,7 @@
                                  <p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.3em] mt-3">${p.category}</p>
                              </div>
                              <div class="flex gap-3 pt-6 border-t border-slate-50 dark:border-white/5">
-                                 <button class="flex-grow py-4 px-6 bg-black dark:bg-white text-white dark:text-black rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg hover:opacity-80 transition-all">Edit</button>
+                                 <button onclick="editProduct('${p.id}')" class="flex-grow py-4 px-6 bg-black dark:bg-white text-white dark:text-black rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg hover:opacity-80 transition-all">Edit</button>
                                  <button onclick="deleteProduct('${p.id}')" class="w-14 h-14 flex items-center justify-center bg-red-50 text-red-500 dark:bg-red-500/10 rounded-full hover:bg-red-500 hover:text-white transition-all">
                                     <span class="material-symbols-outlined text-base">delete</span>
                                  </button>
@@ -414,6 +414,52 @@
                     </div>
                 `).join('') || `<div class="col-span-full py-60 text-center opacity-20 font-black uppercase tracking-[1em]">Empty Catalog</div>`;
             } catch (err) { list.innerHTML = 'Database offline.'; }
+        }
+
+        async function editProduct(id) {
+            try {
+                const { data: p, error } = await _supabase.from('products').select('*').eq('id', id).single();
+                if (error) throw error;
+
+                // Abrir el modal
+                openAddModal();
+                
+                // Rellenar campos básicos
+                const f = document.getElementById('productForm');
+                f.dataset.editId = p.id; // Guardamos el ID para saber que es edición
+                
+                f.name.value = p.name || '';
+                f.category.value = p.category || '';
+                f.price.value = p.price || 0;
+                f.main_image_url.value = p.main_image_url || '';
+                f.marketing_title.value = p.marketing_title || '';
+                f.marketing_description.value = p.marketing_description || '';
+                f.performance_tag.value = p.performance_tag || '';
+                f.screen_specs.value = p.screen_specs || '';
+                f.camera_specs.value = p.camera_specs || '';
+                f.battery_specs.value = p.battery_specs || '';
+
+                // Sincronizar colores si existen
+                const colorManager = document.getElementById('live-color-manager');
+                colorManager.innerHTML = '';
+                if (p.colors && p.colors.length > 0) {
+                    p.colors.forEach(c => {
+                        const div = document.createElement('div');
+                        div.className = 'bg-slate-50 dark:bg-white/5 p-4 rounded-xl space-y-3';
+                        div.innerHTML = `
+                            <div class="flex gap-2">
+                                <input type="text" placeholder="Color Name" class="flex-1 bg-transparent border-b border-slate-200 text-xs py-1" value="${c.name || ''}" oninput="syncColors()">
+                                <input type="color" class="w-8 h-8 rounded-full overflow-hidden border-0 p-0" value="${c.hex || '#000000'}" oninput="syncColors()">
+                            </div>
+                            <input type="text" placeholder="Image URL" class="w-full bg-transparent border-b border-slate-200 text-[10px] py-1" value="${c.image || ''}" oninput="syncColors()">
+                        `;
+                        colorManager.appendChild(div);
+                    });
+                }
+                
+                // Actualizar la previsualización
+                liveUpdate();
+            } catch (err) { alert('Error al cargar producto para editar'); }
         }
 
         async function deleteProduct(id) {
@@ -433,83 +479,71 @@
             content.classList.add('scale-95', 'opacity-0');
             setTimeout(() => {
                 document.getElementById('productModal').classList.add('hidden');
-                document.getElementById('productForm').reset();
+                const form = document.getElementById('productForm');
+                form.reset();
+                delete form.dataset.editId; // Limpiar rastro de edición
                 document.getElementById('live-color-manager').innerHTML = '';
             }, 300);
         }
 
         document.getElementById('productForm').onsubmit = async (e) => {
             e.preventDefault();
-            console.log("🚀 Iniciando proceso de publicación...");
+            console.log("🚀 Iniciando proceso de guardado...");
             
             const btn = document.querySelector('button[type="submit"]');
-            const data = new FormData(e.target);
+            const form = e.target;
+            const data = new FormData(form);
+            const editId = form.dataset.editId;
             
             btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin mr-2">...</span> PUBLISHING`;
+            btn.innerHTML = `<span class="animate-spin mr-2">...</span> SAVING`;
 
             try {
-                // Construcción del objeto con limpieza de datos
-                const colorMap = {};
-                document.querySelectorAll('.color-row').forEach(row => {
-                    const hex = row.querySelector('input[type="color"]').value;
-                    const img = row.querySelector('input[type="text"]').value;
-                    if (img) colorMap[hex] = img;
-                });
-
-                const galleryArr = [];
-                document.querySelectorAll('input[name="main_image"], input[name="extra_image"]').forEach(i => { 
-                    if(i.value) galleryArr.push(i.value); 
+                // Recopilar colores
+                const colors = [];
+                [...document.getElementById('live-color-manager').children].forEach(row => {
+                    const inputs = row.querySelectorAll('input');
+                    if (inputs[2].value) { 
+                        colors.push({ name: inputs[0].value, hex: inputs[1].value, image: inputs[2].value });
+                    }
                 });
 
                 const productData = {
                     name: data.get('name') || 'Unnamed Asset',
-                    subtitle: data.get('subtitle') || '',
-                    description: data.get('subtitle') || 'Asset Description', // Requerido por el catálogo
                     price: parseFloat(data.get('price')) || 0,
                     category: data.get('category') || 'Other',
-                    new_arrival_text: data.get('new_arrival_text') || 'New Arrival',
-                    marketing_title: data.get('marketing_title') || 'Engineering Precision.',
-                    marketing_subtitle: data.get('marketing_subtitle') || 'Quality build.',
-                    spec_dark_title: data.get('spec_dark_title') || 'Silicon Mastery',
-                    processor_description: data.get('proc_desc') || '',
-                    processor_image_url: data.get('proc_image') || '',
-                    performance_title: data.get('performance_title') || 'Performance',
-                    performance_subtitle: data.get('performance_subtitle') || 'Optimized.',
-                    display_tech_description: `${data.get('stat1') || '--'} | ${data.get('stat1_lbl') || 'Stat'}`,
-                    battery_life_description: `${data.get('stat2') || '--'} | ${data.get('stat2_lbl') || 'Stat'}`,
-                    main_image_url: data.get('main_image') || '',
-                    gallery_urls: galleryArr,
-                    colors: Object.keys(colorMap).length > 0 ? colorMap : {},
+                    main_image_url: data.get('main_image_url') || '',
+                    marketing_title: data.get('marketing_title') || '',
+                    marketing_description: data.get('marketing_description') || '',
+                    performance_tag: data.get('performance_tag') || '',
+                    screen_specs: data.get('screen_specs') || '',
+                    camera_specs: data.get('camera_specs') || '',
+                    battery_specs: data.get('battery_specs') || '',
+                    colors: colors,
                     stock_quantity: 10
                 };
 
-                console.log("📦 Datos a enviar:", productData);
-
-                // Race contra un timeout de 15 segundos para evitar carga infinita
-                const insertPromise = _supabase.from('products').insert([productData]);
-                const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout de Supabase (15s)')), 15000));
-
-                console.log("📡 Conectando con Supabase...");
-                const { error } = await Promise.race([insertPromise, timeoutPromise]);
-
-                if (error) {
-                    console.error("❌ Error de Supabase:", error);
-                    alert(`ERROR DE BASE DE DATOS:\n${error.message}\n\nDetalles: ${error.details || 'Verifica si ejecutaste el SQL de las columnas.'}`);
+                let result;
+                if (editId) {
+                    console.log("📝 Actualizando producto:", editId);
+                    result = await _supabase.from('products').update(productData).eq('id', editId);
                 } else {
-                    console.log("✅ ¡Éxito total!");
-                    alert('¡Producto publicado con éxito!');
-                    closeProductModal();
-                    loadInventory();
+                    console.log("➕ Insertando nuevo producto...");
+                    result = await _supabase.from('products').insert([productData]);
                 }
 
+                if (result.error) throw result.error;
+
+                alert('¡Guardado con éxito!');
+                closeProductModal();
+                loadInventory();
+
             } catch (err) {
-                console.error("🔥 Error crítico:", err);
-                alert('FALLO EN EL NAVEGADOR:\n' + err.message);
+                console.error("🔥 Error:", err);
+                alert('No se pudo guardar: ' + err.message);
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = 'Publish';
-                console.log("🏁 Proceso finalizado.");
+                btn.innerHTML = 'Publish Asset';
             }
         };
 
