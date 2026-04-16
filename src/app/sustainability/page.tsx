@@ -1,0 +1,60 @@
+'use client';
+
+import React from 'react';
+
+export default function SustainabilityPage() {
+  return (
+    <main className="pt-32 pb-24 dark:bg-black min-h-screen">
+      <section className="max-w-4xl mx-auto px-6 md:px-8 space-y-12 text-center animate-in fade-in slide-in-from-top-5 duration-700">
+        <span className="text-emerald-500 font-bold text-sm tracking-[0.3em] uppercase">Circular Economy</span>
+        <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter leading-tight">
+          Repair is a <br/>
+          <span className="text-emerald-500 italic">Radical Act.</span>
+        </h1>
+        <p className="text-xl text-slate-500 dark:text-zinc-400 leading-relaxed font-medium max-w-2xl mx-auto">
+          Every device we fix is a victory for the planet. Our commitment to sustainability isn't just a policy—it's the core of why we exist.
+        </p>
+      </section>
+
+      <section className="max-w-[1440px] mx-auto px-6 md:px-8 mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { icon: 'recycling', title: 'Zero Waste', desc: 'We recycle 100% of non-repairable components through certified green partners.' },
+          { icon: 'energy_savings_leaf', title: 'Carbon Offset', desc: 'Repairing a phone uses 90% less carbon than manufacturing a new one.' },
+          { icon: 'package_2', title: 'Eco-Packaging', desc: 'Our shipping materials are 100% biodegradable or recycled high-density fiber.' }
+        ].map((item, i) => (
+          <div key={i} className="cupertino-glass dark:bg-zinc-900/40 p-10 rounded-[2.5rem] border border-white/20 dark:border-white/5 shadow-xl hover:shadow-emerald-500/10 transition-all duration-500">
+            <span className="material-symbols-outlined text-5xl text-emerald-500 mb-6">{item.icon}</span>
+            <h3 className="text-2xl font-bold dark:text-white mb-4">{item.title}</h3>
+            <p className="text-slate-500 dark:text-zinc-400 font-medium leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="max-w-5xl mx-auto px-6 md:px-8 mt-32">
+        <div className="bg-emerald-500 text-white rounded-[3.5rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">15 Tons Saved.</h2>
+              <p className="text-emerald-50 text-xl font-medium leading-relaxed">
+                That's the amount of e-waste our customers helped divert from landfills in the last year alone. Your choice to repair makes a measurable difference.
+              </p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold">E-Waste Goal 2026</span>
+                  <span className="font-black">75%</span>
+                </div>
+                <div className="h-4 bg-white/20 rounded-full overflow-hidden">
+                  <div className="h-full bg-white w-3/4 rounded-full"></div>
+                </div>
+                <p className="text-xs font-bold uppercase tracking-widest opacity-80 text-center">In progress toward a greener future</p>
+              </div>
+            </div>
+          </div>
+          <span className="material-symbols-outlined absolute -right-20 -bottom-20 text-[30rem] opacity-[0.05] rotate-12">eco</span>
+        </div>
+      </section>
+    </main>
+  );
+}
