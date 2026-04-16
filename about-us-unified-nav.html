@@ -21,13 +21,14 @@
 <script src="./js/tailwind-config.js"></script>
     <script src="./js/navbar-component.js"></script>
 
-    <script id="anti_flicker">
+    <!-- Modern Theme Engine -->
+    <script id="theme-engine">
         (function() {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if (theme === 'dark') document.documentElement.classList.add('dark');
-            else document.documentElement.classList.remove('dark');
+            document.documentElement.classList.toggle('dark', theme === 'dark');
         })();
     </script>
+
 </head>
 <body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white antialiased transition-colors duration-500">
                     <!-- Modern Unified Navigation Component -->
