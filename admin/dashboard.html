@@ -1,589 +1,290 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Visual CMS Admin - CellphonesAndRepair</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Blink Service & Cellphones And Repair</title>
     
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="../js/supabase-config.js"></script>
     <script src="../js/auth.js"></script>
 
-    <script id="anti_flicker">
-        (function() {
-            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            if (theme === 'dark') document.documentElement.classList.add('dark');
-            else document.documentElement.classList.remove('dark');
-        })();
-    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f9fafb; color: #111827; }
+        .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .sidebar-link { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .sidebar-link.active { background-color: #f3f4f6; color: #000; font-weight: 700; border-left: 4px solid #3b82f6; }
+        .product-card { background: white; border: 1px solid rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+        .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1); }
+        .btn-primary { background: #000; color: #fff; transition: all 0.2s; }
+        .btn-primary:hover { background: #333; transform: scale(1.02); }
+        .modal-bg { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); }
+    </style>
 </head>
+<body class="min-h-screen flex flex-col">
 
-<body class="bg-slate-50 dark:bg-neutral-950 text-slate-900 dark:text-white min-h-screen font-body transition-colors duration-500 overflow-hidden text-sm">
-    <div class="flex h-screen">
-        <!-- Sidebar -->
-        <aside class="w-72 bg-white dark:bg-neutral-900 border-r border-slate-200 dark:border-white/5 flex flex-col z-50">
-            <div class="p-8">
-                <div class="flex items-center gap-3 mb-12">
-                    <div class="w-10 h-10 bg-black dark:bg-white rounded-xl flex items-center justify-center shadow-xl shadow-black/10">
-                        <span class="material-symbols-outlined text-white dark:text-black">admin_panel_settings</span>
-                    </div>
-                    <div>
-                        <h1 class="font-black text-lg tracking-tight uppercase">Admin</h1>
-                        <p class="text-[9px] text-slate-400 font-black uppercase tracking-[0.2em] leading-none">Curator Engine</p>
-                    </div>
-                </div>
-                
-                <nav class="space-y-2">
-                    <button class="w-full flex items-center gap-5 px-6 py-4 rounded-2xl transition-all duration-500 bg-black text-white dark:bg-white dark:text-black shadow-2xl shadow-black/20" id="btn-inventory">
-                        <span class="material-symbols-outlined text-lg">inventory_2</span> 
-                        <span class="text-xs font-black uppercase tracking-widest">Catalog</span>
-                    </button>
-                    <a href="../shop-fully-connected.html" class="w-full flex items-center gap-5 px-6 py-4 rounded-2xl transition-all duration-300 text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5">
-                        <span class="material-symbols-outlined text-lg">open_in_new</span> 
-                        <span class="text-xs font-black uppercase tracking-widest">View Shop</span>
-                    </a>
-                </nav>
+    <!-- HEADER (Original Blink Branding) -->
+    <header class="glass-header sticky top-0 z-40 h-20 flex items-center px-10 justify-between">
+        <div class="flex items-center gap-6">
+            <img src="../assets/images/logo-transparent.png" alt="Cellphones and Repair" class="h-10 opacity-90">
+            <div class="h-6 w-[1.5px] bg-slate-200"></div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-blue-600 font-bold">bolt</span>
+                <span class="font-extrabold tracking-tighter text-xl">BLINK<span class="text-blue-600">SERVICE</span></span>
             </div>
+        </div>
 
-            <div class="mt-auto p-8 border-t border-slate-100 dark:border-white/5">
-                <button onclick="AuthManager.logout()" class="w-full flex items-center gap-4 px-6 py-4 rounded-xl text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 font-bold transition-all">
-                    <span class="material-symbols-outlined">logout</span> 
-                    <span class="text-sm">Sign Out</span>
-                </button>
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex flex-col text-right">
+                <span id="admin-name" class="text-sm font-bold">Administrator</span>
+                <span id="admin-email" class="text-[10px] text-slate-400 font-medium">syncing with cloud...</span>
+            </div>
+            <button onclick="AuthManager.logout()" class="p-3 hover:bg-red-50 text-red-500 rounded-full transition-colors">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside class="w-72 border-r border-slate-100 bg-white flex flex-col p-6 gap-2">
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 px-4">Management</div>
+            <button class="sidebar-link active flex items-center gap-4 px-4 py-3 rounded-2xl w-full text-sm">
+                <span class="material-symbols-outlined">inventory_2</span> Inventory Control
+            </button>
+            <button class="sidebar-link text-slate-500 flex items-center gap-4 px-4 py-3 rounded-2xl w-full text-sm hover:bg-slate-50">
+                <span class="material-symbols-outlined">shopping_bag</span> Orders
+            </button>
+            <button class="sidebar-link text-slate-500 flex items-center gap-4 px-4 py-3 rounded-2xl w-full text-sm hover:bg-slate-50">
+                <span class="material-symbols-outlined">settings</span> System Config
+            </button>
+            
+            <div class="mt-auto p-4 bg-blue-50 rounded-2xl">
+                <div class="text-[10px] font-bold text-blue-600 uppercase mb-1">Terminal Status</div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-[11px] font-bold">Connected to Supabase</span>
+                </div>
             </div>
         </aside>
 
-        <!-- Main Workspace -->
-        <main class="flex-grow overflow-y-auto bg-slate-50 dark:bg-neutral-950">
-            <div class="sticky top-0 z-40 bg-slate-50/80 dark:bg-neutral-950/80 backdrop-blur-3xl border-b border-slate-200 dark:border-white/5 px-12 py-10 flex justify-between items-center">
-                <div>
-                    <h2 id="page-title" class="text-4xl font-black tracking-tighter">Inventory Control</h2>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-1">Status: Operational // Data Synced</p>
+        <!-- MAIN TABLE -->
+        <main class="flex-1 p-12 overflow-y-auto bg-[#fdfdfe]">
+            <div class="max-w-6xl mx-auto space-y-10">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h1 class="text-4xl font-extrabold tracking-tight text-slate-900">Inventory Catalog</h1>
+                        <p class="text-slate-500 mt-2 font-medium">Manage your products and service listings with Blink efficiency.</p>
+                    </div>
+                    <button onclick="openModal()" class="btn-primary flex items-center gap-3 px-8 py-4 rounded-2xl font-bold shadow-xl shadow-black/5">
+                        <span class="material-symbols-outlined">add</span> Create Asset
+                    </button>
                 </div>
-                <button onclick="openAddModal()" class="flex items-center gap-3 px-12 py-5 bg-black dark:bg-white text-white dark:text-black rounded-full font-black text-[10px] uppercase tracking-[0.2em] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all">
-                    <span class="material-symbols-outlined text-sm">add_circle</span>
-                    Create New Asset
-                </button>
-            </div>
 
-            <div class="p-12">
-                <div id="tab-inventory" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10"></div>
+                <!-- Grid List -->
+                <div id="inventory-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Items -->
+                </div>
             </div>
         </main>
     </div>
 
-    <!-- MEGA WYSIWYG MODAL -->
-    <div id="productModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/85 backdrop-blur-3xl" onclick="closeProductModal()"></div>
-        
-        <div class="relative bg-white dark:bg-neutral-900 w-full max-w-[98vw] h-[95vh] rounded-[4rem] shadow-2xl flex overflow-hidden scale-95 opacity-0 transition-all duration-700 border border-white/10" id="modalContent">
-            
-            <!-- EDITOR PANEL (LEFT) -->
-            <div class="w-[500px] lg:w-[550px] flex flex-col border-r border-slate-100 dark:border-white/5 bg-white dark:bg-neutral-900 z-10 shrink-0">
-                <div class="px-10 py-10 border-b border-slate-100 dark:border-white/5 flex justify-between items-center bg-slate-50/50 dark:bg-black/20">
-                    <div class="space-y-1">
-                        <h2 class="text-xl font-black uppercase tracking-tighter">Asset Curator</h2>
-                        <p class="text-[8px] font-bold text-primary uppercase tracking-[0.4em]">Draft Mode v3.0</p>
-                    </div>
-                    <div class="flex gap-3">
-                        <button type="button" onclick="closeProductModal()" class="px-8 py-3 bg-slate-900 text-white rounded-full text-[9px] font-black uppercase tracking-widest hover:opacity-80 transition-all">Cancel</button>
-                        <button type="submit" form="productForm" class="px-10 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full text-[9px] font-black uppercase tracking-widest shadow-2xl hover:scale-105 transition-all">Publish</button>
-                    </div>
+    <!-- CLEAN EDIT MODAL -->
+    <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-8 hidden">
+        <div class="absolute inset-0 modal-bg" onclick="closeModal()"></div>
+        <div class="bg-white w-full max-w-4xl rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] relative z-10 overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="p-10 border-b border-slate-50 flex justify-between items-center">
+                <div>
+                    <h2 id="modalTitle" class="text-2xl font-black tracking-tight">Register New Asset</h2>
+                    <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Product Details</p>
                 </div>
-
-                <div class="flex-grow overflow-y-auto p-10 custom-scrollbar space-y-16 pb-32">
-                    <form id="productForm" class="space-y-14">
-                        <!-- Hero Section Config -->
-                        <div class="space-y-8">
-                            <h3 class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">01 / Hero & Identity</h3>
-                            <div class="space-y-4">
-                                <input type="text" name="new_arrival_text" oninput="liveUpdate()" placeholder="New Arrival" value="New Arrival" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-black uppercase tracking-widest focus:ring-2 focus:ring-primary/20">
-                                <input type="text" name="name" oninput="liveUpdate()" placeholder="Asset Name" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-sm font-bold">
-                                <textarea name="subtitle" oninput="liveUpdate()" placeholder="Asset Tagline..." class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl p-5 text-sm h-24"></textarea>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <input type="number" step="0.01" name="price" oninput="liveUpdate()" placeholder="Price ($)" class="bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-sm font-bold">
-                                    <select name="category" oninput="liveUpdate()" class="bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-sm">
-                                        <option value="iPhones">iPhones</option>
-                                        <option value="Samsung">Samsung</option>
-                                        <option value="iPads">iPads</option>
-                                        <option value="Consoles">Consoles</option>
-                                        <option value="Accessories">Accessories</option>
-                                    </select>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex justify-between items-center px-1">
-                                        <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Initial Visual (Gallery Slot 1)</label>
-                                        <button type="button" onclick="addGallerySlot()" class="text-[8px] font-black bg-black text-white px-3 py-1.5 rounded-lg">+ Add Item</button>
-                                    </div>
-                                    <div id="gallery-container" class="space-y-3">
-                                        <div class="relative flex gap-2">
-                                            <input type="text" name="main_image" id="main_img_0" oninput="liveUpdate()" placeholder="Primary Image URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-mono">
-                                            <button type="button" onclick="document.getElementById('file_0').click()" class="bg-black/5 dark:bg-white/5 px-4 rounded-2xl"><span class="material-symbols-outlined text-sm">cloud_upload</span></button>
-                                            <input type="file" id="file_0" class="hidden" onchange="handleLiveUpload(this, 'main_img_0')">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Production Specs Editorial -->
-                        <div class="space-y-8 p-10 bg-slate-50 dark:bg-white/5 rounded-[3rem] border border-slate-100 dark:border-white/5">
-                            <h3 class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">02 / Production Specs</h3>
-                            <div class="space-y-5">
-                                <input type="text" name="marketing_title" oninput="liveUpdate()" placeholder="Engineering Precision." value="Engineering Precision." class="w-full bg-white dark:bg-black/20 border-none rounded-2xl px-5 py-4 text-xs font-black">
-                                <textarea name="marketing_subtitle" oninput="liveUpdate()" placeholder="Marketing description..." class="w-full bg-white dark:bg-black/20 border-none rounded-2xl p-5 text-[11px] h-24">Every component refined for professional peak performance.</textarea>
-                            </div>
-                        </div>
-
-                        <!-- Hardware Dark Block -->
-                        <div class="space-y-8">
-                            <h3 class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">03 / Hardware Architecture</h3>
-                            <div class="space-y-4">
-                                <input type="text" name="spec_dark_title" oninput="liveUpdate()" placeholder="Silicon Mastery" value="Silicon Mastery" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-sm font-black">
-                                <textarea name="proc_desc" oninput="liveUpdate()" placeholder="Next-gen description..." class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl p-5 text-sm h-28"></textarea>
-                                <div class="flex gap-2">
-                                    <input type="text" id="proc_img_url" name="proc_image" oninput="liveUpdate()" placeholder="Hardware Render URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-mono">
-                                    <button type="button" onclick="document.getElementById('file_proc').click()" class="bg-black/5 px-4 rounded-xl"><span class="material-symbols-outlined text-sm">upload</span></button>
-                                    <input type="file" id="file_proc" class="hidden" onchange="handleLiveUpload(this, 'proc_img_url')">
-                                </div>
-                                
-                                <div class="grid grid-cols-1 gap-6 pt-4 border-t border-slate-100 dark:border-white/5">
-                                    <div class="space-y-4">
-                                        <label class="text-[9px] font-bold text-slate-400 uppercase tracking-widest px-2">Performance Stats Edit</label>
-                                        <div class="grid grid-cols-2 gap-3">
-                                            <input type="text" name="performance_title" oninput="liveUpdate()" placeholder="Performance" value="Performance" class="bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 text-[10px] font-black">
-                                            <input type="text" name="performance_subtitle" oninput="liveUpdate()" placeholder="Benchmarks optimized." value="Benchmarks optimized." class="bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 text-[10px] font-bold italic">
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div class="space-y-2">
-                                            <input type="text" name="stat1" oninput="liveUpdate()" placeholder="Stat (e.g. 120Hz)" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 text-xs font-black">
-                                            <input type="text" name="stat1_lbl" oninput="liveUpdate()" placeholder="Label" class="w-full opacity-40 px-4 py-1.5 text-[9px] font-black uppercase tracking-widest bg-transparent border-none">
-                                        </div>
-                                        <div class="space-y-2">
-                                            <input type="text" name="stat2" oninput="liveUpdate()" placeholder="Stat (e.g. 30h)" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-xl px-4 py-3 text-xs font-black">
-                                            <input type="text" name="stat2_lbl" oninput="liveUpdate()" placeholder="Label" class="w-full opacity-40 px-4 py-1.5 text-[9px] font-black uppercase tracking-widest bg-transparent border-none">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Aesthetics -->
-                        <div class="space-y-8">
-                            <div class="flex justify-between items-center px-2">
-                                <h3 class="text-[10px] font-black text-primary uppercase tracking-[0.3em]">04 / Aesthetic Variants</h3>
-                                <button type="button" onclick="addLiveColor()" class="bg-black text-white dark:bg-white dark:text-black rounded-xl px-4 py-2 font-black text-[9px] uppercase tracking-widest">+ Add Option</button>
-                            </div>
-                            <div id="live-color-manager" class="space-y-4"></div>
-                        </div>
-                    </form>
-                </div>
+                <button onclick="closeModal()" class="p-3 hover:bg-slate-50 rounded-full transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
             </div>
 
-            <!-- PREVIEW CANVAS (RIGHT) -->
-            <div class="flex-grow bg-[#f4f7f9] dark:bg-[#050505] p-20 overflow-y-auto custom-scrollbar relative">
-                <div class="bg-white dark:bg-[#0a0a0a] rounded-[5rem] shadow-[0_64px_128px_-32px_rgba(0,0,0,0.2)] min-h-[1700px] overflow-hidden">
-                    
-                    <!-- 1. Hero Asymmetric -->
-                    <section class="grid grid-cols-1 lg:grid-cols-12 max-w-[1440px] mx-auto p-12 md:p-24 items-center gap-24">
-                        <div class="lg:col-span-7 bg-[#f8f9fb] dark:bg-[#151719] rounded-[4.5rem] h-[700px] flex flex-col items-center justify-center relative p-16 border border-slate-100 dark:border-white/5 overflow-hidden">
-                             <div id="main-preview-container" class="relative w-full h-full flex flex-col items-center justify-center">
-                                 <img id="prev-hero-img" src="" class="max-w-[100%] max-h-[85%] object-contain drop-shadow-[0_45px_45px_rgba(0,0,0,0.25)] transition-all duration-700">
-                             </div>
-                             
-                             <div class="mt-8 flex gap-6 z-10 bg-white/60 dark:bg-black/40 backdrop-blur-3xl p-6 rounded-[2.5rem] border border-white/10 shadow-2xl" id="prev-hero-colors"></div>
-                        </div>
-                        <div class="lg:col-span-5 space-y-14">
-                            <div class="space-y-6">
-                                <span id="prev-new-arrival" class="text-primary font-black text-[13px] uppercase tracking-[0.4em] block">New Arrival</span>
-                                <h1 id="prev-name" class="text-[5.5rem] font-black tracking-tighter leading-[0.8] text-on-surface">Asset</h1>
-                                <p id="prev-subtitle" class="text-on-surface-variant text-2xl leading-relaxed max-w-sm font-medium tracking-tight">Template tagline content.</p>
-                                <div class="text-6xl font-black text-primary">$<span id="prev-price">0.00</span></div>
-                            </div>
-                            <!-- ACTION BUTTONS (MOCKUP REAL) -->
-                            <div class="flex flex-col gap-5 max-w-sm">
-                                <div class="h-20 bg-black dark:bg-white text-white dark:text-black rounded-full w-full flex items-center justify-center text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl">
-                                    Add to Cart
-                                </div>
-                                <div class="h-20 bg-slate-100 dark:bg-white/5 text-on-surface rounded-full w-full flex items-center justify-center text-[10px] font-black uppercase tracking-[0.3em] border border-slate-200/50 dark:border-white/10">
-                                    Buy Now
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-8 pt-10 border-t border-slate-100 dark:border-white/5">
-                                 <div class="flex items-center gap-3">
-                                     <span class="material-symbols-outlined text-primary">local_shipping</span>
-                                     <span class="text-[9px] font-black uppercase tracking-widest opacity-50">Free Express</span>
-                                 </div>
-                                 <div class="flex items-center gap-3">
-                                     <span class="material-symbols-outlined text-primary">verified_user</span>
-                                     <span class="text-[9px] font-black uppercase tracking-widest opacity-50">Global Warranty</span>
-                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 2. Bento Branding Section -->
-                    <section class="max-w-[1440px] mx-auto p-12 md:p-24 space-y-24">
-                        <div class="text-center space-y-6">
-                             <h2 id="prev-marketing-title" class="text-7xl font-black tracking-tight leading-none">Engineering Precision.</h2>
-                             <p id="prev-marketing-subtitle" class="text-on-surface-variant text-2xl tracking-tight max-w-3xl mx-auto leading-relaxed font-medium">Every component refined for professional peak performance.</p>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-8 h-[800px]">
-                            <!-- Spec Block (Dark) -->
-                            <div class="md:col-span-2 md:row-span-2 bg-[#121417] text-white rounded-[4.5rem] p-20 flex flex-col justify-between overflow-hidden relative border border-white/5 shadow-[0_50px_100px_-25px_rgba(0,0,0,0.5)] group">
-                                <div class="space-y-8 relative z-10 font-sans">
-                                    <h3 id="prev-spec-title" class="text-5xl font-black tracking-tight">Silicon Mastery</h3>
-                                    <p id="prev-proc-desc" class="text-white/40 text-2xl leading-relaxed max-w-xs font-medium italic">High-performance architecture.</p>
-                                </div>
-                                <div class="w-80 h-80 absolute -bottom-16 -right-16 opacity-30 group-hover:scale-110 group-hover:opacity-60 transition-all duration-[3s] ease-out">
-                                    <img id="prev-proc-img" src="" class="w-full h-full object-contain filter drop-shadow-[0_25px_40px_rgba(255,255,255,0.1)]">
-                                </div>
-                            </div>
-
-                            <!-- Stat Cards -->
-                            <div class="md:col-span-2 bg-slate-50 dark:bg-[#151719] rounded-[4.5rem] p-20 flex flex-col justify-between border border-slate-100 dark:border-white/5 shadow-sm">
-                                <div class="flex justify-between items-start">
-                                    <div class="space-y-3">
-                                        <h4 id="prev-perf-title" class="text-4xl font-black tracking-tighter">Performance</h4>
-                                        <p id="prev-perf-subtitle" class="text-on-surface-variant font-bold text-lg">Benchmarks optimized.</p>
-                                    </div>
-                                    <span class="material-symbols-outlined text-primary text-6xl">model_training</span>
-                                </div>
-                                <div class="flex gap-24">
-                                    <div class="space-y-3">
-                                        <p id="prev-stat1" class="text-7xl font-black tracking-tighter text-on-surface">--</p>
-                                        <p id="prev-stat1-lbl" class="text-[12px] font-black uppercase tracking-[0.3em] text-primary">Benchmark 01</p>
-                                    </div>
-                                    <div class="space-y-3">
-                                        <p id="prev-stat2" class="text-7xl font-black tracking-tighter text-on-surface">--</p>
-                                        <p id="prev-stat2-lbl" class="text-[12px] font-black uppercase tracking-[0.3em] opacity-30">Benchmark 02</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Badges -->
-                            <div class="bg-indigo-600 dark:bg-indigo-500 rounded-[3.5rem] p-12 flex flex-col items-center justify-center text-center gap-5 text-white shadow-xl hover:scale-105 transition-all">
-                                 <span class="material-symbols-outlined text-5xl">shield_with_heart</span>
-                                 <h5 class="font-black text-[11px] uppercase tracking-[0.3em] leading-none">Security Core</h5>
-                            </div>
-                            <div class="bg-black dark:bg-white rounded-[3.5rem] p-12 flex flex-col items-center justify-center text-center gap-5 text-white dark:text-black shadow-xl hover:scale-105 transition-all">
-                                 <span class="material-symbols-outlined text-5xl">auto_awesome</span>
-                                 <h5 class="font-black text-[11px] uppercase tracking-[0.3em] leading-none">Pro Vision</h5>
-                            </div>
-                        </div>
-                    </section>
+            <form id="productForm" class="flex-1 overflow-y-auto p-12 space-y-10 custom-scrollbar">
+                <input type="hidden" name="id">
+                
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Product Name</label>
+                        <input type="text" name="name" required class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold focus:ring-2 ring-blue-500 transition-all">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Category</label>
+                        <select name="category" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold">
+                            <option value="iPhones">iPhones</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="iPads">iPads</option>
+                            <option value="Consoles">Consoles</option>
+                            <option value="Smartwatch">Smartwatch</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Base Price (USD)</label>
+                        <input type="number" step="0.01" name="price" required class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Stock Quantity</label>
+                        <input type="number" name="stock_quantity" value="1" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Main Image Source</label>
+                    <input type="text" name="main_image_url" placeholder="https://..." required class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-mono text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 gap-8 pt-6 border-t border-slate-50">
+                     <h3 class="font-extrabold text-lg">Editorial Content</h3>
+                     <div class="space-y-4">
+                         <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Marketing Headline</label>
+                         <input type="text" name="marketing_title" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-bold">
+                     </div>
+                     <div class="space-y-4">
+                         <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-2">Description</label>
+                         <textarea name="marketing_description" rows="3" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 font-medium"></textarea>
+                     </div>
+                </div>
+            </form>
+
+            <div class="p-10 border-t border-slate-50 bg-slate-50/50 flex justify-end gap-4">
+                <button onclick="closeModal()" class="px-8 py-4 font-bold text-slate-500">Discard</button>
+                <button type="submit" form="productForm" class="btn-primary px-10 py-4 rounded-2xl font-bold shadow-lg">Save Changes</button>
             </div>
         </div>
     </div>
 
     <script>
-        let gallCount = 1;
+        // INIT
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loader();
+            loadInventory();
+        });
 
-        // LIVE UPDATE ENGINE
-        function liveUpdate() {
-            const form = document.getElementById('productForm');
-            const data = new FormData(form);
-
-            // Basic
-            document.getElementById('prev-new-arrival').textContent = data.get('new_arrival_text') || 'New Arrival';
-            document.getElementById('prev-name').textContent = data.get('name') || 'Asset';
-            document.getElementById('prev-subtitle').textContent = data.get('subtitle') || 'Template tagline content.';
-            document.getElementById('prev-price').textContent = data.get('price') || '0.00';
-            
-            // Editorial
-            document.getElementById('prev-marketing-title').textContent = data.get('marketing_title') || 'Engineering Precision.';
-            document.getElementById('prev-marketing-subtitle').textContent = data.get('marketing_subtitle') || 'Every component refined for professional peak performance.';
-            
-            // hardware
-            document.getElementById('prev-spec-title').textContent = data.get('spec_dark_title') || 'Silicon Mastery';
-            document.getElementById('prev-proc-desc').textContent = data.get('proc_desc') || 'High-performance architecture.';
-            document.getElementById('prev-proc-img').src = data.get('proc_image') || '';
-
-            // Performance Card
-            document.getElementById('prev-perf-title').textContent = data.get('performance_title') || 'Performance';
-            document.getElementById('prev-perf-subtitle').textContent = data.get('performance_subtitle') || 'Benchmarks optimized.';
-
-            // Stats
-            document.getElementById('prev-stat1').textContent = data.get('stat1') || '--';
-            document.getElementById('prev-stat1-lbl').textContent = data.get('stat1_lbl') || 'Stat 01';
-            document.getElementById('prev-stat2').textContent = data.get('stat2') || '--';
-            document.getElementById('prev-stat2-lbl').textContent = data.get('stat2_lbl') || 'Stat 02';
-
-            const mainImg = data.get('main_image');
-            if (mainImg) document.getElementById('prev-hero-img').src = mainImg;
-
-            syncColors();
-        }
-
-        function syncColors() {
-            const colorContainer = document.getElementById('prev-hero-colors');
-            const rows = document.querySelectorAll('.color-row');
-            colorContainer.innerHTML = '';
-            
-            rows.forEach((row) => {
-                const hex = row.querySelector('input[type="color"]').value;
-                const img = row.querySelector('input[type="text"]').value;
-                
-                const circle = document.createElement('div');
-                circle.className = 'w-12 h-12 rounded-full border-4 border-white/20 hover:border-white transition-all cursor-pointer shadow-2xl active:scale-90';
-                circle.style.backgroundColor = hex;
-                circle.onclick = () => {
-                   const herImg = document.getElementById('prev-hero-img');
-                   herImg.classList.add('opacity-0', 'scale-90', 'blur-lg');
-                   setTimeout(() => {
-                       herImg.src = img || document.getElementById('main_img_0').value;
-                       herImg.classList.remove('opacity-0', 'scale-90', 'blur-lg');
-                   }, 350);
-                };
-                colorContainer.appendChild(circle);
-            });
-        }
-
-        function addGallerySlot() {
-            const id = `extra_img_${gallCount++}`;
-            const div = document.createElement('div');
-            div.className = 'relative flex gap-2 animate-in slide-in-from-right-4';
-            div.innerHTML = `
-                <input type="text" name="extra_image" id="${id}" oninput="liveUpdate()" placeholder="Additional Gallery URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-mono">
-                <button type="button" onclick="this.parentElement.remove(); liveUpdate()" class="text-red-500 hover:rotate-90 transition-all"><span class="material-symbols-outlined">delete</span></button>
-            `;
-            document.getElementById('gallery-container').appendChild(div);
-        }
-
-        function addLiveColor() {
-            const container = document.getElementById('live-color-manager');
-            const div = document.createElement('div');
-            div.className = 'color-row bg-slate-50 dark:bg-white/5 p-4 rounded-xl flex items-center gap-3 translate-y-4 opacity-0 transition-all duration-500';
-            div.innerHTML = `
-                <input type="text" placeholder="Name" class="w-20 bg-transparent border-b border-slate-200 text-[10px] py-1" oninput="liveUpdate()">
-                <input type="color" onchange="liveUpdate()" class="w-8 h-8 rounded-full border-none cursor-pointer bg-transparent shadow-lg">
-                <input type="text" placeholder="Image URL..." oninput="liveUpdate()" class="flex-grow bg-transparent border-b border-slate-200 text-[10px] font-mono py-1">
-                <button type="button" onclick="this.parentElement.remove(); liveUpdate()" class="p-2 text-red-500 hover:bg-red-50 rounded-full"><span class="material-symbols-outlined text-sm">close</span></button>
-            `;
-            container.appendChild(div);
-            setTimeout(() => { div.classList.remove('translate-y-4', 'opacity-0'); }, 10);
-            liveUpdate();
-        }
-
-        async function handleLiveUpload(input, targetId) {
-            const file = input.files[0];
-            if (!file) return;
-            const btn = input.previousElementSibling;
-            btn.innerHTML = `<span class="animate-spin text-[10px]">...</span>`;
-            try {
-                const fileName = `${Date.now()}_${file.name.replace(/ /g, '_')}`;
-                const { data, error } = await _supabase.storage.from('products').upload(fileName, file);
-                if (error) throw error;
-                const { data: { publicUrl } } = _supabase.storage.from('products').getPublicUrl(fileName);
-                document.getElementById(targetId).value = publicUrl;
-                btn.innerHTML = `<span class="material-symbols-outlined text-green-500">done_all</span>`;
-                liveUpdate();
-            } catch (err) { alert('Upload fail.'); btn.innerHTML = `<span class="material-symbols-outlined">cloud_upload</span>`; }
-        }
-
-        async function loadInventory() {
-            const list = document.getElementById('tab-inventory');
-            list.innerHTML = `<div class="col-span-full py-40 text-center animate-pulse text-[10px] font-black uppercase tracking-[0.5em] opacity-30">Connecting to Master...</div>`;
-            try {
-                const { data, error } = await _supabase.from('products').select('*').order('created_at', { ascending: false });
-                if (error) throw error;
-                list.innerHTML = data.map(p => `
-                    <div class="bg-white dark:bg-neutral-900 rounded-[3.5rem] overflow-hidden border border-slate-200 dark:border-white/5 group hover:shadow-[0_48px_96px_-24px_rgba(0,0,0,0.25)] transition-all duration-700">
-                        <div class="h-64 bg-[#f8f9fb] dark:bg-black/20 flex items-center justify-center p-12 relative overflow-hidden">
-                             <img src="${p.main_image_url}" class="max-w-full max-h-full object-contain filter drop-shadow-2xl group-hover:scale-110 group-hover:-rotate-2 transition-all duration-700">
-                             <div class="absolute top-6 left-6 bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest">$${p.price}</div>
-                        </div>
-                        <div class="p-10 space-y-8">
-                             <div>
-                                 <h4 class="font-black text-2xl tracking-tighter truncate leading-none">${p.name}</h4>
-                                 <p class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.3em] mt-3">${p.category}</p>
-                             </div>
-                             <div class="flex gap-3 pt-6 border-t border-slate-50 dark:border-white/5">
-                                 <button onclick="editProduct('${p.id}')" class="flex-grow py-4 px-6 bg-black dark:bg-white text-white dark:text-black rounded-full text-[9px] font-black uppercase tracking-widest shadow-lg hover:opacity-80 transition-all">Edit</button>
-                                 <button onclick="deleteProduct('${p.id}')" class="w-14 h-14 flex items-center justify-center bg-red-50 text-red-500 dark:bg-red-500/10 rounded-full hover:bg-red-500 hover:text-white transition-all">
-                                    <span class="material-symbols-outlined text-base">delete</span>
-                                 </button>
-                             </div>
-                        </div>
-                    </div>
-                `).join('') || `<div class="col-span-full py-60 text-center opacity-20 font-black uppercase tracking-[1em]">Empty Catalog</div>`;
-            } catch (err) { list.innerHTML = 'Database offline.'; }
-        }
-
-        async function editProduct(id) {
-            try {
-                const { data: p, error } = await _supabase.from('products').select('*').eq('id', id).single();
-                if (error) throw error;
-
-                // Abrir el modal
-                openAddModal();
-                
-                // Rellenar campos básicos (usando nombres EXACTOS del form)
-                const f = document.getElementById('productForm');
-                f.dataset.editId = p.id; 
-                
-                // Campos de Identidad
-                f.name.value = p.name || '';
-                if(f.category) f.category.value = p.category || 'Other';
-                f.price.value = p.price || 0;
-                
-                // Campos de Marketing (Legacy & New)
-                if(f.subtitle) f.subtitle.value = p.subtitle || p.marketing_description || '';
-                if(f.marketing_title) f.marketing_title.value = p.marketing_title || '';
-                if(f.marketing_description) f.marketing_description.value = p.marketing_description || '';
-                if(f.new_arrival_text) f.new_arrival_text.value = p.new_arrival_text || 'New Arrival';
-
-                // Imágenes
-                if(f.main_image) f.main_image.value = p.main_image_url || '';
-                
-                // Performance & Specs
-                if(f.performance_title) f.performance_title.value = p.performance_title || 'Performance';
-                if(f.performance_subtitle) f.performance_subtitle.value = p.performance_subtitle || '';
-                
-                // Parseamos las estadísticas si vienen en formato descriptivo
-                if(p.display_tech_description && p.display_tech_description.includes('|')) {
-                    const parts = p.display_tech_description.split('|');
-                    if(f.stat1) f.stat1.value = parts[0].trim();
-                    if(f.stat1_lbl) f.stat1_lbl.value = parts[1].trim();
-                }
-
-                if(p.battery_life_description && p.battery_life_description.includes('|')) {
-                    const parts = p.battery_life_description.split('|');
-                    if(f.stat2) f.stat2.value = parts[0].trim();
-                    if(f.stat2_lbl) f.stat2_lbl.value = parts[1].trim();
-                }
-
-                // Sincronizar colores si existen
-                const colorManager = document.getElementById('live-color-manager');
-                colorManager.innerHTML = '';
-                if (p.colors) {
-                    const colorData = Array.isArray(p.colors) ? p.colors : Object.entries(p.colors).map(([hex, image]) => ({ hex, image, name: 'Option' }));
-                    
-                    colorData.forEach(c => {
-                        const div = document.createElement('div');
-                        div.className = 'color-row bg-slate-50 dark:bg-white/5 p-4 rounded-xl flex items-center gap-3';
-                        div.innerHTML = `
-                            <input type="text" placeholder="Name" class="w-20 bg-transparent border-b border-slate-200 text-[10px] py-1" value="${c.name || ''}" oninput="liveUpdate()">
-                            <input type="color" onchange="liveUpdate()" class="w-8 h-8 rounded-full border-none cursor-pointer bg-transparent" value="${c.hex || '#000000'}">
-                            <input type="text" placeholder="Image URL..." oninput="liveUpdate()" class="flex-grow bg-transparent border-b border-slate-200 text-[10px] font-mono py-1" value="${c.image || ''}">
-                            <button type="button" onclick="this.parentElement.remove(); liveUpdate()" class="p-2 text-red-500 hover:bg-red-50 rounded-full"><span class="material-symbols-outlined text-sm">close</span></button>
-                        `;
-                        colorManager.appendChild(div);
-                    });
-                }
-                
-                // Actualizar la previsualización
-                liveUpdate();
-            } catch (err) { 
-                console.error("Error cargando producto:", err);
-                alert('Error al cargar producto para editar. Revisa la consola para más detalles.'); 
+        async function loader() {
+            const { data: { session } } = await _supabase.auth.getSession();
+            if (session) {
+                document.getElementById('admin-email').textContent = session.user.email;
             }
         }
 
-        async function deleteProduct(id) {
-            if (!confirm('Eliminar permanentemente este activo?')) return;
-            const { error } = await _supabase.from('products').delete().eq('id', id);
-            if (!error) loadInventory();
+        async function loadInventory() {
+            const grid = document.getElementById('inventory-grid');
+            grid.innerHTML = `<div class="col-span-full py-40 text-center text-slate-300 font-bold uppercase tracking-widest animate-pulse">Syncing catalog...</div>`;
+            
+            try {
+                const { data, error } = await _supabase.from('products').select('*').order('created_at', { ascending: false });
+                if (error) throw error;
+
+                grid.innerHTML = data.map(p => `
+                    <div class="product-card rounded-[2.5rem] p-6 flex flex-col gap-6">
+                        <div class="h-48 bg-slate-50 rounded-[2rem] flex items-center justify-center p-8 overflow-hidden relative">
+                            <img src="${p.main_image_url}" class="max-w-full max-h-full object-contain drop-shadow-xl" onerror="this.src='https://placehold.co/400x400?text=No+Image'">
+                            <span class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black tracking-widest shadow-sm">${p.category}</span>
+                        </div>
+                        <div class="px-2">
+                            <h3 class="font-extrabold text-xl tracking-tight truncate">${p.name}</h3>
+                            <div class="flex justify-between items-center mt-6">
+                                <span class="text-2xl font-black text-blue-600">$${p.price}</span>
+                                <div class="flex gap-2">
+                                    <button onclick="editProduct('${p.id}')" class="p-3 hover:bg-slate-100 rounded-full transition-all">
+                                        <span class="material-symbols-outlined text-sm">edit</span>
+                                    </button>
+                                    <button onclick="deleteProduct('${p.id}')" class="p-3 hover:bg-red-50 text-red-500 rounded-full transition-all">
+                                        <span class="material-symbols-outlined text-sm">delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                if (data.length === 0) grid.innerHTML = `<div class="col-span-full py-20 text-center opacity-30">Catalog is empty</div>`;
+            } catch (err) { alert('Sync fail. Check console.'); console.error(err); }
         }
 
-        function openAddModal() {
+        function openModal() {
             document.getElementById('productModal').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('modalContent').classList.remove('scale-95', 'opacity-0'); }, 10);
-            liveUpdate();
+            document.getElementById('modalTitle').textContent = 'Register New Asset';
+            document.getElementById('productForm').reset();
+            document.getElementById('productForm').dataset.editId = '';
         }
 
-        function closeProductModal() {
-            const content = document.getElementById('modalContent');
-            content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                document.getElementById('productModal').classList.add('hidden');
-                const form = document.getElementById('productForm');
-                form.reset();
-                delete form.dataset.editId; // Limpiar rastro de edición
-                document.getElementById('live-color-manager').innerHTML = '';
-            }, 300);
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        async function editProduct(id) {
+            const { data, error } = await _supabase.from('products').select('*').eq('id', id).single();
+            if (!error && data) {
+                openModal();
+                document.getElementById('modalTitle').textContent = 'Modify Asset';
+                const f = document.getElementById('productForm');
+                f.dataset.editId = data.id;
+                f.name.value = data.name;
+                f.price.value = data.price;
+                f.category.value = data.category;
+                f.main_image_url.value = data.main_image_url;
+                f.marketing_title.value = data.marketing_title || '';
+                f.marketing_description.value = data.marketing_description || '';
+            }
         }
 
         document.getElementById('productForm').onsubmit = async (e) => {
             e.preventDefault();
-            console.log("🚀 Iniciando proceso de guardado...");
+            const f = e.target;
+            const editId = f.dataset.editId;
+            const data = new FormData(f);
             
-            const btn = document.querySelector('button[type="submit"]');
-            const form = e.target;
-            const data = new FormData(form);
-            const editId = form.dataset.editId;
-            
+            const payload = {
+                name: data.get('name'),
+                price: parseFloat(data.get('price')),
+                category: data.get('category'),
+                main_image_url: data.get('main_image_url'),
+                marketing_title: data.get('marketing_title'),
+                marketing_description: data.get('marketing_description'),
+                stock_quantity: parseInt(data.get('stock_quantity')) || 0
+            };
+
+            const btn = f.querySelector('button[type="submit"]');
             btn.disabled = true;
-            btn.innerHTML = `<span class="animate-spin mr-2">...</span> SAVING`;
+            btn.textContent = 'SAVING...';
 
             try {
-                // Recopilar colores de forma segura
-                const colors = [];
-                document.querySelectorAll('.color-row').forEach(row => {
-                    const inputs = row.querySelectorAll('input');
-                    if (inputs.length >= 3) {
-                         const name = inputs[0].value;
-                         const hex = inputs[1].value;
-                         const image = inputs[2].value;
-                         if (image) colors.push({ name, hex, image });
-                    }
-                });
-
-                const productData = {
-                    name: data.get('name') || 'Unnamed Asset',
-                    price: parseFloat(data.get('price')) || 0,
-                    category: data.get('category') || 'Other',
-                    main_image_url: data.get('main_image_url') || '',
-                    marketing_title: data.get('marketing_title') || '',
-                    marketing_description: data.get('marketing_description') || '',
-                    performance_tag: data.get('performance_tag') || '',
-                    screen_specs: data.get('screen_specs') || '',
-                    camera_specs: data.get('camera_specs') || '',
-                    battery_specs: data.get('battery_specs') || '',
-                    colors: colors,
-                    stock_quantity: 10
-                };
-
-                let result;
+                let error;
                 if (editId) {
-                    console.log("📝 Actualizando producto:", editId);
-                    result = await _supabase.from('products').update(productData).eq('id', editId);
+                    const { error: err } = await _supabase.from('products').update(payload).eq('id', editId);
+                    error = err;
                 } else {
-                    console.log("➕ Insertando nuevo producto...");
-                    result = await _supabase.from('products').insert([productData]);
+                    const { error: err } = await _supabase.from('products').insert([payload]);
+                    error = err;
                 }
 
-                if (result.error) throw result.error;
-
-                alert('¡Guardado con éxito!');
-                closeProductModal();
+                if (error) throw error;
+                closeModal();
                 loadInventory();
+            } catch (err) { alert(err.message); }
+            finally { btn.disabled = false; btn.textContent = 'Save Changes'; }
+        }
 
-            } catch (err) {
-                console.error("🔥 Error:", err);
-                alert('No se pudo guardar: ' + err.message);
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = 'Publish Asset';
+        async function deleteProduct(id) {
+            if (confirm('Eliminar permanentemente este activo?')) {
+                const { error } = await _supabase.from('products').delete().eq('id', id);
+                if (!error) loadInventory();
             }
-        };
-
-        loadInventory();
+        }
     </script>
-    <style>
-        .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
-        input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-        .animate-in { animation: animateIn 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
-        @keyframes animateIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
 </body>
 </html>
