@@ -47,7 +47,10 @@
 
                     if (error) throw error;
 
-                    window.location.href = './index.html';
+                    // Pequeña pausa para asegurar que Supabase guarde la cookie/localStorage
+                    setTimeout(() => {
+                        window.location.href = './index.html';
+                    }, 800);
                 } catch (error) {
                     errorMsg.textContent = error.message;
                     errorMsg.classList.remove('hidden');

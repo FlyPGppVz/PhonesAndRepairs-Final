@@ -7,18 +7,20 @@ const AuthManager = {
     // Verificar si hay una sesión activa al cargar
     async init() {
         const { data: { session }, error } = await _supabase.auth.getSession();
-        if (session) {
-            console.log('Sesión activa:', session.user.email);
+        
+        if (session && session.user) {
+            console.log('Sesión detectada:', session.user.email);
             this.updateUIAfterLogin(session.user);
             await this.checkAdminStatus(session.user.id);
         } else {
-            console.log('No hay sesión activa.');
+            console.log('No se detectó sesión activa.');
             this.updateUIAfterLogout();
         }
 
-        // Listener de cambios en el estado (login/logout en otras pestañas)
+        // Listener de cambios para actualizaciones en tiempo real
         _supabase.auth.onAuthStateChange(async (event, session) => {
-            if (event === 'SIGNED_IN' && session) {
+            console.log('Auth Event:', event);
+            if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
                 this.updateUIAfterLogin(session.user);
                 await this.checkAdminStatus(session.user.id);
             } else if (event === 'SIGNED_OUT') {
