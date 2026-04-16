@@ -1,520 +1,417 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Curator | Master Logic & Design</title>
-    
-    <!-- Design System -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <title>Admin Panel | Cellphones & Repairs</title>
     
     <!-- Core Tools -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     
+    <!-- Config & Auth -->
     <script src="../js/supabase-config.js"></script>
     <script src="../js/auth.js"></script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .sidebar { background: #fff; border-right: 1px solid rgba(0,0,0,0.05); }
-        .glass-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glass-btn:hover { background: rgba(0,0,0,0.03); transform: translateX(8px); }
-        .glass-btn.active { background: #000; color: #fff; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2); }
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .dark .glass { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .loader { border-top-color: #3b82f6; animation: spinner 1.5s linear infinite; }
+        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .brand-blue { background-color: #063183 !important; }
+        .brand-blue:hover { background-color: #002D72 !important; }
         
-        /* Dark mode overrides for Admin */
-        .dark body { background: #050505; color: #fff; }
-        .dark .sidebar { background: #0a0a0a; border-right: 1px solid rgba(255,255,255,0.05); }
-
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
-        
-        .product-modal-wrap { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); }
-        .dark .product-modal-wrap { background: rgba(10,10,10,0.85); }
+        /* Custom Scrollbar */
+        .cupertino-scroll::-webkit-scrollbar { width: 6px; }
+        .cupertino-scroll::-webkit-scrollbar-track { background: transparent; }
+        .cupertino-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
     </style>
 </head>
-<body class="min-h-screen bg-[#fafbfc] flex overflow-hidden">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300 overflow-x-hidden">
 
-    <!-- SIDEBAR NAVIGATION -->
-    <aside class="w-[340px] flex flex-col p-10 sidebar z-50 overflow-y-auto">
-        <div class="mb-14">
-            <div class="flex items-center gap-4 mb-2">
-                <img src="../assets/images/logo-transparent.png" class="h-8 opacity-80">
-                <div class="h-4 w-[1px] bg-slate-200"></div>
-                <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600">Blink Service</span>
-            </div>
-            <h1 class="text-xs font-black text-slate-400 uppercase tracking-widest px-1">Curator Master Control</h1>
-        </div>
+    <!-- Auth Protection Overlay -->
+    <div id="authGuard" class="fixed inset-0 z-[1000] bg-white flex flex-col items-center justify-center text-center p-12">
+        <img src="../assets/images/logotipo_cellphones_and_repairs.png" class="h-16 mb-8 animate-pulse">
+        <h2 class="text-2xl font-bold mb-4">Authenticating Master Session...</h2>
+        <p class="text-slate-400">Verifying administrator credentials for Blink Service ecosystem.</p>
+    </div>
 
-        <nav class="space-y-4 flex-grow">
-            <button id="btn-inventory" onclick="switchTab('inventory')" class="glass-btn active w-full flex items-center gap-5 p-6 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.2em]">
-                <span class="material-symbols-outlined text-lg">inventory_2</span> Inventory Catalog
-            </button>
-            <button id="btn-orders" onclick="switchTab('orders')" class="glass-btn w-full flex items-center gap-5 p-6 rounded-[2rem] text-[11px] font-black uppercase tracking-[0.2em] opacity-40">
-                <span class="material-symbols-outlined text-lg">shopping_cart</span> Active Orders
-            </button>
-            <button onclick="openAddModal()" class="w-full flex items-center justify-center gap-5 p-7 mt-8 bg-blue-600 text-white rounded-[2.5rem] text-[11px] font-black uppercase tracking-[0.3em] shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)] hover:scale-105 transition-all active:scale-95">
-                <span class="material-symbols-outlined text-xl">add_circle</span> Register Asset
-            </button>
-        </nav>
-
-        <div class="pt-10 border-t border-slate-100 dark:border-white/5 space-y-6">
-            <div class="flex items-center gap-4 px-2">
-                <div class="w-10 h-10 bg-slate-100 dark:bg-white/5 rounded-full flex items-center justify-center overflow-hidden">
-                    <span class="material-symbols-outlined text-slate-400">person</span>
+    <!-- Main Content -->
+    <div id="mainApp" class="opacity-0 transition-opacity duration-1000">
+        <!-- Header -->
+        <header class="fixed top-0 w-full glass z-[100] border-b border-slate-200 dark:border-slate-800">
+            <div class="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <img src="../assets/images/logotipo_cellphones_and_repairs.png" alt="Logo" class="h-8">
+                    <div class="h-6 w-[1px] bg-slate-300 dark:bg-slate-700 mx-2"></div>
+                    <span class="font-bold tracking-tight text-sm uppercase">ADMIN PANEL</span>
                 </div>
-                <div class="flex flex-col">
-                    <span id="admin-name" class="text-[10px] font-black uppercase tracking-widest text-on-surface">Administrator</span>
-                    <span id="admin-email" class="text-[9px] font-bold text-slate-400">syncing...</span>
+                <div class="flex items-center gap-6">
+                    <div class="flex flex-col items-end">
+                        <span id="userEmail" class="text-xs font-bold text-slate-500">administrator@blink.service</span>
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Active Session</span>
+                    </div>
+                    <button onclick="logout()" class="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-red-500 transition-colors">
+                        <span class="material-symbols-outlined text-xl">logout</span>
+                    </button>
                 </div>
             </div>
-            <button onclick="AuthManager.logout()" class="w-full p-5 text-red-500 font-black text-[10px] uppercase tracking-widest hover:bg-red-50 rounded-2xl transition-all">Sign Out Master</button>
-        </div>
-    </aside>
+        </header>
 
-    <!-- CONTENT AREA -->
-    <main class="flex-1 overflow-y-auto relative p-12 custom-scrollbar">
-        <div id="tab-inventory" class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-10 opacity-100 transition-all duration-500">
-             <!-- Inventory Cards -->
-        </div>
+        <main class="pt-32 pb-20 px-6 max-w-[1440px] mx-auto">
+            <!-- Hero / Stats -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div class="animate-in slide-in-from-left-4 duration-700">
+                    <div class="flex items-center gap-2 mb-2">
+                        <img src="../assets/images/Logo_flat_blink_service.png" class="h-5">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-[0.3em]">Master Inventory Management</span>
+                    </div>
+                    <h2 class="text-4xl font-bold tracking-tight mb-2 italic">Product Factory</h2>
+                    <p class="text-slate-500 dark:text-slate-400">Create, manage and synchronize assets across the global store.</p>
+                </div>
+                <button onclick="openModal()" class="flex items-center gap-2 brand-blue text-white px-10 py-5 rounded-full font-bold shadow-2xl hover:scale-105 transition-all active:scale-95 group">
+                    <span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add_circle</span>
+                    Register New Asset
+                </button>
+            </div>
 
-        <div id="tab-orders" class="hidden py-40 text-center opacity-30">
-            <span class="material-symbols-outlined text-8xl mb-6">point_of_sale</span>
-            <p class="font-black uppercase tracking-[0.5em] text-xs">Waiting for active transactions</p>
-        </div>
-    </main>
+            <!-- Inventory Grid -->
+            <div id="inventoryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Loader Skeleton -->
+                <div class="animate-pulse bg-slate-200 dark:bg-slate-800 h-80 rounded-[2.5rem]"></div>
+                <div class="animate-pulse bg-slate-200 dark:bg-slate-800 h-80 rounded-[2.5rem]"></div>
+                <div class="animate-pulse bg-slate-200 dark:bg-slate-800 h-80 rounded-[2.5rem]"></div>
+                <div class="animate-pulse bg-slate-200 dark:bg-slate-800 h-80 rounded-[2.5rem]"></div>
+            </div>
+        </main>
+    </div>
 
-    <!-- ADVANCED ASSET MODAL (The Engine) -->
-    <div id="productModal" class="fixed inset-0 z-[100] hidden overflow-hidden">
-        <div class="absolute inset-0 bg-black/5 dark:bg-black/40 backdrop-blur-xl" onclick="closeProductModal()"></div>
-        
-        <div id="modalContent" class="absolute inset-4 bg-white dark:bg-[#050505] rounded-[4.5rem] shadow-[0_64px_128px_-32px_rgba(0,0,0,0.5)] overflow-hidden flex transform transition-all duration-700 scale-95 opacity-0">
+    <!-- Product Modal -->
+    <div id="productModal" class="hidden fixed inset-0 z-[500] bg-slate-950/60 backdrop-blur-md flex items-center justify-center p-6">
+        <div class="bg-white dark:bg-slate-900 max-w-4xl w-full rounded-[3.5rem] shadow-[0_32px_128px_-32px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col max-h-[90vh] scale-animate">
+            <div class="p-10 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl">
+                <div>
+                    <h3 class="text-3xl font-black tracking-tighter italic text-on-surface" id="modalTitle">Project: New Asset</h3>
+                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.3em] mt-1">Universal Deployment Module v2.0</p>
+                </div>
+                <button onclick="closeModal()" class="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
             
-            <!-- EDITOR (LEFT) -->
-            <div class="w-[500px] border-r border-slate-100 dark:border-white/5 flex flex-col bg-white dark:bg-[#0a0a0a]">
-                <div class="p-10 border-b border-slate-50 dark:border-white/5 flex justify-between items-center bg-white/50 dark:bg-black/20 backdrop-blur-md">
-                    <div>
-                        <h2 id="modalLabel" class="text-xl font-black tracking-tighter uppercase tracking-[0.2em] text-on-surface">Register Master Asset</h2>
-                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.3em]">Template V6.0 Cinematic</span>
-                    </div>
-                </div>
-
-                <form id="productForm" class="flex-1 overflow-y-auto p-10 space-y-12 custom-scrollbar" oninput="liveUpdate()">
-                    <input type="hidden" name="id">
+            <div class="p-10 overflow-y-auto cupertino-scroll flex-1">
+                <form id="productForm" class="space-y-12">
+                    <input type="hidden" id="editId">
                     
-                    <!-- Basic Section -->
+                    <!-- SECTION: CORE IDENTITY -->
                     <div class="space-y-8">
-                        <div class="flex gap-4 items-center mb-4">
-                            <span class="w-8 h-8 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center justify-center text-[10px] font-black">01</span>
-                            <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Base Identity</h3>
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">01</span>
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Core Identity & Branding</h4>
                         </div>
-                        <div class="space-y-4 px-2">
-                            <input type="text" name="name" placeholder="Asset Official Name" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-5 text-sm font-black tracking-tight" required>
-                            <input type="text" name="subtitle" placeholder="Marketing Tagline / Catchphrase" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 text-xs font-bold italic opacity-60">
-                            
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-slate-50 dark:bg-white/5 rounded-2xl px-6 py-4 flex flex-col">
-                                    <span class="text-[8px] font-black text-primary uppercase tracking-widest mb-1">MSRP ($)</span>
-                                    <input type="number" step="0.01" name="price" value="0.00" class="bg-transparent border-none p-0 text-xl font-black focus:ring-0">
+                        <div class="grid grid-cols-2 gap-6 px-4">
+                            <div class="col-span-2">
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block px-1">Official Project Name</label>
+                                <div class="relative group">
+                                    <input type="text" id="title" required oninput="triggerAssistant()" placeholder="e.g. iPhone 17 Pro Max" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.5rem] p-6 focus:ring-2 focus:ring-blue-500 transition-all outline-none text-lg font-bold">
+                                    <!-- Assistant Bubble -->
+                                    <div id="autofillPrompt" class="hidden absolute right-6 top-1/2 -translate-y-1/2 animate-bounce-horizontal">
+                                        <button type="button" onclick="confirmAutofill()" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-black px-6 py-3 rounded-full shadow-2xl flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-sm">auto_awesome</span> Smart Sync?
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="bg-slate-50 dark:bg-white/5 rounded-2xl px-6 py-4 flex flex-col">
-                                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-1">Category</span>
-                                    <select name="category" class="bg-transparent border-none p-0 text-[11px] font-black uppercase tracking-widest focus:ring-0">
-                                        <option value="iPhones">iPhones Master</option>
-                                        <option value="Samsung">Samsung Galaxy</option>
-                                        <option value="iPads">iPads & Tablets</option>
-                                        <option value="Consoles">Gaming Consoles</option>
-                                        <option value="Accessories">Accessories</option>
-                                        <option value="Repairs">Pro Repairs</option>
-                                    </select>
-                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block px-1">Brand Integrity</label>
+                                <input type="text" id="brand" placeholder="Apple" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-sm font-bold">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block px-1">Global MSRP (USD)</label>
+                                <input type="number" step="0.01" id="price" required class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-lg font-black italic">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block px-1">Market Segment</label>
+                                <select id="category" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-xs font-bold uppercase tracking-widest appearance-none cursor-pointer">
+                                    <option value="iphone">iPhones Master</option>
+                                    <option value="samsung">Samsung Galaxy</option>
+                                    <option value="android">Android Universe</option>
+                                    <option value="ipad">iPads & Tablets</option>
+                                    <option value="smartwatch">Wearables</option>
+                                    <option value="consoles">Gaming Hub</option>
+                                    <option value="accessories">Pro Accessories</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block px-1">Strategic Description</label>
+                                <input type="text" id="description" placeholder="A brief catchphrase for the shop feed..." class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-xs font-medium">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Editorial Section -->
-                    <div class="space-y-8 pt-6">
-                        <div class="flex gap-4 items-center">
-                            <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-black">02</span>
-                            <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Editorial Presence</h3>
-                        </div>
-                        <div class="space-y-4 px-2">
-                             <input type="text" name="marketing_title" placeholder="Cinematic Headline" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-5 text-sm font-black tracking-tight">
-                             <textarea name="marketing_subtitle" placeholder="Main description content for the detail page..." rows="3" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-4 text-xs font-medium leading-relaxed"></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Visual Assets Section -->
-                    <div class="space-y-8 pt-6">
-                        <div class="flex gap-4 items-center">
-                            <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-black">03</span>
-                            <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Master Gallery</h3>
-                        </div>
-                        <div class="space-y-6 px-2" id="gallery-container">
-                            <!-- Main Image Slot -->
-                            <div class="relative group">
-                                <span class="absolute -top-3 left-4 bg-white dark:bg-[#0a0a0a] px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest z-10 border border-slate-100 dark:border-white/10">Hero Asset</span>
-                                <div class="flex gap-2">
-                                    <input type="text" name="main_image" id="main_img_0" placeholder="Primary Image URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-5 text-[10px] font-mono" required>
-                                    <button type="button" onclick="document.getElementById('file_main').click()" class="bg-black text-white dark:bg-white dark:text-black px-4 rounded-xl hover:scale-105 transition-all"><span class="material-symbols-outlined text-sm">cloud_upload</span></button>
-                                    <input type="file" id="file_main" class="hidden" onchange="handleLiveUpload(this, 'main_img_0')">
-                                </div>
+                    <!-- SECTION: ASSETS GALLERY -->
+                    <div class="space-y-8 pt-6 border-t border-slate-100 dark:border-white/5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">02</span>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Cinematic Asset Gallery</h4>
                             </div>
-                            <button type="button" onclick="addGallerySlot()" class="w-full py-4 border-2 border-dashed border-slate-100 dark:border-white/5 rounded-2xl text-[9px] font-black uppercase tracking-widest opacity-40 hover:opacity-100 hover:border-primary transition-all">+ Add Gallery Layer</button>
+                            <button type="button" onclick="document.getElementById('galleryFiles').click()" class="text-[9px] font-black uppercase tracking-widest text-blue-500 hover:bg-blue-50 px-4 py-2 rounded-full">+ Import Frames</button>
+                        </div>
+                        <input type="file" id="galleryFiles" multiple accept="image/*" class="hidden" onchange="handleMultipleUpload(this, 'gallery')">
+                        <div id="galleryContainer" class="grid grid-cols-4 gap-4 px-4">
+                            <!-- Image placeholders -->
                         </div>
                     </div>
 
-                    <!-- Hardware Spec Detail -->
-                    <div class="space-y-8 pt-6">
-                        <div class="flex gap-4 items-center">
-                            <span class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-black">04</span>
-                            <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Hardware Intelligence</h3>
+                    <!-- SECTION: HARDWARE VARIANTS (COLORS & STORAGE) -->
+                    <div class="space-y-8 pt-6 border-t border-slate-100 dark:border-white/5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">03</span>
+                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Variant Architecture</h4>
+                            </div>
+                            <button type="button" onclick="addColorVariant()" class="bg-black text-white px-6 py-3 rounded-full text-[9px] font-black uppercase tracking-widest shadow-xl">+ New Color</button>
                         </div>
-                        <div class="space-y-6 px-2">
-                             <div class="bg-slate-50 dark:bg-white/5 p-6 rounded-[2rem] space-y-4">
-                                 <input type="text" name="spec_dark_title" placeholder="Processor Title (Master Edition)" class="w-full bg-transparent border-none p-0 text-sm font-black">
-                                 <textarea name="proc_desc" placeholder="Micro-architecture description..." class="w-full bg-transparent border-none p-0 text-[10px] font-bold italic opacity-40"></textarea>
-                                 <div class="flex gap-3">
-                                     <input type="text" name="proc_image" id="proc_img_url" placeholder="Hardware Graphic URL" class="flex-grow bg-white/50 dark:bg-black/20 border-none rounded-xl px-4 py-2 text-[8px] font-mono">
-                                     <button type="button" onclick="document.getElementById('file_proc').click()" class="bg-black/5 px-4 rounded-xl"><span class="material-symbols-outlined text-sm">upload</span></button>
-                                     <input type="file" id="file_proc" class="hidden" onchange="handleLiveUpload(this, 'proc_img_url')">
-                                 </div>
-                             </div>
-                             
-                             <div class="grid grid-cols-2 gap-4">
-                                 <div class="space-y-2">
-                                     <input type="text" name="stat1" placeholder="Display Stats (e.g. 120Hz)" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-black">
-                                     <input type="text" name="stat1_lbl" placeholder="Tech Label" class="w-full bg-transparent border-none text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] px-4">
-                                 </div>
-                                 <div class="space-y-2">
-                                     <input type="text" name="stat2" placeholder="Battery Stats (e.g. 4500mAh)" class="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-black">
-                                     <input type="text" name="stat2_lbl" placeholder="Energy Label" class="w-full bg-transparent border-none text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] px-4">
-                                 </div>
-                             </div>
+                        
+                        <div id="colorVariantContainer" class="space-y-4 px-4">
+                            <!-- Color variant rows with image support -->
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-6 px-4 bg-slate-50 dark:bg-slate-800/20 p-8 rounded-[2rem]">
+                            <div class="col-span-3"><h5 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Storage Distribution</h5></div>
+                            <div class="space-y-2">
+                                <input type="text" id="cap1" placeholder="256GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 text-xs font-bold border-none shadow-sm">
+                                <input type="number" id="cap1Price" value="0" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 text-xs font-bold border-none shadow-sm text-blue-600">
+                            </div>
+                            <div class="space-y-2">
+                                <input type="text" id="cap2" placeholder="512GB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 text-xs font-bold border-none shadow-sm">
+                                <input type="number" id="cap2Price" value="200" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 text-xs font-bold border-none shadow-sm text-blue-600">
+                            </div>
+                            <div class="space-y-2">
+                                <input type="text" id="cap3" placeholder="1TB" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 text-xs font-bold border-none shadow-sm">
+                                <input type="number" id="cap3Price" value="400" class="w-full bg-white dark:bg-slate-800 rounded-xl p-3 text-xs font-bold border-none shadow-sm text-blue-600">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Aesthetics Manager -->
-                    <div class="space-y-8 pt-6 pb-12">
-                         <div class="flex justify-between items-center px-2">
-                             <div class="flex gap-4 items-center">
-                                 <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">05</span>
-                                 <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Aesthetic Options</h3>
-                             </div>
-                             <button type="button" onclick="addLiveColor()" class="bg-black dark:bg-white text-white dark:text-black rounded-full px-4 py-2 text-[9px] font-black uppercase tracking-widest">+ Option</button>
-                         </div>
-                         <div id="live-color-manager" class="space-y-4 px-2"></div>
+                    <!-- SECTION: TECHNICAL SPECIFICATIONS -->
+                    <div class="space-y-8 pt-6 border-t border-slate-100 dark:border-white/5">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">04</span>
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Integrated Hardware Specs</h4>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6 px-4">
+                            <div class="col-span-2">
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Build Integrity Anotation</label>
+                                <input type="text" id="specBuild" placeholder="Grade 5 Titanium enclosure..." class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Processor Ecosystem</label>
+                                <input type="text" id="specProc" placeholder="A19 Pro Chip" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Display Technology</label>
+                                <input type="text" id="specDisp" placeholder="Super Retina XDR | 120Hz" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Imaging Logic (Camera)</label>
+                                <input type="text" id="specCam" placeholder="48MP Main | 5x Optical" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Energy Specs (Battery)</label>
+                                <input type="text" id="specBatt" placeholder="Up to 30h video playback" class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.2rem] p-5 text-sm font-medium">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION: EXPERIENTIAL CONTENT (EDITORIAL) -->
+                    <div class="space-y-8 pt-6 border-t border-slate-100 dark:border-white/5">
+                        <div class="flex items-center gap-4">
+                            <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">05</span>
+                            <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Editorial Presence</h4>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6 px-4">
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Main Editorial Title</label>
+                                <input type="text" id="editTitle" placeholder="Engineering Precision." class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.5rem] p-6 text-xl font-black">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-bold uppercase tracking-widest text-slate-400 mb-3 block">Editorial Narrative (Description)</label>
+                                <textarea id="editDesc" rows="4" placeholder="Deep dive into the architecture and feeling of the device..." class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-[1.5rem] p-6 text-sm font-medium leading-relaxed"></textarea>
+                            </div>
+                        </div>
                     </div>
                 </form>
-
-                <div class="p-10 border-t border-slate-50 dark:border-white/5 bg-slate-50/30 dark:bg-black/20 backdrop-blur-3xl flex justify-between items-center">
-                    <button onclick="closeProductModal()" class="text-[10px] font-black uppercase tracking-widest opacity-40 hover:opacity-100 transition-all">Abort Changes</button>
-                    <button type="submit" form="productForm" class="bg-black text-white dark:bg-white dark:text-black px-12 py-5 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-2xl hover:scale-105 active:scale-95 transition-all">Publish Master Asset</button>
-                </div>
             </div>
-
-            <!-- PREVIEW (RIGHT) -->
-            <div class="flex-grow bg-[#f4f7f9] dark:bg-[#020202] overflow-hidden p-20 flex flex-col justify-center items-center">
-                 <div class="relative w-full max-w-[1000px] h-full bg-white dark:bg-[#0a0a0a] rounded-[5rem] shadow-[0_80px_160px_-40px_rgba(0,0,0,0.3)] border border-slate-100 dark:border-white/5 overflow-y-auto custom-scrollbar">
-                     <!-- 1. Hero Content Preview -->
-                     <div class="grid grid-cols-12 h-screen max-h-[800px] p-24 items-center">
-                         <div class="col-span-12 lg:col-span-7 flex flex-col items-center justify-center p-10 h-full">
-                             <img id="prev-img" src="" class="max-w-full max-h-[80%] object-contain drop-shadow-2xl transition-all duration-1000">
-                             <div id="prev-colors" class="mt-12 flex gap-4"></div>
-                         </div>
-                         <div class="col-span-12 lg:col-span-5 space-y-8">
-                             <h4 id="prev-cat" class="text-blue-600 font-black text-xs uppercase tracking-[0.4em]">Category Preview</h4>
-                             <h1 id="prev-name" class="text-7xl font-black tracking-tighter leading-none">Global Identity</h1>
-                             <p id="prev-subtitle" class="text-xl font-bold italic text-slate-400">Cinematic tagline placeholder.</p>
-                             <div class="text-5xl font-black text-primary">$<span id="prev-price">0.00</span></div>
-                             <div class="h-[1px] w-full bg-slate-100 dark:bg-white/5"></div>
-                             <div class="flex flex-col gap-4">
-                                 <div class="w-full h-14 bg-black dark:bg-white rounded-full"></div>
-                                 <div class="w-full h-14 border border-slate-200 dark:border-white/10 rounded-full"></div>
-                             </div>
-                         </div>
-                     </div>
-                     
-                     <div class="p-24 border-t border-slate-50 dark:border-white/5 space-y-24">
-                         <div class="text-center space-y-6">
-                            <h2 id="prev-mark-title" class="text-6xl font-black tracking-tighter">Editorial Master Headline.</h2>
-                            <p id="prev-mark-desc" class="text-xl font-medium text-slate-400 max-w-2xl mx-auto leading-relaxed">Content synchronization from the left editor module will appear here in real-time.</p>
-                         </div>
-                         
-                         <div class="grid grid-cols-2 gap-10">
-                              <div class="aspect-square bg-slate-50 dark:bg-zinc-900 rounded-[4rem] p-16 flex flex-col justify-between overflow-hidden relative">
-                                  <h3 id="prev-spec-title" class="text-3xl font-black tracking-tighter">Hardware Core</h3>
-                                  <p id="prev-spec-desc" class="text-sm font-bold italic opacity-30">Architecture detail flow.</p>
-                                  <img id="prev-proc-img" src="" class="w-40 h-40 absolute bottom-10 right-10 object-contain drop-shadow-2xl opacity-40">
-                              </div>
-                              <div class="grid grid-rows-2 gap-10">
-                                   <div class="bg-blue-600 rounded-[3.5rem] p-10 flex flex-col justify-center items-center text-white text-center">
-                                       <span id="prev-stat1" class="text-6xl font-black tracking-tighter">--</span>
-                                       <span id="prev-stat1-lbl" class="text-[9px] font-black uppercase tracking-widest mt-2">Display Tech</span>
-                                   </div>
-                                   <div class="bg-black dark:bg-white rounded-[3.5rem] p-10 flex flex-col justify-center items-center text-white dark:text-black text-center">
-                                       <span id="prev-stat2" class="text-6xl font-black tracking-tighter">--</span>
-                                       <span id="prev-stat2-lbl" class="text-[9px] font-black uppercase tracking-widest mt-2">Energy Balance</span>
-                                   </div>
-                              </div>
-                         </div>
-                     </div>
-                 </div>
+            
+            <div class="p-10 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50 flex gap-6">
+                <button onclick="closeModal()" class="flex-none px-10 py-5 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-red-500 transition-all">Abort</button>
+                <button onclick="saveProduct()" id="saveBtn" class="flex-1 brand-blue text-white font-black py-5 rounded-[1.8rem] shadow-2xl hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-3 uppercase tracking-[0.3em] text-sm">
+                    <span id="saveBtnText">Synchronize Deployment</span>
+                    <div id="btnLoader" class="hidden loader w-5 h-5 border-2 border-white/20 rounded-full"></div>
+                </button>
             </div>
-
         </div>
     </div>
 
+    <!-- Notification Engine -->
+    <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 z-[1000] bg-slate-900 text-white px-10 py-5 rounded-full shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] transform translate-y-32 transition-transform duration-500 flex items-center gap-4">
+        <span class="material-symbols-outlined text-blue-400" id="toastIcon">check_circle</span>
+        <span id="toastMsg" class="font-black italic text-xs uppercase tracking-widest">Master Deployment Complete</span>
+    </div>
+
     <script>
-        let gallCount = 1;
+        // SMART DATA HUB
+        const PRODUCT_KNOWLEDGE = {
+            "iphone 17 pro max": { brand: "Apple", category: "iphone", proc: "A19 Pro Chip", disp: "Super Retina XDR | 120Hz", cam: "50MP Main | 10x Optical", batt: "100h Audio playback", build: "Grade 5 Titanium enclosure." },
+            "samsung s25 ultra": { brand: "Samsung", category: "samsung", proc: "Snapdragon 8 Gen 4", disp: "6.9\" Dynamic AMOLED 2X", cam: "200MP Quad Tele", batt: "5500mAh | 65W Fast Charge", build: "Armor Aluminum 2.0" }
+        };
 
-        // AUTH & BOOTSTRAP
-        document.addEventListener('DOMContentLoaded', async () => {
-            await checkAuth();
-            loadInventory();
-        });
+        let currentSuggestion = null;
+        let galleryAssets = [];
+        let colorVariants = [];
 
-        async function checkAuth() {
-            const { data: { session } } = await _supabase.auth.getSession();
-            if(!session) { window.location.href = '../login-final-nav.html'; return; }
-            document.getElementById('admin-email').textContent = session.user.email;
-        }
+        // STARTUP
+        window.onload = async () => {
+             const user = await AuthManager.checkAdmin();
+             if(!user) {
+                 window.location.href = '../login-final-nav.html';
+                 return;
+             }
+             document.getElementById('userEmail').textContent = user.email;
+             document.getElementById('authGuard').classList.add('hidden');
+             document.getElementById('mainApp').classList.replace('opacity-0', 'opacity-100');
+             loadInventory();
+        };
 
-        // TAB SYSTEM
-        function switchTab(tab) {
-            const tabs = ['tab-inventory', 'tab-orders'];
-            const btns = ['btn-inventory', 'btn-orders'];
-            
-            tabs.forEach(t => document.getElementById(t).classList.add('hidden'));
-            btns.forEach(b => document.getElementById(b).classList.remove('active'));
-            
-            document.getElementById(`tab-${tab}`).classList.remove('hidden');
-            document.getElementById(`btn-${tab}`).classList.add('active');
-        }
-
-        // INVENTORY ENGINE
+        // INVENTORY CORE
         async function loadInventory() {
-            const grid = document.getElementById('tab-inventory');
-            grid.innerHTML = `<div class="col-span-full py-40 text-center animate-pulse text-[10px] font-black uppercase tracking-[0.5em] opacity-30">Accessing Master Data...</div>`;
-
+            const grid = document.getElementById('inventoryGrid');
+            grid.innerHTML = `<div class="col-span-full py-40 text-center animate-pulse"><img src="../assets/images/Logo_flat_blink_service.png" class="h-8 mx-auto grayscale opacity-20 mb-4"><p class="text-[9px] font-black uppercase tracking-[0.4em] opacity-30">Accessing Master Data Stream</p></div>`;
+            
             try {
                 const { data, error } = await _supabase.from('products').select('*').order('created_at', { ascending: false });
                 if (error) throw error;
-
+                
                 grid.innerHTML = data.map(p => `
-                    <div class="bg-white dark:bg-neutral-900 rounded-[3.5rem] overflow-hidden border border-slate-100 dark:border-white/5 group hover:shadow-[0_64px_128px_-32px_rgba(0,0,0,0.2)] transition-all duration-700">
-                        <div class="h-80 bg-[#f8f9fb] dark:bg-black/20 flex items-center justify-center p-16 relative overflow-hidden">
-                             <img src="${p.main_image_url}" class="max-w-full max-h-full object-contain drop-shadow-2xl group-hover:scale-110 group-hover:-rotate-3 transition-all duration-700">
-                             <div class="absolute top-8 left-8 bg-black text-white dark:bg-white dark:text-black px-6 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.3em]">$${p.price}</div>
+                    <div class="glass p-8 rounded-[3rem] group hover:border-blue-500/50 hover:shadow-2xl transition-all duration-700 animate-in fade-in zoom-in duration-500">
+                        <div class="h-56 bg-slate-100 dark:bg-slate-800 rounded-[2rem] mb-6 flex items-center justify-center overflow-hidden relative group">
+                            <img src="${Array.isArray(p.gallery_urls) ? p.gallery_urls[0] : (p.main_image_url || '')}" class="h-[75%] object-contain group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-1000">
+                            <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
-                        <div class="p-10 space-y-10">
-                             <div class="space-y-2">
-                                 <h4 class="font-black text-2xl tracking-tighter truncate leading-none">${p.name}</h4>
-                                 <p class="text-[10px] text-slate-400 font-black uppercase tracking-[0.4em]">${p.category}</p>
-                             </div>
-                             <div class="flex gap-4 pt-8 border-t border-slate-100 dark:border-white/5">
-                                 <button onclick="editProduct('${p.id}')" class="flex-grow py-5 px-8 bg-blue-600 text-white rounded-[1.8rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:bg-blue-700 transition-all active:scale-95">Edit Master</button>
-                                 <button onclick="deleteProduct('${p.id}')" class="w-16 h-16 flex items-center justify-center bg-red-50 text-red-500 rounded-full hover:bg-red-500 hover:text-white transition-all shadow-sm">
-                                    <span class="material-symbols-outlined text-lg">delete</span>
-                                 </button>
-                             </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-black text-xl tracking-tighter truncate leading-tight mb-1">${p.name}</h4>
+                                    <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">${p.category} | ${p.brand || 'Global'}</span>
+                                </div>
+                                <span class="text-blue-600 font-black italic">$${p.price}</span>
+                            </div>
+                            <div class="flex gap-2 pt-4 border-t border-slate-50 dark:border-white/5">
+                                <button onclick='editProduct(${JSON.stringify(p).replace(/'/g, "&apos;")})' class="flex-1 py-4 rounded-2xl bg-slate-100 dark:bg-slate-800 text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">Modify</button>
+                                <button onclick="deleteProduct('${p.id}', '${p.name}')" class="w-12 h-12 flex items-center justify-center rounded-full bg-red-50 text-red-500 hover:bg-red-500 hover:text-white transition-all">
+                                    <span class="material-symbols-outlined text-sm">delete</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                `).join('') || `<div class="col-span-full py-60 text-center opacity-20 font-black tracking-[1em]">Master Empty</div>`;
-            } catch (err) { alert('Sync Fail'); console.error(err); }
+                `).join('');
+            } catch (err) { console.error(err); }
         }
 
-        // MODAL LOGIC
-        function openAddModal() {
-            document.getElementById('productModal').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('modalContent').classList.remove('scale-95', 'opacity-0'); }, 10);
-            document.getElementById('productForm').reset();
-            document.getElementById('productForm').dataset.editId = '';
-            document.getElementById('productForm').id.value = '';
-            document.getElementById('live-color-manager').innerHTML = '';
-            document.getElementById('gallery-container').innerHTML = `
-                <div class="relative group">
-                    <span class="absolute -top-3 left-4 bg-white dark:bg-[#0a0a0a] px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest z-10 border border-slate-100 dark:border-white/10">Hero Asset</span>
-                    <div class="flex gap-2">
-                        <input type="text" name="main_image" id="main_img_0" placeholder="Primary Image URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-6 py-5 text-[10px] font-mono" required>
-                        <button type="button" onclick="document.getElementById('file_main').click()" class="bg-black text-white dark:bg-white dark:text-black px-4 rounded-xl hover:scale-105 transition-all"><span class="material-symbols-outlined text-sm">cloud_upload</span></button>
-                        <input type="file" id="file_main" class="hidden" onchange="handleLiveUpload(this, 'main_img_0')">
-                    </div>
-                </div>
-            `;
-            liveUpdate();
-        }
-
-        function closeProductModal() {
-            const content = document.getElementById('modalContent');
-            content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => { document.getElementById('productModal').classList.add('hidden'); }, 300);
-        }
-
-        function addGallerySlot(val = '') {
-            const id = `extra_img_${gallCount++}`;
-            const div = document.createElement('div');
-            div.className = 'relative flex gap-2 animate-in slide-in-from-right-4 mt-4';
-            div.innerHTML = `
-                <input type="text" name="extra_image" id="${id}" value="${val}" placeholder="Additional Dynamic View URL" class="flex-grow bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 text-[10px] font-mono">
-                <button type="button" onclick="this.parentElement.remove(); liveUpdate()" class="text-red-500 p-2"><span class="material-symbols-outlined text-sm">close</span></button>
-            `;
-            document.getElementById('gallery-container').appendChild(div);
-            liveUpdate();
-        }
-
-        function addLiveColor(name = '', hex = '#000000', image = '') {
-            const container = document.getElementById('live-color-manager');
-            const div = document.createElement('div');
-            div.className = 'color-row bg-slate-50 dark:bg-white/5 p-4 rounded-[2rem] flex items-center gap-4 border border-slate-100 dark:border-white/5';
-            div.innerHTML = `
-                <input type="text" placeholder="Visual Shade Name" class="w-24 bg-transparent border-b border-slate-200 text-[10px] font-bold py-1" value="${name}">
-                <input type="color" class="w-10 h-10 rounded-full bg-transparent border-none cursor-pointer" value="${hex}">
-                <input type="text" placeholder="Layer Asset URL" class="flex-grow bg-transparent border-b border-slate-200 text-[9px] font-mono py-1" value="${image}">
-                <button type="button" onclick="this.parentElement.remove(); liveUpdate()" class="text-red-500 opacity-40 hover:opacity-100 transition-all"><span class="material-symbols-outlined text-sm">delete</span></button>
-            `;
-            container.appendChild(div);
-            liveUpdate();
-        }
-
-        // PREVIEW ENGINE
-        function liveUpdate() {
-            const f = document.getElementById('productForm');
-            const data = new FormData(f);
+        // ASSET UPLOAD LOGIC
+        async function handleMultipleUpload(input, type, colorIndex = null) {
+            const files = Array.from(input.files);
+            if(files.length === 0) return;
             
-            document.getElementById('prev-name').textContent = data.get('name') || 'Asset Labeling';
-            document.getElementById('prev-subtitle').textContent = data.get('subtitle') || 'Cinematic tagline text flow.';
-            document.getElementById('prev-price').textContent = data.get('price') || '0.00';
-            document.getElementById('prev-cat').textContent = data.get('category') || 'Master Segment';
-            document.getElementById('prev-img').src = data.get('main_image') || '';
+            showToast(`Processing ${files.length} frames...`, 'info');
             
-            document.getElementById('prev-mark-title').textContent = data.get('marketing_title') || 'Engineering Headline.';
-            document.getElementById('prev-mark-desc').textContent = data.get('marketing_subtitle') || 'Editorial content narrative for the product detail page.';
-            
-            document.getElementById('prev-spec-title').textContent = data.get('spec_dark_title') || 'Hardware Core';
-            document.getElementById('prev-spec-desc').textContent = data.get('proc_desc') || 'Architecture detail flow.';
-            document.getElementById('prev-proc-img').src = data.get('proc_image') || '';
-            
-            document.getElementById('prev-stat1').textContent = data.get('stat1') || '--';
-            document.getElementById('prev-stat1-lbl').textContent = data.get('stat1_lbl') || 'Display Tech';
-            document.getElementById('prev-stat2').textContent = data.get('stat2') || '--';
-            document.getElementById('prev-stat2-lbl').textContent = data.get('stat2_lbl') || 'Energy Balance';
-
-            // Colors Preview
-            const colorPrev = document.getElementById('prev-colors');
-            colorPrev.innerHTML = '';
-            document.querySelectorAll('.color-row').forEach(row => {
-                const hex = row.querySelector('input[type="color"]').value;
-                const dot = document.createElement('div');
-                dot.className = 'w-6 h-6 rounded-full border border-slate-200 dark:border-white/10 shadow-sm';
-                dot.style.background = hex;
-                colorPrev.appendChild(dot);
-            });
-        }
-
-        // STORAGE MANAGEMENT
-        async function handleLiveUpload(input, targetId) {
-            const file = input.files[0];
-            if (!file) return;
-            const btn = input.previousElementSibling;
-            btn.innerHTML = `<span class="animate-spin text-xs">...</span>`;
-            try {
-                const fileName = `${Date.now()}_${file.name.replace(/ /g, '_')}`;
-                const { data, error } = await _supabase.storage.from('products').upload(fileName, file);
-                if (error) throw error;
-                const { data: { publicUrl } } = _supabase.storage.from('products').getPublicUrl(fileName);
-                document.getElementById(targetId).value = publicUrl;
-                btn.innerHTML = `<span class="material-symbols-outlined text-sm text-green-500">done_all</span>`;
-                liveUpdate();
-            } catch (err) { alert('Upload fail'); btn.innerHTML = `<span class="material-symbols-outlined">cloud_upload</span>`; }
-        }
-
-        // DATA HANDLER
-        async function editProduct(id) {
-            const { data: p, error } = await _supabase.from('products').select('*').eq('id', id).single();
-            if(!error && p) {
-                openAddModal();
-                document.getElementById('modalLabel').textContent = 'Modify Master Asset';
-                const f = document.getElementById('productForm');
-                f.dataset.editId = p.id;
-                f.name.value = p.name;
-                f.subtitle.value = p.subtitle || '';
-                f.price.value = p.price;
-                f.category.value = p.category;
-                f.marketing_title.value = p.marketing_title || '';
-                f.marketing_subtitle.value = p.marketing_subtitle || '';
-                f.spec_dark_title.value = p.spec_dark_title || '';
-                f.proc_desc.value = p.processor_description || '';
-                f.proc_image.value = p.processor_image_url || '';
-                
-                // Parse stats
-                if(p.display_tech_description && p.display_tech_description.includes('|')) {
-                    const parts = p.display_tech_description.split('|');
-                    f.stat1.value = parts[0].trim();
-                    f.stat1_lbl.value = parts[1].trim();
-                }
-                if(p.battery_life_description && p.battery_life_description.includes('|')) {
-                    const parts = p.battery_life_description.split('|');
-                    f.stat2.value = parts[0].trim();
-                    f.stat2_lbl.value = parts[1].trim();
-                }
-
-                f.main_image.value = p.main_image_url;
-                
-                // Extra Gallery
-                if(p.gallery_urls) {
-                    p.gallery_urls.filter(u => u !== p.main_image_url).forEach(url => addGallerySlot(url));
-                }
-
-                // Colors
-                if(p.colors) {
-                    const colorArr = Array.isArray(p.colors) ? p.colors : Object.entries(p.colors).map(([h, im]) => ({ hex: h, image: im, name: 'Main' }));
-                    colorArr.forEach(c => addLiveColor(c.name, c.hex, c.image));
-                }
-                
-                liveUpdate();
+            for(const file of files) {
+                const fileName = `prod_${Date.now()}_${Math.random().toString(36).substr(2, 5)}_${file.name.replace(/\s+/g, '_')}`;
+                try {
+                    const { data, error } = await _supabase.storage.from('products').upload(fileName, file);
+                    if (error) throw error;
+                    const { data: { publicUrl } } = _supabase.storage.from('products').getPublicUrl(fileName);
+                    
+                    if(type === 'gallery') {
+                        galleryAssets.push(publicUrl);
+                        renderGallery();
+                    } else if(type === 'color') {
+                        colorVariants[colorIndex].image = publicUrl;
+                        renderColorVariants();
+                    }
+                } catch (e) { console.error(e); }
             }
         }
 
-        document.getElementById('productForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const f = e.target;
-            const btn = f.querySelector('button[type="submit"]');
-            const editId = f.dataset.editId;
-            const data = new FormData(f);
-            
-            btn.disabled = true;
-            btn.textContent = 'PUBLISHING...';
+        // UI RENDERERS
+        function renderGallery() {
+            const container = document.getElementById('galleryContainer');
+            container.innerHTML = galleryAssets.map((url, i) => `
+                <div class="relative aspect-square bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden group shadow-inner">
+                    <img src="${url}" class="w-full h-full object-contain p-2">
+                    <button type="button" onclick="galleryAssets.splice(${i}, 1); renderGallery()" class="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[10px]">close</span>
+                    </button>
+                    ${i === 0 ? '<span class="absolute bottom-2 left-2 bg-blue-600 text-[7px] font-black text-white px-2 py-1 rounded-full uppercase tracking-widest">Primary</span>' : ''}
+                </div>
+            `).join('');
+        }
 
-            // Collect Colors
-            const colorArr = [];
-            document.querySelectorAll('.color-row').forEach(row => {
-                const name = row.querySelector('input[type="text"]').value;
-                const hex = row.querySelector('input[type="color"]').value;
-                const image = row.querySelectorAll('input[type="text"]')[1].value;
-                if(image) colorArr.push({ name, hex, image });
-            });
+        function addColorVariant() {
+            colorVariants.push({ name: 'Midnight', hex: '#000000', image: '' });
+            renderColorVariants();
+        }
 
-            // Collect Gallery
-            const galley = [data.get('main_image')];
-            document.querySelectorAll('input[name="extra_image"]').forEach(i => { if(i.value) galley.push(i.value); });
+        function renderColorVariants() {
+            const container = document.getElementById('colorVariantContainer');
+            container.innerHTML = colorVariants.map((c, i) => `
+                <div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/20 p-4 rounded-[1.5rem] animate-in slide-in-from-right-4">
+                    <input type="color" value="${c.hex}" oninput="colorVariants[${i}].hex = this.value" class="w-12 h-12 bg-transparent cursor-pointer rounded-full overflow-hidden border-none shadow-xl">
+                    <input type="text" value="${c.name}" oninput="colorVariants[${i}].name = this.value" placeholder="Color Name" class="flex-1 bg-white dark:bg-slate-800 rounded-xl px-4 py-3 text-xs font-bold border-none shadow-sm">
+                    <div class="flex items-center gap-2">
+                        <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center cursor-pointer" onclick="document.getElementById('colorFile-${i}').click()">
+                            ${c.image ? `<img src="${c.image}" class="w-full h-full object-contain">` : '<span class="material-symbols-outlined text-sm text-slate-300">image</span>'}
+                        </div>
+                        <input type="file" id="colorFile-${i}" class="hidden" onchange="handleMultipleUpload(this, 'color', ${i})">
+                    </div>
+                    <button type="button" onclick="colorVariants.splice(${i}, 1); renderColorVariants()" class="text-red-500 p-2 hover:bg-red-50 rounded-full transition-all">
+                        <span class="material-symbols-outlined text-sm">delete</span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // SAVE LOGIC
+        async function saveProduct() {
+            const f = document.getElementById('productForm');
+            const editId = document.getElementById('editId').value;
+            setLoading(true);
 
             const product = {
-                name: data.get('name'),
-                subtitle: data.get('subtitle'),
-                price: parseFloat(data.get('price')),
-                category: data.get('category'),
-                marketing_title: data.get('marketing_title'),
-                marketing_subtitle: data.get('marketing_description') || data.get('marketing_subtitle'),
-                spec_dark_title: data.get('spec_dark_title'),
-                processor_description: data.get('proc_desc'),
-                processor_image_url: data.get('proc_image'),
-                display_tech_description: `${data.get('stat1')} | ${data.get('stat1_lbl')}`,
-                battery_life_description: `${data.get('stat2')} | ${data.get('stat2_lbl')}`,
-                main_image_url: data.get('main_image'),
-                gallery_urls: galley,
-                colors: colorArr.length > 0 ? colorArr : null
+                name: document.getElementById('title').value,
+                brand: document.getElementById('brand').value,
+                price: parseFloat(document.getElementById('price').value),
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value,
+                gallery_urls: galleryAssets,
+                main_image_url: galleryAssets[0] || '',
+                colors: colorVariants,
+                storage: [
+                    { label: document.getElementById('cap1').value, price: parseFloat(document.getElementById('cap1Price').value) },
+                    { label: document.getElementById('cap2').value, price: parseFloat(document.getElementById('cap2Price').value) },
+                    { label: document.getElementById('cap3').value, price: parseFloat(document.getElementById('cap3Price').value) }
+                ],
+                spec_dark_title: document.getElementById('specBuild').value,
+                processor_description: document.getElementById('specProc').value,
+                display_tech_description: document.getElementById('specDisp').value,
+                battery_life_description: document.getElementById('specCam').value, // Used for legacy camera mapping
+                marketing_title: document.getElementById('editTitle').value,
+                marketing_subtitle: document.getElementById('editDesc').value
             };
 
             try {
@@ -526,20 +423,112 @@
                     const { error: err } = await _supabase.from('products').insert([product]);
                     error = err;
                 }
-
                 if(error) throw error;
-                closeProductModal();
+                showToast('Master Deployment Complete Synchronized!', 'success');
+                closeModal();
                 loadInventory();
-            } catch (err) { alert('Persistence Err: ' + err.message); }
-            finally { btn.disabled = false; btn.textContent = 'Publish Master Asset'; }
-        };
-
-        async function deleteProduct(id) {
-            if(confirm('Wipe this asset from the master catalog?')) {
-                const { error } = await _supabase.from('products').delete().eq('id', id);
-                if(!error) loadInventory();
+            } catch (err) {
+                showToast('Sync Error: ' + err.message, 'error');
+            } finally {
+                setLoading(false);
             }
         }
+
+        // HELPER FUNCTIONS
+        function openModal() {
+            document.getElementById('productModal').classList.remove('hidden');
+            document.getElementById('modalTitle').textContent = 'Project: New Asset';
+            document.getElementById('editId').value = '';
+            document.getElementById('productForm').reset();
+            galleryAssets = [];
+            colorVariants = [];
+            renderGallery();
+            renderColorVariants();
+        }
+
+        function closeModal() { document.getElementById('productModal').classList.add('hidden'); }
+
+        function editProduct(p) {
+            openModal();
+            document.getElementById('modalTitle').textContent = 'Project: Modify Legacy';
+            document.getElementById('editId').value = p.id;
+            
+            document.getElementById('title').value = p.name;
+            document.getElementById('brand').value = p.brand || '';
+            document.getElementById('price').value = p.price;
+            document.getElementById('category').value = p.category;
+            document.getElementById('description').value = p.description || '';
+            
+            galleryAssets = p.gallery_urls || (p.main_image_url ? [p.main_image_url] : []);
+            renderGallery();
+            
+            colorVariants = Array.isArray(p.colors) ? p.colors : [];
+            renderColorVariants();
+            
+            if(p.storage && p.storage.length >= 3) {
+                document.getElementById('cap1').value = p.storage[0].label;
+                document.getElementById('cap1Price').value = p.storage[0].price;
+                document.getElementById('cap2').value = p.storage[1].label;
+                document.getElementById('cap2Price').value = p.storage[1].price;
+                document.getElementById('cap3').value = p.storage[2].label;
+                document.getElementById('cap3Price').value = p.storage[2].price;
+            }
+
+            document.getElementById('specBuild').value = p.spec_dark_title || '';
+            document.getElementById('specProc').value = p.processor_description || '';
+            document.getElementById('specDisp').value = p.display_tech_description || '';
+            document.getElementById('specCam').value = p.battery_life_description || '';
+            document.getElementById('editTitle').value = p.marketing_title || '';
+            document.getElementById('editDesc').value = p.marketing_subtitle || '';
+        }
+
+        async function deleteProduct(id, name) {
+            if(!confirm(`Exterminate ${name} from master records?`)) return;
+            const { error } = await _supabase.from('products').delete().eq('id', id);
+            if(!error) loadInventory();
+        }
+
+        function triggerAssistant() {
+            const val = document.getElementById('title').value.toLowerCase().trim();
+            const prompt = document.getElementById('autofillPrompt');
+            currentSuggestion = null;
+            for(let key in PRODUCT_KNOWLEDGE) { if(val.includes(key) || key.includes(val)) { currentSuggestion = PRODUCT_KNOWLEDGE[key]; break; } }
+            if(currentSuggestion && val.length > 5) { prompt.classList.remove('hidden'); } else { prompt.classList.add('hidden'); }
+        }
+
+        function confirmAutofill() {
+            if(!currentSuggestion) return;
+            const s = currentSuggestion;
+            document.getElementById('brand').value = s.brand;
+            document.getElementById('category').value = s.category;
+            document.getElementById('specProc').value = s.proc;
+            document.getElementById('specDisp').value = s.disp;
+            document.getElementById('specCam').value = s.cam;
+            document.getElementById('specBatt').value = s.batt;
+            document.getElementById('specBuild').value = s.build;
+            document.getElementById('editTitle').value = "Engineering Precision.";
+            document.getElementById('editDesc').value = "Deep dive into the architecture of the " + s.brand + " ecosystem.";
+            document.getElementById('autofillPrompt').classList.add('hidden');
+            showToast('Smart Sync Active!', 'success');
+        }
+
+        function setLoading(isLoading) {
+            const btn = document.getElementById('saveBtn');
+            const text = document.getElementById('saveBtnText');
+            const loader = document.getElementById('btnLoader');
+            btn.disabled = isLoading;
+            text.classList.toggle('hidden', isLoading);
+            loader.classList.toggle('hidden', !isLoading);
+        }
+
+        function showToast(msg, type = 'success') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => toast.classList.add('translate-y-32'), 3000);
+        }
+
+        function logout() { AuthManager.logout(); }
     </script>
 </body>
 </html>
