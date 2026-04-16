@@ -132,15 +132,23 @@ const NavbarComponent = {
     },
 
     attachListeners() {
-        const toggle = document.getElementById('themeToggle');
-        if (toggle) {
-            toggle.onclick = () => {
+        // Global event delegation for theme toggle (Bulletproof)
+        document.addEventListener('click', (e) => {
+            const toggle = e.target.closest('#themeToggle');
+            if (toggle) {
+                e.preventDefault();
                 const isDark = document.documentElement.classList.toggle('dark');
                 localStorage.setItem('theme', isDark ? 'dark' : 'light');
                 window.dispatchEvent(new CustomEvent('themeChanged', { detail: { isDark } }));
-            };
-        }
+                console.log('Theme toggled:', isDark ? 'dark' : 'light');
+            }
+        });
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => NavbarComponent.render());
+// Initialize as soon as possible and on DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => NavbarComponent.render());
+} else {
+    NavbarComponent.render();
+}
