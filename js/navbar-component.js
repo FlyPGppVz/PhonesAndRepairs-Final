@@ -105,15 +105,9 @@ const NavbarComponent = {
                         <span class="material-symbols-outlined text-[24px]">account_circle</span>
                     </button>
                     <div class="absolute right-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right scale-95 group-hover:scale-100 z-50">
-                        <div class="bg-white dark:bg-[#1a1c1e] rounded-2xl shadow-2xl border border-slate-200/50 dark:border-white/5 overflow-hidden min-w-[200px] py-2">
-                            ${isAdmin ? `
-                                <a href="${basePath}admin-dashboard-final.html" class="flex items-center gap-3 px-6 py-3 text-[12px] font-black uppercase text-primary hover:bg-primary/5 transition-colors">
-                                    <span class="material-symbols-outlined text-lg">dashboard</span> Admin Panel
-                                </a>
-                                <hr class="border-slate-100 dark:border-white/5 my-2">
-                            ` : ''}
-                            <a href="${basePath}login-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Sign In</a>
-                            <a href="${basePath}create-account-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Register</a>
+                        <div id="nav-user-dropdown" class="bg-white dark:bg-[#1a1c1e] rounded-2xl shadow-2xl border border-slate-200/50 dark:border-white/5 overflow-hidden min-w-[200px] py-2">
+                             <a href="${basePath}login-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Sign In</a>
+                             <a href="${basePath}create-account-final-nav.html" class="block px-6 py-3 text-[13px] font-bold opacity-70 hover:opacity-100 hover:bg-slate-50 dark:hover:bg-white/5">Register</a>
                         </div>
                     </div>
                 </div>

@@ -102,5 +102,15 @@ const AuthManager = {
     }
 };
 
-// Auto-inicializar
-document.addEventListener('DOMContentLoaded', () => AuthManager.init());
+// Auto-inicializar con reintento por si el navbar tarda en cargar
+const initAuthWithRetry = async (retries = 5) => {
+    const dropdown = document.getElementById('nav-user-dropdown');
+    if (!dropdown && retries > 0) {
+        console.log('Navbar no listo, reintentando auth...');
+        setTimeout(() => initAuthWithRetry(retries - 1), 500);
+        return;
+    }
+    await AuthManager.init();
+};
+
+document.addEventListener('DOMContentLoaded', () => initAuthWithRetry());
