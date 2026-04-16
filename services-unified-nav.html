@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-    <!-- Theme protection -->
     <script id="anti_flicker">
         (function() {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -23,65 +22,8 @@
 </head>
 <body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 font-body selection:bg-primary/20">
     
-    <!-- HEADER FISICO (Como hace 5 horas) -->
-    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
-        <nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto h-16">
-            <div class="flex-1 flex items-center">
-                <a href="./index.html" class="flex items-center gap-3 group">
-                    <img src="./assets/images/Cell_Logo.png" alt="Logo" class="h-10 w-auto dark:brightness-125">
-                </a>
-            </div>
-
-            <div class="hidden md:flex items-center gap-10">
-                <a href="./index.html" class="text-sm font-bold opacity-70 hover:opacity-100 transition-opacity">Home</a>
-                <div class="group relative py-4">
-                    <a href="./shop-fully-connected.html" class="flex items-center gap-1 text-sm font-bold opacity-70 hover:opacity-100 transition-opacity">
-                        Shop <span class="material-symbols-outlined text-[18px]">expand_more</span>
-                    </a>
-                    <!-- Apple Style Mega Menu -->
-                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white dark:bg-[#0f0f0f] rounded-3xl shadow-2xl border border-slate-100 dark:border-white/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-8 z-50">
-                        <div class="grid grid-cols-4 gap-8">
-                            <div class="space-y-4">
-                                <h3 class="text-[10px] font-black uppercase text-primary">Smartphones</h3>
-                                <ul class="space-y-3">
-                                    <li><a href="./shop-fully-connected.html?brand=Apple" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">apple</span> iPhone</a></li>
-                                    <li><a href="./shop-fully-connected.html?brand=Samsung" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">smartphone</span> Samsung</a></li>
-                                </ul>
-                            </div>
-                            <div class="space-y-4">
-                                <h3 class="text-[10px] font-black uppercase text-primary">Computing</h3>
-                                <ul class="space-y-3">
-                                    <li><a href="./shop-fully-connected.html?type=Tablet" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">tablet_mac</span> iPads</a></li>
-                                </ul>
-                            </div>
-                            <div class="space-y-4">
-                                <h3 class="text-[10px] font-black uppercase text-primary">Gaming</h3>
-                                <ul class="space-y-3">
-                                    <li><a href="./shop-fully-connected.html?brand=Sony" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">videogame_asset</span> Consoles</a></li>
-                                </ul>
-                            </div>
-                            <div class="bg-slate-50 dark:bg-white/5 rounded-2xl p-4 flex flex-col justify-between">
-                                <h4 class="text-xs font-bold">New Arrivals</h4>
-                                <a href="./shop-fully-connected.html" class="text-[10px] font-black uppercase text-primary flex items-center gap-1">Shop Now <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="./services-unified-nav.html" class="text-sm font-bold text-primary">Services</a>
-                <a href="./contact-unified-nav.html" class="text-sm font-bold opacity-70 hover:opacity-100 transition-opacity">Contact</a>
-            </div>
-
-            <div class="flex-1 flex items-center justify-end gap-4">
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all">
-                    <span class="material-symbols-outlined text-slate-500">dark_mode</span>
-                </button>
-                <a href="./cart-final.html" class="p-2 rounded-full relative">
-                    <span class="material-symbols-outlined text-slate-500">shopping_bag</span>
-                    <div class="cart-badge absolute top-1 right-1 w-4 h-4 bg-primary text-[10px] text-white rounded-full flex items-center justify-center opacity-0 scale-0">0</div>
-                </a>
-            </div>
-        </nav>
-    </header>
+    <!-- Modern Unified Navigation Container -->
+    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 h-[64px]"></header>
 
     <main class="pt-24 pb-20">
         <!-- Hero Section -->
@@ -185,7 +127,7 @@
         </section>
     </main>
 
-    <!-- FABs (Crucial) -->
+    <!-- FABs -->
     <a href="https://api.whatsapp.com/send/?phone=13136268888&text&type=phone_number&app_absent=0" target="_blank" class="fixed bottom-[160px] right-6 z-[1001] group animate-fade-in-up">
         <div class="bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
@@ -227,17 +169,9 @@
     </div>
 
     <!-- Scripts -->
+    <script src="./js/navbar-component.js"></script>
     <script src="./js/main.js"></script>
     <script>
-        // Core Theme Logic
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            themeToggle.querySelector('span').textContent = isDark ? 'light_mode' : 'dark_mode';
-        });
-
-        // Quote Persistence Logic (Supabase)
         function openQuoteModal(category) {
             const modal = document.getElementById('quoteModal');
             const content = document.getElementById('modalContent');
