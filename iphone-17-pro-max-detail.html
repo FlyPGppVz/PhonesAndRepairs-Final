@@ -148,26 +148,29 @@ Shop
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-24">
 <!-- Asymmetric Image Column -->
 <div class="lg:col-span-7 relative h-[600px] md:h-[800px] bg-surface-container dark:bg-[#1a1c1e] rounded-lg overflow-hidden flex flex-col items-center justify-center p-8 md:p-12">
-<img id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png">
-<div class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
-<button class="color-btn group relative w-12 h-12 rounded-full bg-[#1c1c1c] active-color ring-2 ring-primary ring-offset-4 ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-black-.png" aria-label="Titanium Black"></button>
-<button class="color-btn group relative w-12 h-12 rounded-full bg-[#f2f2f2] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-white.png" aria-label="Titanium White"></button>
-<button class="color-btn group relative w-12 h-12 rounded-full bg-[#d1713f] hover:ring-2 hover:ring-primary hover:ring-offset-4 hover:ring-offset-background transition-all hover:scale-110 active:scale-95" data-image="./assets/images/Tienda/Iphone_17_pro_max/iphone-17-pro-max-orange-.png" aria-label="Cosmic Orange"></button>
-</div>
-<!-- Floating Detail Badge -->
-<div class="absolute bottom-10 left-10 p-6 bg-surface-container-lowest/80 backdrop-blur-md rounded-lg max-w-[240px]">
-<p class="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">Build Integrity</p>
-<p class="text-on-surface text-sm font-medium">Grade 5 Titanium enclosure with brushed obsidian texture.</p>
+    <!-- Image will be injected here -->
+    <img id="main-product-image" class="product-main-image max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-500 scale-105" src="">
+    
+    <!-- Color selector will be injected here -->
+    <div id="dynamic-color-container" class="mt-8 flex gap-6 z-10 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10">
+    </div>
+    <!-- COLORS_INJECTED_HERE -->
+
+    <!-- Floating Detail Badge -->
+    <div class="absolute bottom-10 left-10 p-6 bg-surface-container-lowest/80 backdrop-blur-md rounded-lg max-w-[240px]">
+        <p class="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">Build Integrity</p>
+        <p id="build-integrity-text" class="text-on-surface text-sm font-medium">Precision engineered for excellence.</p>
+    </div>
 </div>
 </div>
 <!-- Configuration Column -->
 <div class="lg:col-span-5 flex flex-col justify-center sticky top-24">
 <div class="mb-8">
 <span class="text-primary font-semibold tracking-wide text-xs uppercase mb-3 block">New Arrival</span>
-<h1 class="text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-4">iPhone 17 Pro Max</h1>
-<p class="text-on-surface-variant text-lg max-w-md mb-6"><span class="color-label">Titanium Black</span>. The strongest, lightest, and most advanced iPhone ever created.</p>
+<h1 id="product-main-title" class="text-5xl md:text-6xl font-bold tracking-tight text-on-surface mb-4">Product Title</h1>
+<p id="product-main-description" class="text-on-surface-variant text-lg max-w-md mb-6"><span class="color-label">Selected Color</span>. High-performance device engineered for excellence.</p>
 <div class="product-price-container min-h-[60px] flex items-center">
-<div class="product-price text-3xl font-semibold text-on-surface transition-all">$1,299.00</div>
+<div id="product-main-price" class="product-price text-3xl font-semibold text-on-surface transition-all">$0.00</div>
 </div>
 </div>
 <!-- Storage Selector -->
@@ -205,15 +208,15 @@ Shop
 <!-- Bento Grid Specs Section -->
 <section class="mb-24">
 <div class="text-center mb-16">
-<h2 class="text-4xl font-bold tracking-tight mb-4">Engineering Precision.</h2>
-<p class="text-on-surface-variant text-lg">Every component refined for professional peak performance.</p>
+<h2 id="marketing-title" class="text-4xl font-bold tracking-tight mb-4">Engineering Precision.</h2>
+<p id="marketing-subtitle" class="text-on-surface-variant text-lg">Every component refined for professional peak performance.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[600px]">
 <!-- Processor Block -->
 <div class="md:col-span-2 md:row-span-2 bg-inverse-surface text-white rounded-lg p-10 flex flex-col justify-between overflow-hidden relative">
 <div>
-<h3 class="text-3xl font-bold mb-4">A19 Pro Chip</h3>
-<p class="text-white/60 text-lg leading-relaxed max-w-sm">The first 3-nanometer chip in the industry. Up to 20% faster CPU and 6-core GPU for console-level gaming.</p>
+<h3 id="spec-processor-title" class="text-3xl font-bold mb-4">Processor Power</h3>
+<p id="spec-processor-desc" class="text-white/60 text-lg leading-relaxed max-w-sm">Next-generation performance architecture.</p>
 </div>
 <div class="relative h-48 mt-8">
 <img class="absolute -bottom-10 -right-10 w-64 h-64 object-contain opacity-50" data-alt="Futuristic high-tech circuit board render with glowing silicon core and intricate metallic pathways" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiCUA8fNzIIhveg0rUnHX42JYUyXDeDTeULf4oz2mRA2QOIBm4BmUOt_7p4Ao9dsJc3QCWDL_7Db9eghKYBJjH5DlF8hX1DiFsfzC-ynANKu58o_TMa56HQg0quuTjfJD6uL-ZcjfQbX8v92N-RFo_-YCm83IZacJ2DkVviHHW3rE3ya3ladg_nNfuXjE0Zibm2h2SicXSgqtZY156CBu5WoqPJJ2UYGVHs6W9oTEbaupkYfmTRKrBXkM37NQkgmu5KV03Lt_0_Lo">
@@ -223,8 +226,8 @@ Shop
 <div class="md:col-span-2 bg-surface-container-lowest rounded-lg p-10 flex flex-col justify-between border border-outline-variant/10">
 <div class="flex items-start justify-between">
 <div>
-<h3 class="text-2xl font-bold mb-2">Super Retina XDR</h3>
-<p class="text-on-surface-variant text-sm">6.9" ProMotion technology with Always-On display.</p>
+<h3 id="spec-display-title" class="text-2xl font-bold mb-2">Display Technology</h3>
+<p id="spec-display-desc" class="text-on-surface-variant text-sm">ProMotion technology with Adaptive Refresh.</p>
 </div>
 <span class="material-symbols-outlined text-primary text-3xl">edgesensor_high</span>
 </div>
@@ -242,14 +245,14 @@ Shop
 <!-- Camera Block -->
 <div class="bg-surface-container-high rounded-lg p-8 flex flex-col items-center justify-center text-center">
 <span class="material-symbols-outlined text-primary text-4xl mb-4" data-weight="fill">camera_enhance</span>
-<h3 class="font-bold">Pro Camera System</h3>
-<p class="text-xs text-on-surface-variant mt-2">48MP Main | 5x Optical Zoom</p>
+<h3 id="spec-camera-title" class="font-bold">Advanced Camera</h3>
+<p id="spec-camera-desc" class="text-xs text-on-surface-variant mt-2">Professional Imaging System</p>
 </div>
 <!-- Battery Block -->
 <div class="bg-surface-container-low rounded-lg p-8 flex flex-col items-center justify-center text-center">
 <span class="material-symbols-outlined text-primary text-4xl mb-4">battery_charging_full</span>
-<h3 class="font-bold">All-Day Power</h3>
-<p class="text-xs text-on-surface-variant mt-2">Up to 30 hours video playback.</p>
+<h3 id="spec-battery-title" class="font-bold">Battery Life</h3>
+<p id="spec-battery-desc" class="text-xs text-on-surface-variant mt-2">Optimized for all-day usage.</p>
 </div>
 </div>
 </section>
