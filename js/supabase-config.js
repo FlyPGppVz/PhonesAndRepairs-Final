@@ -4,8 +4,8 @@
  * # NOTA: Usa la clave pública (anon key) para operaciones desde el cliente.
  */
 
-const SB_URL = 'https://jmxzwkapwnfddyphojqm.supabase.co';
-const SB_KEY = 'sb_publishable_MCU8DxYsC9i9COjWVSDLYQ_Aea0agYS'; // Anon/Public Key
+const SB_URL = 'https://mjlhbhiraheaeijxeedg.supabase.co';
+const SB_KEY = 'sb_publishable_jf2EAm5dueZJY1xAXXNoJA_gn_3MDpn'; // Anon/Public Key
 
 // Inicialización del cliente global
 const _supabase = supabase.createClient(SB_URL, SB_KEY);
