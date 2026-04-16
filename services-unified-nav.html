@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css"><script src="./js/tailwind-config.js"></script>
+    <!-- Theme protection -->
     <script id="anti_flicker">
         (function() {
             const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -15,14 +15,73 @@
             else document.documentElement.classList.remove('dark');
         })();
     </script>
-    <!-- FOUNDATION -->
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/tailwind-config.js"></script>
+    <!-- Supabase Foundation -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="./js/supabase-config.js"></script>
-    <script src="./js/auth.js"></script>
-    <script src="./js/navbar-component.js"></script>
 </head>
 <body class="bg-background text-on-surface dark:bg-neutral-950 dark:text-white transition-colors duration-500 font-body selection:bg-primary/20">
-    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 h-[64px]"></header>
+    
+    <!-- HEADER FISICO (Como hace 5 horas) -->
+    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50">
+        <nav class="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto h-16">
+            <div class="flex-1 flex items-center">
+                <a href="./index.html" class="flex items-center gap-3 group">
+                    <img src="./assets/images/Cell_Logo.png" alt="Logo" class="h-10 w-auto dark:brightness-125">
+                </a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-10">
+                <a href="./index.html" class="text-sm font-bold opacity-70 hover:opacity-100 transition-opacity">Home</a>
+                <div class="group relative py-4">
+                    <a href="./shop-fully-connected.html" class="flex items-center gap-1 text-sm font-bold opacity-70 hover:opacity-100 transition-opacity">
+                        Shop <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                    </a>
+                    <!-- Apple Style Mega Menu -->
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white dark:bg-[#0f0f0f] rounded-3xl shadow-2xl border border-slate-100 dark:border-white/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-8 z-50">
+                        <div class="grid grid-cols-4 gap-8">
+                            <div class="space-y-4">
+                                <h3 class="text-[10px] font-black uppercase text-primary">Smartphones</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="./shop-fully-connected.html?brand=Apple" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">apple</span> iPhone</a></li>
+                                    <li><a href="./shop-fully-connected.html?brand=Samsung" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">smartphone</span> Samsung</a></li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-[10px] font-black uppercase text-primary">Computing</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="./shop-fully-connected.html?type=Tablet" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">tablet_mac</span> iPads</a></li>
+                                </ul>
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-[10px] font-black uppercase text-primary">Gaming</h3>
+                                <ul class="space-y-3">
+                                    <li><a href="./shop-fully-connected.html?brand=Sony" class="text-sm opacity-60 hover:opacity-100 flex items-center gap-2"><span class="material-symbols-outlined text-sm">videogame_asset</span> Consoles</a></li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 dark:bg-white/5 rounded-2xl p-4 flex flex-col justify-between">
+                                <h4 class="text-xs font-bold">New Arrivals</h4>
+                                <a href="./shop-fully-connected.html" class="text-[10px] font-black uppercase text-primary flex items-center gap-1">Shop Now <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="./services-unified-nav.html" class="text-sm font-bold text-primary">Services</a>
+                <a href="./contact-unified-nav.html" class="text-sm font-bold opacity-70 hover:opacity-100 transition-opacity">Contact</a>
+            </div>
+
+            <div class="flex-1 flex items-center justify-end gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all">
+                    <span class="material-symbols-outlined text-slate-500">dark_mode</span>
+                </button>
+                <a href="./cart-final.html" class="p-2 rounded-full relative">
+                    <span class="material-symbols-outlined text-slate-500">shopping_bag</span>
+                    <div class="cart-badge absolute top-1 right-1 w-4 h-4 bg-primary text-[10px] text-white rounded-full flex items-center justify-center opacity-0 scale-0">0</div>
+                </a>
+            </div>
+        </nav>
+    </header>
 
     <main class="pt-24 pb-20">
         <!-- Hero Section -->
@@ -32,155 +91,160 @@
                     <h1 class="text-[3.5rem] md:text-[4.5rem] font-bold tracking-tight text-on-surface mb-8 leading-[1.05]">Precision Repair for the <br><span class="text-primary">Devices You Love.</span></h1>
                     <p class="text-[1.25rem] text-on-surface-variant leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">Specialized technical solutions for mobile hardware, tablets, and gaming consoles. We restore your technology to original factory standards.</p>
                     <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <button onclick="openQuoteModal('General')" class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-xl shadow-primary/20 active:scale-95">Book a Repair</button>
-                        <a href="./contact-unified-nav.html" class="px-8 py-4 bg-surface-container text-on-surface rounded-full font-bold text-sm hover:bg-surface-container-high transition-all border border-outline-variant/30 active:scale-95">Talk to a Technician</a>
+                        <button onclick="openQuoteModal('General')" class="px-8 py-4 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all active:scale-95 shadow-xl shadow-primary/20">Book a Repair</button>
                     </div>
                 </div>
-                <div class="relative group">
-                    <div class="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] border border-white/20 dark:border-white/10">
-                        <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                            <source src="./assets/videos/Video_service.mp4" type="video/mp4">
-                        </video>
-                    </div>
+                <div class="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl">
+                    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+                        <source src="./assets/videos/Video_service.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
 
-        <!-- Services Bento -->
-        <section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8" id="services">
+        <!-- Main Categories -->
+        <section class="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-8">
             <!-- iPhone -->
-            <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col md:flex-row gap-8 items-center border border-outline-variant/10 shadow-sm transition-colors duration-500">
+            <div class="md:col-span-8 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col md:flex-row gap-8 items-center border border-slate-100 dark:border-white/5 shadow-sm">
                 <div class="flex-1 space-y-6">
                     <div class="flex items-center gap-3">
-                        <span class="material-symbols-outlined text-primary text-3xl font-bold">smartphone</span>
-                        <h2 class="text-[1.75rem] font-bold">iPhone Repairs</h2>
+                        <span class="material-symbols-outlined text-primary text-3xl">smartphone</span>
+                        <h2 class="text-[1.75rem] font-semibold">iPhone Repairs</h2>
                     </div>
-                    <p class="text-on-surface-variant leading-relaxed">Complete restoration for all iPhone generations. Original parts and certified care.</p>
-                    <button onclick="openQuoteModal('iPhone')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get iPhone Quote</button>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-2 text-sm text-on-surface-variant font-medium"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Screen & OLED Replacement</li>
+                        <li class="flex items-center gap-2 text-sm text-on-surface-variant font-medium"><span class="material-symbols-outlined text-primary text-lg">check_circle</span> Battery Health Restoration</li>
+                    </ul>
+                    <button onclick="openQuoteModal('iPhone')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get iPhone Quote</button>
                 </div>
                 <div class="flex-1">
-                    <img class="w-full h-64 md:h-80 rounded-2xl object-cover" src="./assets/images/Services/service_iphone_repair.jpg" alt="iPhone Repair">
+                    <img class="w-full h-auto rounded-2xl object-cover shadow-sm" src="./assets/images/service_iphone_repair.jpg" alt="iPhone Repair">
                 </div>
             </div>
 
-            <!-- Consoles -->
-            <div class="md:col-span-4 bg-slate-900 text-white rounded-3xl p-10 flex flex-col justify-between relative overflow-hidden group">
-                <div class="relative z-10">
-                    <span class="material-symbols-outlined text-primary text-3xl mb-6">videogame_asset</span>
-                    <h2 class="text-[1.75rem] font-bold mb-4 tracking-tight">Consoles</h2>
-                    <p class="text-white/60 mb-6 italic leading-relaxed">PlayStation, Xbox & Nintendo specialized care.</p>
-                    <button onclick="openQuoteModal('Console')" class="px-6 py-3 bg-white text-slate-900 rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all active:scale-95">Request Service</button>
-                </div>
-                <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-all duration-700 transform group-hover:rotate-12 group-hover:scale-110">
-                   <span class="material-symbols-outlined text-[12rem]">videogame_asset</span>
-                </div>
-            </div>
-
-            <!-- Android Repairs -->
-            <div class="md:col-span-6 bg-surface-container-lowest dark:bg-[#0f0f0f] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
-                <div class="flex items-center gap-3">
+            <!-- Android -->
+            <div class="md:col-span-4 bg-slate-50 dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col justify-between border border-slate-100 dark:border-white/5 transition-colors duration-500 shadow-sm">
+                <div class="space-y-4">
                     <span class="material-symbols-outlined text-green-500 text-3xl">android</span>
-                    <h2 class="text-[1.75rem] font-bold">Android Repairs</h2>
+                    <h2 class="text-[1.75rem] font-semibold">Android Repairs</h2>
+                    <p class="text-on-surface-variant text-sm">Samsung Galaxy, Pixel, and OnePlus expert technical service.</p>
                 </div>
-                <div class="aspect-video overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" src="./assets/images/Services/service_android_repair.jpg" alt="Android Repair">
-                </div>
-                <div class="flex items-center justify-between">
-                    <p class="text-on-surface-variant text-sm font-medium tracking-tight">Samsung Galaxy, Pixels & more.</p>
-                    <button onclick="openQuoteModal('Android')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
-                </div>
+                <button onclick="openQuoteModal('Android')" class="mt-8 px-6 py-3 bg-white dark:bg-black text-on-surface border border-slate-200 dark:border-white/10 rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
             </div>
 
             <!-- iPad & Tablet -->
-            <div class="md:col-span-6 bg-surface-container-high dark:bg-[#1a1c1e] rounded-3xl p-10 flex flex-col gap-8 border border-outline-variant/10 shadow-sm group">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-amber-500 text-3xl">tablet_mac</span>
-                    <h2 class="text-[1.75rem] font-bold">iPad & Tablets</h2>
+            <div class="md:col-span-6 bg-[#0a0a0a] text-white rounded-3xl p-10 overflow-hidden relative group">
+                <div class="relative z-10 h-full flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <span class="material-symbols-outlined text-primary text-3xl">tablet_mac</span>
+                        <h2 class="text-[1.75rem] font-semibold">iPad & Tablets Repairs</h2>
+                        <div class="grid grid-cols-2 gap-4 text-xs font-bold opacity-70">
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">bolt</span> Logic Board</span>
+                            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">touch_app</span> Glass Fix</span>
+                        </div>
+                    </div>
+                    <button onclick="openQuoteModal('iPad/Tablet')" class="mt-10 self-start px-8 py-3 bg-white text-black rounded-full font-bold text-sm hover:bg-primary hover:text-white transition-all">Get Quote</button>
                 </div>
-                <div class="aspect-video overflow-hidden rounded-2xl">
-                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s]" src="./assets/images/Services/service_tablet_repair.jpg" alt="Tablet Repair">
+                <span class="material-symbols-outlined absolute -right-8 -bottom-8 text-[12rem] opacity-5 text-white pointer-events-none group-hover:scale-110 transition-transform duration-700">tablet_mac</span>
+            </div>
+
+            <!-- Consoles -->
+            <div class="md:col-span-6 bg-slate-50 dark:bg-[#1a1c1e] rounded-3xl p-10 border border-slate-100 dark:border-white/5 flex items-center gap-8 shadow-sm">
+                <div class="flex-1 space-y-6">
+                    <span class="material-symbols-outlined text-primary text-3xl">videogame_asset</span>
+                    <h2 class="text-[1.75rem] font-semibold">Consoles Repairs</h2>
+                    <p class="text-on-surface-variant text-sm">PlayStation, Xbox, and Nintendo specialized tech service.</p>
+                    <button onclick="openQuoteModal('Console')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-semibold text-sm hover:opacity-90 transition-all shadow-lg shadow-primary/20">Get Quote</button>
                 </div>
-                <div class="flex items-center justify-between">
-                    <p class="text-on-surface-variant text-sm font-medium tracking-tight">Screen & Battery specialists.</p>
-                    <button onclick="openQuoteModal('iPad/Tablet')" class="px-8 py-3 bg-primary text-on-primary rounded-full font-bold text-sm hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary/20">Get Quote</button>
+                <div class="flex-1 rounded-2xl overflow-hidden shadow-sm hidden sm:block">
+                    <img src="./assets/images/service_android_repair.jpg" class="w-full h-full object-cover" alt="Console Tech">
                 </div>
             </div>
         </section>
 
-        <!-- Quote Modal -->
-        <div id="quoteModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuoteModal()"></div>
-            <div class="relative bg-white dark:bg-[#1a1c1e] w-full max-w-xl rounded-[2.5rem] shadow-2xl p-8 md:p-12 transition-all duration-500 transform scale-95 opacity-0" id="modalContent">
-                <h2 class="text-3xl font-black mb-2" id="modalTitle">Request Quote</h2>
-                <p class="text-slate-500 mb-8 text-sm font-medium">Tell us about your device issue and we'll get back to you with a free estimate.</p>
-                
-                <form id="quoteForm" class="space-y-6">
-                    <input type="hidden" id="device_category" name="device_category">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-1">Your Name</label>
-                            <input type="text" name="name" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-1">Email Address</label>
-                            <input type="email" name="email" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold">
-                        </div>
-                    </div>
-                    <div class="space-y-2">
-                        <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 px-1">Issue Description</label>
-                        <textarea name="description" required rows="4" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold placeholder:font-normal" placeholder="Ex: Cracked screen, battery draining fast, water damage..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-5 bg-primary text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">Send Request</button>
-                </form>
-                <div id="formSuccess" class="hidden text-center py-10">
-                    <span class="material-symbols-outlined text-6xl text-green-500 mb-4 animate-bounce">check_circle</span>
-                    <h3 class="text-2xl font-bold">Request Received!</h3>
-                    <p class="text-slate-500 mt-2">A technician will review your case and contact you soon.</p>
-                    <button onclick="closeQuoteModal()" class="mt-8 px-8 py-3 bg-slate-100 dark:bg-white/10 rounded-full font-bold">Close</button>
+        <!-- Trust Indicators Section -->
+        <section class="max-w-[1440px] mx-auto px-8 mt-24 py-16 bg-slate-50 dark:bg-[#0f0f0f] rounded-3xl border border-slate-200 dark:border-white/5 transition-colors duration-500">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">15k+</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Repairs Completed</p>
+                </div>
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">90d</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Service Warranty</p>
+                </div>
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">4.9</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Customer Rating</p>
+                </div>
+                <div>
+                    <p class="text-[2.5rem] font-bold text-primary mb-1">1hr</p>
+                    <p class="text-sm text-on-surface-variant font-medium uppercase tracking-widest">Avg. Repair Time</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- FABs (Crucial, from 2 hours ago) -->
-    <a href="https://api.whatsapp.com/send/?phone=13136268888&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="fixed bottom-[160px] right-6 z-[10001] group cursor-pointer animate-fade-in-up" aria-label="Chat on WhatsApp" style="animation-delay: 0.5s;">
-        <div class="relative bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center pointer-events-auto">
-            <div class="absolute inset-0 bg-[#25D366]/40 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping pointer-events-none"></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16" class="relative z-10">
+    <!-- FABs (Crucial) -->
+    <a href="https://api.whatsapp.com/send/?phone=13136268888&text&type=phone_number&app_absent=0" target="_blank" class="fixed bottom-[160px] right-6 z-[1001] group animate-fade-in-up">
+        <div class="bg-[#25D366] text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
             </svg>
         </div>
     </a>
-    <a href="./services-unified-nav.html" class="fixed bottom-[100px] right-6 z-[10002] group cursor-pointer animate-fade-in-up" aria-label="Service Area" style="animation-delay: 0.7s;">
-        <div class="relative bg-gradient-to-tr from-primary to-blue-500 text-white p-3 rounded-full shadow-2xl hover:shadow-primary/50 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center gap-3 pointer-events-auto">
-            <div class="absolute inset-0 bg-primary/40 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping pointer-events-none"></div>
-            <span class="material-symbols-outlined relative z-10 group-hover:animate-bounce">support_agent</span>
-            <span class="max-w-0 overflow-hidden group-hover:max-w-[200px] transition-all duration-500 ease-out font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 pr-1 relative z-10 font-[800] uppercase tracking-tighter text-[11px]">
-                Service Area
-            </span>
-        </div>
-    </a>
 
-    <footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950 py-12 text-center text-sm font-medium">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="text-xl font-black mb-4 tracking-tighter">CellphonesAndRepair</div>
-            <p class="text-xs text-slate-500 font-bold">© 2024 CellphonesAndRepair. All rights reserved.</p>
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="fixed inset-0 z-[2000] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeQuoteModal()"></div>
+        <div class="relative bg-white dark:bg-[#1a1c1e] w-full max-w-xl rounded-[2.5rem] shadow-2xl p-8 md:p-12 transition-all duration-300 transform scale-95 opacity-0" id="modalContent">
+            <h2 class="text-3xl font-black mb-2" id="modalTitle">Request Quote</h2>
+            <p class="text-slate-500 mb-8 text-sm font-medium italic leading-relaxed">Describe the issue with your device.</p>
+            <form id="quoteForm" class="space-y-6">
+                <input type="hidden" id="device_category" name="device_category">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Name</label>
+                        <input type="text" name="name" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Email</label>
+                        <input type="email" name="email" required class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold">
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Issue</label>
+                    <textarea name="description" required rows="4" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-white/5 border-none focus:ring-2 focus:ring-primary/50 text-sm font-bold"></textarea>
+                </div>
+                <button type="submit" class="w-full py-5 bg-primary text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">Send Request</button>
+            </form>
+            <div id="formSuccess" class="hidden text-center py-10">
+                <span class="material-symbols-outlined text-6xl text-green-500 mb-4 animate-bounce">check_circle</span>
+                <h3 class="text-2xl font-bold tracking-tighter">Done! We'll contact you.</h3>
+                <button onclick="closeQuoteModal()" class="mt-8 px-8 py-3 bg-slate-100 dark:bg-white/10 rounded-full font-bold">Close</button>
+            </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="./js/cart.js"></script>
+    <!-- Scripts -->
     <script src="./js/main.js"></script>
     <script>
+        // Core Theme Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeToggle.querySelector('span').textContent = isDark ? 'light_mode' : 'dark_mode';
+        });
+
+        // Quote Persistence Logic (Supabase)
         function openQuoteModal(category) {
             const modal = document.getElementById('quoteModal');
             const content = document.getElementById('modalContent');
             document.getElementById('device_category').value = category;
-            document.getElementById('modalTitle').textContent = `${category} Repair Quote`;
-            
+            document.getElementById('modalTitle').textContent = category + ' Repair';
             modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-            }, 10);
+            setTimeout(() => content.classList.remove('scale-95', 'opacity-0'), 10);
         }
 
         function closeQuoteModal() {
@@ -197,7 +261,6 @@
         document.getElementById('quoteForm').onsubmit = async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
-            
             try {
                 const { error } = await _supabase.from('appointments_quotes').insert([{
                     customer_name: formData.get('name'),
@@ -207,13 +270,10 @@
                     type: 'quote',
                     status: 'pending'
                 }]);
-
                 if (error) throw error;
-                
                 document.getElementById('quoteForm').classList.add('hidden');
                 document.getElementById('formSuccess').classList.remove('hidden');
             } catch (err) {
-                console.error('Submission error:', err);
                 alert('Connection error. Please try again.');
             }
         };
