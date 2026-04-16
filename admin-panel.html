@@ -573,7 +573,6 @@
             const container = document.getElementById('colorsContainer');
             if(!container) return;
             container.innerHTML = dynamicColors.map((variant, index) => {
-                // Handle both old string format and new object format
                 const color = typeof variant === 'string' ? variant : variant.color;
                 const imgThumb = (variant && variant.image) ? `<img src="${variant.image}" class="w-full h-full object-cover">` : '<span class="material-symbols-outlined text-xs">add_a_photo</span>';
                 
@@ -605,7 +604,6 @@
                 </div>
             `;}).join('');
 
-            // Attach pickers safely
             dynamicColors.forEach((variant, index) => {
                 const color = typeof variant === 'string' ? variant : variant.color;
                 const el = document.getElementById(`picker-${index}`);
@@ -636,7 +634,6 @@
                 try {
                     await githubCommit(`${IMG_DIR}/${fileName}`, base64, `CMS: Uploaded variant image ${fileName}`);
                     const url = `./${IMG_DIR}/${fileName}`;
-                    
                     if(typeof dynamicColors[index] === 'string') {
                         dynamicColors[index] = { color: dynamicColors[index], image: url };
                     } else {
@@ -914,7 +911,7 @@
                         data-variant-img="${cleanImg}"></button>
             `;}).join('');
             
-            // Inyectar el script de control de variantes
+            // Inyectar el script de control de variantes (USANDO ESCAPES DE SEGURIDAD)
             const variantScript = `
             <script>
                 window.variantsMap = ${JSON.stringify(variantsMap)};
@@ -939,7 +936,7 @@
                         }
                     });
                 };
-            </script>`;
+            <\/script>`;
             
             const colorSectionRegex = /<div class="flex items-center space-x-4 mb-8">[\s\S]*?<\/div>/;
             html = html.replace(colorSectionRegex, `<div class="flex items-center space-x-4 mb-8">${colorButtonsHtml}</div>${variantScript}`);
