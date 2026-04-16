@@ -184,16 +184,16 @@ Shop
 <form class="space-y-12">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 <div class="relative group">
-<input class="peer w-full bg-transparent border-t-0 border-x-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-lg" id="name" placeholder=" " type="text">
+<input class="peer w-full bg-transparent border-t-0 border-x-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-all text-lg" id="name" name="name" placeholder=" " type="text" required>
 <label class="absolute left-0 top-3 text-outline transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-6 peer-[:not(:placeholder-shown)]:text-xs" for="name">Full Name</label>
 </div>
 <div class="relative group">
-<input class="peer w-full bg-transparent border-t-0 border-x-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-lg" id="model" placeholder=" " type="text">
+<input class="peer w-full bg-transparent border-t-0 border-x-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-all text-lg" id="model" name="model" placeholder=" " type="text" required>
 <label class="absolute left-0 top-3 text-outline transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-6 peer-[:not(:placeholder-shown)]:text-xs" for="model">Device Model (e.g. iPhone 15 Pro)</label>
 </div>
 </div>
 <div class="relative group">
-<input class="peer w-full bg-transparent border-t-0 border-x-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-colors text-lg" id="email" placeholder=" " type="email">
+<input class="peer w-full bg-transparent border-t-0 border-x-0 border-b-2 border-outline-variant py-3 px-0 focus:ring-0 focus:border-primary transition-all text-lg" id="email" name="email" placeholder=" " type="email" required>
 <label class="absolute left-0 top-3 text-outline transition-all peer-focus:-top-6 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-6 peer-[:not(:placeholder-shown)]:text-xs" for="email">Email Address</label>
 </div>
 <button class="w-full md:w-auto px-12 py-5 bg-inverse-surface text-surface-container-lowest rounded-full font-bold hover:bg-on-background transition-colors text-lg" type="submit">Confirm Request</button>
@@ -275,6 +275,32 @@ Shop
 </div>
 </footer>
 <script src="./js/cart.js"></script><script src="./js/main.js"></script>
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerText = "Sending...";
+        btn.disabled = true;
+
+        const formData = new URLSearchParams(new FormData(this));
+        
+        fetch('https://script.google.com/macros/s/AKfycbxbLrDDgnBIUdrrZgzkXX2ouxLJh_rSF_LB3RMdyGDitJVnMqMGJISDrb8TKFVi-ttHXA/exec', {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        }).then(() => {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-8 py-4 rounded-full shadow-2xl z-[100] font-bold flex items-center gap-3 animate-bounce';
+            toast.innerHTML = '<span class="material-symbols-outlined text-green-400">check_circle</span> Appointment Sent!';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+            this.reset();
+            btn.innerText = originalText;
+            btn.disabled = false;
+        });
+    });
+</script>
 
 </body></html>
 
