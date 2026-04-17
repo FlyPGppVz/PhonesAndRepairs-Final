@@ -396,6 +396,22 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['ipad 10', 'ipad 10th gen', 'ipad 10.9'],
+    description: 'Lovable. Drawable. Magical. All-screen design with a 10.9-inch Liquid Retina display. Powered by the A14 Bionic chip.',
+    processor_name: 'A14 Bionic',
+    display_nits: '500 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 10h battery life',
+    category: 'Tablets',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 150 }
+    ],
+    variants: [
+      { color_name: 'Mixed Colors', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/ipad_10_gen/Ipad_10thgen.png' }
+    ]
+  },
+  {
     model_keys: ['fast charging kit', 'charging kit', 'charger'],
     description: 'Power up in minutes. Premium 45W Fast Charging Kit with USB-C PD technology. Includes a heavy-duty 1m USB-C to USB-C cable.',
     processor_name: '-',
