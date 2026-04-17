@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import SocialLinks from '@/components/SocialLinks';
 
 export default function Home() {
   return (
@@ -208,6 +209,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Social Media Links Section */}
+      <SocialLinks />
     </main>
   );
 }
