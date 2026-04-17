@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { revalidateShop } from '@/app/actions';
+import { searchProductSpecs } from '@/lib/productSpecs';
 
 interface Variant {
   color_hex: string;
@@ -57,6 +58,43 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
       setStorageOptions(initialData.storage_options || []);
     }
   }, [initialData]);
+
+  const handleTitleBlur = () => {
+    if (!formData.title) return;
+    
+    const specs = searchProductSpecs(formData.title);
+    if (specs) {
+      setFormData(prev => ({
+        ...prev,
+        description: prev.description || specs.description,
+        processor_name: prev.processor_name || specs.processor_name,
+        display_nits: prev.display_nits || specs.display_nits,
+        refresh_rate: prev.refresh_rate || specs.refresh_rate,
+        battery_desc: prev.battery_desc || specs.battery_desc,
+        category: prev.category === 'iPhones' && specs.category !== 'iPhones' ? specs.category : prev.category,
+      }));
+
+      // Only auto-fill arrays if they are empty
+      let updatedVariants = false;
+      let updatedStorage = false;
+
+      if (variants.length === 0 && specs.variants && specs.variants.length > 0) {
+        setVariants(specs.variants);
+        updatedVariants = true;
+      }
+      
+      if (storageOptions.length === 0 && specs.storage_options && specs.storage_options.length > 0) {
+        setStorageOptions(specs.storage_options);
+        updatedStorage = true;
+      }
+      
+      // Give a subtle hint to the user
+      toast.success('Auto-filled official specifications', { 
+        icon: '✨',
+        style: { fontSize: '12px' }
+      });
+    }
+  };
 
   const addStorageOption = () => {
     setStorageOptions([...storageOptions, { capacity: '', price_offset: 0 }]);
@@ -151,6 +189,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
               required
               value={formData.title}
               onChange={(e) => setFormData({...formData, title: e.target.value})}
+              onBlur={handleTitleBlur}
               className="w-full bg-slate-50 dark:bg-white/5 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-blue-500 transition-all outline-none"
               placeholder="e.g. iPhone 17 Pro Max"
             />
