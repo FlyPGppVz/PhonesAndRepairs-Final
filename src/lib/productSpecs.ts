@@ -500,9 +500,9 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { capacity: '256GB', price_offset: 150 }
     ],
     variants: [
-      { color_name: 'Midnight', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-midnight.jpg' },
-      { color_name: 'Starlight', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-starlight.jpg' },
-      { color_name: '(PRODUCT)RED', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-red.jpg' }
+      { color_name: 'Midnight', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-midnight.png' },
+      { color_name: 'Starlight', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-starlight.png' },
+      { color_name: '(PRODUCT)RED', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-red.png' }
     ]
   },
   {
