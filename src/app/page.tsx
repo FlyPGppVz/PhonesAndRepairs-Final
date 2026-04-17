@@ -90,7 +90,7 @@ export default function Home() {
           </div>
 
           {/* Samsung Repair Card */}
-          <div className="md:col-span-4 bg-slate-900 dark:bg-neutral-800 rounded-[3rem] p-10 flex flex-col justify-between overflow-hidden relative group text-white cursor-pointer hover:shadow-2xl transition-all" onClick={() => window.location.href='/services'}>
+          <div className="md:col-span-4 bg-black rounded-[3rem] p-10 flex flex-col justify-between overflow-hidden relative group text-white cursor-pointer hover:shadow-2xl transition-all" onClick={() => window.location.href='/services'}>
             <div className="z-10">
               <h2 className="text-3xl font-black mb-4 uppercase tracking-tighter">Samsung Repair</h2>
               <p className="text-slate-400 text-sm mb-8 font-medium">Certified parts for Galaxy S and Note series. Original quality, zero compromise.</p>
@@ -98,9 +98,9 @@ export default function Home() {
                 Explore services <span className="material-symbols-outlined">arrow_forward</span>
               </Link>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center">
               <img 
-                className="w-full h-auto object-contain transform group-hover:scale-110 transition-transform duration-700 animate-float-high" 
+                className="w-[75%] h-auto object-contain transform group-hover:scale-110 transition-transform duration-700 animate-float" 
                 src="/assets/images/Tienda/S25-png.webp" 
                 alt="Samsung Repair"
               />
@@ -169,6 +169,42 @@ export default function Home() {
                 ></video>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Promotional Banner Section */}
+      <section className="px-8 pb-24 max-w-[1440px] mx-auto animate-in fade-in slide-in-from-bottom duration-1000 delay-300">
+        <div className="bg-blue-50 dark:bg-blue-900/10 rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 border border-blue-100 dark:border-blue-900/20 overflow-hidden relative group">
+          <div className="flex-1 z-10">
+            <h2 className="text-4xl md:text-5xl font-black text-blue-600 dark:text-blue-400 uppercase tracking-tighter leading-none mb-6">
+              Premium Support for All Your Devices
+            </h2>
+            <p className="text-blue-900/70 dark:text-blue-200/60 text-lg font-medium max-w-xl mb-10">
+              Subscribe to our technical network and get exclusive priority for repairs, bulk discounts, and professional tracking for every device in your workspace.
+            </p>
+            <div className="flex gap-4">
+              <Link 
+                href="/contact" 
+                className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95"
+              >
+                Join Network
+              </Link>
+              <Link 
+                href="/shop" 
+                className="bg-white dark:bg-neutral-800 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase border border-blue-100 dark:border-blue-900/30 hover:bg-blue-50 transition-all active:scale-95"
+              >
+                View Catalog
+              </Link>
+            </div>
+          </div>
+          <div className="flex-1 relative flex justify-center items-center">
+            <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full transform group-hover:scale-150 transition-transform duration-1000"></div>
+            <img 
+              src="/assets/images/banner-subscribe-products.png" 
+              alt="Various Electronic Devices" 
+              className="relative z-10 w-full max-w-[500px] h-auto object-contain transform group-hover:-translate-y-4 transition-transform duration-700"
+            />
           </div>
         </div>
       </section>
