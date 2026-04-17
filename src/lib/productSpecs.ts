@@ -396,6 +396,25 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone 8'],
+    description: 'A new generation of iPhone. Most durable glass design. Wireless charging. A11 Bionic chip. 4.7-inch Retina HD display with True Tone. 12MP camera with new sensor.',
+    processor_name: 'A11 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 13h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 120 }
+    ],
+    variants: [
+      { color_name: 'Space Gray', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_8/Iphone_8_black.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_8/Iphone_8_Gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_8/Iphone_8_Silver.png' }
+    ]
+  },
+  {
     model_keys: ['iphone 7 plus'],
     description: 'Dual 12MP cameras. High-resolution zoom. 5.5-inch Retina HD display. A10 Fusion chip. Best battery life on an iPhone 7. Splash and water resistant.',
     processor_name: 'A10 Fusion',
