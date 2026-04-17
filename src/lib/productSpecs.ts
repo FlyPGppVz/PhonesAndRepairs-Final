@@ -162,6 +162,27 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/S25ultra-shop-png.webp' },
       { color_name: 'Titanium Gray', color_hex: '#7A7A7A', image_url: '/assets/images/Tienda/Tienda/s25_ultra_Png.png' }
     ]
+  },
+  {
+    model_keys: ['iphone 12'],
+    description: '5G speed. A14 Bionic. An edge-to-edge OLED display. Ceramic Shield front for better drop performance. A leap forward for iPhone.',
+    processor_name: 'A14 Bionic',
+    display_nits: '1200 nits (peak)',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 17h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 150 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-black.png' },
+      { color_name: 'Blue', color_hex: '#4B5364', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-blue.png' },
+      { color_name: 'Purple', color_hex: '#BF94E4', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-purple.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-red.png' },
+      { color_name: 'White', color_hex: '#FFFFFF', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-white.png' }
+    ]
   }
 ];
 
