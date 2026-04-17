@@ -223,6 +223,68 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro/iphone-12-pro-max-gold.png' },
       { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro/iphone-12-pro-max-silver.png' }
     ]
+  },
+  {
+    model_keys: ['iphone 13'],
+    description: 'Your new superpower. A lightning-fast chip. A huge leap in battery life. And a bright Super Retina XDR display.',
+    processor_name: 'A15 Bionic',
+    display_nits: '800 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 19h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Midnight', color_hex: '#191E24', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-midnight.png' },
+      { color_name: 'Blue', color_hex: '#426D8F', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-blue.png' },
+      { color_name: 'Green', color_hex: '#3A463A', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-green.png' },
+      { color_name: 'Pink', color_hex: '#EFCBD4', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-pink.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-red.png' },
+      { color_name: 'Starlight', color_hex: '#F9F6EF', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-starlight.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 13 pro'],
+    description: 'Oh. So. Pro. A huge camera upgrade. A display so responsive every interaction feels new again. The world’s fastest smartphone chip.',
+    processor_name: 'A15 Bionic',
+    display_nits: '1000 nits',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 22h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-grafito.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-silver.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 13 pro max'],
+    description: 'The ultimate Pro. A massive leap in battery life. ProMotion display for a faster, more responsive feel. The most powerful camera system on iPhone.',
+    processor_name: 'A15 Bionic',
+    display_nits: '1000 nits',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 28h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-grafito.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-silver.png' }
+    ]
   }
 ];
 
