@@ -1,11 +1,19 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-01-27.acacia' as any,
-});
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  
+  if (!stripeSecretKey) {
+    console.error('Missing STRIPE_SECRET_KEY');
+    return NextResponse.json({ error: 'Stripe configuration missing' }, { status: 500 });
+  }
+
+  const stripe = new Stripe(stripeSecretKey, {
+    apiVersion: '2025-01-27.acacia' as any,
+  });
   try {
     const { items } = await request.json();
     const origin = request.headers.get('origin');
