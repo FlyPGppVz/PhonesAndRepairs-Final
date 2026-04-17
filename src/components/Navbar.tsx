@@ -116,7 +116,7 @@ export default function Navbar() {
           <Link href="/about" className={`${pathname === '/about' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'} hover:text-blue-600 transition-all duration-300 underline-offset-4 decoration-blue-600`}>About Us</Link>
           
           {user?.email === 'flypg65@gmail.com' && (
-            <Link href="/admin/shop" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-blue-600 font-black border-l pl-4'} hover:opacity-80 transition-all`}>Admin</Link>
+            <Link href="/admin" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-blue-600 font-black border-l pl-4'} hover:opacity-80 transition-all`}>Admin</Link>
           )}
         </div>
 

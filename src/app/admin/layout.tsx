@@ -1,127 +1,62 @@
-'use client';
+import React from 'react';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
+import AdminClientLayout from './AdminClientLayout';
 
-import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
-import { useRouter, usePathname } from 'next/navigation';
-import Link from 'next/link';
+// Using constants for stability
+const SUPABASE_URL = 'https://mjlhbhiraheaeijxeedg.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_jf2EAm5dueZJY1xAXXNoJA_gn_3MDpn';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
-  const router = useRouter();
-  const pathname = usePathname();
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
 
-  useEffect(() => {
-    async function checkAdmin() {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        router.push(`/auth?next=${pathname}`);
-        return;
-      }
-
-      const { data: adminRecord } = await supabase
-        .from('admins')
-        .select('user_id')
-        .eq('user_id', user.id)
-        .single();
-
-      if (!adminRecord) {
-        router.push('/');
-        return;
-      }
-
-      setIsAuthorized(true);
+  const supabase = createServerClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          try {
+            cookieStore.set({ name, value, ...options });
+          } catch (error) {
+            // Handle cookies in server component if needed
+          }
+        },
+        remove(name: string, options: CookieOptions) {
+          try {
+            cookieStore.set({ name, value: '', ...options });
+          } catch (error) {
+            // Handle cookies in server component if needed
+          }
+        },
+      },
     }
+  );
 
-    checkAdmin();
-  }, [router, pathname]);
+  const { data: { user } } = await supabase.auth.getUser();
 
-  if (isAuthorized === null) {
-    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-black flex items-center justify-center p-6">
-        <div className="text-center space-y-6 animate-in fade-in zoom-in duration-700">
-          <div className="relative">
-            <div className="w-16 h-16 border-2 border-slate-200 dark:border-white/10 rounded-full mx-auto"></div>
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 border-t-2 border-blue-600 rounded-full animate-spin"></div>
-          </div>
-          <div className="space-y-1">
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 dark:text-zinc-500">Security Clearance</p>
-            <p className="text-xs font-bold text-slate-400 animate-pulse">Verifying credentials for access...</p>
-          </div>
-        </div>
-      </div>
-    );
+  if (!user) {
+    redirect('/auth');
+  }
+
+  // Double check admin database record on the server
+  const { data: adminRecord } = await supabase
+    .from('admins')
+    .select('user_id')
+    .eq('user_id', user.id)
+    .maybeSingle();
+
+  if (!adminRecord) {
+    redirect('/');
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black flex flex-col md:flex-row transition-colors">
-      {/* Admin Sidebar */}
-      <aside className="w-full md:w-72 bg-white dark:bg-neutral-900 border-r border-slate-200 dark:border-white/5 p-8 flex flex-col justify-between relative z-10">
-        <div>
-          <div className="mb-12">
-            <Link href="/" className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-600 transition-colors group">
-              <span className="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
-              Return to Site
-            </Link>
-          </div>
-          
-          <div className="space-y-10">
-            <div className="space-y-4">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">Management</h3>
-              <nav className="space-y-1">
-                <Link 
-                  href="/admin/shop" 
-                  className={`flex items-center gap-3 px-5 py-4 rounded-[1.5rem] font-bold text-sm transition-all ${pathname === '/admin/shop' ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20' : 'text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}
-                >
-                  <span className="material-symbols-outlined">inventory_2</span>
-                  Inventory
-                </Link>
-                <Link 
-                  href="/admin/inbox" 
-                  className={`flex items-center gap-3 px-5 py-4 rounded-[1.5rem] font-bold text-sm transition-all ${pathname === '/admin/inbox' ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20' : 'text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}
-                >
-                  <span className="material-symbols-outlined">mail</span>
-                  Inbox
-                </Link>
-                {/* Future modules can be added here */}
-                <div className="flex items-center gap-3 px-5 py-4 text-slate-300 dark:text-zinc-700 cursor-not-allowed opacity-50">
-                  <span className="material-symbols-outlined">analytics</span>
-                  <span className="text-sm font-bold">Analytics</span>
-                </div>
-              </nav>
-            </div>
-            
-            <div className="space-y-4">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4">System</h3>
-              <nav className="space-y-1">
-                <Link 
-                  href="/auth" 
-                  className="flex items-center gap-3 px-5 py-4 rounded-[1.5rem] text-slate-500 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-white/5 font-bold text-sm transition-all"
-                >
-                  <span className="material-symbols-outlined">person</span>
-                  Profile
-                </Link>
-              </nav>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-8 border-t border-slate-100 dark:border-white/5">
-           <div className="flex items-center gap-3 px-4">
-             <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-black">A</div>
-             <div>
-               <p className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest leading-none">Console Area</p>
-               <p className="text-[9px] text-slate-400 mt-1 uppercase tracking-tighter">Root Administrator</p>
-             </div>
-           </div>
-        </div>
-      </aside>
-
-      {/* Main Content Area */}
-      <div className="flex-1 w-full bg-white dark:bg-black overflow-y-auto">
-        <div className="max-w-[1240px] mx-auto p-6 md:p-12 lg:p-16 animate-in fade-in slide-in-from-bottom duration-1000">
-          {children}
-        </div>
-      </div>
-    </div>
+    <AdminClientLayout>
+      {children}
+    </AdminClientLayout>
   );
 }

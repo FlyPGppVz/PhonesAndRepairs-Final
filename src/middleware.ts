@@ -57,37 +57,29 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // This will refresh the session if it is expired
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Protection Logic
-  const isPathAdmin = request.nextUrl.pathname.startsWith('/admin')
-
-  if (isPathAdmin) {
+  // Admin route protection
+  if (request.nextUrl.pathname.startsWith('/admin')) {
     if (!user) {
-      const loginUrl = new URL('/auth', request.url)
-      loginUrl.searchParams.set('next', request.nextUrl.pathname)
-      return NextResponse.redirect(loginUrl)
+      return NextResponse.redirect(new URL('/auth', request.url))
     }
 
-    // Check if user is admin
-    const { data: adminData, error } = await supabase
+    const { data: adminData } = await supabase
       .from('admins')
       .select('user_id')
       .eq('user_id', user.id)
       .maybeSingle()
 
-    if (error || !adminData) {
-      // Not an admin, redirect home
-      console.warn(`Non-admin attempted access: ${user.email}`)
+    if (!adminData) {
+      console.warn(`Unauthorized admin access attempt: ${user.email}`);
       return NextResponse.redirect(new URL('/', request.url))
     }
   }
 
-  // If user is logged in and trying to go to /auth, redirect to home or next
+  // Auth route protection (if logged in, don't show login)
   if (user && request.nextUrl.pathname.startsWith('/auth')) {
-    const next = request.nextUrl.searchParams.get('next') || '/'
-    return NextResponse.redirect(new URL(next, request.url))
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   return response
