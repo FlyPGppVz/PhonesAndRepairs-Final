@@ -1,8 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import { supabase } from '@/lib/supabase';
-import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function AuthPage() {
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -37,7 +35,7 @@ export default function AuthPage() {
           }
         });
         if (error) throw error;
-        alert('Registration successful! You can now log in.');
+        toast.success('Registration successful! You can now log in.');
         setMode('login');
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -51,7 +49,7 @@ export default function AuthPage() {
         router.refresh();
       }
     } catch (error: any) {
-      alert(error.message);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }

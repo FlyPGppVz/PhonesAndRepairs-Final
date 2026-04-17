@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import toast from 'react-hot-toast';
 import Link from 'next/link';
 import { revalidateShop } from '@/app/actions';
 
@@ -35,11 +36,12 @@ export default function AdminShop() {
   const deleteProduct = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
     const { error } = await supabase.from('products').delete().eq('id', id);
-    if (!error) {
+    if (error) {
+      toast.error('Error deleting product');
+    } else {
       await revalidateShop();
       fetchProducts();
     }
-    else alert('Error deleting product');
   };
 
   return (

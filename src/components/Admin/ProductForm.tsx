@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
+import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { revalidateShop } from '@/app/actions';
 
@@ -82,7 +83,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
 
       updateVariant(index, 'image_url', publicUrl);
     } catch (error) {
-      alert('Error uploading image');
+      toast.error('Error uploading image');
       console.error(error);
     }
   };
@@ -103,7 +104,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
       : await supabase.from('products').insert([productPayload]);
 
     if (error) {
-      alert(error.message);
+      toast.error(error.message);
     } else {
       await revalidateShop();
       router.push('/admin/shop');

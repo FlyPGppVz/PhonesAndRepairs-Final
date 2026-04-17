@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import toast from 'react-hot-toast';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ export default function Contact() {
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
       console.error('Submission error:', err);
-      alert('Connection error. Please try again.');
+      toast.error('Connection error. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

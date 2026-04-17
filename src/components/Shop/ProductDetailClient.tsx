@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useCart } from '@/context/CartContext';
+import toast from 'react-hot-toast';
 
 interface Variant {
   color_hex: string;
@@ -27,7 +26,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
   const handleAddToCart = () => {
     addToCart(product, activeVariant);
-    alert(`${product.title} (${activeVariant.color_name}) added to cart`);
+    toast.success(`${product.title} añadido al carrito`, { icon: '🛒' });
   };
 
   return (

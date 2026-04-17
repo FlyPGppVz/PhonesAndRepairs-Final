@@ -3,6 +3,7 @@
 import React from 'react';
 import { useCart } from '@/context/CartContext';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 export default function CartPage() {
   const { cart, removeFromCart, totalPrice, totalItems } = useCart();
@@ -81,7 +82,7 @@ export default function CartPage() {
 
               <button 
                 className="w-full bg-blue-600 dark:bg-blue-500 text-white py-5 rounded-3xl font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98] mt-4 flex items-center justify-center gap-2"
-                onClick={() => alert('Coming Soon: Stripe Checkout Integration')}
+                onClick={() => toast('Coming Soon: Stripe Checkout Integration', { icon: '🚀' })}
               >
                 Pay with Stripe
                 <span className="material-symbols-outlined">shoppay</span>

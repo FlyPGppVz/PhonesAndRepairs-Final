@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { useCart } from '@/context/CartContext';
+import toast from 'react-hot-toast';
 
 interface Product {
   id: string;
@@ -18,15 +17,11 @@ export default function AddToCartSmall({ product }: { product: any }) {
     e.stopPropagation();
     const firstVariant = product.variants?.[0] || { color_hex: '', image_url: '', color_name: 'Standard' };
     addToCart(product, firstVariant);
-    // Simple visual feedback without alert for smoother experience on listing
-    const target = e.currentTarget as HTMLButtonElement;
-    const originalText = target.innerHTML;
-    target.innerHTML = '<span class="material-symbols-outlined">check</span>';
-    target.classList.add('bg-emerald-500');
-    setTimeout(() => {
-      target.innerHTML = originalText;
-      target.classList.remove('bg-emerald-500');
-    }, 2000);
+    
+    // Premium toast feedback
+    toast.success(`${product.title} añadido`, {
+      icon: '🛒',
+    });
   };
 
   return (

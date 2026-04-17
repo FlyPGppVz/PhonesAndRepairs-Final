@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import toast from 'react-hot-toast';
 
 export default function ConsoleRepairs() {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ export default function ConsoleRepairs() {
       setSuccess(true);
       (e.target as HTMLFormElement).reset();
     } catch (err: any) {
-      alert('Error: ' + err.message);
+      toast.error('Error: ' + err.message);
     } finally {
       setLoading(false);
     }

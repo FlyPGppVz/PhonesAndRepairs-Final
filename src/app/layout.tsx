@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { CartProvider } from "@/context/CartContext";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -28,6 +29,19 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-neutral-950 text-slate-900 dark:text-white`}>
         <CartProvider>
+          <Toaster 
+            position="top-right" 
+            toastOptions={{
+              className: 'dark:bg-neutral-900 dark:text-white bg-white text-slate-900 rounded-2xl border border-slate-200 dark:border-white/5 font-sans font-medium text-sm shadow-2xl',
+              duration: 4000,
+              success: {
+                iconTheme: {
+                  primary: '#3b82f6',
+                  secondary: '#fff',
+                },
+              },
+            }}
+          />
           <Navbar />
           {children}
           <Footer />
