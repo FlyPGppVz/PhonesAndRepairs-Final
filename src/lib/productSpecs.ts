@@ -396,6 +396,19 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['airpods pro 2', 'airpods pro second gen'],
+    description: 'Rebuilt from the sound up. Features up to 2x more Active Noise Cancellation, Adaptive Audio, and Transparency mode. Powered by the H2 chip. MagSafe Charging Case (USB-C).',
+    processor_name: 'Apple H2',
+    display_nits: '-',
+    refresh_rate: '-',
+    battery_desc: 'Up to 6h listening time (30h total)',
+    category: 'Accessories',
+    storage_options: [],
+    variants: [
+      { color_name: 'White', color_hex: '#FFFFFF', image_url: '/assets/images/Tienda/Tienda/airPods_pro_secondgen/airpods_pro.png' }
+    ]
+  },
+  {
     model_keys: ['iphone se 3', 'iphone se 3rd gen'],
     description: 'Love the power. Love the price. A15 Bionic chip. 5G speed. A camera that’s all kinds of smart. And a Home button you know and love. All in a durable 4.7-inch design.',
     processor_name: 'A15 Bionic',
