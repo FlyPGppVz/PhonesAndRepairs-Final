@@ -37,6 +37,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       ? product.storage_options[0] 
       : { capacity: 'Standard', price_offset: 0 }
   );
+  const [isBuying, setIsBuying] = useState(false);
   const { addToCart } = useCart();
 
   const displayPrice = Number(product.price) + selectedStorage.price_offset;
@@ -44,6 +45,41 @@ export default function ProductDetailClient({ product }: { product: Product }) {
   const handleAddToCart = () => {
     addToCart(product, activeVariant, selectedStorage.capacity, displayPrice);
     toast.success(`${product.title} (${selectedStorage.capacity}) added to cart`, { icon: '🛒' });
+  };
+
+  const handleBuyNow = async () => {
+    setIsBuying(true);
+    try {
+      const checkoutItem = {
+        title: product.title,
+        price: displayPrice,
+        quantity: 1,
+        image: activeVariant.image_url,
+        color: activeVariant.color_name,
+        storage: selectedStorage.capacity
+      };
+
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ items: [checkoutItem] }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        toast.error(data.error || 'Failed to initialize checkout');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      toast.error('Could not connect to the payment gateway');
+    } finally {
+      setIsBuying(false);
+    }
   };
 
   return (
@@ -149,8 +185,19 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               Add to Cart
               <span className="material-symbols-outlined text-xl">shopping_bag</span>
             </button>
-            <button className="w-full py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-full font-bold text-lg hover:bg-slate-200 dark:hover:bg-white/10 transition-all active:scale-[0.98]">
-              Buy Now
+            <button 
+              onClick={handleBuyNow}
+              disabled={isBuying}
+              className="w-full py-5 bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white rounded-full font-bold text-lg hover:bg-slate-200 dark:hover:bg-white/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50"
+            >
+              {isBuying ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-slate-400 border-t-blue-500 rounded-full animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                'Buy Now'
+              )}
             </button>
           </div>
         </div>
