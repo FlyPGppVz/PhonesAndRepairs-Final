@@ -17,17 +17,6 @@ export default function Home() {
           <p className="text-lg md:text-xl text-white/95 mb-10 font-medium max-w-xl drop-shadow-md animate-in fade-in slide-in-from-left duration-1000 delay-200">
             Professional repair services for the devices you can't live without. Certified technicians, premium parts.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 items-start animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
-            <Link 
-              href="/services" 
-              className="bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/30 inline-block active:scale-95"
-            >
-              Book a Repair
-            </Link>
-            <button className="text-white font-medium flex items-center gap-2 hover:underline h-full py-4 drop-shadow-md transition-all active:scale-95">
-              Learn about our warranty <span className="material-symbols-outlined">chevron_right</span>
-            </button>
-          </div>
         </div>
         <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
           <video 
@@ -35,7 +24,7 @@ export default function Home() {
             muted 
             loop 
             playsInline 
-            className="w-full h-full object-cover opacity-60 scale-105"
+            className="w-full h-full object-cover opacity-50 scale-105"
           >
             <source src="/assets/videos/Home-iphone-17.mp4" type="video/mp4" />
           </video>

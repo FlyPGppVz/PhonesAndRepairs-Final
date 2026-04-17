@@ -55,7 +55,7 @@ export default function Navbar() {
               Shop <span className="material-symbols-outlined text-[14px]">expand_more</span>
             </Link>
             
-            <div className="fixed top-14 left-0 w-full bg-white dark:bg-[#0a0a0a] border-b border-slate-200/50 dark:border-white/5 shadow-2xl opacity-0 invisible group-hover/shop:opacity-100 group-hover/shop:visible transition-all duration-300 translate-y-0 z-50 overflow-hidden">
+            <div className="fixed top-14 left-0 w-full bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 shadow-2xl opacity-0 invisible group-hover/shop:opacity-100 group-hover/shop:visible transition-all duration-300 translate-y-0 z-50 overflow-hidden">
               <div className="max-w-[1440px] mx-auto px-20 py-16">
                 <div className="grid grid-cols-4 gap-12">
                   {/* Column 1: IPHONES */}
