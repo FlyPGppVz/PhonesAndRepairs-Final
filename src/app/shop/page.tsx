@@ -5,7 +5,7 @@ import React, { Suspense } from 'react';
 export const dynamic = 'force-dynamic';
 
 export default async function ShopPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: initialProducts } = await supabase
     .from('products')
     .select('*')

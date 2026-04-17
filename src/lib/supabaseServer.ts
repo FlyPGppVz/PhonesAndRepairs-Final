@@ -4,8 +4,8 @@ import { cookies } from 'next/headers'
 const SUPABASE_URL = 'https://mjlhbhiraheaeijxeedg.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_jf2EAm5dueZJY1xAXXNoJA_gn_3MDpn';
 
-export function createClient() {
-  const cookieStore = cookies()
+export async function createClient() {
+  const cookieStore = await cookies()
 
   return createServerClient(
     SUPABASE_URL,
