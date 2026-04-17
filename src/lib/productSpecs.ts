@@ -396,6 +396,23 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['nintendo switch oled', 'switch oled'],
+    description: 'Enjoy a vibrant 7-inch OLED screen that makes colors pop. Features a wide adjustable stand, a dock with a wired LAN port, 64 GB of internal storage, and enhanced audio.',
+    processor_name: 'Custom NVIDIA Tegra',
+    display_nits: '340 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 9 hours',
+    category: 'Gaming',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 }
+    ],
+    variants: [
+      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Nintendo_Switch_oled/Nintendo_Switch_oled_white.png' },
+      { color_name: 'Mario Red', color_hex: '#E60012', image_url: '/assets/images/Tienda/Tienda/Nintendo_Switch_oled/Nintendo_Switch_oled_Mario_red.png' },
+      { color_name: 'Neon Blue/Red', color_hex: '#00AEEF', image_url: '/assets/images/Tienda/Tienda/Nintendo_Switch_oled/Nintendo_Switch_oled_Mario_neon.png' }
+    ]
+  },
+  {
     model_keys: ['ipad 10', 'ipad 10th gen', 'ipad 10.9'],
     description: 'Lovable. Drawable. Magical. All-screen design with a 10.9-inch Liquid Retina display. Powered by the A14 Bionic chip.',
     processor_name: 'A14 Bionic',
