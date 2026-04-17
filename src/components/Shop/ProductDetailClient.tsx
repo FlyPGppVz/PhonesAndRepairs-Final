@@ -10,7 +10,13 @@ interface Variant {
   color_name: string;
 }
 
+interface StorageOption {
+  capacity: string;
+  price_offset: number;
+}
+
 interface Product {
+  id: string; // Added ID for cart integration
   title: string;
   description: string;
   price: number;
@@ -20,15 +26,24 @@ interface Product {
   refresh_rate: string;
   battery_desc: string;
   variants: Variant[];
+  storage_options: StorageOption[];
+  slug: string;
 }
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const [activeVariant, setActiveVariant] = useState(product.variants[0] || { color_hex: '', image_url: '', color_name: '' });
+  const [selectedStorage, setSelectedStorage] = useState<StorageOption>(
+    product.storage_options && product.storage_options.length > 0 
+      ? product.storage_options[0] 
+      : { capacity: 'Standard', price_offset: 0 }
+  );
   const { addToCart } = useCart();
 
+  const displayPrice = Number(product.price) + selectedStorage.price_offset;
+
   const handleAddToCart = () => {
-    addToCart(product, activeVariant);
-    toast.success(`${product.title} añadido al carrito`, { icon: '🛒' });
+    addToCart(product, activeVariant, selectedStorage.capacity, displayPrice);
+    toast.success(`${product.title} (${selectedStorage.capacity}) added to cart`, { icon: '🛒' });
   };
 
   return (
@@ -74,9 +89,30 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               <span className="font-semibold text-slate-900 dark:text-white mr-2">{activeVariant.color_name}</span>. 
               {product.description}
             </p>
-            <div className="text-4xl font-bold text-slate-900 dark:text-white">
-              ${Number(product.price).toLocaleString()}
+            <div className="text-4xl font-bold text-slate-900 dark:text-white mb-8">
+              ${displayPrice.toLocaleString()}
             </div>
+
+            {/* Storage Selection */}
+            {product.storage_options && product.storage_options.length > 0 && (
+              <div className="space-y-4 mb-10">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Choose your capacity</p>
+                <div className="grid grid-cols-2 gap-3">
+                  {product.storage_options.map((opt, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedStorage(opt)}
+                      className={`flex flex-col items-center justify-center py-4 px-6 rounded-2xl border-2 transition-all ${selectedStorage.capacity === opt.capacity ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-500/10' : 'border-slate-100 dark:border-white/5 hover:border-slate-200 dark:hover:border-white/10'}`}
+                    >
+                      <span className="text-sm font-bold text-slate-900 dark:text-white">{opt.capacity}</span>
+                      {opt.price_offset > 0 && (
+                        <span className="text-[10px] text-slate-500 mt-1">+{opt.price_offset} USD</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col gap-4">

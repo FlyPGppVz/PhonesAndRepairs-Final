@@ -12,6 +12,11 @@ interface Variant {
   color_name: string;
 }
 
+interface StorageOption {
+  capacity: string;
+  price_offset: number;
+}
+
 interface ProductFormProps {
   initialData?: any;
   id?: string;
@@ -33,6 +38,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
   });
 
   const [variants, setVariants] = useState<Variant[]>([]);
+  const [storageOptions, setStorageOptions] = useState<StorageOption[]>([]);
 
   useEffect(() => {
     if (initialData) {
@@ -48,8 +54,23 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
         battery_desc: initialData.battery_desc || '',
       });
       setVariants(initialData.variants || []);
+      setStorageOptions(initialData.storage_options || []);
     }
   }, [initialData]);
+
+  const addStorageOption = () => {
+    setStorageOptions([...storageOptions, { capacity: '', price_offset: 0 }]);
+  };
+
+  const updateStorageOption = (index: number, field: keyof StorageOption, value: any) => {
+    const updated = [...storageOptions];
+    updated[index] = { ...updated[index], [field]: value };
+    setStorageOptions(updated);
+  };
+
+  const removeStorageOption = (index: number) => {
+    setStorageOptions(storageOptions.filter((_, i) => i !== index));
+  };
 
   const addVariant = () => {
     setVariants([...variants, { color_hex: '#063183', image_url: '', color_name: '' }]);
@@ -96,6 +117,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
       ...formData,
       price: parseFloat(formData.price),
       variants,
+      storage_options: storageOptions,
       main_image_url: variants[0]?.image_url || '',
     };
 
@@ -306,6 +328,64 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
           {variants.length === 0 && (
             <div className="text-center py-10 border-2 border-dashed border-slate-100 dark:border-white/5 rounded-3xl text-slate-400 text-sm">
               No variants added yet. At least one color is required.
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-neutral-900 rounded-3xl p-8 border border-slate-200 dark:border-white/5 shadow-xl space-y-6">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            <span className="material-symbols-outlined text-green-500">storage</span>
+            Storage Options
+          </h2>
+          <button 
+            type="button" 
+            onClick={addStorageOption}
+            className="text-sm font-bold text-blue-500 hover:text-blue-600 flex items-center gap-1"
+          >
+            <span className="material-symbols-outlined text-sm">add_circle</span>
+            Add Tier
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          {storageOptions.map((opt, index) => (
+            <div key={index} className="flex flex-col md:flex-row gap-4 p-4 bg-slate-50 dark:bg-white/5 rounded-2xl relative group">
+              <button 
+                type="button" 
+                onClick={() => removeStorageOption(index)}
+                className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <span className="material-symbols-outlined text-xs">close</span>
+              </button>
+              
+              <div className="flex-1 space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Capacity</label>
+                <input 
+                  type="text" 
+                  value={opt.capacity}
+                  onChange={(e) => updateStorageOption(index, 'capacity', e.target.value)}
+                  className="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-blue-500"
+                  placeholder="e.g. 256GB"
+                />
+              </div>
+
+              <div className="w-full md:w-48 space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Price Offset (+USD)</label>
+                <input 
+                  type="number" 
+                  value={opt.price_offset}
+                  onChange={(e) => updateStorageOption(index, 'price_offset', parseFloat(e.target.value) || 0)}
+                  className="w-full bg-white dark:bg-black/20 border-none rounded-xl px-4 py-3 outline-none focus:ring-1 focus:ring-blue-500"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+          ))}
+          {storageOptions.length === 0 && (
+            <div className="text-center py-6 border-2 border-dashed border-slate-100 dark:border-white/5 rounded-2xl text-slate-400 text-xs">
+              No storage tiers defined. Standard prices will apply.
             </div>
           )}
         </div>

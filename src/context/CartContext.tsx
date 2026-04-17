@@ -9,13 +9,14 @@ interface CartItem {
   image: string;
   quantity: number;
   color: string;
+  storage: string;
   slug: string;
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: any, variant: any) => void;
-  removeFromCart: (id: string) => void;
+  addToCart: (product: any, variant: any, storage: string, priceWithOffset: number) => void;
+  removeFromCart: (id: string, color: string, storage: string) => void;
   clearCart: () => void;
   totalItems: number;
   totalPrice: number;
@@ -37,12 +38,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product: any, variant: any) => {
+  const addToCart = (product: any, variant: any, storage: string, priceWithOffset: number) => {
     setCart(prev => {
-      const existing = prev.find(item => item.id === product.id && item.color === variant.color_name);
+      const existing = prev.find(item => 
+        item.id === product.id && 
+        item.color === variant.color_name && 
+        item.storage === storage
+      );
+
       if (existing) {
         return prev.map(item => 
-          item.id === product.id && item.color === variant.color_name 
+          item.id === product.id && item.color === variant.color_name && item.storage === storage
             ? { ...item, quantity: item.quantity + 1 } 
             : item
         );
@@ -50,17 +56,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return [...prev, {
         id: product.id,
         title: product.title,
-        price: product.price,
+        price: priceWithOffset,
         image: variant.image_url,
         color: variant.color_name,
+        storage: storage,
         slug: product.slug,
         quantity: 1
       }];
     });
   };
 
-  const removeFromCart = (id: string) => {
-    setCart(prev => prev.filter(item => item.id !== id));
+  const removeFromCart = (id: string, color: string, storage: string) => {
+    setCart(prev => prev.filter(item => !(item.id === id && item.color === color && item.storage === storage)));
   };
 
   const clearCart = () => setCart([]);
