@@ -58,18 +58,25 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             className="max-w-full h-[70%] md:h-[80%] object-contain drop-shadow-2xl transition-all duration-700 hover:scale-105"
           />
           
-          <div className="mt-8 flex gap-6 z-10 bg-white/40 dark:bg-black/40 backdrop-blur-md p-4 rounded-2xl border border-white/20 dark:border-white/5">
+          <div className="mt-10 flex gap-4 z-10 bg-white/60 dark:bg-zinc-800/40 backdrop-blur-xl p-5 rounded-[2rem] border border-white/40 dark:border-white/5 shadow-2xl">
             {product.variants.map((v, i) => (
               <button
                 key={i}
                 onClick={() => setActiveVariant(v)}
-                className={`w-8 h-8 rounded-full border-2 transition-all p-0.5 ${activeVariant.color_hex === v.color_hex ? 'border-blue-500 scale-110' : 'border-transparent opacity-80 hover:opacity-100'}`}
+                className={`relative w-10 h-10 rounded-full transition-all duration-500 hover:scale-110 active:scale-95 ${
+                  activeVariant.color_hex === v.color_hex 
+                    ? 'ring-2 ring-blue-500 ring-offset-4 ring-offset-white dark:ring-offset-[#0a0a0a]' 
+                    : 'hover:ring-2 hover:ring-slate-300 dark:hover:ring-zinc-600 hover:ring-offset-2 hover:ring-offset-white dark:hover:ring-offset-[#0a0a0a]'
+                }`}
                 title={v.color_name}
               >
                 <div 
-                  className="w-full h-full rounded-full shadow-inner" 
+                  className="w-full h-full rounded-full shadow-inner border border-black/5 dark:border-white/5" 
                   style={{ backgroundColor: v.color_hex }}
                 />
+                {activeVariant.color_hex === v.color_hex && (
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full animate-pulse" />
+                )}
               </button>
             ))}
           </div>
@@ -89,24 +96,43 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               <span className="font-semibold text-slate-900 dark:text-white mr-2">{activeVariant.color_name}</span>. 
               {product.description}
             </p>
-            <div className="text-4xl font-bold text-slate-900 dark:text-white mb-8">
+            <div className="text-5xl font-bold text-slate-900 dark:text-white mb-10 transition-all duration-300">
               ${displayPrice.toLocaleString()}
             </div>
 
             {/* Storage Selection */}
             {product.storage_options && product.storage_options.length > 0 && (
-              <div className="space-y-4 mb-10">
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Choose your capacity</p>
-                <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-5 mb-12 animate-in fade-in slide-in-from-left-4 duration-700">
+                <div className="flex justify-between items-center">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-zinc-500">Select Capacity</p>
+                  <span className="text-[10px] font-bold text-blue-500 bg-blue-50 dark:bg-blue-500/10 px-2 py-0.5 rounded-full">Standard Shipping</span>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
                   {product.storage_options.map((opt, i) => (
                     <button
                       key={i}
                       onClick={() => setSelectedStorage(opt)}
-                      className={`flex flex-col items-center justify-center py-4 px-6 rounded-2xl border-2 transition-all ${selectedStorage.capacity === opt.capacity ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-500/10' : 'border-slate-100 dark:border-white/5 hover:border-slate-200 dark:hover:border-white/10'}`}
+                      className={`group relative flex flex-col items-center justify-center py-5 px-6 rounded-[1.4rem] border-2 transition-all duration-300 ${
+                        selectedStorage.capacity === opt.capacity 
+                          ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-500/10 shadow-lg shadow-blue-500/10' 
+                          : 'border-slate-100 dark:border-white/5 bg-white dark:bg-zinc-900/50 hover:border-slate-200 dark:hover:border-white/10'
+                      }`}
                     >
-                      <span className="text-sm font-bold text-slate-900 dark:text-white">{opt.capacity}</span>
-                      {opt.price_offset > 0 && (
-                        <span className="text-[10px] text-slate-500 mt-1">+{opt.price_offset} USD</span>
+                      <span className={`text-[15px] font-bold transition-colors ${selectedStorage.capacity === opt.capacity ? 'text-blue-600 dark:text-blue-400' : 'text-slate-900 dark:text-white'}`}>
+                        {opt.capacity}
+                      </span>
+                      {opt.price_offset > 0 ? (
+                        <span className="text-[10px] font-medium text-slate-500 dark:text-zinc-500 mt-1">
+                          +${opt.price_offset} USD
+                        </span>
+                      ) : (
+                        <span className="text-[10px] font-medium text-green-500 mt-1">Included</span>
+                      )}
+                      
+                      {selectedStorage.capacity === opt.capacity && (
+                        <div className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-blue-600 rounded-full border-2 border-white dark:border-zinc-900 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-[10px] text-white font-bold">check</span>
+                        </div>
                       )}
                     </button>
                   ))}
