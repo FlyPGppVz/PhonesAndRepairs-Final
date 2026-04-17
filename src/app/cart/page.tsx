@@ -1,12 +1,35 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 export default function CartPage() {
   const { cart, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cart }),
+      });
+
+      const data = await response.json();
+      
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Failed to create checkout session');
+      }
+    } catch (error: any) {
+      toast.error(error.message || 'Checkout error');
+      setIsLoading(false);
+    }
+  };
 
   if (cart.length === 0) {
     return (
@@ -104,11 +127,21 @@ export default function CartPage() {
               </div>
 
               <button 
-                className="w-full bg-blue-600 dark:bg-blue-500 text-white py-5 rounded-3xl font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98] mt-4 flex items-center justify-center gap-2"
-                onClick={() => toast('Coming Soon: Stripe Checkout Integration', { icon: '🚀' })}
+                className={`w-full ${isLoading ? 'bg-slate-400 cursor-not-allowed' : 'bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600'} text-white py-5 rounded-3xl font-bold text-lg transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98] mt-4 flex items-center justify-center gap-2`}
+                onClick={handleCheckout}
+                disabled={isLoading}
               >
-                Buy Now
-                <span className="material-symbols-outlined">bolt</span>
+                {isLoading ? (
+                  <span className="flex items-center gap-2">
+                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                    Processing...
+                  </span>
+                ) : (
+                  <>
+                    Buy Now
+                    <span className="material-symbols-outlined">bolt</span>
+                  </>
+                )}
               </button>
 
               <div className="text-center">
