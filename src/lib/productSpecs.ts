@@ -396,6 +396,25 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone 8 plus'],
+    description: 'A new generation of iPhone. Most durable glass design. Dual 12MP cameras with Portrait mode and Portrait Lighting. A11 Bionic chip. 5.5-inch Retina HD display with True Tone.',
+    processor_name: 'A11 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 14h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 120 }
+    ],
+    variants: [
+      { color_name: 'Space Gray', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_8_plus/Iphone_8_plus_Black.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_8_plus/Iphone_8_plus_Gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_8_plus/Iphone_8_plus_silver.png' }
+    ]
+  },
+  {
     model_keys: ['iphone 8'],
     description: 'A new generation of iPhone. Most durable glass design. Wireless charging. A11 Bionic chip. 4.7-inch Retina HD display with True Tone. 12MP camera with new sensor.',
     processor_name: 'A11 Bionic',
