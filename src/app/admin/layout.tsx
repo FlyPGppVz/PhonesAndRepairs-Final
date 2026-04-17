@@ -75,6 +75,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <span className="material-symbols-outlined">inventory_2</span>
                   Inventory
                 </Link>
+                <Link 
+                  href="/admin/inbox" 
+                  className={`flex items-center gap-3 px-5 py-4 rounded-[1.5rem] font-bold text-sm transition-all ${pathname === '/admin/inbox' ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20' : 'text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}
+                >
+                  <span className="material-symbols-outlined">mail</span>
+                  Inbox
+                </Link>
                 {/* Future modules can be added here */}
                 <div className="flex items-center gap-3 px-5 py-4 text-slate-300 dark:text-zinc-700 cursor-not-allowed opacity-50">
                   <span className="material-symbols-outlined">analytics</span>

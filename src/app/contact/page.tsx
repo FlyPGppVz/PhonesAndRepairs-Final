@@ -18,17 +18,28 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.from('appointments_quotes').insert([{
-        customer_name: formData.name,
-        customer_email: formData.email,
-        device_category: 'Contact Link',
-        issue_description: formData.message,
-        type: 'contact',
-        status: 'pending'
-      }]);
+      // 1. Submit to legacy contact table
+      const { error: contactError } = await supabase
+        .from('contact_submissions')
+        .insert([
+          { 
+            name: formData.name, 
+            email: formData.email, 
+            message: formData.message 
+          }
+        ]);
 
-      if (error) throw error;
-      
+      if (contactError) throw contactError;
+
+      // 2. Add to centralized Inbox
+      await addToInbox({
+        type: 'Contact',
+        customer_name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      });
+
+      toast.success('Message sent! We will get back to you soon.');
       setSuccess(true);
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {

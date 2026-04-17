@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import toast from 'react-hot-toast';
+import { addToInbox } from '@/lib/inbox';
 
 export default function IPhoneRepairs() {
   const [loading, setLoading] = useState(false);
@@ -14,7 +15,8 @@ export default function IPhoneRepairs() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const { error } = await supabase.from('appointments_quotes').insert([{
+      // 1. Submit to legacy table
+      const { error: repairError } = await supabase.from('appointments_quotes').insert([{
         customer_name: formData.get('name'),
         customer_email: formData.get('email'),
         device_category: 'iPhone',
@@ -23,8 +25,19 @@ export default function IPhoneRepairs() {
         status: 'pending'
       }]);
 
-      if (error) throw error;
+      if (repairError) throw repairError;
+
+      // 2. Add to centralized Inbox
+      await addToInbox({
+        type: 'Appointment',
+        customer_name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        message: `Repair request for ${formData.get('model')}`,
+        metadata: { category: 'iPhone', model: formData.get('model') }
+      });
+
       setSuccess(true);
+      toast.success('Appointment request sent!');
       (e.target as HTMLFormElement).reset();
     } catch (err: any) {
       toast.error('Error: ' + err.message);

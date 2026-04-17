@@ -26,7 +26,8 @@ export default function ServicesPage() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const { error } = await supabase.from('appointments_quotes').insert([{
+      // 1. Add to dedicated quotes table (backwards compatibility)
+      const { error: quoteError } = await supabase.from('appointments_quotes').insert([{
         customer_name: formData.get('name'),
         customer_email: formData.get('email'),
         device_category: modalCategory,
@@ -35,7 +36,17 @@ export default function ServicesPage() {
         status: 'pending'
       }]);
 
-      if (error) throw error;
+      if (quoteError) throw quoteError;
+
+      // 2. Add to centralized Inbox
+      await addToInbox({
+        type: 'Quote',
+        customer_name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        message: formData.get('description') as string,
+        metadata: { category: modalCategory }
+      });
+
       setSuccess(true);
       toast.success("Quote request sent! We'll contact you soon.");
       setTimeout(() => closeQuoteModal(), 2000);
