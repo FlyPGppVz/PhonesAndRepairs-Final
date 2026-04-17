@@ -50,33 +50,36 @@ export default function Navbar() {
         <div className="hidden md:flex flex-[3] items-center justify-center gap-6 font-sans text-[12px] font-medium tracking-tight">
           <Link href="/" className={`${pathname === '/' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Home</Link>
           <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Services</Link>
-          <Link href="/shop" className={`${pathname?.startsWith('/shop') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Shop</Link>
-          
-          <div className="relative group">
-            <button className={`${pathname?.startsWith('/repairs') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors flex items-center gap-1`}>
-              Repairs
-              <span className="material-symbols-outlined text-[18px]">expand_more</span>
-            </button>
-            <div className="absolute top-full -left-4 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-95 group-hover:scale-100 z-50">
-              <div className="cupertino-glass bg-white/90 dark:bg-neutral-800/90 rounded-2xl shadow-2xl min-w-[200px] py-3 border border-slate-200/50">
-                <Link href="/repairs/iphone" className="block px-6 py-3 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">iPhone Repairs</Link>
-                <Link href="/repairs/android" className="block px-6 py-3 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">Android Repairs</Link>
-                <Link href="/repairs/ipad-tablet" className="block px-6 py-3 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">iPad & Tablet</Link>
-                <Link href="/repairs/consoles" className="block px-6 py-3 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">Gaming Consoles</Link>
-              </div>
-            </div>
-          </div>
-
+          <Link href="/shop" className={`${pathname?.startsWith('/shop') && !pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Shop</Link>
           <Link href="/about" className={`${pathname === '/about' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>About Us</Link>
+          <Link href="/contact" className={`${pathname === '/contact' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Contact</Link>
 
           {user?.email?.startsWith('flypg65') && (
             <Link href="/admin/shop" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors font-bold border-l pl-6 border-slate-200 dark:border-white/10`}>Admin</Link>
           )}
         </div>
 
-        <div className="flex-1 flex items-center justify-end gap-2">
+        <div className="flex-1 flex items-center justify-end gap-3">
           <ThemeToggle />
-          <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors p-2">search</button>
+          <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors p-1.5">search</button>
+          
+          <Link href="/cart" className="relative group p-1.5 lowercase">
+            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
+            {totalItems > 0 && (
+              <span className="absolute top-0 right-0 bg-blue-600 text-white text-[9px] font-bold h-3.5 w-3.5 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </Link>
+
+          {user ? (
+            <div className="flex items-center gap-3">
+              <span className="hidden lg:block text-[9px] font-bold uppercase tracking-widest text-slate-400">{user.email.split('@')[0]}</span>
+              <button onClick={handleLogout} className="material-symbols-outlined text-red-500 text-[18px] hover:scale-110 transition-all p-1.5">logout</button>
+            </div>
+          ) : (
+            <Link href="/auth" className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors p-1.5">person</Link>
+          )}
         </div>
       </nav>
     </header>
