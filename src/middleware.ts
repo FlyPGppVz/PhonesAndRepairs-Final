@@ -58,6 +58,14 @@ export async function middleware(request: NextRequest) {
       }
     )
 
+    // Only run auth check for actual pages, not for internal Next.js requests or common static assets
+    const isApi = request.nextUrl.pathname.startsWith('/api')
+    const isPublicAsset = request.nextUrl.pathname.match(/\.(png|jpg|jpeg|gif|webp|svg|css|js|ico)$/)
+    
+    if (isPublicAsset || (isApi && !request.nextUrl.pathname.startsWith('/api/admin'))) {
+      return response
+    }
+
     const { data } = await supabase.auth.getUser()
     const user = data?.user
 
@@ -104,6 +112,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * Feel free to modify this pattern to include more paths.
      */
-    '/((?!_next/static|_next/image|favicon.ico).*)',
+    '/((?!_next/static|_next/image|favicon.ico|assets|images|.*\\.).*)',
   ],
 }

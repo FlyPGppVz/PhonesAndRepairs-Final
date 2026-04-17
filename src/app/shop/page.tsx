@@ -1,10 +1,11 @@
-import { supabase } from '@/lib/supabase';
+import { createClient } from '@/lib/supabaseServer';
 import ShopContent from '@/components/Shop/ShopContent';
 import React, { Suspense } from 'react';
 
 export const dynamic = 'force-dynamic';
 
 export default async function ShopPage() {
+  const supabase = createClient();
   const { data: initialProducts } = await supabase
     .from('products')
     .select('*')
