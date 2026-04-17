@@ -42,7 +42,12 @@ export default function AuthPage() {
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
-        router.push('/');
+        
+        // Handle post-login redirection
+        const searchParams = new URLSearchParams(window.location.search);
+        const nextPath = searchParams.get('next');
+        
+        router.push(nextPath || '/');
         router.refresh();
       }
     } catch (error: any) {
