@@ -568,21 +568,21 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
-    model_keys: ['samsung', 's25 ultra', 's24 ultra'],
-    description: 'The champion of Android. Unrivaled performance, premium titanium design, and an integrated S Pen for ultimate productivity.',
+    model_keys: ['samsung galaxy s25 ultra', 's25 ultra'],
+    description: 'The ultimate smartphone experience. Featuring the Snapdragon 8 Gen 4, a 6.8" Dynamic AMOLED 2X display, and the iconic S Pen. Professional-grade 200MP camera system with advanced Galaxy AI.',
     processor_name: 'Snapdragon 8 Gen 4',
     display_nits: '2600 nits',
-    refresh_rate: '120Hz Adaptive',
-    battery_desc: '5000 mAh (Up to 30h video playback)',
+    refresh_rate: '120Hz',
+    battery_desc: 'Up to 30h video playback',
     category: 'Samsung',
     storage_options: [
       { capacity: '256GB', price_offset: 0 },
-      { capacity: '512GB', price_offset: 120 },
-      { capacity: '1TB', price_offset: 360 }
+      { capacity: '512GB', price_offset: 150 },
+      { capacity: '1TB', price_offset: 350 }
     ],
     variants: [
-      { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/S25ultra-shop-png.webp' },
-      { color_name: 'Titanium Gray', color_hex: '#7A7A7A', image_url: '/assets/images/Tienda/Tienda/s25_ultra_Png.png' }
+      { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/S25/s25_ultra_Png.png' },
+      { color_name: 'Titanium Gray', color_hex: '#535150', image_url: '/assets/images/Tienda/Tienda/S25/S25ultra-shop-png.webp' }
     ]
   }
 ];
