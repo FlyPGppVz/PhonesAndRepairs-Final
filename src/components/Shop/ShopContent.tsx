@@ -155,40 +155,40 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
             <button onClick={clearFilters} className="text-blue-600 font-bold hover:underline">Clear all filters</button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {products.map((p) => {
               const mainImage = p.main_image_url || p.variants?.[0]?.image_url || '';
               return (
-                <div key={p.id} className="animate-in fade-in slide-in-from-bottom duration-500">
+                <div key={p.id} className="relative group animate-in fade-in slide-in-from-bottom duration-500">
                   <Link 
                     href={`/shop/${p.slug}`}
-                    className="group h-full bg-slate-50 dark:bg-neutral-900 rounded-[2.5rem] p-8 border border-slate-200/50 dark:border-white/5 transition-all hover:-translate-y-2 hover:shadow-2xl flex flex-col items-center text-center relative overflow-hidden"
+                    className="h-full bg-slate-50 dark:bg-neutral-900 rounded-[2.25rem] p-6 border border-slate-200/50 dark:border-white/5 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/5 flex flex-col items-center text-center overflow-hidden"
                   >
-                    <div className="h-48 md:h-56 flex items-center justify-center mb-8 relative w-full">
-                      <div className="absolute inset-0 bg-blue-500/5 blur-[50px] rounded-full scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+                    <div className="h-40 md:h-48 flex items-center justify-center mb-6 relative w-full">
+                      <div className="absolute inset-0 bg-blue-500/5 blur-[40px] rounded-full scale-0 group-hover:scale-100 transition-transform duration-700"></div>
                       <img 
                         src={mainImage} 
                         alt={p.title}
-                        className="max-h-full max-w-[80%] object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-110"
+                        className="max-h-full max-w-[75%] object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                    <div className="space-y-2 w-full">
-                      <div className="flex justify-center gap-2 mb-2">
-                        <span className="text-blue-600 dark:text-blue-400 text-[9px] font-black uppercase tracking-[0.2em]">{p.category}</span>
+                    <div className="space-y-1.5 w-full">
+                      <div className="flex justify-center gap-2 mb-1.5">
+                        <span className="text-blue-600 dark:text-blue-400 text-[8px] font-black uppercase tracking-[0.2em]">{p.category}</span>
                         {p.brand && (
-                          <span className="text-slate-400 text-[9px] font-black uppercase tracking-[0.2em] px-2 border-l border-slate-200 dark:border-white/10">{p.brand}</span>
+                          <span className="text-slate-400 text-[8px] font-black uppercase tracking-[0.2em] px-2 border-l border-slate-200 dark:border-white/10">{p.brand}</span>
                         )}
                       </div>
-                      <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-tight">{p.title}</h2>
-                      <p className="text-slate-500 text-[13px] line-clamp-2 px-2 h-10">{p.description}</p>
+                      <h2 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-tight px-1">{p.title}</h2>
+                      <p className="text-slate-500 text-[11px] line-clamp-2 px-2 h-8 leading-relaxed opacity-80">{p.description}</p>
                       
-                      <div className="pt-4 flex items-center justify-between mt-4">
+                      <div className="pt-3 flex flex-col items-start mt-auto space-y-2">
                         <span className="text-lg font-black text-slate-900 dark:text-white">${Number(p.price).toLocaleString()}</span>
                         <div className="flex -space-x-1">
                           {p.variants?.slice(0, 3).map((v: any, i: number) => (
                             <div 
                               key={i} 
-                              className="w-3 h-3 rounded-full border border-white dark:border-neutral-900 shadow-sm" 
+                              className="w-2.5 h-2.5 rounded-full border border-white dark:border-neutral-900 shadow-sm" 
                               style={{ backgroundColor: v.color_hex }}
                             />
                           ))}
@@ -196,7 +196,8 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
                       </div>
                     </div>
                   </Link>
-                  <div className="mt-4 px-4 flex justify-end">
+                  {/* Integrated Buy Button */}
+                  <div className="absolute bottom-6 right-6 z-20 group/btn transition-transform duration-300 hover:scale-110">
                     <AddToCartSmall product={p} />
                   </div>
                 </div>
