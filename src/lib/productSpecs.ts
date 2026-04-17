@@ -396,6 +396,24 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone xs max'],
+    description: 'Welcome to the big screens. Super Retina. The largest display ever on an iPhone (6.5"). Faster Face ID. A12 Bionic chip. Dual 12MP cameras with Depth Control. Surgical-grade stainless steel.',
+    processor_name: 'A12 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 15h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 250 }
+    ],
+    variants: [
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_Xs_Max/Iphone_Xs_max_Gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_Xs_Max/iphone-xs-max-Silver.png' }
+    ]
+  },
+  {
     model_keys: ['iphone xr'],
     description: 'Brilliant. In every way. All-new Liquid Retina display. Faster Face ID. The smartest, most powerful chip in a smartphone. A breakthrough camera system. Six stunning new finishes.',
     processor_name: 'A12 Bionic',
