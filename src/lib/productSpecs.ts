@@ -31,11 +31,11 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
-    model_keys: ['iphone 16 pro max', 'iphone 16 pro'],
-    description: 'Unmatched longevity and power. Ceramic Shield front and Aerospace-grade titanium design.',
+    model_keys: ['iphone 16 pro max'],
+    description: 'The ultimate Pro. Apple Intelligence. Massive 6.9-inch display. Titanium design. Camera Control. 48MP Ultra Wide camera. A18 Pro chip. Best battery life on iPhone.',
     processor_name: 'A18 Pro',
     display_nits: '2000 nits',
-    refresh_rate: '120Hz',
+    refresh_rate: '120Hz ProMotion',
     battery_desc: 'Up to 33h video playback',
     category: 'iPhones',
     storage_options: [
@@ -44,18 +44,18 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { capacity: '1TB', price_offset: 400 }
     ],
     variants: [
-      { color_name: 'Titanium White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/iphone-16-pro-max-titaniumwhite.jpeg' },
-      { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/iphone-16-pro-max-tiniumblack.jpeg' },
-      { color_name: 'Desert Titanium', color_hex: '#C9B19C', image_url: '/assets/images/Tienda/Tienda/iphone-16-pro-max-desert.jpeg' }
+      { color_name: 'Desert Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_16_pro_Max/iphone-16-pro-max-desert.png' },
+      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16_pro_Max/iphone-16-pro-max-tiniumblack.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16_pro_Max/iphone-16-pro-max-titaniumwhite.png' }
     ]
   },
   {
-    model_keys: ['iphone 15 pro max', 'iphone 15 pro'],
-    description: 'The first iPhone to feature an aerospace-grade titanium design. Powered by the A17 Pro chip.',
-    processor_name: 'A17 Pro',
+    model_keys: ['iphone 16 pro'],
+    description: 'Hello, Apple Intelligence. Stunning titanium design. Larger 6.3-inch display. Camera Control. 48MP Ultra Wide camera. A18 Pro chip.',
+    processor_name: 'A18 Pro',
     display_nits: '2000 nits',
-    refresh_rate: '120Hz',
-    battery_desc: 'Up to 29h video playback',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 27h video playback',
     category: 'iPhones',
     storage_options: [
       { capacity: '128GB', price_offset: 0 },
@@ -64,54 +64,76 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { capacity: '1TB', price_offset: 500 }
     ],
     variants: [
-      { color_name: 'Natural Titanium', color_hex: '#BEBBB4', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro_Max/iphone-15-pro-max-titanio.jpeg' },
-      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro_Max/iphone-15-pro-max-titanioW.jpeg' },
-      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro_Max/iphone-15-pro-max-titaniob.jpeg' }
+      { color_name: 'Desert Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_16_pro/iphone-16-pro-max-desert.png' },
+      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16_pro/iphone-16-pro-max-tiniumblack.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16_pro/iphone-16-pro-max-titaniumwhite.png' }
     ]
   },
   {
-    model_keys: ['iphone 14 pro max', 'iphone 14 pro'],
-    description: 'Introducing Dynamic Island and the A16 Bionic chip. Experience the 48MP Main camera.',
-    processor_name: 'A16 Bionic',
+    model_keys: ['iphone 16'],
+    description: 'Built for Apple Intelligence. Camera Control. 48MP Fusion camera. Five vibrant colors. Action button. A18 chip.',
+    processor_name: 'A18',
     display_nits: '2000 nits',
-    refresh_rate: '120Hz',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 22h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-black.png' },
+      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-white.png' },
+      { color_name: 'Pink', color_hex: '#F0BED0', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-pink.png' },
+      { color_name: 'Teal', color_hex: '#91C8C8', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-purple.png' },
+      { color_name: 'Ultramarine', color_hex: '#4B6D82', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-ultramarino.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 15 pro max'],
+    description: 'The ultimate iPhone. Titanium design. A17 Pro chip. Pro-class GPU. 5x Telephoto camera. Action button. Professional-grade video capabilities. USB-C.',
+    processor_name: 'A17 Pro',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
     battery_desc: 'Up to 29h video playback',
     category: 'iPhones',
     storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 }
+      { capacity: '256GB', price_offset: 0 },
+      { capacity: '512GB', price_offset: 200 },
+      { capacity: '1TB', price_offset: 400 }
     ],
     variants: [
-      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-blackSpace.jpeg' },
-      { color_name: 'Deep Purple', color_hex: '#594F63', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-purpleb.jpeg' },
-      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-silver.jpeg' }
+      { color_name: 'Blue Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro_Max/iphone-15-pro-max-titaniob.png' },
+      { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro_Max/iphone-15-pro-max-tatanio.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro_Max/iphone-15-pro-max-titanioW.png' }
     ]
   },
   {
-    model_keys: ['iphone 13 pro max', 'iphone 13 pro'],
-    description: 'The biggest camera upgrade ever. Cinematic mode and macro photography.',
-    processor_name: 'A15 Bionic',
-    display_nits: '1200 nits',
-    refresh_rate: '120Hz',
-    battery_desc: 'Up to 28h video playback',
+    model_keys: ['iphone 15 pro'],
+    description: 'Forged in titanium. A17 Pro chip — a game-changing chip. Pro-class GPU. Action button. Pro camera system. USB‑C with USB 3 speeds.',
+    processor_name: 'A17 Pro',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 23h video playback',
     category: 'iPhones',
     storage_options: [
       { capacity: '128GB', price_offset: 0 },
       { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 }
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
     ],
     variants: [
-      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-grafito.jpeg' },
-      { color_name: 'Sierra Blue', color_hex: '#9BB5CE', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-blue.jpeg' },
-      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-silver.jpeg' }
+      { color_name: 'Blue Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro/iphone-15-pro-max-titaniob.png' },
+      { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro/iphone-15-pro-max-tatanio.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_pro/iphone-15-pro-max-titanioW.png' }
     ]
   },
   {
-    model_keys: ['iphone 12 pro max', 'iphone 12 pro'],
-    description: 'The first iPhone with 5G. Super Retina XDR display and LiDAR Scanner.',
-    processor_name: 'A14 Bionic',
-    display_nits: '1200 nits',
+    model_keys: ['iphone 15'],
+    description: 'New camera. New design. Newfound power. Dynamic Island comes to iPhone 15. 48MP Main camera. Durable color-infused glass and aluminum design. USB-C.',
+    processor_name: 'A16 Bionic',
+    display_nits: '2000 nits (peak)',
     refresh_rate: '60Hz',
     battery_desc: 'Up to 20h video playback',
     category: 'iPhones',
@@ -121,67 +143,135 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { capacity: '512GB', price_offset: 300 }
     ],
     variants: [
-      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro_max/iphone-12-pro-max-grafito.jpeg' },
-      { color_name: 'Pacific Blue', color_hex: '#3D5C6C', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro_max/iphone-12-pro-max-pasificb.jpeg' },
-      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro_max/iphone-12-pro-max-gold.jpeg' }
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Black.png' },
+      { color_name: 'Blue', color_hex: '#D1DCE3', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Blue.png' },
+      { color_name: 'Yellow', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_15/iphone-15-yellow.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Red.png' }
     ]
   },
   {
-    model_keys: ['iphone 11 pro max', 'iphone 11 pro'],
-    description: 'Triple-camera system. All-night battery life. The brightest display yet.',
-    processor_name: 'A13 Bionic',
-    display_nits: '1200 nits',
-    refresh_rate: '60Hz',
-    battery_desc: 'All-day battery life',
+    model_keys: ['iphone 14 pro max'],
+    description: 'The ultimate Pro. Dynamic Island. Always-On display. 48MP Main camera. Our most powerful pro camera system ever. Massive battery life.',
+    processor_name: 'A16 Bionic',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 29h video playback',
     category: 'iPhones',
     storage_options: [
-      { capacity: '64GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 150 },
-      { capacity: '512GB', price_offset: 350 }
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
     ],
     variants: [
-      { color_name: 'Midnight Green', color_hex: '#4E5851', image_url: '/assets/images/Tienda/Tienda/Iphone_11_pro/iphone-11-pro-midnightg-.png' },
-      { color_name: 'Space Gray', color_hex: '#535150', image_url: '/assets/images/Tienda/Tienda/Iphone_11_pro/iphone-11-pro-spaceg-.png' },
-      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_11_pro/iphone-11-pro-gold-.png' }
+      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-blackSpace.png' },
+      { color_name: 'Deep Purple', color_hex: '#4B4254', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-purpleb.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-silver.png' }
     ]
   },
   {
-    model_keys: ['samsung', 's25 ultra', 's24 ultra'],
-    description: 'The champion of Android. Unrivaled performance, premium titanium design, and an integrated S Pen for ultimate productivity.',
-    processor_name: 'Snapdragon 8 Gen 4',
-    display_nits: '2600 nits',
-    refresh_rate: '120Hz Adaptive',
-    battery_desc: '5000 mAh (Up to 30h video playback)',
-    category: 'Samsung',
-    storage_options: [
-      { capacity: '256GB', price_offset: 0 },
-      { capacity: '512GB', price_offset: 120 },
-      { capacity: '1TB', price_offset: 360 }
-    ],
-    variants: [
-      { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/S25ultra-shop-png.webp' },
-      { color_name: 'Titanium Gray', color_hex: '#7A7A7A', image_url: '/assets/images/Tienda/Tienda/s25_ultra_Png.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 12'],
-    description: '5G speed. A14 Bionic. An edge-to-edge OLED display. Ceramic Shield front for better drop performance. A leap forward for iPhone.',
-    processor_name: 'A14 Bionic',
-    display_nits: '1200 nits (peak)',
-    refresh_rate: '60Hz',
-    battery_desc: 'Up to 17h video playback',
+    model_keys: ['iphone 14 pro'],
+    description: 'Pro. Beyond. A magical new way to interact with iPhone. Dynamic Island. Always-On display. 48MP Main camera for up to 4x resolution.',
+    processor_name: 'A16 Bionic',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 23h video playback',
     category: 'iPhones',
     storage_options: [
-      { capacity: '64GB', price_offset: 0 },
-      { capacity: '128GB', price_offset: 50 },
-      { capacity: '256GB', price_offset: 150 }
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
     ],
     variants: [
-      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-black.png' },
-      { color_name: 'Blue', color_hex: '#4B5364', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-blue.png' },
-      { color_name: 'Purple', color_hex: '#BF94E4', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-purple.png' },
-      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-red.png' },
-      { color_name: 'White', color_hex: '#FFFFFF', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-white.png' }
+      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-blackSpace.png' },
+      { color_name: 'Deep Purple', color_hex: '#4B4254', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-purpleb.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-silver.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 14'],
+    description: 'Wonderfull. Big and bigger. Super Retina XDR display. Advanced dual-camera system for better photos in any light. Action mode for smooth handheld videos. Vital safety technology.',
+    processor_name: 'A15 Bionic (5-core GPU)',
+    display_nits: '800 nits (typical), 1200 nits (peak)',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 20h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Midnight', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-midnight.png' },
+      { color_name: 'Blue', color_hex: '#A2B2C8', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-blue.png' },
+      { color_name: 'Purple', color_hex: '#B1A9D0', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-purple.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-red.png' },
+      { color_name: 'Starlight', color_hex: '#F2F2E4', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-starlight.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 13 pro max'],
+    description: 'The ultimate Pro. A massive leap in battery life. ProMotion display for a faster, more responsive feel. The most powerful camera system on iPhone.',
+    processor_name: 'A15 Bionic',
+    display_nits: '1000 nits',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 28h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-grafito.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-silver.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 13 pro'],
+    description: 'Oh. So. Pro. A huge camera upgrade. A display so responsive every interaction feels new again. The world’s fastest smartphone chip.',
+    processor_name: 'A15 Bionic',
+    display_nits: '1000 nits',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 22h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-grafito.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-silver.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 13'],
+    description: 'Your new superpower. A lightning-fast chip. A huge leap in battery life. And a bright Super Retina XDR display.',
+    processor_name: 'A15 Bionic',
+    display_nits: '800 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 19h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Midnight', color_hex: '#191E24', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-midnight.png' },
+      { color_name: 'Blue', color_hex: '#426D8F', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-blue.png' },
+      { color_name: 'Green', color_hex: '#3A463A', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-green.png' },
+      { color_name: 'Pink', color_hex: '#EFCBD4', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-pink.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-red.png' },
+      { color_name: 'Starlight', color_hex: '#F9F6EF', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-starlight.png' }
     ]
   },
   {
@@ -225,247 +315,61 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
-    model_keys: ['iphone 13'],
-    description: 'Your new superpower. A lightning-fast chip. A huge leap in battery life. And a bright Super Retina XDR display.',
-    processor_name: 'A15 Bionic',
-    display_nits: '800 nits',
+    model_keys: ['iphone 12'],
+    description: '5G speed. A14 Bionic. An edge-to-edge OLED display. Ceramic Shield front for better drop performance. A leap forward for iPhone.',
+    processor_name: 'A14 Bionic',
+    display_nits: '1200 nits (peak)',
     refresh_rate: '60Hz',
-    battery_desc: 'Up to 19h video playback',
+    battery_desc: 'Up to 17h video playback',
     category: 'iPhones',
     storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 }
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 150 }
     ],
     variants: [
-      { color_name: 'Midnight', color_hex: '#191E24', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-midnight.png' },
-      { color_name: 'Blue', color_hex: '#426D8F', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-blue.png' },
-      { color_name: 'Green', color_hex: '#3A463A', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-green.png' },
-      { color_name: 'Pink', color_hex: '#EFCBD4', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-pink.png' },
-      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-red.png' },
-      { color_name: 'Starlight', color_hex: '#F9F6EF', image_url: '/assets/images/Tienda/Tienda/Iphone_13/iphone-13-starlight.png' }
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-black.png' },
+      { color_name: 'Blue', color_hex: '#4B5364', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-blue.png' },
+      { color_name: 'Purple', color_hex: '#BF94E4', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-purple.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-red.png' },
+      { color_name: 'White', color_hex: '#FFFFFF', image_url: '/assets/images/Tienda/Tienda/Iphone_12/iphone-12-white.png' }
     ]
   },
   {
-    model_keys: ['iphone 13 pro'],
-    description: 'Oh. So. Pro. A huge camera upgrade. A display so responsive every interaction feels new again. The world’s fastest smartphone chip.',
-    processor_name: 'A15 Bionic',
-    display_nits: '1000 nits',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 22h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 },
-      { capacity: '1TB', price_offset: 500 }
-    ],
-    variants: [
-      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-grafito.png' },
-      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-gold.png' },
-      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro/iphone-13-pro-max-silver.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 13 pro max'],
-    description: 'The ultimate Pro. A massive leap in battery life. ProMotion display for a faster, more responsive feel. The most powerful camera system on iPhone.',
-    processor_name: 'A15 Bionic',
-    display_nits: '1000 nits',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 28h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 },
-      { capacity: '1TB', price_offset: 500 }
-    ],
-    variants: [
-      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-grafito.png' },
-      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-gold.png' },
-      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-silver.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 14'],
-    description: 'Wonderfull. Big and bigger. Super Retina XDR display. Advanced dual-camera system for better photos in any light. Action mode for smooth handheld videos. Vital safety technology.',
-    processor_name: 'A15 Bionic (5-core GPU)',
-    display_nits: '800 nits (typical), 1200 nits (peak)',
+    model_keys: ['iphone 11 pro max'],
+    description: 'Triple-camera system. All-night battery life. The brightest display yet.',
+    processor_name: 'A13 Bionic',
+    display_nits: '1200 nits',
     refresh_rate: '60Hz',
-    battery_desc: 'Up to 20h video playback',
+    battery_desc: 'All-day battery life',
     category: 'iPhones',
     storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 }
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 150 },
+      { capacity: '512GB', price_offset: 350 }
     ],
     variants: [
-      { color_name: 'Midnight', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-midnight.png' },
-      { color_name: 'Blue', color_hex: '#A2B2C8', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-blue.png' },
-      { color_name: 'Purple', color_hex: '#B1A9D0', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-purple.png' },
-      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-red.png' },
-      { color_name: 'Starlight', color_hex: '#F2F2E4', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-starlight.png' }
+      { color_name: 'Midnight Green', color_hex: '#4E5851', image_url: '/assets/images/Tienda/Tienda/Iphone_11_pro/iphone-11-pro-midnightg-.png' },
+      { color_name: 'Space Gray', color_hex: '#535150', image_url: '/assets/images/Tienda/Tienda/Iphone_11_pro/iphone-11-pro-spaceg-.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_11_pro/iphone-11-pro-gold-.png' }
     ]
   },
   {
-    model_keys: ['iphone 14 pro'],
-    description: 'Pro. Beyond. A magical new way to interact with iPhone. Dynamic Island. Always-On display. 48MP Main camera for up to 4x resolution.',
-    processor_name: 'A16 Bionic',
-    display_nits: '2000 nits (peak)',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 23h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 },
-      { capacity: '1TB', price_offset: 500 }
-    ],
-    variants: [
-      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-blackSpace.png' },
-      { color_name: 'Deep Purple', color_hex: '#4B4254', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-purpleb.png' },
-      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-gold.png' },
-      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-silver.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 14 pro max'],
-    description: 'The ultimate Pro. Dynamic Island. Always-On display. 48MP Main camera. Our most powerful pro camera system ever. Massive battery life.',
-    processor_name: 'A16 Bionic',
-    display_nits: '2000 nits (peak)',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 29h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 },
-      { capacity: '1TB', price_offset: 500 }
-    ],
-    variants: [
-      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-blackSpace.png' },
-      { color_name: 'Deep Purple', color_hex: '#4B4254', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-purpleb.png' },
-      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-gold.png' },
-      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-silver.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 15'],
-    description: 'New camera. New design. Newfound power. Dynamic Island comes to iPhone 15. 48MP Main camera. Durable color-infused glass and aluminum design. USB-C.',
-    processor_name: 'A16 Bionic',
-    display_nits: '2000 nits (peak)',
-    refresh_rate: '60Hz',
-    battery_desc: 'Up to 20h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 }
-    ],
-    variants: [
-      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Black.png' },
-      { color_name: 'Blue', color_hex: '#D1DCE3', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Blue.png' },
-      { color_name: 'Yellow', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_15/iphone-15-yellow.png' },
-      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Red.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 15 pro'],
-    description: 'Forged in titanium. A17 Pro chip — a game-changing chip. Pro-class GPU. Action button. Pro camera system. USB‑C with USB 3 speeds.',
-    processor_name: 'A17 Pro',
-    display_nits: '2000 nits (peak)',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 23h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 },
-      { capacity: '1TB', price_offset: 500 }
-    ],
-    variants: [
-      { color_name: 'Blue Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro/iphone-15-pro-max-titaniob.png' },
-      { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro/iphone-15-pro-max-tatanio.png' },
-      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro/iphone-15-pro-max-titanioW.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 15 pro max'],
-    description: 'The ultimate iPhone. Titanium design. A17 Pro chip. Pro-class GPU. 5x Telephoto camera. Action button. Professional-grade video capabilities. USB-C.',
-    processor_name: 'A17 Pro',
-    display_nits: '2000 nits (peak)',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 29h video playback',
-    category: 'iPhones',
+    model_keys: ['samsung', 's25 ultra', 's24 ultra'],
+    description: 'The champion of Android. Unrivaled performance, premium titanium design, and an integrated S Pen for ultimate productivity.',
+    processor_name: 'Snapdragon 8 Gen 4',
+    display_nits: '2600 nits',
+    refresh_rate: '120Hz Adaptive',
+    battery_desc: '5000 mAh (Up to 30h video playback)',
+    category: 'Samsung',
     storage_options: [
       { capacity: '256GB', price_offset: 0 },
-      { capacity: '512GB', price_offset: 200 },
-      { capacity: '1TB', price_offset: 400 }
+      { capacity: '512GB', price_offset: 120 },
+      { capacity: '1TB', price_offset: 360 }
     ],
     variants: [
-      { color_name: 'Blue Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-titaniob.png' },
-      { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-tatanio.png' },
-      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-titanioW.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 16'],
-    description: 'Built for Apple Intelligence. Camera Control. 48MP Fusion camera. Five vibrant colors. Action button. A18 chip.',
-    processor_name: 'A18',
-    display_nits: '2000 nits',
-    refresh_rate: '60Hz',
-    battery_desc: 'Up to 22h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 }
-    ],
-    variants: [
-      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-black.png' },
-      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-white.png' },
-      { color_name: 'Pink', color_hex: '#F0BED0', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-pink.png' },
-      { color_name: 'Teal', color_hex: '#91C8C8', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-purple.png' },
-      { color_name: 'Ultramarine', color_hex: '#4B6D82', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-ultramarino.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 16 pro'],
-    description: 'Hello, Apple Intelligence. Stunning titanium design. Larger 6.3-inch display. Camera Control. 48MP Ultra Wide camera. A18 Pro chip.',
-    processor_name: 'A18 Pro',
-    display_nits: '2000 nits',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 27h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '128GB', price_offset: 0 },
-      { capacity: '256GB', price_offset: 100 },
-      { capacity: '512GB', price_offset: 300 },
-      { capacity: '1TB', price_offset: 500 }
-    ],
-    variants: [
-      { color_name: 'Desert Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro/iphone-16-pro-max-desert.png' },
-      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro/iphone-16-pro-max-tiniumblack.png' },
-      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro/iphone-16-pro-max-titaniumwhite.png' }
-    ]
-  },
-  {
-    model_keys: ['iphone 16 pro max'],
-    description: 'The ultimate Pro. Apple Intelligence. Massive 6.9-inch display. Titanium design. Camera Control. 48MP Ultra Wide camera. A18 Pro chip. Best battery life on iPhone.',
-    processor_name: 'A18 Pro',
-    display_nits: '2000 nits',
-    refresh_rate: '120Hz ProMotion',
-    battery_desc: 'Up to 33h video playback',
-    category: 'iPhones',
-    storage_options: [
-      { capacity: '256GB', price_offset: 0 },
-      { capacity: '512GB', price_offset: 200 },
-      { capacity: '1TB', price_offset: 400 }
-    ],
-    variants: [
-      { color_name: 'Desert Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro_max/iphone-16-pro-max-desert.png' },
-      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro_max/iphone-16-pro-max-tiniumblack.png' },
-      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro_max/iphone-16-pro-max-titaniumwhite.png' }
+      { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/S25ultra-shop-png.webp' },
+      { color_name: 'Titanium Gray', color_hex: '#7A7A7A', image_url: '/assets/images/Tienda/Tienda/s25_ultra_Png.png' }
     ]
   }
 ];
