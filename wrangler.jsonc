@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "phones-and-repairs-nextjs",
   "main": ".open-next/worker.js",
+  "account_id": "cb170e6afc16d8cee97cd9b5fa7235ad",
   "compatibility_date": "2024-09-23",
   "compatibility_flags": [
     "nodejs_compat"
