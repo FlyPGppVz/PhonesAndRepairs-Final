@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-neutral-950 transition-colors duration-500">
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 px-8 py-20 max-w-[1440px] mx-auto">
         <div className="col-span-2 lg:col-span-1 space-y-6">
-          <div className="font-black text-2xl text-slate-900 dark:text-white tracking-tighter">PhonesAndRepairs.</div>
+          <div className="font-black text-2xl text-slate-900 dark:text-white tracking-tighter">CellphonesAndRepair.</div>
           <p className="font-sans text-sm text-slate-500 dark:text-zinc-400 max-w-xs leading-relaxed font-medium">
             Precision engineering for your digital life. Master technical solutions for mobile hardware, tablets, and gaming consoles.
           </p>
@@ -43,7 +43,7 @@ export default function Footer() {
       </div>
 
       <div className="px-8 py-10 border-t border-slate-200/50 dark:border-slate-800/50 max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="font-sans text-xs font-bold text-slate-400 uppercase tracking-widest">© 2024 PhonesAndRepairs. Built for the elite.</p>
+        <p className="font-sans text-xs font-bold text-slate-400 uppercase tracking-widest">© 2024 CellphonesAndRepair. Built for the elite.</p>
         <div className="flex gap-6">
           <span className="material-symbols-outlined text-slate-400 hover:text-blue-600 transition-colors cursor-pointer">facebook</span>
           <span className="material-symbols-outlined text-slate-400 hover:text-blue-600 transition-colors cursor-pointer">potted_plant</span>

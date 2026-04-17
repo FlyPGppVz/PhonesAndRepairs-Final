@@ -132,6 +132,32 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Workspace Gallery (Restored) */}
+      <section className="py-32 px-6 md:px-8 max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="rounded-[2.5rem] overflow-hidden h-[600px] animate-float shadow-2xl border border-slate-200 dark:border-white/10 group">
+            <img 
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+              src="https://img1.wsimg.com/isteam/ip/31aaa313-1b21-474e-bb0f-a817b10b33e7/WhatsApp%20Image%202025-07-24%20at%2012.20.38%20PM.jpeg/:/cr=t:0%25,l:8.91%25,w:75%25,h:100%25/rs=w:365,h:365,cg:true" 
+              alt="Precision lab"
+            />
+          </div>
+          <div className="flex flex-col gap-12">
+            <div className="rounded-[2.5rem] overflow-hidden h-[275px] animate-float shadow-2xl border border-slate-200 dark:border-white/10 group" style={{ animationDelay: '1s' }}>
+              <img 
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                src="https://img1.wsimg.com/isteam/getty/494389158/:/cr=t:0%25,l:16.74%25,w:66.52%25,h:100%25/rs=w:365,h:365,cg:true" 
+                alt="Workshop atmosphere"
+              />
+            </div>
+            <div className="bg-slate-50 dark:bg-zinc-900/40 p-16 rounded-[2.5rem] flex flex-col justify-center border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-xl transition-all h-full">
+              <h4 className="text-4xl font-black mb-6 text-slate-900 dark:text-white uppercase tracking-tighter">Visit Our Labs</h4>
+              <p className="text-lg text-slate-500 dark:text-zinc-400 font-medium leading-relaxed">Our facilities are designed for transparency. See our master technicians in action from the viewing gallery. We pride ourselves on an open diagnostics process.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
