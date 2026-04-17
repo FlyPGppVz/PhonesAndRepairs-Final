@@ -35,22 +35,27 @@ export default function CartPage() {
           {/* Listado de Productos */}
           <div className="lg:col-span-2 space-y-4">
             {cart.map((item) => (
-              <div key={`${item.id}-${item.color}`} className="cupertino-glass p-5 rounded-3xl flex items-center gap-6 group hover:shadow-xl hover:shadow-blue-500/5 transition-all">
+              <div key={`${item.id}-${item.color}-${item.storage}`} className="cupertino-glass p-5 rounded-3xl flex items-center gap-6 group hover:shadow-xl hover:shadow-blue-500/5 transition-all">
                 <div className="w-24 h-24 bg-slate-100 dark:bg-zinc-800 rounded-2xl overflow-hidden shadow-inner flex-shrink-0">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="flex-1 space-y-1">
                   <h3 className="text-lg font-bold dark:text-white">{item.title}</h3>
-                  <p className="text-sm text-slate-500 dark:text-zinc-400 flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full border border-white/20" style={{ backgroundColor: 'white' }}></span>
-                    Color: {item.color}
+                  <p className="text-sm text-slate-500 dark:text-zinc-400 flex flex-wrap items-center gap-3">
+                    <span className="flex items-center gap-1.5 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-full border border-slate-200 dark:border-white/5">
+                      <span className="w-2 h-2 rounded-full border border-white/20" style={{ backgroundColor: item.color === 'White' ? '#fff' : item.color }}></span>
+                      {item.color}
+                    </span>
+                    <span className="bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-full border border-slate-200 dark:border-white/5 font-medium">
+                      {item.storage}
+                    </span>
                   </p>
                   <p className="font-bold text-blue-600 dark:text-blue-400">${item.price.toLocaleString()}</p>
                 </div>
                 <div className="flex flex-col items-end gap-2">
                   <span className="text-sm font-bold bg-slate-100 dark:bg-zinc-800 px-3 py-1 rounded-lg dark:text-white">x{item.quantity}</span>
                   <button 
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item.id, item.color, item.storage)}
                     className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all"
                   >
                     <span className="material-symbols-outlined text-xl">delete</span>
