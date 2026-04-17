@@ -38,8 +38,12 @@ export default function Navbar() {
     <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900 dark:text-white">
       <nav className="flex items-center justify-between px-6 py-1 max-w-[1440px] mx-auto h-14">
         <div className="flex-1 flex items-center">
-          <Link href="/" className="active:opacity-70 transition-all font-black text-lg tracking-tighter">
-            CellphonesAndRepair.
+          <Link href="/" className="active:opacity-70 transition-all">
+            <img 
+              src="/assets/images/logo-transparent.png" 
+              alt="CellphonesAndRepair" 
+              className="h-8 w-auto object-contain scale-95 dark:invert dark:brightness-200"
+            />
           </Link>
         </div>
 
