@@ -42,7 +42,7 @@ export default function Home() {
             { label: 'Android', icon: 'phone_android', param: 'android' },
             { label: 'iPads', icon: 'tablet_mac', param: 'ipads' },
             { label: 'Smartwatch', icon: 'watch', param: 'smartwatch' },
-            { label: 'Accessories', icon: 'accessories', param: 'accessories' },
+            { label: 'Accessories', icon: 'headphones', param: 'accessories' },
             { label: 'Consoles', icon: 'videogame_asset', param: 'consoles' }
           ].map((cat) => (
             <Link 
