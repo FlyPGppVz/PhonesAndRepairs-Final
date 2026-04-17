@@ -31,6 +31,47 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone 17 pro'],
+    description: 'Performance meets elegance. A19 Pro chip, surgical-grade titanium, and the most advanced Pro camera system ever.',
+    processor_name: 'A19 Pro',
+    display_nits: '3000 nits',
+    refresh_rate: '120Hz',
+    battery_desc: 'Up to 30h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Titanium White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_17_pro/iphone-17-pro-max-white.png' },
+      { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_17_pro/iphone-17-pro-max-black-.png' },
+      { color_name: 'Desert Orange', color_hex: '#E67E22', image_url: '/assets/images/Tienda/Tienda/Iphone_17_pro/iphone-17-pro-max-orange-.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 17'],
+    description: 'The next generation of iPhone. A19 chip, vibrant display, and all-day battery life. Beautifully designed for everything you do.',
+    processor_name: 'A19',
+    display_nits: '2500 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 24h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-black.jpeg' },
+      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-white.jpeg' },
+      { color_name: 'Glacial Blue', color_hex: '#A2C4D2', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-glacial.jpeg' },
+      { color_name: 'Sage Green', color_hex: '#B2C2B2', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-sage.jpeg' },
+      { color_name: 'Lavande', color_hex: '#D1D1E0', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-lavande.jpeg' }
+    ]
+  },
+  {
     model_keys: ['iphone 16 pro max'],
     description: 'The ultimate Pro. Apple Intelligence. Massive 6.9-inch display. Titanium design. Camera Control. 48MP Ultra Wide camera. A18 Pro chip. Best battery life on iPhone.',
     processor_name: 'A18 Pro',
