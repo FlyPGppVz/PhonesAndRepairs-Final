@@ -203,6 +203,26 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro_max/iphone-12-pro-max-gold.png' },
       { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro_max/iphone-12-pro-max-silver.png' }
     ]
+  },
+  {
+    model_keys: ['iphone 12 pro'],
+    description: 'A Pro experience in a compact size. Surgical-grade stainless steel. A14 Bionic chip. Night mode on all cameras.',
+    processor_name: 'A14 Bionic',
+    display_nits: '1200 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 17h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Pacific Blue', color_hex: '#3D5C6C', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro/iphone-12-pro-max-pasificb.png' },
+      { color_name: 'Graphite', color_hex: '#41424C', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro/iphone-12-pro-max-grafito.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro/iphone-12-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_12_pro/iphone-12-pro-max-silver.png' }
+    ]
   }
 ];
 
