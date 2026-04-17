@@ -55,53 +55,55 @@ export default function Navbar() {
               Shop <span className="material-symbols-outlined text-[14px]">expand_more</span>
             </Link>
             
-            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[900px] bg-white dark:bg-[#0a0a0a] border border-slate-200/50 dark:border-white/5 shadow-2xl rounded-3xl p-10 opacity-0 invisible group-hover/shop:opacity-100 group-hover/shop:visible transition-all duration-300 translate-y-2 group-hover/shop:translate-y-0 z-50">
-              <div className="grid grid-cols-4 gap-10">
-                {/* Column 1: IPHONES */}
-                <div className="space-y-6">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.15em] block">iphones</span>
-                  <div className="space-y-4">
-                    <Link href="/shop?category=iPhones" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Shop All iPhone</Link>
-                    <div className="space-y-2">
-                      <Link href="/shop?model=17-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">iPhone 17 Pro Max</Link>
-                      <Link href="/shop?model=16-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">iPhone 16 Pro Max</Link>
-                      <Link href="/shop?compare=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Compare Models</Link>
+            <div className="fixed top-14 left-0 w-full bg-white dark:bg-[#0a0a0a] border-b border-slate-200/50 dark:border-white/5 shadow-2xl opacity-0 invisible group-hover/shop:opacity-100 group-hover/shop:visible transition-all duration-300 translate-y-0 z-50 overflow-hidden">
+              <div className="max-w-[1440px] mx-auto px-20 py-16">
+                <div className="grid grid-cols-4 gap-12">
+                  {/* Column 1: IPHONES */}
+                  <div className="space-y-6">
+                    <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">iphones</span>
+                    <div className="space-y-4">
+                      <Link href="/shop?category=iPhones" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Shop All iPhone</Link>
+                      <div className="space-y-2">
+                        <Link href="/shop?model=17-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">iPhone 17 Pro Max</Link>
+                        <Link href="/shop?model=16-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">iPhone 16 Pro Max</Link>
+                        <Link href="/shop?compare=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Compare Models</Link>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Column 2: ANDROID */}
-                <div className="space-y-6">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.15em] block">android</span>
-                  <div className="space-y-4">
-                    <Link href="/shop?category=Samsung" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Samsung Galaxy</Link>
-                    <div className="space-y-2">
-                      <Link href="/shop?model=s25-ultra" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">S25 Ultra</Link>
-                      <Link href="/shop?category=Samsung" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">S24 Series</Link>
-                      <Link href="/shop?certified=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Certified Androids</Link>
+                  {/* Column 2: ANDROID */}
+                  <div className="space-y-6">
+                    <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">android</span>
+                    <div className="space-y-4">
+                      <Link href="/shop?category=Samsung" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Samsung Galaxy</Link>
+                      <div className="space-y-2">
+                        <Link href="/shop?model=s25-ultra" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">S25 Ultra</Link>
+                        <Link href="/shop?category=Samsung" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">S24 Series</Link>
+                        <Link href="/shop?certified=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Certified Androids</Link>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Column 3: ECOSYSTEM */}
-                <div className="space-y-6">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.15em] block">ecosystem</span>
-                  <div className="space-y-3 pt-1">
-                    <Link href="/shop?category=iPad" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">iPad</Link>
-                    <Link href="/shop?category=Watch" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">Apple Watch</Link>
-                    <Link href="/shop?category=Consoles" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">Consoles & Gaming</Link>
+                  {/* Column 3: ECOSYSTEM */}
+                  <div className="space-y-6">
+                    <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">ecosystem</span>
+                    <div className="space-y-3 pt-1">
+                      <Link href="/shop?category=iPad" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">iPad</Link>
+                      <Link href="/shop?category=Watch" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">Apple Watch</Link>
+                      <Link href="/shop?category=Consoles" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">Consoles & Gaming</Link>
+                    </div>
                   </div>
-                </div>
 
-                {/* Column 4: SHOP SELECTION */}
-                <div className="space-y-6">
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.15em] block">shop selection</span>
-                  <div className="space-y-4">
-                    <Link href="/shop?category=Accessories" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Essential Accessories</Link>
-                    <div className="space-y-2">
-                      <Link href="/shop?tag=cables" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Cables & Power</Link>
-                      <Link href="/shop?tag=cases" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Cases & Protection</Link>
-                      <Link href="/shop?category=AirPods" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">AirPods & Audio</Link>
+                  {/* Column 4: SHOP SELECTION */}
+                  <div className="space-y-6">
+                    <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">shop selection</span>
+                    <div className="space-y-4">
+                      <Link href="/shop?category=Accessories" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Essential Accessories</Link>
+                      <div className="space-y-2">
+                        <Link href="/shop?tag=cables" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Cables & Power</Link>
+                        <Link href="/shop?tag=cases" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Cases & Protection</Link>
+                        <Link href="/shop?category=AirPods" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">AirPods & Audio</Link>
+                      </div>
                     </div>
                   </div>
                 </div>
