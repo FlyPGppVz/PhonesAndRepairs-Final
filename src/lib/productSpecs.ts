@@ -396,6 +396,25 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone xs'],
+    description: 'Welcome to the big screens. Super Retina. Faster Face ID. The smartest, most powerful chip in a smartphone. And a breakthrough dual-camera system. Surgical-grade stainless steel.',
+    processor_name: 'A12 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 14h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 250 }
+    ],
+    variants: [
+      { color_name: 'Space Gray', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_Xs/Iphone_XS_Black.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_Xs/Iphone_XS_Gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_Xs/Iphone_XS_Silver.png' }
+    ]
+  },
+  {
     model_keys: ['iphone x'],
     description: 'Say hello to the future. 5.8-inch Super Retina display. Face ID. A11 Bionic chip. Dual 12MP cameras with OIS. Stainless steel and glass design.',
     processor_name: 'A11 Bionic',
