@@ -48,7 +48,6 @@ export default function Navbar() {
         <div className="hidden md:flex flex-[2] items-center justify-center gap-6 font-sans text-[12px] font-medium tracking-tight">
           <Link href="/" className={`${pathname === '/' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Home</Link>
           <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Services</Link>
-          <Link href="/shop" className={`${pathname?.startsWith('/shop') && !pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Shop</Link>
           
           <div className="relative group">
             <button className={`${pathname?.startsWith('/repairs') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors flex items-center gap-1`}>
@@ -66,32 +65,10 @@ export default function Navbar() {
           </div>
 
           <Link href="/about" className={`${pathname === '/about' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>About Us</Link>
-          
-          {user?.email?.startsWith('flypg65') && (
-            <Link href="/admin/shop" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors font-bold border-l pl-8 border-slate-200 dark:border-white/10`}>Admin</Link>
-          )}
         </div>
 
         <div className="flex-1 flex items-center justify-end gap-4">
           <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">search</button>
-          
-          <Link href="/cart" className="relative group">
-            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
-            {totalItems > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </Link>
-          
-          {user ? (
-            <div className="flex items-center gap-4">
-              <span className="hidden lg:block text-[10px] font-bold uppercase tracking-widest text-slate-400">{user.email.split('@')[0]}</span>
-              <button onClick={handleLogout} className="material-symbols-outlined text-red-500 text-[18px] hover:scale-110 transition-all">logout</button>
-            </div>
-          ) : (
-            <Link href="/auth" className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">person</Link>
-          )}
         </div>
       </nav>
     </header>
