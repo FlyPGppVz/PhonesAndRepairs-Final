@@ -6,7 +6,7 @@ import Link from 'next/link';
 import toast from 'react-hot-toast';
 
 export default function CartPage() {
-  const { cart, removeFromCart, totalPrice, totalItems } = useCart();
+  const { cart, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -52,13 +52,31 @@ export default function CartPage() {
                   </p>
                   <p className="font-bold text-blue-600 dark:text-blue-400">${item.price.toLocaleString()}</p>
                 </div>
-                <div className="flex flex-col items-end gap-2">
-                  <span className="text-sm font-bold bg-slate-100 dark:bg-zinc-800 px-3 py-1 rounded-lg dark:text-white">x{item.quantity}</span>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center bg-slate-100 dark:bg-zinc-800 rounded-2xl p-1 border border-slate-200 dark:border-white/5">
+                    <button 
+                      onClick={() => updateQuantity(item.id, item.color, item.storage, -1)}
+                      className="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-white dark:hover:bg-white/10 text-slate-500 dark:text-zinc-400 transition-all active:scale-90 disabled:opacity-30"
+                      disabled={item.quantity <= 1}
+                    >
+                      <span className="material-symbols-outlined text-lg">remove</span>
+                    </button>
+                    <span className="w-10 text-center font-black dark:text-white text-sm">
+                      {item.quantity}
+                    </span>
+                    <button 
+                      onClick={() => updateQuantity(item.id, item.color, item.storage, 1)}
+                      className="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-white dark:hover:bg-white/10 text-slate-500 dark:text-zinc-400 transition-all active:scale-90"
+                    >
+                      <span className="material-symbols-outlined text-lg">add</span>
+                    </button>
+                  </div>
                   <button 
                     onClick={() => removeFromCart(item.id, item.color, item.storage)}
-                    className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all"
+                    className="p-1.5 text-slate-300 hover:text-red-500 transition-colors"
+                    title="Remove item"
                   >
-                    <span className="material-symbols-outlined text-xl">delete</span>
+                    <span className="material-symbols-outlined text-lg">delete</span>
                   </button>
                 </div>
               </div>
@@ -89,8 +107,8 @@ export default function CartPage() {
                 className="w-full bg-blue-600 dark:bg-blue-500 text-white py-5 rounded-3xl font-bold text-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-all shadow-xl shadow-blue-500/20 active:scale-[0.98] mt-4 flex items-center justify-center gap-2"
                 onClick={() => toast('Coming Soon: Stripe Checkout Integration', { icon: '🚀' })}
               >
-                Pay with Stripe
-                <span className="material-symbols-outlined">shoppay</span>
+                Buy Now
+                <span className="material-symbols-outlined">bolt</span>
               </button>
 
               <div className="text-center">
