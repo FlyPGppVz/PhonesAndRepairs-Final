@@ -25,7 +25,6 @@ export default function Footer() {
           <Link className="text-sm text-slate-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white transition-all font-medium" href="/about">About Us</Link>
           <Link className="text-sm text-slate-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white transition-all font-medium" href="/careers">Careers</Link>
           <Link className="text-sm text-slate-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white transition-all font-medium" href="/sustainability">Sustainability</Link>
-          <Link className="text-sm text-slate-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-white transition-all font-medium" href="/locations">Locations</Link>
         </div>
 
         <div className="flex flex-col gap-5">
