@@ -57,33 +57,51 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // IMPORTANT: DO NOT REMOVE. This refreshes session if expired - required for Server Components
-  // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#middleware
+  // This will refresh the session if it is expired
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Protect all /admin routes
-  if (request.nextUrl.pathname.startsWith('/admin')) {
+  // Protection Logic
+  const isPathAdmin = request.nextUrl.pathname.startsWith('/admin')
+
+  if (isPathAdmin) {
     if (!user) {
       const loginUrl = new URL('/auth', request.url)
       loginUrl.searchParams.set('next', request.nextUrl.pathname)
       return NextResponse.redirect(loginUrl)
     }
 
-    // Check if the user is in the 'admins' table
-    const { data: adminData } = await supabase
+    // Check if user is admin
+    const { data: adminData, error } = await supabase
       .from('admins')
       .select('user_id')
       .eq('user_id', user.id)
-      .single()
+      .maybeSingle()
 
-    if (!adminData) {
+    if (error || !adminData) {
+      // Not an admin, redirect home
+      console.warn(`Non-admin attempted access: ${user.email}`)
       return NextResponse.redirect(new URL('/', request.url))
     }
+  }
+
+  // If user is logged in and trying to go to /auth, redirect to home or next
+  if (user && request.nextUrl.pathname.startsWith('/auth')) {
+    const next = request.nextUrl.searchParams.get('next') || '/'
+    return NextResponse.redirect(new URL(next, request.url))
   }
 
   return response
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * Feel free to modify this pattern to include more paths.
+     */
+    '/((?!_next/static|_next/image|favicon.ico).*)',
+  ],
 }

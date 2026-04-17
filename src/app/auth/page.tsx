@@ -1,5 +1,8 @@
 'use client';
 
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 import toast from 'react-hot-toast';
 
 export default function AuthPage() {
