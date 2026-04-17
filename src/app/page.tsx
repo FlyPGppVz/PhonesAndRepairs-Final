@@ -176,12 +176,15 @@ export default function Home() {
 
       {/* Promotional Banner Section */}
       <section className="px-8 pb-24 max-w-[1440px] mx-auto animate-in fade-in slide-in-from-bottom duration-1000 delay-300">
-        <div className="bg-blue-50 dark:bg-blue-900/10 rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 border border-blue-100 dark:border-blue-900/20 overflow-hidden relative group">
+        <div className="bg-black rounded-[3rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 border border-white/10 overflow-hidden relative group">
+          {/* Pulsating Radial Glow Background */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_transparent_70%)] blur-[100px] rounded-full pointer-events-none animate-pulse-glow opacity-50"></div>
+
           <div className="flex-1 z-10">
-            <h2 className="text-4xl md:text-5xl font-black text-blue-600 dark:text-blue-400 uppercase tracking-tighter leading-none mb-6">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400 bg-clip-text text-transparent">
               Premium Support for All Your Devices
             </h2>
-            <p className="text-blue-900/70 dark:text-blue-200/60 text-lg font-medium max-w-xl mb-10">
+            <p className="text-zinc-400 text-lg font-medium max-w-xl mb-10 leading-relaxed">
               Subscribe to our technical network and get exclusive priority for repairs, bulk discounts, and professional tracking for every device in your workspace.
             </p>
             <div className="flex gap-4">
