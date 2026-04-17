@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { addToInbox } from '@/lib/inbox';
 import toast from 'react-hot-toast';
 
 export default function ServicesPage() {
