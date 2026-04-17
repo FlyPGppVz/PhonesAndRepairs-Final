@@ -17,11 +17,18 @@ export default function AddToCartSmall({ product }: { product: any }) {
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    
     const firstVariant = product.variants?.[0] || { color_hex: '', image_url: '', color_name: 'Standard' };
-    addToCart(product, firstVariant);
+    const firstStorage = product.storage_options && product.storage_options.length > 0 
+      ? product.storage_options[0] 
+      : { capacity: 'Standard', price_offset: 0 };
+    
+    const finalPrice = Number(product.price) + firstStorage.price_offset;
+    
+    addToCart(product, firstVariant, firstStorage.capacity, finalPrice);
     
     // Premium toast feedback
-    toast.success(`${product.title} añadido`, {
+    toast.success(`${product.title} (${firstStorage.capacity}) added`, {
       icon: '🛒',
     });
   };
