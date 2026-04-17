@@ -45,8 +45,8 @@ export default function AuthPage() {
         const searchParams = new URLSearchParams(window.location.search);
         const nextPath = searchParams.get('next');
         
+        router.refresh(); // Crucial: Revalidate middleware session
         router.push(nextPath || '/');
-        router.refresh();
       }
     } catch (error: any) {
       toast.error(error.message);
