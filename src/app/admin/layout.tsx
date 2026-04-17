@@ -45,23 +45,28 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     redirect('/auth');
   }
 
-  // Direct access for the primary admin email
-  if (user.email === 'flypg65@gmail.com') {
-    return (
-      <AdminClientLayout>
-        {children}
-      </AdminClientLayout>
-    );
-  }
+  try {
+    // Direct access for the primary admin email
+    if (user.email === 'flypg65@gmail.com') {
+      return (
+        <AdminClientLayout>
+          {children}
+        </AdminClientLayout>
+      );
+    }
 
-  // Double check admin database record on the server
-  const { data: adminRecord } = await supabase
-    .from('admins')
-    .select('user_id')
-    .eq('user_id', user.id)
-    .maybeSingle();
+    // Double check admin database record on the server
+    const { data: adminRecord } = await supabase
+      .from('admins')
+      .select('user_id')
+      .eq('user_id', user.id)
+      .maybeSingle();
 
-  if (!adminRecord) {
+    if (!adminRecord) {
+      redirect('/');
+    }
+  } catch (e) {
+    console.error('Admin layout check failed:', e);
     redirect('/');
   }
 
