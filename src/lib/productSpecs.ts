@@ -396,6 +396,19 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['premium silicon case', 'silicone case'],
+    description: 'Exquisite protection for your device. High-grade liquid silicone with a silky, soft-touch finish. Internal microfiber lining to prevent scratches.',
+    processor_name: '-',
+    display_nits: '-',
+    refresh_rate: '-',
+    battery_desc: '-',
+    category: 'Accessories',
+    storage_options: [],
+    variants: [
+      { color_name: 'Mixed Colors', color_hex: '#2F3136', image_url: '/assets/images/Tienda/Tienda/Cases/cases-png.png' }
+    ]
+  },
+  {
     model_keys: ['airpods pro 2', 'airpods pro second gen'],
     description: 'Rebuilt from the sound up. Features up to 2x more Active Noise Cancellation, Adaptive Audio, and Transparency mode. Powered by the H2 chip. MagSafe Charging Case (USB-C).',
     processor_name: 'Apple H2',
