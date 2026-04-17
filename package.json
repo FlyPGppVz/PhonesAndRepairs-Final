@@ -8,7 +8,5 @@
     "stripe": "^14.14.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "start": "serve ."
-  }
+  "scripts": {}
 }
