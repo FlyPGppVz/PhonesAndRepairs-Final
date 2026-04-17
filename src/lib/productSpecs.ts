@@ -396,6 +396,26 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone 7 plus'],
+    description: 'Dual 12MP cameras. High-resolution zoom. 5.5-inch Retina HD display. A10 Fusion chip. Best battery life on an iPhone 7. Splash and water resistant.',
+    processor_name: 'A10 Fusion',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 14h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '32GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 120 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/iphone_7_plus/Iphone_7_plus_Black.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/iphone_7_plus/Iphone_7_plus_Gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/iphone_7_plus/Iphone_7_plus_Silver.png' },
+      { color_name: 'Rose Gold', color_hex: '#FADADD', image_url: '/assets/images/Tienda/Tienda/iphone_7_plus/Iphone_7_plus_roseGold.png' }
+    ]
+  },
+  {
     model_keys: ['iphone 7'],
     description: 'This is iPhone 7. Advanced camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. A10 Fusion chip. Splash and water resistant.',
     processor_name: 'A10 Fusion',
