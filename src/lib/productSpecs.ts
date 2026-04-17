@@ -407,6 +407,66 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-tatanio.png' },
       { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-titanioW.png' }
     ]
+  },
+  {
+    model_keys: ['iphone 16'],
+    description: 'Built for Apple Intelligence. Camera Control. 48MP Fusion camera. Five vibrant colors. Action button. A18 chip.',
+    processor_name: 'A18',
+    display_nits: '2000 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 22h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-black.png' },
+      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-white.png' },
+      { color_name: 'Pink', color_hex: '#F0BED0', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-pink.png' },
+      { color_name: 'Teal', color_hex: '#91C8C8', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-purple.png' },
+      { color_name: 'Ultramarine', color_hex: '#4B6D82', image_url: '/assets/images/Tienda/Tienda/Iphone_16/iphone-16-ultramarino.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 16 pro'],
+    description: 'Hello, Apple Intelligence. Stunning titanium design. Larger 6.3-inch display. Camera Control. 48MP Ultra Wide camera. A18 Pro chip.',
+    processor_name: 'A18 Pro',
+    display_nits: '2000 nits',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 27h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Desert Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro/iphone-16-pro-max-desert.png' },
+      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro/iphone-16-pro-max-tiniumblack.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro/iphone-16-pro-max-titaniumwhite.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 16 pro max'],
+    description: 'The ultimate Pro. Apple Intelligence. Massive 6.9-inch display. Titanium design. Camera Control. 48MP Ultra Wide camera. A18 Pro chip. Best battery life on iPhone.',
+    processor_name: 'A18 Pro',
+    display_nits: '2000 nits',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 33h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '256GB', price_offset: 0 },
+      { capacity: '512GB', price_offset: 200 },
+      { capacity: '1TB', price_offset: 400 }
+    ],
+    variants: [
+      { color_name: 'Desert Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro_max/iphone-16-pro-max-desert.png' },
+      { color_name: 'Black Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro_max/iphone-16-pro-max-tiniumblack.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_16_Pro_max/iphone-16-pro-max-titaniumwhite.png' }
+    ]
   }
 ];
 
