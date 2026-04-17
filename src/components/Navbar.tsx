@@ -121,7 +121,20 @@ export default function Navbar() {
         </div>
 
         <div className="flex-1 flex items-center justify-center gap-3">
-          <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors p-1.5">search</button>
+          <div className="group relative flex items-center bg-slate-50 dark:bg-white/5 rounded-full px-2 py-1 border border-transparent focus-within:border-blue-500/50 focus-within:bg-white dark:focus-within:bg-zinc-900 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/5">
+            <input 
+              type="text"
+              placeholder="Search store..."
+              className="w-0 group-hover:w-40 focus:w-40 transition-all duration-500 outline-none bg-transparent text-[11px] font-bold tracking-tight text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-500 px-0 group-hover:px-2 focus:px-2"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const query = (e.target as HTMLInputElement).value;
+                  if (query) router.push(`/shop?q=${encodeURIComponent(query)}`);
+                }
+              }}
+            />
+            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] group-hover:text-blue-500 transition-colors p-1 cursor-default">search</span>
+          </div>
           
           <ThemeToggle />
           
