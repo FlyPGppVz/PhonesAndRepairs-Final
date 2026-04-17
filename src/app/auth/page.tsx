@@ -44,12 +44,8 @@ export default function AuthPage() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         
-        // Handle post-login redirection
-        const searchParams = new URLSearchParams(window.location.search);
-        const nextPath = searchParams.get('next');
-        
-        router.refresh(); // Crucial: Revalidate middleware session
-        router.push(nextPath || '/');
+        // Use window.location.href for full refresh and direct redirect to home
+        window.location.href = '/';
       }
     } catch (error: any) {
       toast.error(error.message);

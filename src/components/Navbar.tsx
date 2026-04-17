@@ -29,7 +29,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.refresh();
+    window.location.href = '/';
   };
 
   const { totalItems } = useCart();
