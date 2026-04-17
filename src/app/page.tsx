@@ -38,19 +38,23 @@ export default function Home() {
       <section className="max-w-[1440px] mx-auto px-12 md:px-20 py-24 relative z-30">
         <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 lg:gap-24">
           {[
-            { label: 'iPhone', icon: 'smartphone', color: '#1d1d1f' },
-            { label: 'Samsung', icon: 'phone_android', color: '#1d1d1f' },
-            { label: 'iPads', icon: 'tablet_mac', color: '#1d1d1f' },
-            { label: 'Smartwatch', icon: 'watch', color: '#1d1d1f' },
-            { label: 'Accessories', icon: 'headphones', color: '#1d1d1f' },
-            { label: 'Consoles', icon: 'videogame_asset', color: '#1d1d1f' }
+            { label: 'iPhone', icon: 'smartphone', param: 'iphone' },
+            { label: 'Android', icon: 'phone_android', param: 'android' },
+            { label: 'iPads', icon: 'tablet_mac', param: 'ipads' },
+            { label: 'Smartwatch', icon: 'watch', param: 'smartwatch' },
+            { label: 'Accessories', icon: 'accessories', param: 'accessories' },
+            { label: 'Consoles', icon: 'videogame_asset', param: 'consoles' }
           ].map((cat) => (
-            <div key={cat.label} className="group flex flex-col items-center gap-4 transition-all cursor-pointer">
+            <Link 
+              key={cat.label} 
+              href={`/shop?category=${cat.param}`} 
+              className="group flex flex-col items-center gap-4 transition-all"
+            >
               <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-neutral-900 transition-all group-hover:bg-slate-50 dark:group-hover:bg-neutral-800 group-hover:scale-110 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-500/10 overflow-hidden">
                 <span className="material-symbols-outlined text-[40px] md:text-[46px] text-[#1d1d1f] dark:text-white transition-transform group-hover:rotate-12">{cat.icon}</span>
               </div>
               <span className="text-xs font-bold text-[#1d1d1f] dark:text-zinc-400 font-sans tracking-tight uppercase group-hover:text-blue-600 transition-colors">{cat.label}</span>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
