@@ -675,6 +675,19 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Titanium Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/S25/s25_ultra_Png.png' },
       { color_name: 'Titanium Gray', color_hex: '#535150', image_url: '/assets/images/Tienda/Tienda/S25/S25ultra-shop-png.webp' }
     ]
+  },
+  {
+    model_keys: ['ultimate screen protection', 'screen protector', 'tempered glass'],
+    description: 'Ultimate edge-to-edge protection. High-tension tempered glass with 9H hardness rating. Oleophobic coating to resist fingerprints and maintain touch sensitivity.',
+    processor_name: '-',
+    display_nits: '-',
+    refresh_rate: '-',
+    battery_desc: '-',
+    category: 'Accessories',
+    storage_options: [],
+    variants: [
+      { color_name: 'Clear', color_hex: '#FFFFFF', image_url: '/assets/images/Tienda/Tienda/Protecto_de_pantalla/Screen-protector-png.png' }
+    ]
   }
 ];
 
