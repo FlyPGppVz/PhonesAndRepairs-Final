@@ -348,6 +348,65 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-gold.png' },
       { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-silver.png' }
     ]
+  },
+  {
+    model_keys: ['iphone 15'],
+    description: 'New camera. New design. Newfound power. Dynamic Island comes to iPhone 15. 48MP Main camera. Durable color-infused glass and aluminum design. USB-C.',
+    processor_name: 'A16 Bionic',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 20h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Black.png' },
+      { color_name: 'Blue', color_hex: '#D1DCE3', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Blue.png' },
+      { color_name: 'Yellow', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_15/iphone-15-yellow.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_15/Iphone_15_Red.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 15 pro'],
+    description: 'Forged in titanium. A17 Pro chip — a game-changing chip. Pro-class GPU. Action button. Pro camera system. USB‑C with USB 3 speeds.',
+    processor_name: 'A17 Pro',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 23h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Blue Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro/iphone-15-pro-max-titaniob.png' },
+      { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro/iphone-15-pro-max-tatanio.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro/iphone-15-pro-max-titanioW.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 15 pro max'],
+    description: 'The ultimate iPhone. Titanium design. A17 Pro chip. Pro-class GPU. 5x Telephoto camera. Action button. Professional-grade video capabilities. USB-C.',
+    processor_name: 'A17 Pro',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 29h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '256GB', price_offset: 0 },
+      { capacity: '512GB', price_offset: 200 },
+      { capacity: '1TB', price_offset: 400 }
+    ],
+    variants: [
+      { color_name: 'Blue Titanium', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-titaniob.png' },
+      { color_name: 'Natural Titanium', color_hex: '#BCB5A8', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-tatanio.png' },
+      { color_name: 'White Titanium', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_15_Pro_max/iphone-15-pro-max-titanioW.png' }
+    ]
   }
 ];
 
