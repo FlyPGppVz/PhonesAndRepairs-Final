@@ -285,6 +285,69 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-gold.png' },
       { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_13_Pro_max/iphone-13-pro-max-silver.png' }
     ]
+  },
+  {
+    model_keys: ['iphone 14'],
+    description: 'Wonderfull. Big and bigger. Super Retina XDR display. Advanced dual-camera system for better photos in any light. Action mode for smooth handheld videos. Vital safety technology.',
+    processor_name: 'A15 Bionic (5-core GPU)',
+    display_nits: '800 nits (typical), 1200 nits (peak)',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 20h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 }
+    ],
+    variants: [
+      { color_name: 'Midnight', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-midnight.png' },
+      { color_name: 'Blue', color_hex: '#A2B2C8', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-blue.png' },
+      { color_name: 'Purple', color_hex: '#B1A9D0', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-purple.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-red.png' },
+      { color_name: 'Starlight', color_hex: '#F2F2E4', image_url: '/assets/images/Tienda/Tienda/Iphone_14/iphone-14-starlight.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 14 pro'],
+    description: 'Pro. Beyond. A magical new way to interact with iPhone. Dynamic Island. Always-On display. 48MP Main camera for up to 4x resolution.',
+    processor_name: 'A16 Bionic',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 23h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-blackSpace.png' },
+      { color_name: 'Deep Purple', color_hex: '#4B4254', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-purpleb.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro/iphone-14-pro-max-silver.png' }
+    ]
+  },
+  {
+    model_keys: ['iphone 14 pro max'],
+    description: 'The ultimate Pro. Dynamic Island. Always-On display. 48MP Main camera. Our most powerful pro camera system ever. Massive battery life.',
+    processor_name: 'A16 Bionic',
+    display_nits: '2000 nits (peak)',
+    refresh_rate: '120Hz ProMotion',
+    battery_desc: 'Up to 29h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 300 },
+      { capacity: '1TB', price_offset: 500 }
+    ],
+    variants: [
+      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-blackSpace.png' },
+      { color_name: 'Deep Purple', color_hex: '#4B4254', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-purpleb.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_14_Pro_max/iphone-14-pro-max-silver.png' }
+    ]
   }
 ];
 
