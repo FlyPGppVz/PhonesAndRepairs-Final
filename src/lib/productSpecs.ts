@@ -396,6 +396,23 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone x'],
+    description: 'Say hello to the future. 5.8-inch Super Retina display. Face ID. A11 Bionic chip. Dual 12MP cameras with OIS. Stainless steel and glass design.',
+    processor_name: 'A11 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 13h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 150 }
+    ],
+    variants: [
+      { color_name: 'Space Gray', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_X/Iphone_X_Black.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_X/Iphone_X_White.png' }
+    ]
+  },
+  {
     model_keys: ['samsung', 's25 ultra', 's24 ultra'],
     description: 'The champion of Android. Unrivaled performance, premium titanium design, and an integrated S Pen for ultimate productivity.',
     processor_name: 'Snapdragon 8 Gen 4',
