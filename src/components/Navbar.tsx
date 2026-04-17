@@ -37,7 +37,11 @@ export default function Navbar() {
       <nav className="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto h-16">
         <div className="flex-1 flex items-center">
           <Link href="/" className="active:opacity-70 transition-all">
-            <span className="font-bold text-xl tracking-tight">PhonesAndRepairs</span>
+            <img 
+              src="/assets/images/logo-transparent.png" 
+              alt="PhonesAndRepairs Logo" 
+              className="h-10 w-auto object-contain scale-95 dark:invert dark:brightness-200"
+            />
           </Link>
         </div>
 
