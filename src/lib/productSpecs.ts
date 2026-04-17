@@ -396,6 +396,25 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone air', 'iphone thin'],
+    description: 'Light as air. Powerful as pro. The all-new iPhone Air features extreme thinness with a revolutionary A18 chip and a breathtaking Liquid Retina display.',
+    processor_name: 'Apple A18',
+    display_nits: '1600 nits',
+    refresh_rate: '120Hz',
+    battery_desc: 'Up to 24h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '128GB', price_offset: 0 },
+      { capacity: '256GB', price_offset: 100 },
+      { capacity: '512GB', price_offset: 250 }
+    ],
+    variants: [
+      { color_name: 'Space Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/iphone_Air/iphone-air-black.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/iphone_Air/iphone-air-golden.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/iphone_Air/iphone-air-silver.png' }
+    ]
+  },
+  {
     model_keys: ['nintendo switch oled', 'switch oled'],
     description: 'Enjoy a vibrant 7-inch OLED screen that makes colors pop. Features a wide adjustable stand, a dock with a wired LAN port, 64 GB of internal storage, and enhanced audio.',
     processor_name: 'Custom NVIDIA Tegra',
