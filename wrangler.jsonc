@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "phones-and-repairs-nextjs",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "pk_test_51TMjCzKC0sZs6xiizgh3Gf1qGRCa3vJxY9Rv4zu2c28ogxdARGDzQ7gy3pulOy79nSkRsmYCt59kDfha9qLmgE6o00FO1iH23U"
+  }
+}
