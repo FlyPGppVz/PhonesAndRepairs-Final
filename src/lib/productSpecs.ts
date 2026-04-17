@@ -396,6 +396,27 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone xr'],
+    description: 'Brilliant. In every way. All-new Liquid Retina display. Faster Face ID. The smartest, most powerful chip in a smartphone. A breakthrough camera system. Six stunning new finishes.',
+    processor_name: 'A12 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 16h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 150 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_Xr/iphone-xr-black.png' },
+      { color_name: 'Blue', color_hex: '#A2B2C8', image_url: '/assets/images/Tienda/Tienda/Iphone_Xr/iphone-xr-blue.png' },
+      { color_name: 'Red', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_Xr/iphone-xr-red.png' },
+      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_Xr/iphone-xr-white.png' },
+      { color_name: 'Yellow', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/Iphone_Xr/iphone-xr-yellow.png' }
+    ]
+  },
+  {
     model_keys: ['iphone xs'],
     description: 'Welcome to the big screens. Super Retina. Faster Face ID. The smartest, most powerful chip in a smartphone. And a breakthrough dual-camera system. Surgical-grade stainless steel.',
     processor_name: 'A12 Bionic',
