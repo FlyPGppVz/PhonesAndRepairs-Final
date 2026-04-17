@@ -65,6 +65,11 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL('/auth', request.url))
     }
 
+    // Direct access for the primary admin email
+    if (user.email === 'flypg65@gmail.com') {
+      return response
+    }
+
     const { data: adminData } = await supabase
       .from('admins')
       .select('user_id')

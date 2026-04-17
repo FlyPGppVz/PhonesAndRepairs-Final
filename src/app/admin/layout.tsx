@@ -43,6 +43,15 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     redirect('/auth');
   }
 
+  // Direct access for the primary admin email
+  if (user.email === 'flypg65@gmail.com') {
+    return (
+      <AdminClientLayout>
+        {children}
+      </AdminClientLayout>
+    );
+  }
+
   // Double check admin database record on the server
   const { data: adminRecord } = await supabase
     .from('admins')
