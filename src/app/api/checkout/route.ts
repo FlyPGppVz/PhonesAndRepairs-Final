@@ -13,6 +13,7 @@ export async function POST(request: Request) {
 
   const stripe = new Stripe(stripeSecretKey, {
     apiVersion: '2025-01-27.acacia' as any,
+    httpClient: Stripe.createFetchHttpClient(),
   });
   try {
     const { items } = await request.json();
