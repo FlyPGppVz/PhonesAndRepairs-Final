@@ -52,7 +52,7 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
   },
   {
     model_keys: ['iphone 17'],
-    description: 'The next generation of iPhone. A19 chip, vibrant display, and all-day battery life. Beautifully designed for everything you do.',
+    description: 'The next generation of iPhone. Powered by the A19 chip. All-day battery life. Featuring Apple Intelligence and a stunning new design with five vibrant colors.',
     processor_name: 'A19',
     display_nits: '2500 nits',
     refresh_rate: '60Hz',
@@ -64,11 +64,11 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { capacity: '512GB', price_offset: 300 }
     ],
     variants: [
-      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-black.jpeg' },
-      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-white.jpeg' },
-      { color_name: 'Glacial Blue', color_hex: '#A2C4D2', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-glacial.jpeg' },
-      { color_name: 'Sage Green', color_hex: '#B2C2B2', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-sage.jpeg' },
-      { color_name: 'Lavande', color_hex: '#D1D1E0', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-lavande.jpeg' }
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-black-b.jpeg' },
+      { color_name: 'Glacial Blue', color_hex: '#A2C4D2', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-glacial-g.png' },
+      { color_name: 'Lavande', color_hex: '#D1D1E0', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-lavande.png' },
+      { color_name: 'Sage Green', color_hex: '#B2C2B2', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-sage-S.png' },
+      { color_name: 'White', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_17/iphone-17-white-w.png' }
     ]
   },
   {
