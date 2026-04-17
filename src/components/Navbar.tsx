@@ -42,7 +42,7 @@ export default function Navbar() {
             <img 
               src="/assets/images/logo-transparent.png" 
               alt="CellphonesAndRepair" 
-              className="h-9 w-auto object-contain dark:invert dark:brightness-200"
+              className="h-[42px] w-auto object-contain dark:invert dark:brightness-200"
             />
           </Link>
         </div>
