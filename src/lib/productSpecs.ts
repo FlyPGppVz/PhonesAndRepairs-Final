@@ -444,7 +444,7 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
       { capacity: '256GB', price_offset: 150 }
     ],
     variants: [
-      { color_name: 'Mixed Colors', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/ipad_10_gen/Ipad_10thgen.png' }
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/ipad_10_gen/Ipad_10thgen.png' }
     ]
   },
   {
