@@ -396,6 +396,26 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone 7'],
+    description: 'This is iPhone 7. Advanced camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. A10 Fusion chip. Splash and water resistant.',
+    processor_name: 'A10 Fusion',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 13h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '32GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 120 }
+    ],
+    variants: [
+      { color_name: 'Black', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/iPhone_7/iphone_7_black.png' },
+      { color_name: 'Gold', color_hex: '#F9E5BC', image_url: '/assets/images/Tienda/Tienda/iPhone_7/iphone_7_Gold.png' },
+      { color_name: 'Silver', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/iPhone_7/iphone_7_Silver.png' },
+      { color_name: 'Rose Gold', color_hex: '#FADADD', image_url: '/assets/images/Tienda/Tienda/iPhone_7/iphone_7_RoseGold.png' }
+    ]
+  },
+  {
     model_keys: ['iphone xs max'],
     description: 'Welcome to the big screens. Super Retina. The largest display ever on an iPhone (6.5"). Faster Face ID. A12 Bionic chip. Dual 12MP cameras with Depth Control. Surgical-grade stainless steel.',
     processor_name: 'A12 Bionic',
