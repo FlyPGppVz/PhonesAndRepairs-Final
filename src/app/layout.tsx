@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "PhonesAndRepairs | Premium Devices & Service",
   description: "Next-generation device sales and precision repair services.",
+  icons: {
+    icon: "/assets/images/logotipo_cellphones_and_repairs.png",
+  },
 };
 
 export default function RootLayout({
