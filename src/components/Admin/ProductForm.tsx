@@ -51,7 +51,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
   }, [initialData]);
 
   const addVariant = () => {
-    setVariants([...variants, { color_hex: '#0070c9', image_url: '', color_name: '' }]);
+    setVariants([...variants, { color_hex: '#063183', image_url: '', color_name: '' }]);
   };
 
   const updateVariant = (index: number, field: keyof Variant, value: string) => {
