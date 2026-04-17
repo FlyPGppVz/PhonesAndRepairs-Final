@@ -120,9 +120,10 @@ export default function Navbar() {
           )}
         </div>
 
-        <div className="flex-1 flex items-center justify-end gap-3">
-          <ThemeToggle />
+        <div className="flex-1 flex items-center justify-center gap-3">
           <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors p-1.5">search</button>
+          
+          <ThemeToggle />
           
           <Link href="/cart" className="relative group p-1.5 lowercase">
             <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
