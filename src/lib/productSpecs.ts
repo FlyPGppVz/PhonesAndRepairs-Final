@@ -396,6 +396,19 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['fast charging kit', 'charging kit', 'charger'],
+    description: 'Power up in minutes. Premium 45W Fast Charging Kit with USB-C PD technology. Includes a heavy-duty 1m USB-C to USB-C cable.',
+    processor_name: '-',
+    display_nits: '-',
+    refresh_rate: '-',
+    battery_desc: '-',
+    category: 'Accessories',
+    storage_options: [],
+    variants: [
+      { color_name: 'White', color_hex: '#FFFFFF', image_url: '/assets/images/Tienda/Tienda/Charges/charguers_png.png' }
+    ]
+  },
+  {
     model_keys: ['premium silicon case', 'silicone case'],
     description: 'Exquisite protection for your device. High-grade liquid silicone with a silky, soft-touch finish. Internal microfiber lining to prevent scratches.',
     processor_name: '-',
