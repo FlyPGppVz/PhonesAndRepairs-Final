@@ -396,6 +396,25 @@ export const PRODUCT_SPECS_DB: ProductSpec[] = [
     ]
   },
   {
+    model_keys: ['iphone se 3', 'iphone se 3rd gen'],
+    description: 'Love the power. Love the price. A15 Bionic chip. 5G speed. A camera that’s all kinds of smart. And a Home button you know and love. All in a durable 4.7-inch design.',
+    processor_name: 'A15 Bionic',
+    display_nits: '625 nits',
+    refresh_rate: '60Hz',
+    battery_desc: 'Up to 15h video playback',
+    category: 'iPhones',
+    storage_options: [
+      { capacity: '64GB', price_offset: 0 },
+      { capacity: '128GB', price_offset: 50 },
+      { capacity: '256GB', price_offset: 150 }
+    ],
+    variants: [
+      { color_name: 'Midnight', color_hex: '#1F2020', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-midnight.jpg' },
+      { color_name: 'Starlight', color_hex: '#F5F5F0', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-starlight.jpg' },
+      { color_name: '(PRODUCT)RED', color_hex: '#AF1E2D', image_url: '/assets/images/Tienda/Tienda/Iphone_SE_3/iphone-se-red.jpg' }
+    ]
+  },
+  {
     model_keys: ['iphone 8 plus'],
     description: 'A new generation of iPhone. Most durable glass design. Dual 12MP cameras with Portrait mode and Portrait Lighting. A11 Bionic chip. 5.5-inch Retina HD display with True Tone.',
     processor_name: 'A11 Bionic',
