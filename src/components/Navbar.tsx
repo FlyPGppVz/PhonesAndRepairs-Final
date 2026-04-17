@@ -34,18 +34,18 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900 dark:text-white">
-      <nav className="flex items-center justify-between px-6 py-2 max-w-[1440px] mx-auto h-16">
+      <nav className="flex items-center justify-between px-6 py-1 max-w-[1440px] mx-auto h-14">
         <div className="flex-1 flex items-center">
           <Link href="/" className="active:opacity-70 transition-all">
             <img 
               src="/assets/images/logo-transparent.png" 
               alt="PhonesAndRepairs Logo" 
-              className="h-10 w-auto object-contain scale-95 dark:invert dark:brightness-200"
+              className="h-8 w-auto object-contain scale-95 dark:invert dark:brightness-200"
             />
           </Link>
         </div>
 
-        <div className="hidden md:flex flex-[2] items-center justify-center gap-8 font-sans text-[14px] font-medium tracking-tight">
+        <div className="hidden md:flex flex-[2] items-center justify-center gap-6 font-sans text-[12px] font-medium tracking-tight">
           <Link href="/" className={`${pathname === '/' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Home</Link>
           <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Services</Link>
           <Link href="/shop" className={`${pathname?.startsWith('/shop') && !pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-slate-400'} hover:text-blue-500 transition-colors`}>Shop</Link>
@@ -72,11 +72,11 @@ export default function Navbar() {
           )}
         </div>
 
-        <div className="flex-1 flex items-center justify-end gap-5">
-          <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[22px] hover:text-blue-500 transition-colors">search</button>
+        <div className="flex-1 flex items-center justify-end gap-4">
+          <button className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">search</button>
           
           <Link href="/cart" className="relative group">
-            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[22px] hover:text-blue-500 transition-colors">shopping_cart</span>
+            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
             {totalItems > 0 && (
               <span className="absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">
                 {totalItems}
@@ -87,10 +87,10 @@ export default function Navbar() {
           {user ? (
             <div className="flex items-center gap-4">
               <span className="hidden lg:block text-[10px] font-bold uppercase tracking-widest text-slate-400">{user.email.split('@')[0]}</span>
-              <button onClick={handleLogout} className="material-symbols-outlined text-red-500 text-[22px] hover:scale-110 transition-all">logout</button>
+              <button onClick={handleLogout} className="material-symbols-outlined text-red-500 text-[18px] hover:scale-110 transition-all">logout</button>
             </div>
           ) : (
-            <Link href="/auth" className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[22px] hover:text-blue-500 transition-colors">person</Link>
+            <Link href="/auth" className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">person</Link>
           )}
         </div>
       </nav>
