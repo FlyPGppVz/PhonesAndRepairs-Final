@@ -41,6 +41,12 @@ body {
   background: var(--background);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  
+  /* Global 80% Zoom/Scale */
+  zoom: 0.8;
+  -moz-transform: scale(0.8);
+  -moz-transform-origin: 0 0;
+  width: 100%;
 }
 
 /* Legacy CSS Integration */
