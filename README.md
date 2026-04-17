@@ -1,4 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Phones and Repairs (Next.js)
+
+Premium e-commerce and service platform for mobile devices.
+
+## 🚀 Deployment
+- **Platform**: Cloudflare Pages
+- **Framework**: Next.js 15+ (App Router)
+- **Database**: Supabase
 
 ## Getting Started
 
