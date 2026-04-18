@@ -43,7 +43,16 @@ export default function Footer() {
       </div>
 
       <div className="px-8 py-10 border-t border-slate-200/50 max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="font-sans text-xs font-bold text-slate-400 uppercase tracking-widest">© 2024 CellphonesAndRepair. Built for the elite.</p>
+        <div className="flex items-center gap-4">
+          <img 
+            src="/assets/img/admin-logo.png" 
+            alt="Blink Services Logo" 
+            className="w-10 h-auto opacity-80 grayscale hover:grayscale-0 transition-all"
+          />
+          <p className="font-sans text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
+            POWERED BY BLINK SERVICES LLC, BUILD FOR THE ELITE.
+          </p>
+        </div>
       </div>
     </footer>
   );
