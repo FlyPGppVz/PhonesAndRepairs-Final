@@ -41,7 +41,7 @@ export default function EditProduct() {
   );
 
   return (
-    <main className="pt-32 pb-24 px-6 max-w-[1600px] mx-auto min-h-screen">
+    <main className="pt-32 pb-24 px-6 max-w-[1900px] mx-auto min-h-screen">
       <ProductForm 
         initialData={product} 
         id={id as string} 

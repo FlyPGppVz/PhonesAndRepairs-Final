@@ -477,9 +477,9 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
       </div>
       </form>
     </div>
-       {/* High-Fidelity Detailed Preview Column */}
-    <div className="w-full shrink-0 sticky top-24 hidden xl:block">
-      <div className="bg-white dark:bg-neutral-950 rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden h-[calc(100vh-140px)] flex flex-col">
+    {/* High-Fidelity Detailed Preview Column */}
+    <div className="w-full shrink-0 hidden xl:block">
+      <div className="bg-white dark:bg-neutral-950 rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col min-h-screen">
         <div className="px-6 py-4 bg-slate-50 dark:bg-zinc-900/50 border-b border-slate-200 dark:border-white/5 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -488,7 +488,7 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
           <span className="text-[10px] text-slate-400 font-medium">Auto-updating Rendering</span>
         </div>
         
-        <div className="flex-1 overflow-y-auto scrollbar-hide">
+        <div className="flex-1">
           <div className="origin-top transform -mt-20 scale-[0.98]">
             <ProductDetailClient product={previewProduct as any} />
           </div>
