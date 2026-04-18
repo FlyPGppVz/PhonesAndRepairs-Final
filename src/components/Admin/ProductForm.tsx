@@ -193,11 +193,19 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
   };
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start w-full">
+  return (
+    <div className="grid grid-cols-1 xl:grid-cols-[450px,1fr] gap-12 items-start w-full">
       <div className="flex flex-col gap-8 w-full">
-        {(headerTitle || headerSubtitle) && (
-          <header>
-            {headerTitle && <h1 className="text-4xl font-bold tracking-tight">{headerTitle}</h1>}
+        <div>
+          <span className="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-2 block">Información</span>
+          {(headerTitle || headerSubtitle) && (
+            <header>
+              {headerTitle && <h1 className="text-4xl font-bold tracking-tight">{headerTitle}</h1>}
+              {headerSubtitle && <p className="text-slate-500 mt-2">{headerSubtitle}</p>}
+            </header>
+          )}
+        </div>
+        <form onSubmit={handleSubmit} className="space-y-12 w-full">
             {headerSubtitle && <p className="text-slate-500 mt-2">{headerSubtitle}</p>}
           </header>
         )}
@@ -478,7 +486,14 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
       </form>
     </div>
     {/* High-Fidelity Detailed Preview Column */}
-    <div className="w-full shrink-0 hidden xl:block">
+    <div className="flex flex-col gap-8 w-full hidden xl:flex">
+      <div>
+        <span className="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-2 block">Live Preview</span>
+        <header>
+          <h1 className="text-4xl font-bold tracking-tight">Interactive View</h1>
+          <p className="text-slate-500 mt-2">Professional rendering of your masterpiece.</p>
+        </header>
+      </div>
       <div className="bg-white dark:bg-neutral-950 rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col min-h-screen">
         <div className="px-6 py-4 bg-slate-50 dark:bg-zinc-900/50 border-b border-slate-200 dark:border-white/5 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-2">
