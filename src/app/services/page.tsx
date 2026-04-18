@@ -119,9 +119,9 @@ export default function ServicesPage() {
               Get iPhone Quote
             </button>
           </div>
-          <div className="flex-1 h-full overflow-hidden rounded-2xl">
+          <div className="flex-1 h-full overflow-hidden rounded-[2rem] border border-slate-200 dark:border-white/5">
             <img 
-              className="w-full h-72 object-contain transition-transform duration-700 group-hover:scale-110" 
+              className="w-full h-full min-h-[300px] object-cover transition-transform duration-700 group-hover:scale-110" 
               src="/assets/images/service_iphone_repair.jpg" 
               alt="iPhone Repair" 
             />
