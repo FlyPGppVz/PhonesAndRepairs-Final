@@ -125,7 +125,7 @@ export default function Home() {
             </div>
             <div className="flex-grow flex items-center justify-center py-8">
               <video 
-                className="w-full h-auto rounded-[2rem] transition-transform duration-700 group-hover:scale-105 shadow-2xl" 
+                className="w-full h-auto rounded-[2rem] shadow-2xl" 
                 autoPlay 
                 muted 
                 loop 
