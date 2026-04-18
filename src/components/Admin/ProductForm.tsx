@@ -6,7 +6,8 @@ import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { revalidateShop } from '@/app/actions';
 import { searchProductSpecs } from '@/lib/productSpecs';
-
+import ImageTransformer from './ImageTransformer';
+import { processAndUploadImage } from '@/lib/utils/image-processor';
 interface Variant {
   color_hex: string;
   image_url: string;
@@ -40,6 +41,8 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
 
   const [variants, setVariants] = useState<Variant[]>([]);
   const [storageOptions, setStorageOptions] = useState<StorageOption[]>([]);
+  
+  const [editingFile, setEditingFile] = useState<{ index: number; file: File } | null>(null);
 
   useEffect(() => {
     if (initialData) {
@@ -124,25 +127,29 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
     setVariants(variants.filter((_, i) => i !== index));
   };
 
-  const handleFileUpload = async (index: number, file: File) => {
+  const handleFileUpload = (index: number, file: File) => {
+    setEditingFile({ index, file });
+  };
+
+  const handleConfirmTransform = async (imageElement: HTMLImageElement, cropDetails: any, containerSize: number) => {
+    if (!editingFile) return;
+    const { index } = editingFile;
+    setEditingFile(null);
+    
+    // Add toast to indicate processing
+    const toastId = toast.loading('Processing and optimizing image...');
+    
     try {
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `product-images/${fileName}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from('products')
-        .upload(filePath, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data: { publicUrl } } = supabase.storage
-        .from('products')
-        .getPublicUrl(filePath);
-
+      const publicUrl = await processAndUploadImage(
+        imageElement, 
+        cropDetails, 
+        containerSize, 
+        formData.slug || formData.title || 'product'
+      );
       updateVariant(index, 'image_url', publicUrl);
+      toast.success('Image optimized and uploaded successfully', { id: toastId });
     } catch (error) {
-      toast.error('Error uploading image');
+      toast.error('Failed to process image', { id: toastId });
       console.error(error);
     }
   };
@@ -174,7 +181,8 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-12">
+    <div className="flex flex-col xl:flex-row gap-8 items-start w-full">
+      <form onSubmit={handleSubmit} className="flex-1 space-y-12 w-full">
       <div className="bg-white dark:bg-neutral-900 rounded-3xl p-8 border border-slate-200 dark:border-white/5 shadow-xl space-y-6">
         <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
           <span className="material-symbols-outlined text-blue-500">info</span>
@@ -447,5 +455,58 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
         </button>
       </div>
     </form>
+    
+    {/* Live Preview Column */}
+    <div className="xl:w-[320px] w-full shrink-0 sticky top-24 hidden md:block">
+      <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+        <span className="material-symbols-outlined text-sm">visibility</span>
+        Live Store Preview
+      </h3>
+      
+      <div className="relative group animate-in fade-in slide-in-from-bottom duration-500">
+        <div className="w-full bg-slate-50 dark:bg-neutral-900 rounded-[2.25rem] p-6 border border-slate-200/50 dark:border-white/5 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/5 flex flex-col items-center text-center overflow-hidden pointer-events-none">
+          <div className="h-40 md:h-48 flex items-center justify-center mb-6 relative w-full">
+            <div className="absolute inset-0 bg-blue-500/5 blur-[40px] rounded-full scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+            <img 
+              src={variants[0]?.image_url || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2U1ZTdlYiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIj5JbWFnZSBQcmV2aWV3PC90ZXh0Pjwvc3ZnPg=='} 
+              alt={formData.title || 'Product'}
+              className="max-h-full max-w-[75%] object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div className="space-y-1.5 w-full">
+            <div className="flex justify-center gap-2 mb-1.5">
+              <span className="text-blue-600 dark:text-blue-400 text-[8px] font-black uppercase tracking-[0.2em]">{formData.category || 'CATEGORY'}</span>
+            </div>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-tight px-1">{formData.title || 'Product Title'}</h2>
+            <p className="text-slate-500 text-[11px] line-clamp-2 px-2 h-8 leading-relaxed opacity-80">{formData.description || 'Product description will appear here...'}</p>
+            
+            <div className="pt-3 flex flex-col items-start mt-auto space-y-2">
+              <span className="text-lg font-black text-slate-900 dark:text-white">${formData.price ? Number(formData.price).toLocaleString() : '0'}</span>
+              <div className="flex -space-x-1">
+                {variants.slice(0, 3).map((v, i) => (
+                  <div 
+                    key={i} 
+                    className="w-2.5 h-2.5 rounded-full border border-slate-200 dark:border-neutral-900 shadow-sm" 
+                    style={{ backgroundColor: v.color_hex || '#000' }}
+                  />
+                ))}
+                {variants.length === 0 && (
+                   <div className="w-2.5 h-2.5 rounded-full border border-slate-200 dark:border-neutral-900 shadow-sm bg-slate-300" />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {editingFile && (
+      <ImageTransformer 
+        file={editingFile.file} 
+        onConfirm={handleConfirmTransform} 
+        onCancel={() => setEditingFile(null)} 
+      />
+    )}
+    </div>
   );
 }
