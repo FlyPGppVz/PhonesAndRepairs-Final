@@ -9,6 +9,7 @@ export default async function ShopPage() {
   const { data: initialProducts } = await supabase
     .from('products')
     .select('*')
+    .order('sort_priority', { ascending: true })
     .order('created_at', { ascending: false });
 
   return (

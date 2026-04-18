@@ -102,7 +102,9 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
         query = query.lte('price', parseFloat(maxPrice));
       }
 
-      const { data, error } = await query.order('created_at', { ascending: false });
+      const { data, error } = await query
+        .order('sort_priority', { ascending: true })
+        .order('created_at', { ascending: false });
 
       if (!error && data) {
         setProducts(data);
