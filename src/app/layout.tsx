@@ -27,12 +27,12 @@ export default function RootLayout({
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-neutral-950 text-slate-900 dark:text-white`}>
+      <body className={`${inter.variable} font-sans antialiased bg-white text-slate-900`}>
         <CartProvider>
           <Toaster 
             position="top-right" 
             toastOptions={{
-              className: 'dark:bg-neutral-900 dark:text-white bg-white text-slate-900 rounded-2xl border border-slate-200 dark:border-white/5 font-sans font-medium text-sm shadow-2xl',
+              className: 'bg-white text-slate-900 rounded-2xl border border-slate-200 font-sans font-medium text-sm shadow-2xl',
               duration: 4000,
               success: {
                 iconTheme: {

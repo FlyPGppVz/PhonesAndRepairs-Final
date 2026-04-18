@@ -6,8 +6,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { useCart } from '@/context/CartContext';
 
-import ThemeToggle from './ThemeToggle';
-
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
@@ -35,14 +33,14 @@ export default function Navbar() {
   const { totalItems } = useCart();
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900 dark:text-white">
+    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900">
       <nav className="flex items-center justify-between px-6 py-1 max-w-[1440px] mx-auto h-14">
         <div className="flex-1 flex items-center">
           <Link href="/" className="active:opacity-70 transition-all">
             <img 
               src="/assets/images/logo-transparent.png" 
               alt="CellphonesAndRepair" 
-              className="h-[42px] w-auto object-contain dark:invert dark:brightness-200"
+              className="h-[42px] w-auto object-contain"
             />
           </Link>
         </div>
@@ -55,7 +53,7 @@ export default function Navbar() {
               Shop <span className="material-symbols-outlined text-[14px]">expand_more</span>
             </Link>
             
-            <div className="fixed top-14 left-0 w-full bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-white/5 shadow-2xl opacity-0 invisible group-hover/shop:opacity-100 group-hover/shop:visible transition-all duration-300 translate-y-0 z-50 overflow-hidden">
+            <div className="fixed top-14 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200/50 shadow-2xl opacity-0 invisible group-hover/shop:opacity-100 group-hover/shop:visible transition-all duration-300 translate-y-0 z-50 overflow-hidden">
               <div className="max-w-[1440px] mx-auto px-20 py-16">
                 <div className="grid grid-cols-4 gap-12">
                   {/* Column 1: IPHONES */}
@@ -111,21 +109,21 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'} hover:text-blue-600 transition-all duration-300`}>Services</Link>
-          <Link href="/contact" className={`${pathname === '/contact' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'} hover:text-blue-600 transition-all duration-300`}>Contact</Link>
-          <Link href="/about" className={`${pathname === '/about' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500 dark:text-slate-400'} hover:text-blue-600 transition-all duration-300 underline-offset-4 decoration-blue-600`}>About Us</Link>
+          <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300`}>Services</Link>
+          <Link href="/contact" className={`${pathname === '/contact' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300`}>Contact</Link>
+          <Link href="/about" className={`${pathname === '/about' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300 underline-offset-4 decoration-blue-600`}>About Us</Link>
           
           {user?.email === 'flypg65@gmail.com' && (
-            <Link href="/admin" className={`${pathname?.startsWith('/admin') ? 'text-blue-600 dark:text-blue-400' : 'text-blue-600 font-black border-l pl-4'} hover:opacity-80 transition-all`}>Admin</Link>
+            <Link href="/admin" className={`${pathname?.startsWith('/admin') ? 'text-blue-600' : 'text-blue-600 font-black border-l pl-4'} hover:opacity-80 transition-all`}>Admin</Link>
           )}
         </div>
 
         <div className="flex-1 flex items-center justify-center gap-3">
-          <div className="group relative flex items-center bg-slate-50 dark:bg-white/5 rounded-full px-2 py-1 border border-transparent focus-within:border-blue-500/50 focus-within:bg-white dark:focus-within:bg-zinc-900 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/5">
+          <div className="group relative flex items-center bg-slate-50 rounded-full px-2 py-1 border border-transparent focus-within:border-blue-500/50 focus-within:bg-white transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/5">
             <input 
               type="text"
               placeholder="Search store..."
-              className="w-0 group-hover:w-40 focus:w-40 transition-all duration-500 outline-none bg-transparent text-[11px] font-bold tracking-tight text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-500 px-0 group-hover:px-2 focus:px-2"
+              className="w-0 group-hover:w-40 focus:w-40 transition-all duration-500 outline-none bg-transparent text-[11px] font-bold tracking-tight text-slate-900 placeholder:text-slate-400 px-0 group-hover:px-2 focus:px-2"
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
                   const query = (e.target as HTMLInputElement).value;
@@ -133,13 +131,11 @@ export default function Navbar() {
                 }
               }}
             />
-            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] group-hover:text-blue-500 transition-colors p-1 cursor-default">search</span>
+            <span className="material-symbols-outlined text-slate-600 text-[18px] group-hover:text-blue-500 transition-colors p-1 cursor-default">search</span>
           </div>
           
-          <ThemeToggle />
-          
           <Link href="/cart" className="relative group p-1.5 lowercase">
-            <span className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
+            <span className="material-symbols-outlined text-slate-600 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
             {totalItems > 0 && (
               <span className="absolute top-0 right-0 bg-blue-600 text-white text-[9px] font-bold h-3.5 w-3.5 rounded-full flex items-center justify-center">
                 {totalItems}
@@ -153,7 +149,7 @@ export default function Navbar() {
               <button onClick={handleLogout} className="material-symbols-outlined text-red-500 text-[18px] hover:scale-110 transition-all p-1.5">logout</button>
             </div>
           ) : (
-            <Link href="/auth" className="material-symbols-outlined text-slate-600 dark:text-slate-400 text-[18px] hover:text-blue-500 transition-colors p-1.5">person</Link>
+            <Link href="/auth" className="material-symbols-outlined text-slate-600 text-[18px] hover:text-blue-500 transition-colors p-1.5">person</Link>
           )}
         </div>
       </nav>
