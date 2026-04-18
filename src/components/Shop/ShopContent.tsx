@@ -37,7 +37,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
   // Update URL function
   const updateURL = useCallback(() => {
     const params = new URLSearchParams();
-    if (search) params.set('q', search);
+    if (debouncedSearch) params.set('q', debouncedSearch);
     selectedCategories.forEach(cat => params.append('category', cat));
     selectedBrands.forEach(brand => params.append('brand', brand));
     if (minPrice) params.set('minPrice', minPrice);
@@ -45,7 +45,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
     
     // Use replace to avoid bloating history
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  }, [search, selectedCategories, selectedBrands, minPrice, maxPrice, pathname, router]);
+  }, [debouncedSearch, selectedCategories, selectedBrands, minPrice, maxPrice, pathname, router]);
 
   // Effect to update URL when filters change
   useEffect(() => {
@@ -56,9 +56,11 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
   useEffect(() => {
     const cats = searchParams.getAll('category');
     const brands = searchParams.getAll('brand');
+    const query = searchParams.get('q') || '';
+    
     setSelectedCategories(cats);
     setSelectedBrands(brands);
-    setSearch(searchParams.get('q') || '');
+    if (query !== search) setSearch(query);
     setMinPrice(searchParams.get('minPrice') || '');
     setMaxPrice(searchParams.get('maxPrice') || '');
   }, [searchParams]);
