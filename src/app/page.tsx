@@ -66,8 +66,8 @@ export default function Home() {
               href={`/shop?category=${cat.param}`} 
               className="group flex flex-col items-center gap-4 transition-all"
             >
-              <div className="w-32 h-32 md:w-36 md:h-36 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-neutral-900 transition-all group-hover:bg-slate-50 dark:group-hover:bg-neutral-800 group-hover:scale-110 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-500/10 overflow-hidden">
-                <span className="material-symbols-outlined text-[110px] md:text-[125px] text-[#1d1d1f] dark:text-white transition-transform group-hover:rotate-12 leading-none">{cat.icon}</span>
+              <div className="w-32 h-32 md:w-36 md:h-36 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-neutral-900 transition-all group-hover:bg-slate-50 dark:group-hover:bg-neutral-800 group-hover:scale-110 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-500/10">
+                <span className={`material-symbols-outlined text-[110px] md:text-[125px] text-[#1d1d1f] dark:text-white transition-transform group-hover:rotate-12 leading-none ${cat.icon === 'videogame_asset' ? 'scale-[1.8]' : ''}`}>{cat.icon}</span>
               </div>
               <span className="text-[10px] font-black text-slate-400 dark:text-zinc-500 font-sans tracking-[0.2em] uppercase group-hover:text-blue-600 transition-colors">{cat.label}</span>
             </Link>
