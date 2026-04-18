@@ -37,6 +37,13 @@ export default function AdminClientLayout({ children }: { children: React.ReactN
                   <span className="material-symbols-outlined">mail</span>
                   Inbox
                 </Link>
+                <Link 
+                  href="/admin/integrations" 
+                  className={`flex items-center gap-3 px-5 py-4 rounded-[1.5rem] font-bold text-sm transition-all ${pathname === '/admin/integrations' ? 'bg-blue-600 text-white shadow-xl shadow-blue-500/20' : 'text-slate-500 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-white/5'}`}
+                >
+                  <span className="material-symbols-outlined">cable</span>
+                  Integrations
+                </Link>
                 <div className="flex items-center gap-3 px-5 py-4 text-slate-300 dark:text-zinc-700 cursor-not-allowed opacity-50">
                   <span className="material-symbols-outlined">analytics</span>
                   <span className="text-sm font-bold">Analytics</span>

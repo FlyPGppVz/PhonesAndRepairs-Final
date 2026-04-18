@@ -121,7 +121,7 @@ export default function ServicesPage() {
           </div>
           <div className="flex-1 h-full overflow-hidden rounded-2xl">
             <img 
-              className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110" 
+              className="w-full h-72 object-contain transition-transform duration-700 group-hover:scale-110" 
               src="/assets/images/service_iphone_repair.jpg" 
               alt="iPhone Repair" 
             />

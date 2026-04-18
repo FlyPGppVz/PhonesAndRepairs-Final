@@ -63,9 +63,9 @@ export default function Navbar() {
                     <div className="space-y-4">
                       <Link href="/shop?category=iPhones" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight text-transform-none">Shop All iPhone</Link>
                       <div className="space-y-2">
-                        <Link href="/shop?model=17-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone 17 Pro Max</Link>
-                        <Link href="/shop?model=16-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone 16 Pro Max</Link>
-                        <Link href="/shop?compare=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Compare Models</Link>
+                        <Link href="/shop?model=iphone" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone</Link>
+                        <Link href="/shop?model=iphone-pro" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone Pro</Link>
+                        <Link href="/shop?model=iphone-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone Pro Max</Link>
                       </div>
                     </div>
                   </div>
@@ -76,9 +76,9 @@ export default function Navbar() {
                     <div className="space-y-4">
                       <Link href="/shop?category=Samsung" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight text-transform-none">Samsung Galaxy</Link>
                       <div className="space-y-2">
-                        <Link href="/shop?model=s25-ultra" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">S25 Ultra</Link>
-                        <Link href="/shop?category=Samsung" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">S24 Series</Link>
-                        <Link href="/shop?certified=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Certified Androids</Link>
+                        <Link href="/shop?model=galaxy-s" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Galaxy S</Link>
+                        <Link href="/shop?model=galaxy-z" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Galaxy Z</Link>
+                        <Link href="/shop?model=galaxy-a" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Galaxy A</Link>
                       </div>
                     </div>
                   </div>
@@ -89,6 +89,7 @@ export default function Navbar() {
                     <div className="space-y-3 pt-1">
                       <Link href="/shop?category=iPad" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">iPad</Link>
                       <Link href="/shop?category=Watch" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">Apple Watch</Link>
+                      <Link href="/shop?category=Accessories" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">Accessories</Link>
                       <Link href="/shop?category=Consoles" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">Consoles & Gaming</Link>
                     </div>
                   </div>

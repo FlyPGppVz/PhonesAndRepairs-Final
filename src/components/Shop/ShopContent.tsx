@@ -74,8 +74,19 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
       }
 
       if (selectedCategories.length > 0) {
-        // Handle "android" category name mapping from DB migration (Capitalized in DB previously)
-        const mappedCats = selectedCategories.map(c => c === 'android' ? 'Android' : (c === 'iphone' ? 'iPhones' : (c === 'ipads' ? 'iPads' : c)));
+        // Handle URL params mapping safely by normalizing input
+        const mappedCats = selectedCategories.map(c => {
+          const normalized = c.toLowerCase().trim();
+          if (normalized === 'android') return 'Android';
+          if (normalized === 'iphone' || normalized === 'iphones') return 'iPhones';
+          if (normalized === 'ipads' || normalized === 'ipad') return 'iPads';
+          if (normalized === 'samsung') return 'Samsung';
+          if (normalized === 'watch' || normalized === 'apple watch') return 'Watch';
+          if (normalized === 'consoles') return 'Consoles';
+          if (normalized === 'accessories') return 'Accessories';
+          // Return the sanitized original with first letter capitalized as fallback
+          return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+        });
         query = query.in('category', mappedCats);
       }
 

@@ -14,7 +14,7 @@ export default async function ShopPage() {
   return (
     <main className="pt-32 pb-24 px-6 md:px-12 max-w-[1440px] mx-auto min-h-screen">
       <header className="mb-20 text-center animate-in fade-in slide-in-from-top duration-1000">
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-6 bg-gradient-to-b from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-zinc-400 dark:to-zinc-600 bg-clip-text text-transparent uppercase">The Store.</h1>
+        <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-8 bg-gradient-to-b from-slate-900 via-slate-700 to-slate-500 dark:from-white dark:via-zinc-400 dark:to-zinc-600 bg-clip-text text-transparent uppercase px-4 whitespace-nowrap overflow-hidden text-ellipsis">Our Premium Shop.</h1>
         <p className="text-lg md:text-xl text-slate-500 dark:text-zinc-400 font-medium max-w-2xl mx-auto tracking-tight">Pick the perfect device for your digital lifestyle. Expertly restored, premium certified.</p>
       </header>
 

@@ -1,10 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import SocialLinks from '@/components/SocialLinks';
+import { supabase } from '@/lib/supabase';
 
 export default function Home() {
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    try {
+      await supabase.from('newsletter_subscribers').insert([{ email }]);
+      setSubscribed(true);
+      setEmail('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <main className="dark:bg-[#0a0a0a] min-h-screen">
       {/* Hero Section */}
@@ -50,8 +65,8 @@ export default function Home() {
               href={`/shop?category=${cat.param}`} 
               className="group flex flex-col items-center gap-4 transition-all"
             >
-              <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-neutral-900 transition-all group-hover:bg-slate-50 dark:group-hover:bg-neutral-800 group-hover:scale-110 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-500/10 overflow-hidden">
-                <span className="material-symbols-outlined text-[40px] md:text-[46px] text-[#1d1d1f] dark:text-white transition-transform group-hover:rotate-12">{cat.icon}</span>
+              <div className="w-32 h-32 md:w-36 md:h-36 p-6 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-neutral-900 transition-all group-hover:bg-slate-50 dark:group-hover:bg-neutral-800 group-hover:scale-110 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-500/10 overflow-hidden">
+                <span className="material-symbols-outlined text-[60px] md:text-[70px] text-[#1d1d1f] dark:text-white transition-transform group-hover:rotate-12">{cat.icon}</span>
               </div>
               <span className="text-xs font-bold text-[#1d1d1f] dark:text-zinc-400 font-sans tracking-tight uppercase group-hover:text-blue-600 transition-colors">{cat.label}</span>
             </Link>
@@ -180,20 +195,31 @@ export default function Home() {
             <p className="text-zinc-400 text-lg font-medium max-w-xl mb-10 leading-relaxed">
               Subscribe to our technical network and get exclusive priority for repairs, bulk discounts, and professional tracking for every device in your workspace.
             </p>
-            <div className="flex gap-4">
-              <Link 
-                href="/contact" 
-                className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95"
-              >
-                Join Network
-              </Link>
-              <Link 
-                href="/shop" 
-                className="bg-white dark:bg-neutral-800 text-blue-600 dark:text-blue-400 px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase border border-blue-100 dark:border-blue-900/30 hover:bg-blue-50 transition-all active:scale-95"
-              >
-                View Catalog
-              </Link>
-            </div>
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
+              {subscribed ? (
+                <div className="bg-green-500/20 text-green-400 px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase border border-green-500/30 flex items-center justify-center gap-2 w-full max-w-sm">
+                  <span className="material-symbols-outlined">check_circle</span>
+                  Subscribed
+                </div>
+              ) : (
+                <>
+                  <input 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your work email" 
+                    required 
+                    className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all text-sm"
+                  />
+                  <button 
+                    type="submit" 
+                    className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95 whitespace-nowrap"
+                  >
+                    Subscribe
+                  </button>
+                </>
+              )}
+            </form>
           </div>
           <div className="flex-1 relative flex justify-center items-center">
             <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full transform group-hover:scale-150 transition-transform duration-1000"></div>

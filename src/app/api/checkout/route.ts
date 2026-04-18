@@ -1,13 +1,19 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
+import { createClient } from '@/lib/supabaseServer';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
-  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  const supabase = await createClient();
+  
+  // Fetch secret securely via RPC (SECURITY DEFINER)
+  const { data: stripeSecretData, error: rpcError } = await supabase.rpc('get_stripe_credentials');
+  
+  const stripeSecretKey = stripeSecretData || process.env.STRIPE_SECRET_KEY;
   
   if (!stripeSecretKey) {
-    console.error('Missing STRIPE_SECRET_KEY');
+    console.error('Missing STRIPE_SECRET_KEY in Database and Env', rpcError);
     return NextResponse.json({ error: 'Stripe configuration missing' }, { status: 500 });
   }
 
