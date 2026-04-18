@@ -44,11 +44,6 @@ export default function Footer() {
 
       <div className="px-8 py-10 border-t border-slate-200/50 dark:border-slate-800/50 max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="font-sans text-xs font-bold text-slate-400 uppercase tracking-widest">© 2024 CellphonesAndRepair. Built for the elite.</p>
-        <div className="flex gap-6">
-          <span className="material-symbols-outlined text-slate-400 hover:text-blue-600 transition-colors cursor-pointer">facebook</span>
-          <span className="material-symbols-outlined text-slate-400 hover:text-blue-600 transition-colors cursor-pointer">potted_plant</span>
-          <span className="material-symbols-outlined text-slate-400 hover:text-blue-600 transition-colors cursor-pointer">shield</span>
-        </div>
       </div>
     </footer>
   );
