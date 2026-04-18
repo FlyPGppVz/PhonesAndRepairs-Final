@@ -41,7 +41,7 @@ export default function EditProduct() {
   );
 
   return (
-    <main className="pt-32 pb-24 px-6 max-w-4xl mx-auto min-h-screen">
+    <main className="pt-32 pb-24 px-6 max-w-[1600px] mx-auto min-h-screen">
       <header className="mb-12">
         <h1 className="text-4xl font-bold tracking-tight">Refine Blueprint</h1>
         <p className="text-slate-500 mt-2">Adjusting specifications for {product?.title}.</p>
