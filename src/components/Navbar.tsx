@@ -179,8 +179,8 @@ export default function Navbar() {
             <Link href="/" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/' ? 'text-blue-600' : 'text-slate-900'}`}>Home</Link>
             <Link href="/shop" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname?.startsWith('/shop') ? 'text-blue-600' : 'text-slate-900'}`}>Shop</Link>
             <Link href="/services" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/services' ? 'text-blue-600' : 'text-slate-900'}`}>Service</Link>
-            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/contact' ? 'text-blue-600' : 'text-slate-900'}`}>Contact</Link>
             <Link href="/about" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/about' ? 'text-blue-600' : 'text-slate-900'}`}>About us</Link>
+            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/contact' ? 'text-blue-600' : 'text-slate-900'}`}>Contact</Link>
           </div>
 
           <div className="mt-auto pt-8 border-t border-slate-100 flex flex-col gap-6 font-sans text-[12px] font-bold uppercase tracking-[0.05em]">
