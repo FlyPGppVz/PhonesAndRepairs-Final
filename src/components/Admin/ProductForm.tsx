@@ -23,9 +23,11 @@ interface StorageOption {
 interface ProductFormProps {
   initialData?: any;
   id?: string;
+  headerTitle?: string;
+  headerSubtitle?: React.ReactNode;
 }
 
-export default function ProductForm({ initialData, id }: ProductFormProps) {
+export default function ProductForm({ initialData, id, headerTitle, headerSubtitle }: ProductFormProps) {
   const router = useRouter();
   const [isSaving, setIsSaving] = useState(false);
   const [formData, setFormData] = useState({
@@ -191,8 +193,15 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
   };
 
   return (
-    <div className="xl:grid xl:grid-cols-[1fr,480px] gap-8 items-start w-full">
-      <form onSubmit={handleSubmit} className="flex-1 space-y-12 w-full">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-start w-full">
+      <div className="flex flex-col gap-8 w-full">
+        {(headerTitle || headerSubtitle) && (
+          <header>
+            {headerTitle && <h1 className="text-4xl font-bold tracking-tight">{headerTitle}</h1>}
+            {headerSubtitle && <p className="text-slate-500 mt-2">{headerSubtitle}</p>}
+          </header>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-12 w-full">
       <div className="bg-white dark:bg-neutral-900 rounded-3xl p-8 border border-slate-200 dark:border-white/5 shadow-xl space-y-6">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold flex items-center gap-2">
@@ -466,7 +475,8 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
           {isSaving ? 'Saving Masterpiece...' : id ? 'Update Product' : 'Create Product'}
         </button>
       </div>
-    </form>
+      </form>
+    </div>
        {/* High-Fidelity Detailed Preview Column */}
     <div className="w-full shrink-0 sticky top-24 hidden xl:block">
       <div className="bg-white dark:bg-neutral-950 rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden h-[calc(100vh-140px)] flex flex-col">
