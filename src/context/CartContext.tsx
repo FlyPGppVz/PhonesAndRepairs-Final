@@ -9,6 +9,7 @@ interface CartItem {
   image: string;
   quantity: number;
   color: string;
+  colorHex: string;
   storage: string;
   slug: string;
 }
@@ -60,6 +61,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         price: priceWithOffset,
         image: variant.image_url,
         color: variant.color_name,
+        colorHex: variant.color_hex,
         storage: storage,
         slug: product.slug,
         quantity: 1

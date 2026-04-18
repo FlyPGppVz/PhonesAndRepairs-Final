@@ -10,6 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     // Check session on mount
@@ -33,7 +34,7 @@ export default function Navbar() {
   const { totalItems } = useCart();
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900">
+    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 text-slate-900 touch-manipulation">
       <nav className="flex items-center justify-between px-6 py-1 max-w-[1440px] mx-auto h-14">
         <div className="flex-1 flex items-center">
           <Link href="/" className="active:opacity-70 transition-all">
@@ -60,11 +61,11 @@ export default function Navbar() {
                   <div className="space-y-6">
                     <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">iphones</span>
                     <div className="space-y-4">
-                      <Link href="/shop?category=iPhones" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Shop All iPhone</Link>
+                      <Link href="/shop?category=iPhones" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight text-transform-none">Shop All iPhone</Link>
                       <div className="space-y-2">
-                        <Link href="/shop?model=17-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">iPhone 17 Pro Max</Link>
-                        <Link href="/shop?model=16-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">iPhone 16 Pro Max</Link>
-                        <Link href="/shop?compare=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Compare Models</Link>
+                        <Link href="/shop?model=17-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone 17 Pro Max</Link>
+                        <Link href="/shop?model=16-pro-max" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">iPhone 16 Pro Max</Link>
+                        <Link href="/shop?compare=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Compare Models</Link>
                       </div>
                     </div>
                   </div>
@@ -73,11 +74,11 @@ export default function Navbar() {
                   <div className="space-y-6">
                     <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">android</span>
                     <div className="space-y-4">
-                      <Link href="/shop?category=Samsung" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Samsung Galaxy</Link>
+                      <Link href="/shop?category=Samsung" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight text-transform-none">Samsung Galaxy</Link>
                       <div className="space-y-2">
-                        <Link href="/shop?model=s25-ultra" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">S25 Ultra</Link>
-                        <Link href="/shop?category=Samsung" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">S24 Series</Link>
-                        <Link href="/shop?certified=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Certified Androids</Link>
+                        <Link href="/shop?model=s25-ultra" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">S25 Ultra</Link>
+                        <Link href="/shop?category=Samsung" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">S24 Series</Link>
+                        <Link href="/shop?certified=true" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Certified Androids</Link>
                       </div>
                     </div>
                   </div>
@@ -86,9 +87,9 @@ export default function Navbar() {
                   <div className="space-y-6">
                     <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">ecosystem</span>
                     <div className="space-y-3 pt-1">
-                      <Link href="/shop?category=iPad" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">iPad</Link>
-                      <Link href="/shop?category=Watch" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">Apple Watch</Link>
-                      <Link href="/shop?category=Consoles" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors">Consoles & Gaming</Link>
+                      <Link href="/shop?category=iPad" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">iPad</Link>
+                      <Link href="/shop?category=Watch" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">Apple Watch</Link>
+                      <Link href="/shop?category=Consoles" className="block text-[15px] font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors text-transform-none">Consoles & Gaming</Link>
                     </div>
                   </div>
 
@@ -96,11 +97,11 @@ export default function Navbar() {
                   <div className="space-y-6">
                     <span className="text-[10px] text-slate-400 font-black uppercase tracking-[0.2em] block">shop selection</span>
                     <div className="space-y-4">
-                      <Link href="/shop?category=Accessories" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight">Essential Accessories</Link>
+                      <Link href="/shop?category=Accessories" className="block text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 transition-colors tracking-tight text-transform-none">Essential Accessories</Link>
                       <div className="space-y-2">
-                        <Link href="/shop?tag=cables" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Cables & Power</Link>
-                        <Link href="/shop?tag=cases" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">Cases & Protection</Link>
-                        <Link href="/shop?category=AirPods" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors">AirPods & Audio</Link>
+                        <Link href="/shop?tag=cables" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Cables & Power</Link>
+                        <Link href="/shop?tag=cases" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">Cases & Protection</Link>
+                        <Link href="/shop?category=AirPods" className="block text-[13px] font-medium text-slate-500 dark:text-slate-400 hover:text-blue-600 transition-colors text-transform-none">AirPods & Audio</Link>
                       </div>
                     </div>
                   </div>
@@ -109,7 +110,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300`}>Services</Link>
+          <Link href="/services" className={`${pathname === '/services' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300`}>Service</Link>
           <Link href="/contact" className={`${pathname === '/contact' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300`}>Contact</Link>
           <Link href="/about" className={`${pathname === '/about' ? 'text-blue-600' : 'text-slate-500'} hover:text-blue-600 transition-all duration-300 underline-offset-4 decoration-blue-600`}>About Us</Link>
           
@@ -118,8 +119,8 @@ export default function Navbar() {
           )}
         </div>
 
-        <div className="flex-1 flex items-center justify-center gap-3">
-          <div className="group relative flex items-center bg-slate-50 rounded-full px-2 py-1 border border-transparent focus-within:border-blue-500/50 focus-within:bg-white transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/5">
+        <div className="flex-1 flex items-center justify-end gap-2 md:gap-3">
+          <div className="hidden md:flex group relative items-center bg-slate-50 rounded-full px-2 py-1 border border-transparent focus-within:border-blue-500/50 focus-within:bg-white transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/5">
             <input 
               type="text"
               placeholder="Search store..."
@@ -135,7 +136,7 @@ export default function Navbar() {
           </div>
           
           <Link href="/cart" className="relative group p-1.5 lowercase">
-            <span className="material-symbols-outlined text-slate-600 text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
+            <span className="material-symbols-outlined text-slate-600 text-[22px] md:text-[18px] hover:text-blue-500 transition-colors">shopping_cart</span>
             {totalItems > 0 && (
               <span className="absolute top-0 right-0 bg-blue-600 text-white text-[9px] font-bold h-3.5 w-3.5 rounded-full flex items-center justify-center">
                 {totalItems}
@@ -144,15 +145,66 @@ export default function Navbar() {
           </Link>
 
           {user ? (
-            <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-3">
               <span className="hidden lg:block text-[9px] font-bold uppercase tracking-widest text-slate-400">{user.email.split('@')[0]}</span>
               <button onClick={handleLogout} className="material-symbols-outlined text-red-500 text-[18px] hover:scale-110 transition-all p-1.5">logout</button>
             </div>
           ) : (
-            <Link href="/auth" className="material-symbols-outlined text-slate-600 text-[18px] hover:text-blue-500 transition-colors p-1.5">person</Link>
+            <Link href="/auth" className="hidden md:block material-symbols-outlined text-slate-600 text-[18px] hover:text-blue-500 transition-colors p-1.5 cursor-pointer">person</Link>
           )}
+
+          {/* MOBILE HAMBURGER MENU (3 bar icon) */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-1.5 text-slate-900 hover:text-blue-600 transition-colors touch-manipulation z-50 relative"
+            aria-label="Toggle Menu"
+          >
+            <span className="material-symbols-outlined text-[28px]">
+              {isMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+
         </div>
       </nav>
+
+      {/* MOBILE DRAWER */}
+      <div 
+        className={`md:hidden fixed inset-0 bg-white z-40 transition-all duration-300 ease-in-out transform ${
+          isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
+        }`}
+      >
+        <div className="flex flex-col h-full bg-white px-8 pt-24 pb-12 overflow-y-auto">
+          {/* Menu Links */}
+          <div className="flex flex-col gap-8 font-sans text-[12px] font-bold uppercase tracking-[0.05em]">
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/' ? 'text-blue-600' : 'text-slate-900'}`}>Home</Link>
+            <Link href="/shop" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname?.startsWith('/shop') ? 'text-blue-600' : 'text-slate-900'}`}>Shop</Link>
+            <Link href="/services" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/services' ? 'text-blue-600' : 'text-slate-900'}`}>Service</Link>
+            <Link href="/contact" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/contact' ? 'text-blue-600' : 'text-slate-900'}`}>Contact</Link>
+            <Link href="/about" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/about' ? 'text-blue-600' : 'text-slate-900'}`}>About us</Link>
+          </div>
+
+          <div className="mt-auto pt-8 border-t border-slate-100 flex flex-col gap-6 font-sans text-[12px] font-bold uppercase tracking-[0.05em]">
+             {user ? (
+                <button 
+                  onClick={() => { handleLogout(); setIsMenuOpen(false); }}
+                  className="w-full text-left py-1 text-red-500 flex items-center justify-between"
+                >
+                  Logout
+                  <span className="material-symbols-outlined text-[18px]">logout</span>
+                </button>
+             ) : (
+                <Link 
+                  href="/auth" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full text-left py-1 text-slate-900 flex items-center justify-between"
+                >
+                  Login 
+                  <span className="material-symbols-outlined text-[18px]">person</span>
+                </Link>
+             )}
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

@@ -66,7 +66,7 @@ export default function CartPage() {
                   <h3 className="text-lg font-bold dark:text-white">{item.title}</h3>
                   <p className="text-sm text-slate-500 dark:text-zinc-400 flex flex-wrap items-center gap-3">
                     <span className="flex items-center gap-1.5 bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-full border border-slate-200 dark:border-white/5">
-                      <span className="w-2 h-2 rounded-full border border-white/20" style={{ backgroundColor: item.color === 'White' ? '#fff' : item.color }}></span>
+                      <span className="w-2 h-2 rounded-full border border-white/20" style={{ backgroundColor: item.colorHex || (item.color === 'White' ? '#fff' : item.color) }}></span>
                       {item.color}
                     </span>
                     <span className="bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-full border border-slate-200 dark:border-white/5 font-medium">
