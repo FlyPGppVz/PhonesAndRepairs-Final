@@ -193,7 +193,6 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
   };
 
   return (
-  return (
     <div className="grid grid-cols-1 xl:grid-cols-[450px,1fr] gap-12 items-start w-full">
       <div className="flex flex-col gap-8 w-full">
         <div>
@@ -205,10 +204,6 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
             </header>
           )}
         </div>
-        <form onSubmit={handleSubmit} className="space-y-12 w-full">
-            {headerSubtitle && <p className="text-slate-500 mt-2">{headerSubtitle}</p>}
-          </header>
-        )}
         <form onSubmit={handleSubmit} className="space-y-12 w-full">
       <div className="bg-white dark:bg-neutral-900 rounded-3xl p-8 border border-slate-200 dark:border-white/5 shadow-xl space-y-6">
         <div className="flex justify-between items-center mb-6">
