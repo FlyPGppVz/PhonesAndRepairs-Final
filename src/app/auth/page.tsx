@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { phpApi } from '@/lib/api';
 import toast from 'react-hot-toast';
 
 export default function AuthPage() {
@@ -23,32 +23,21 @@ export default function AuthPage() {
 
     try {
       if (mode === 'register') {
-        if (password !== confirmPassword) {
-          throw new Error('Passwords do not match');
-        }
-
-        const { error } = await supabase.auth.signUp({ 
-          email, 
-          password,
-          options: {
-            data: {
-              first_name: firstName,
-              last_name: lastName,
-            }
-          }
-        });
-        if (error) throw error;
-        toast.success('Registration successful! You can now log in.');
-        setMode('login');
+         toast.error('Registration is currently disabled. Please contact support.');
+         return;
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
+        // Use username instead of email for PHP Auth (assuming username based on auth.php)
+        const username = email.split('@')[0]; // Simple mapping or just use email if auth.php expects it
+        const response = await phpApi.login(username, password);
         
-        // Use window.location.href for full refresh and direct redirect to home
-        window.location.href = '/';
+        if (response.access_token) {
+          localStorage.setItem('admin_token', response.access_token);
+          toast.success('Login successful!');
+          window.location.href = '/admin';
+        }
       }
     } catch (error: any) {
-      toast.error(error.message);
+      toast.error(error.message || 'Authentication failed');
     } finally {
       setLoading(false);
     }

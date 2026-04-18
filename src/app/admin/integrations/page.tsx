@@ -16,8 +16,8 @@ export default function IntegrationsPage() {
       try {
         const { data, error } = await supabase.from('app_settings').select('*');
         if (!error && data) {
-          const publicRecord = data.find(r => r.key === 'stripe_public_key');
-          const secretRecord = data.find(r => r.key === 'stripe_secret_key');
+          const publicRecord = data.find((r: any) => r.key === 'stripe_public_key');
+          const secretRecord = data.find((r: any) => r.key === 'stripe_secret_key');
           
           if (publicRecord) setStripePublic(publicRecord.value || '');
           if (secretRecord) setStripeSecret(secretRecord.value || '');

@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { phpApi } from '@/lib/api';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
-import { revalidateShop } from '@/app/actions';
 
 interface Product {
   id: string;
@@ -20,12 +19,12 @@ export default function AdminShop() {
 
   const fetchProducts = async () => {
     setIsLoading(true);
-    const { data, error } = await supabase
-      .from('products')
-      .select('id, title, slug, price, category')
-      .order('created_at', { ascending: false });
-
-    if (!error && data) setProducts(data);
+    try {
+      const { data } = await phpApi.getProducts();
+      if (data) setProducts(data);
+    } catch (error) {
+      toast.error('Error fetching inventory');
+    }
     setIsLoading(false);
   };
 
@@ -35,12 +34,12 @@ export default function AdminShop() {
 
   const deleteProduct = async (id: string) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
-    const { error } = await supabase.from('products').delete().eq('id', id);
-    if (error) {
-      toast.error('Error deleting product');
-    } else {
-      await revalidateShop();
+    try {
+      const token = localStorage.getItem('admin_token') || 'temp-token';
+      await phpApi.deleteProduct(id, token);
       fetchProducts();
+    } catch (error) {
+      toast.error('Error deleting product');
     }
   };
 
@@ -94,7 +93,7 @@ export default function AdminShop() {
                     <span className="material-symbols-outlined text-lg">visibility</span>
                   </Link>
                   <Link 
-                    href={`/admin/shop/edit/${p.id}`}
+                    href={`/admin/shop/edit?id=${p.id}`}
                     className="p-2 text-slate-400 hover:text-amber-500 transition-all"
                   >
                     <span className="material-symbols-outlined text-lg">edit</span>

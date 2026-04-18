@@ -45,7 +45,7 @@ export default function AdminInbox() {
     // Subscribe to real-time updates
     const channel = supabase
       .channel('inbox-changes')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'inbox' }, (payload) => {
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'inbox' }, (payload: any) => {
         const newMessage = payload.new as InboxMessage;
         setMessages((prev) => [newMessage, ...prev]);
         toast.success(`New ${newMessage.type} received!`, { icon: '📩' });

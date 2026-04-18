@@ -1,9 +1,10 @@
-import { supabase } from '@/lib/supabase';
+import { phpApi } from '@/lib/api';
 
 /**
- * Extracts a region from an image, converts it to WebP, and uploads it to Supabase immediately.
+ * Extracts a region from an image, converts it to WebP, and uploads it via PHP backend.
  * @param imageElement - The HTMLImageElement containing the original image.
- * @param cropDetails - Details about the transformation (scale and position relative to the 1:1 container).
+ * @param cropDetails - Details about the transformation.
+ * @param containerSize - The size of the canvas container.
  * @param fileName - Optional base name for the file.
  * @returns A Promise resolving to the public URL of the uploaded image.
  */
@@ -14,7 +15,6 @@ export const processAndUploadImage = async (
   fileName: string = 'product_image'
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
-    // 1. Create a canvas with the size of our normalizer container (e.g. 500x500 for a 1:1 ratio)
     const canvas = document.createElement('canvas');
     canvas.width = containerSize;
     canvas.height = containerSize;
@@ -24,11 +24,8 @@ export const processAndUploadImage = async (
       return reject(new Error('Failed to create canvas context'));
     }
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // 2. Draw the image according to the transformation
-    // Note: react-rnd provides x, y, width, height for the image *within* the container.
     ctx.drawImage(
       imageElement,
       0,
@@ -41,7 +38,6 @@ export const processAndUploadImage = async (
       cropDetails.height
     );
 
-    // 3. Export to WebP (80% quality)
     canvas.toBlob(
       async (blob) => {
         if (!blob) {
@@ -49,26 +45,10 @@ export const processAndUploadImage = async (
         }
 
         try {
-          // 4. Upload to Supabase Storage
           const uniqueFileName = `${fileName.replace(/[^a-zA-Z0-9]/g, '_')}_${Date.now()}.webp`;
-          const filePath = `product-images/${uniqueFileName}`;
-
-          const { error: uploadError } = await supabase.storage
-            .from('products')
-            .upload(filePath, blob, {
-              contentType: 'image/webp',
-              cacheControl: '3600',
-              upsert: false
-            });
-
-          if (uploadError) {
-            throw uploadError;
-          }
-
-          // 5. Get Public URL
-          const { data: { publicUrl } } = supabase.storage
-            .from('products')
-            .getPublicUrl(filePath);
+          const file = new File([blob], uniqueFileName, { type: 'image/webp' });
+          const token = localStorage.getItem('admin_token') || 'temp-token';
+          const publicUrl = await phpApi.uploadImage(file, token);
 
           resolve(publicUrl);
         } catch (error) {

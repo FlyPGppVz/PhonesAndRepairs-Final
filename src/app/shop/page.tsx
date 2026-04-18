@@ -1,17 +1,7 @@
-import { createClient } from '@/lib/supabaseServer';
 import ShopContent from '@/components/Shop/ShopContent';
 import React, { Suspense } from 'react';
 
-export const dynamic = 'force-dynamic';
-
-export default async function ShopPage() {
-  const supabase = await createClient();
-  const { data: initialProducts } = await supabase
-    .from('products')
-    .select('*')
-    .order('sort_priority', { ascending: true })
-    .order('created_at', { ascending: false });
-
+export default function ShopPage() {
   return (
     <main className="pt-32 pb-24 px-6 md:px-12 max-w-[1440px] mx-auto min-h-screen">
       <header className="mb-20 text-center animate-in fade-in slide-in-from-top duration-1000">
@@ -20,7 +10,7 @@ export default async function ShopPage() {
       </header>
 
       <Suspense fallback={<div className="text-center py-20 animate-pulse text-xs font-black uppercase tracking-widest text-slate-400">Restoring Experience...</div>}>
-        <ShopContent initialProducts={initialProducts || []} />
+        <ShopContent initialProducts={[]} />
       </Suspense>
     </main>
   );

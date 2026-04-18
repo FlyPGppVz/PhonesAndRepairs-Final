@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirigir todas las peticiones que NO sean archivos reales a index.html
+  # Excepto las llamadas a /api/ que son manejadas por PHP
+  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.html [L,QSA]
+</IfModule>
+
+# Seguridad adicional para el cliente
+Options -Indexes

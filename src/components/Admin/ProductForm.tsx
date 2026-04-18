@@ -1,10 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { supabase } from '@/lib/supabase';
+import { phpApi } from '@/lib/api';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
-import { revalidateShop } from '@/app/actions';
 import { searchProductSpecs } from '@/lib/productSpecs';
 import ImageTransformer from './ImageTransformer';
 import { processAndUploadImage } from '@/lib/utils/image-processor';
@@ -169,16 +168,14 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
       main_image_url: variants[0]?.image_url || '',
     };
 
-    const { error } = id
-      ? await supabase.from('products').update(productPayload).eq('id', id)
-      : await supabase.from('products').insert([productPayload]);
-
-    if (error) {
-      toast.error(error.message);
-    } else {
-      await revalidateShop();
+    try {
+      const token = localStorage.getItem('admin_token') || 'temp-token';
+      await phpApi.saveProduct(productPayload, id ? 'PUT' : 'POST', token);
+      
       router.push('/admin/shop');
       router.refresh();
+    } catch (error: any) {
+      toast.error(error.message || 'Error saving product');
     }
     setIsSaving(false);
   };

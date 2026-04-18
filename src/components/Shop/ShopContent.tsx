@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
+import { phpApi } from '@/lib/api';
 import Link from 'next/link';
 import FilterSidebar from './FilterSidebar';
 import AddToCartSmall from './AddToCartSmall';
@@ -65,51 +65,48 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
     setMaxPrice(searchParams.get('maxPrice') || '');
   }, [searchParams]);
 
-  // Query Supabase when URL params or state change
   useEffect(() => {
     async function getFilteredProducts() {
       setLoading(true);
-      let query = supabase.from('products').select('*');
+      try {
+        const allProducts = await phpApi.getProducts();
+        
+        let filtered = allProducts;
 
-      if (debouncedSearch) {
-        query = query.ilike('title', `%${debouncedSearch}%`);
-      }
+        if (debouncedSearch) {
+          filtered = filtered.filter((p: any) => p.title.toLowerCase().includes(debouncedSearch.toLowerCase()));
+        }
 
-      if (selectedCategories.length > 0) {
-        // Handle URL params mapping safely by normalizing input
-        const mappedCats = selectedCategories.map(c => {
-          const normalized = c.toLowerCase().trim();
-          if (normalized === 'android') return 'Android';
-          if (normalized === 'iphone' || normalized === 'iphones') return 'iPhones';
-          if (normalized === 'ipads' || normalized === 'ipad') return 'iPads';
-          if (normalized === 'samsung') return 'Samsung';
-          if (normalized === 'watch' || normalized === 'apple watch') return 'Watch';
-          if (normalized === 'consoles') return 'Consoles';
-          if (normalized === 'accessories') return 'Accessories';
-          // Return the sanitized original with first letter capitalized as fallback
-          return normalized.charAt(0).toUpperCase() + normalized.slice(1);
-        });
-        query = query.in('category', mappedCats);
-      }
+        if (selectedCategories.length > 0) {
+          const mappedCats = selectedCategories.map(c => {
+            const normalized = c.toLowerCase().trim();
+            if (normalized === 'android') return 'Android';
+            if (normalized === 'iphone' || normalized === 'iphones') return 'iPhones';
+            if (normalized === 'ipads' || normalized === 'ipad') return 'iPads';
+            if (normalized === 'samsung') return 'Samsung';
+            if (normalized === 'watch' || normalized === 'apple watch') return 'Watch';
+            if (normalized === 'consoles') return 'Consoles';
+            if (normalized === 'accessories') return 'Accessories';
+            return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+          });
+          filtered = filtered.filter((p: any) => mappedCats.includes(p.category));
+        }
 
-      if (selectedBrands.length > 0) {
-        query = query.in('brand', selectedBrands);
-      }
+        if (selectedBrands.length > 0) {
+          filtered = filtered.filter((p: any) => selectedBrands.includes(p.brand));
+        }
 
-      if (minPrice) {
-        query = query.gte('price', parseFloat(minPrice));
-      }
+        if (minPrice) {
+          filtered = filtered.filter((p: any) => Number(p.price) >= parseFloat(minPrice));
+        }
 
-      if (maxPrice) {
-        query = query.lte('price', parseFloat(maxPrice));
-      }
+        if (maxPrice) {
+          filtered = filtered.filter((p: any) => Number(p.price) <= parseFloat(maxPrice));
+        }
 
-      const { data, error } = await query
-        .order('sort_priority', { ascending: true })
-        .order('created_at', { ascending: false });
-
-      if (!error && data) {
-        setProducts(data);
+        setProducts(filtered);
+      } catch (error) {
+        console.error('Error fetching products', error);
       }
       setLoading(false);
     }
@@ -176,7 +173,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
               return (
                 <div key={p.id} className="relative group animate-in fade-in slide-in-from-bottom duration-500">
                   <Link 
-                    href={`/shop/${p.slug}`}
+                    href={`/shop/product?slug=${p.slug}`}
                     className="h-full bg-slate-50 dark:bg-neutral-900 rounded-[2.25rem] p-6 border border-slate-200/50 dark:border-white/5 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/5 flex flex-col items-center text-center overflow-hidden"
                   >
                     <div className="h-40 md:h-48 flex items-center justify-center mb-6 relative w-full">

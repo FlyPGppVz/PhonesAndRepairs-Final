@@ -50,33 +50,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
   const handleBuyNow = async () => {
     setIsBuying(true);
     try {
-      const checkoutItem = {
-        title: product.title,
-        price: displayPrice,
-        quantity: 1,
-        image: activeVariant.image_url,
-        color: activeVariant.color_name,
-        storage: selectedStorage.capacity
-      };
-
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ items: [checkoutItem] }),
-      });
-
-      const data = await response.json();
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        toast.error(data.error || 'Failed to initialize checkout');
-      }
+      await new Promise(resolve => setTimeout(resolve, 800));
+      window.open('https://buy.stripe.com/TU_ENLACE_DE_PAGO_AQUI', '_blank');
     } catch (error) {
       console.error('Checkout error:', error);
-      toast.error('Could not connect to the payment gateway');
+      toast.error('Could not open the payment gateway');
     } finally {
       setIsBuying(false);
     }

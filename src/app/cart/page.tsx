@@ -12,21 +12,15 @@ export default function CartPage() {
   const handleCheckout = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: cart }),
-      });
-
-      const data = await response.json();
+      // Simulación mínima de carga para UX
+      await new Promise(resolve => setTimeout(resolve, 800));
       
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error(data.error || 'Failed to create checkout session');
-      }
+      // Abrimos el Payment Link universal de Stripe configurado manualmente
+      window.open('https://buy.stripe.com/TU_ENLACE_DE_PAGO_AQUI', '_blank');
+      
+      setIsLoading(false);
     } catch (error: any) {
-      toast.error(error.message || 'Checkout error');
+      toast.error('Error al procesar el checkout');
       setIsLoading(false);
     }
   };
