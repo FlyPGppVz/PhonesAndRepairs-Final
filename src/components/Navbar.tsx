@@ -170,12 +170,12 @@ export default function Navbar() {
       {/* MOBILE DRAWER */}
       <div 
         className={`md:hidden fixed inset-0 bg-white z-40 transition-all duration-300 ease-in-out transform ${
-          isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
+          isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
         }`}
       >
-        <div className="flex flex-col h-full bg-white px-8 pt-24 pb-12 overflow-y-auto">
+        <div className="flex flex-col h-full bg-white px-8 pt-20 pb-12 overflow-y-auto">
           {/* Menu Links */}
-          <div className="flex flex-col gap-10 font-sans text-lg font-bold uppercase tracking-[0.05em]">
+          <div className="flex flex-col gap-8 font-sans text-lg font-bold uppercase tracking-[0.05em]">
             <Link href="/" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/' ? 'text-blue-600' : 'text-slate-900'}`}>Home</Link>
             <Link href="/shop" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname?.startsWith('/shop') ? 'text-blue-600' : 'text-slate-900'}`}>Shop</Link>
             <Link href="/services" onClick={() => setIsMenuOpen(false)} className={`py-1 ${pathname === '/services' ? 'text-blue-600' : 'text-slate-900'}`}>Service</Link>
