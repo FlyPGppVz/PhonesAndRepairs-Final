@@ -51,7 +51,7 @@ export default function Home() {
 
       {/* Category Icons Row */}
       <section className="max-w-[1440px] mx-auto px-12 md:px-20 py-24 relative z-30">
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 lg:gap-24">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 md:gap-12 items-start">
           {[
             { label: 'iPhone', icon: 'smartphone', param: 'iphone' },
             { label: 'Android', icon: 'phone_android', param: 'android' },
@@ -68,7 +68,7 @@ export default function Home() {
               <div className="w-32 h-32 md:w-36 md:h-36 p-6 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center bg-white dark:bg-neutral-900 transition-all group-hover:bg-slate-50 dark:group-hover:bg-neutral-800 group-hover:scale-110 shadow-sm group-hover:shadow-xl group-hover:shadow-blue-500/10 overflow-hidden">
                 <span className="material-symbols-outlined text-[60px] md:text-[70px] text-[#1d1d1f] dark:text-white transition-transform group-hover:rotate-12">{cat.icon}</span>
               </div>
-              <span className="text-xs font-bold text-[#1d1d1f] dark:text-zinc-400 font-sans tracking-tight uppercase group-hover:text-blue-600 transition-colors">{cat.label}</span>
+              <span className="text-[10px] font-black text-slate-400 dark:text-zinc-500 font-sans tracking-[0.2em] uppercase group-hover:text-blue-600 transition-colors">{cat.label}</span>
             </Link>
           ))}
         </div>
@@ -188,38 +188,42 @@ export default function Home() {
           {/* Pulsating Radial Glow Background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_rgba(255,255,255,0.08)_0%,_transparent_70%)] blur-[100px] rounded-full pointer-events-none animate-pulse-glow opacity-50"></div>
 
-          <div className="flex-1 z-10">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400 bg-clip-text text-transparent">
-              Premium Support for All Your Devices
+          <div className="flex-1 z-10 space-y-6">
+            <span className="text-[11px] font-black tracking-[0.3em] text-slate-500 uppercase block">stay in the loop</span>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-[1.1] bg-gradient-to-br from-blue-700 via-blue-500 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+              Subscribe to keep up with our great deals.
             </h2>
-            <p className="text-zinc-400 text-lg font-medium max-w-xl mb-10 leading-relaxed">
-              Subscribe to our technical network and get exclusive priority for repairs, bulk discounts, and professional tracking for every device in your workspace.
+            <p className="text-zinc-400 text-lg font-medium max-w-lg leading-relaxed">
+              Stay ahead of the curve with exclusive offers, the latest product updates, and special discounts delivered straight to your inbox.
             </p>
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
-              {subscribed ? (
-                <div className="bg-green-500/20 text-green-400 px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase border border-green-500/30 flex items-center justify-center gap-2 w-full max-w-sm">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  Subscribed
-                </div>
-              ) : (
-                <>
-                  <input 
-                    type="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your work email" 
-                    required 
-                    className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all text-sm"
-                  />
-                  <button 
-                    type="submit" 
-                    className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95 whitespace-nowrap"
-                  >
-                    Subscribe
-                  </button>
-                </>
-              )}
-            </form>
+            <div className="space-y-4">
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 items-center">
+                {subscribed ? (
+                  <div className="bg-green-500/20 text-green-400 px-8 py-4 rounded-full font-bold text-sm tracking-widest uppercase border border-green-500/30 flex items-center justify-center gap-2 w-full max-w-sm">
+                    <span className="material-symbols-outlined">check_circle</span>
+                    Subscribed
+                  </div>
+                ) : (
+                  <>
+                    <input 
+                      type="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email" 
+                      required 
+                      className="w-full sm:flex-1 bg-white border border-slate-200 rounded-full px-8 py-4 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm font-medium"
+                    />
+                    <button 
+                      type="submit" 
+                      className="w-full sm:w-auto bg-[#0a46b3] text-white px-10 py-4 rounded-full font-bold text-sm tracking-widest uppercase hover:bg-blue-700 transition-all shadow-xl shadow-blue-900/40 active:scale-95 whitespace-nowrap"
+                    >
+                      Subscribe Now
+                    </button>
+                  </>
+                )}
+              </form>
+              <p className="text-[11px] text-slate-500 font-medium">No spam, ever. Unsubscribe at any time.</p>
+            </div>
           </div>
           <div className="flex-1 relative flex justify-center items-center">
             <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full transform group-hover:scale-150 transition-transform duration-1000"></div>
