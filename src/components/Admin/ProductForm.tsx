@@ -478,44 +478,92 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
     </form>
     
     {/* Live Preview Column */}
-    <div className="xl:w-[320px] w-full shrink-0 sticky top-24 hidden md:block">
-      <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-        <span className="material-symbols-outlined text-sm">visibility</span>
-        Live Store Preview
-      </h3>
-      
-      <div className="relative group animate-in fade-in slide-in-from-bottom duration-500">
-        <div className="w-full bg-slate-50 dark:bg-neutral-900 rounded-[2.25rem] p-6 border border-slate-200/50 dark:border-white/5 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/5 flex flex-col items-center text-center overflow-hidden pointer-events-none">
-          <div className="h-40 md:h-48 flex items-center justify-center mb-6 relative w-full">
-            <div className="absolute inset-0 bg-blue-500/5 blur-[40px] rounded-full scale-0 group-hover:scale-100 transition-transform duration-700"></div>
-            <img 
-              src={variants[0]?.image_url || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2U1ZTdlYiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIj5JbWFnZSBQcmV2aWV3PC90ZXh0Pjwvc3ZnPg=='} 
-              alt={formData.title || 'Product'}
-              className="max-h-full max-w-[75%] object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-          <div className="space-y-1.5 w-full">
-            <div className="flex justify-center gap-2 mb-1.5">
-              <span className="text-blue-600 dark:text-blue-400 text-[8px] font-black uppercase tracking-[0.2em]">{formData.category || 'CATEGORY'}</span>
+    <div className="xl:w-[320px] w-full shrink-0 sticky top-24 hidden md:block space-y-8">
+      <div>
+        <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+          <span className="material-symbols-outlined text-sm">visibility</span>
+          Live Store Preview
+        </h3>
+        
+        <div className="relative group animate-in fade-in slide-in-from-bottom duration-500">
+          <div className="w-full bg-slate-50 dark:bg-neutral-900 rounded-[2.25rem] p-6 border border-slate-200/50 dark:border-white/5 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/5 flex flex-col items-center text-center overflow-hidden pointer-events-none">
+            <div className="h-40 md:h-48 flex items-center justify-center mb-6 relative w-full">
+              <div className="absolute inset-0 bg-blue-500/5 blur-[40px] rounded-full scale-0 group-hover:scale-100 transition-transform duration-700"></div>
+              <img 
+                src={variants[0]?.image_url || 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2U1ZTdlYiIvPjx0ZXh0IHg9IjUwIiB5PSI1MCIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM5Y2EzYWYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJjZW50cmFsIj5JbWFnZSBQcmV2aWV3PC90ZXh0Pjwvc3ZnPg=='} 
+                alt={formData.title || 'Product'}
+                className="max-h-full max-w-[75%] object-contain drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-tight px-1">{formData.title || 'Product Title'}</h2>
-            <p className="text-slate-500 text-[11px] line-clamp-2 px-2 h-8 leading-relaxed opacity-80">{formData.description || 'Product description will appear here...'}</p>
-            
-            <div className="pt-3 flex flex-col items-start mt-auto space-y-2">
-              <span className="text-lg font-black text-slate-900 dark:text-white">${formData.price ? Number(formData.price).toLocaleString() : '0'}</span>
-              <div className="flex -space-x-1">
-                {variants.slice(0, 3).map((v, i) => (
-                  <div 
-                    key={i} 
-                    className="w-2.5 h-2.5 rounded-full border border-slate-200 dark:border-neutral-900 shadow-sm" 
-                    style={{ backgroundColor: v.color_hex || '#000' }}
-                  />
-                ))}
-                {variants.length === 0 && (
-                   <div className="w-2.5 h-2.5 rounded-full border border-slate-200 dark:border-neutral-900 shadow-sm bg-slate-300" />
-                )}
+            <div className="space-y-1.5 w-full">
+              <div className="flex justify-center gap-2 mb-1.5">
+                <span className="text-blue-600 dark:text-blue-400 text-[8px] font-black uppercase tracking-[0.2em]">{formData.category || 'CATEGORY'}</span>
+              </div>
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight leading-tight px-1">{formData.title || 'Product Title'}</h2>
+              <p className="text-slate-500 text-[11px] line-clamp-2 px-2 h-8 leading-relaxed opacity-80">{formData.description || 'Product description will appear here...'}</p>
+              
+              <div className="pt-3 flex flex-col items-start mt-auto space-y-2">
+                <span className="text-lg font-black text-slate-900 dark:text-white">${formData.price ? Number(formData.price).toLocaleString() : '0'}</span>
+                <div className="flex -space-x-1">
+                  {variants.slice(0, 3).map((v, i) => (
+                    <div 
+                      key={i} 
+                      className="w-2.5 h-2.5 rounded-full border border-slate-200 dark:border-neutral-900 shadow-sm" 
+                      style={{ backgroundColor: v.color_hex || '#000' }}
+                    />
+                  ))}
+                  {variants.length === 0 && (
+                     <div className="w-2.5 h-2.5 rounded-full border border-slate-200 dark:border-neutral-900 shadow-sm bg-slate-300" />
+                  )}
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mini Bento Specs Preview */}
+      <div className="space-y-4 animate-in fade-in slide-in-from-right duration-700 delay-200">
+        <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+          <span className="material-symbols-outlined text-sm">settings_suggest</span>
+          Live Specs Detail
+        </h3>
+
+        {/* Processor Block */}
+        <div className="bg-slate-900 text-white rounded-[2rem] p-6 border border-white/5 relative overflow-hidden group">
+          <div className="relative z-10">
+            <h4 className="text-xl font-bold mb-1">{formData.processor_name || 'A19 Pro'}</h4>
+            <p className="text-[10px] text-white/40 uppercase tracking-widest font-bold">Process Architecture</p>
+          </div>
+          <span className="material-symbols-outlined absolute -right-4 -bottom-4 text-7xl opacity-10 group-hover:rotate-12 transition-transform duration-500">memory</span>
+        </div>
+
+        {/* Display Block */}
+        <div className="bg-slate-50 dark:bg-neutral-900 rounded-[2rem] p-6 border border-slate-200 dark:border-white/5">
+          <div className="flex justify-between items-start mb-4">
+            <p className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-widest">Display Tech</p>
+            <span className="material-symbols-outlined text-blue-500 text-xl">edgesensor_high</span>
+          </div>
+          <div className="flex gap-6">
+            <div>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">{formData.display_nits || '2000'} <span className="text-[10px] font-medium text-slate-400">nits</span></p>
+              <p className="text-[9px] uppercase font-bold text-slate-400 mt-0.5">Brightness</p>
+            </div>
+            <div>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">{formData.refresh_rate || '120Hz'}</p>
+              <p className="text-[9px] uppercase font-bold text-slate-400 mt-0.5">Refresh</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Battery Block */}
+        <div className="bg-slate-50 dark:bg-neutral-900 rounded-[2rem] p-6 border border-slate-200 dark:border-white/5 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center">
+            <span className="material-symbols-outlined text-blue-500">battery_charging_full</span>
+          </div>
+          <div>
+            <h4 className="font-bold text-sm text-slate-900 dark:text-white">Battery Performance</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">{formData.battery_desc || 'Optimized for all-day usage'}</p>
           </div>
         </div>
       </div>
