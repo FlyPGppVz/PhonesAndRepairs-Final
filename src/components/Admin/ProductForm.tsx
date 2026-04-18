@@ -193,7 +193,7 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
   };
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-[450px,1fr] gap-12 items-start w-full">
+    <div className="grid grid-cols-1 xl:grid-cols-[20%_70%] gap-[4%] items-start max-w-[94%] mx-auto w-full">
       <div className="flex flex-col gap-8 w-full">
         <div>
           <span className="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-2 block">Información</span>
@@ -213,7 +213,7 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           <div className="space-y-2">
             <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Product Title</label>
             <input 
@@ -280,7 +280,7 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
           <span className="material-symbols-outlined text-purple-500">settings_input_component</span>
           Technical Specifications
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           <div className="space-y-2">
             <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Processor Name</label>
             <input 
@@ -342,7 +342,7 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
 
         <div className="space-y-6">
           {variants.map((variant, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-6 p-6 bg-slate-50 dark:bg-white/5 rounded-2xl relative group">
+            <div key={index} className="flex flex-col gap-6 p-6 bg-slate-50 dark:bg-white/5 rounded-2xl relative group">
               <button 
                 type="button" 
                 onClick={() => removeVariant(index)}
@@ -422,7 +422,7 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
 
         <div className="space-y-4">
           {storageOptions.map((opt, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-4 p-4 bg-slate-50 dark:bg-white/5 rounded-2xl relative group">
+            <div key={index} className="flex flex-col gap-4 p-4 bg-slate-50 dark:bg-white/5 rounded-2xl relative group">
               <button 
                 type="button" 
                 onClick={() => removeStorageOption(index)}
@@ -480,8 +480,8 @@ export default function ProductForm({ initialData, id, headerTitle, headerSubtit
       </div>
       </form>
     </div>
-    {/* High-Fidelity Detailed Preview Column */}
-    <div className="flex flex-col gap-8 w-full hidden xl:flex">
+    {/* High-Fidelity Detailed Preview Column - STICKY PARALLEL VIEW */}
+    <div className="flex flex-col gap-8 w-full hidden xl:flex sticky top-24 h-fit z-20">
       <div>
         <span className="text-[11px] font-black uppercase tracking-[0.3em] text-blue-600 dark:text-blue-400 mb-2 block">Live Preview</span>
         <header>
