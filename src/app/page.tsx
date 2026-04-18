@@ -23,14 +23,15 @@ export default function Home() {
   return (
     <main className="dark:bg-[#0a0a0a] min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[870px] flex items-end pb-32 justify-center overflow-hidden bg-white">
+      <section className="relative h-[870px] flex items-end pb-48 justify-center overflow-hidden bg-white">
         <div className="z-10 text-left px-8 md:px-24 w-full relative max-w-[1440px] mx-auto">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight drop-shadow-2xl max-w-2xl animate-in fade-in slide-in-from-left duration-1000">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight drop-shadow-2xl max-w-4xl animate-in fade-in slide-in-from-left duration-1000">
             Expertly Restored.<br />
-            Seamlessly Repaired.
+            Seamlessly Repaired.<br />
+            Premium New Devices.
           </h1>
-          <p className="text-lg md:text-xl text-white/95 mb-10 font-medium max-w-xl drop-shadow-md animate-in fade-in slide-in-from-left duration-1000 delay-200">
-            Professional repair services for the devices you can't live without. Certified technicians, premium parts.
+          <p className="text-lg md:text-xl text-white/95 mb-10 font-medium max-w-3xl drop-shadow-md animate-in fade-in slide-in-from-left duration-1000 delay-200 leading-relaxed">
+            Professional sales and repair services for the devices you can't live without. Whether you are looking for the latest upgrade or a precision fix, our certified technicians and premium parts ensure your technology always performs at its peak.
           </p>
         </div>
         <div className="absolute inset-0 z-0 overflow-hidden bg-slate-900">
