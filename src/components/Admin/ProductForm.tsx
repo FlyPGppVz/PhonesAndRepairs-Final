@@ -8,6 +8,7 @@ import { revalidateShop } from '@/app/actions';
 import { searchProductSpecs } from '@/lib/productSpecs';
 import ImageTransformer from './ImageTransformer';
 import { processAndUploadImage } from '@/lib/utils/image-processor';
+import ProductDetailClient from '@/components/Shop/ProductDetailClient';
 interface Variant {
   color_hex: string;
   image_url: string;
@@ -43,6 +44,7 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
   const [storageOptions, setStorageOptions] = useState<StorageOption[]>([]);
   
   const [editingFile, setEditingFile] = useState<{ index: number; file: File } | null>(null);
+  const [showFullPreview, setShowFullPreview] = useState(false);
 
   useEffect(() => {
     if (initialData) {
@@ -180,14 +182,33 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
     setIsSaving(false);
   };
 
+  const previewProduct = {
+    id: id || 'preview-id',
+    ...formData,
+    price: parseFloat(formData.price) || 0,
+    variants: variants.length > 0 ? variants : [{ color_hex: '#ccc', image_url: 'data:image/svg+xml;base64,...', color_name: 'Preview Color' }],
+    storage_options: storageOptions,
+    slug: formData.slug || 'preview',
+  };
+
   return (
     <div className="flex flex-col xl:flex-row gap-8 items-start w-full">
       <form onSubmit={handleSubmit} className="flex-1 space-y-12 w-full">
       <div className="bg-white dark:bg-neutral-900 rounded-3xl p-8 border border-slate-200 dark:border-white/5 shadow-xl space-y-6">
-        <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-          <span className="material-symbols-outlined text-blue-500">info</span>
-          Basic Information
-        </h2>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            <span className="material-symbols-outlined text-blue-500">info</span>
+            Basic Information
+          </h2>
+          <button 
+            type="button"
+            onClick={() => setShowFullPreview(true)}
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10 px-4 py-2 rounded-full hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-all flex items-center gap-2"
+          >
+            <span className="material-symbols-outlined text-sm">open_in_new</span>
+            Previsualización Detallada
+          </button>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
@@ -506,6 +527,26 @@ export default function ProductForm({ initialData, id }: ProductFormProps) {
         onConfirm={handleConfirmTransform} 
         onCancel={() => setEditingFile(null)} 
       />
+    )}
+
+    {showFullPreview && (
+      <div className="fixed inset-0 z-[10000] bg-white dark:bg-neutral-950 overflow-y-auto animate-in fade-in duration-300">
+        <div className="sticky top-0 z-[10001] bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 px-8 py-4 flex justify-between items-center">
+          <div>
+            <h3 className="font-bold text-slate-900 dark:text-white">Previsualización en Vivo</h3>
+            <p className="text-xs text-slate-500">Estás viendo como se verá el producto en la tienda real.</p>
+          </div>
+          <button 
+            onClick={() => setShowFullPreview(false)}
+            className="bg-slate-900 text-white dark:bg-white dark:text-black px-6 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform"
+          >
+            Cerrar Previsualización
+          </button>
+        </div>
+        <div className="max-w-[1440px] mx-auto">
+          <ProductDetailClient product={previewProduct as any} />
+        </div>
+      </div>
     )}
     </div>
   );
