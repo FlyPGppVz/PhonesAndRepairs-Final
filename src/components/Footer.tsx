@@ -47,7 +47,7 @@ export default function Footer() {
           <img 
             src="/assets/img/admin-logo.png" 
             alt="Blink Services Logo" 
-            className="w-10 h-auto opacity-80 grayscale hover:grayscale-0 transition-all"
+            className="w-10 h-auto transition-all"
           />
           <p className="font-sans text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] leading-relaxed">
             POWERED BY BLINK SERVICES LLC, BUILD FOR THE ELITE.
